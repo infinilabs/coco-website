@@ -3,6 +3,7 @@
     "clsx",
     "INFINI",
     "lucide",
-    "tailwindcss"
+    "tailwindcss",
+    "unoptimized"
   ]
 }
