@@ -17,7 +17,6 @@ export default function Home() {
       <div className="relative z-10 container mx-auto px-4 py-16 bg-[url('/images/bg.png')] bg-cover bg-center">
         <div className="flex justify-center items-center mb-8">
           <Image
-            className="dark:invert"
             src="/images/logo.png"
             alt="Coco logo"
             width={58}
@@ -28,7 +27,6 @@ export default function Home() {
 
         <div className="text-center max-w-3xl mx-auto mt-14 mb-12">
           <Image
-            className="dark:invert"
             src="/images/slogan.png"
             alt="Coco slogan"
             width={836}
@@ -49,7 +47,7 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:invert mx-auto"
+              className="mx-auto"
               src="/images/Github.png"
               alt="Coco Github"
               width={148}
@@ -63,7 +61,6 @@ export default function Home() {
           <div className="relative mb-6">
             {isChat ? (
               <Image
-                className="dark:invert"
                 src="/images/chat.png"
                 alt="Coco chat"
                 width={776}
@@ -72,7 +69,6 @@ export default function Home() {
               />
             ) : (
               <Image
-                className="dark:invert"
                 src="/images/Search.png"
                 alt="Coco Search"
                 width={776}
@@ -86,7 +82,6 @@ export default function Home() {
             >
               {isChat ? (
                 <Image
-                  className="dark:invert"
                   src="/images/chat-button.png"
                   alt="Coco chat-button"
                   width={68}
@@ -95,7 +90,6 @@ export default function Home() {
                 />
               ) : (
                 <Image
-                  className="dark:invert"
                   src="/images/search-button.png"
                   alt="Coco search-button"
                   width={68}
