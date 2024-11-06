@@ -14,7 +14,7 @@ export default function Home() {
     <main className="min-h-screen bg-black">
       <div className="absolute inset-0 pointer-events-none"></div>
 
-      <div className="relative z-10 container mx-auto px-4 py-16 bg-[url('/images/bg.png')] bg-cover bg-center">
+      <div className="relative z-10 container mx-auto px-4 py-16 bg-[url('/images/bg.png')]">
         <div className="flex justify-center items-center mb-8">
           <Image
             src="/images/logo.png"
