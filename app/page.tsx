@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
+import Header from "@/components/Header";
+
 export default function Home() {
   const [isChat, setIsChat] = useState(false);
 
@@ -14,8 +16,10 @@ export default function Home() {
     <main className="min-h-screen bg-black">
       <div className="absolute inset-0 pointer-events-none"></div>
 
-      <div className="relative z-10 container mx-auto px-4 py-16 bg-[url('/images/bg.png')]">
-        <div className="flex justify-center items-center mb-8">
+      <div className="relative z-10 container mx-auto px-4 pb-16 bg-[url('/images/bg.png')]">
+        <Header />
+
+        <div className="flex justify-center items-center mb-8 mt-12">
           <Image
             src="/images/logo.png"
             alt="Coco logo"
@@ -41,20 +45,54 @@ export default function Home() {
             Instantly access and interact with your team’s unique knowledge,
             driving collaboration and insights across your data.
           </p>
-          <a
-            href="https://github.com/infinilabs/coco-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="mx-auto"
-              src="/images/Github.png"
-              alt="Coco Github"
-              width={148}
-              height={50}
-              priority
-            />
-          </a>
+
+          <div className="flex justify-center gap-4 mt-8">
+            <div className="relative">
+              <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#1C1C1C] border border-[#2C2C2C] text-white hover:bg-[#2C2C2C] transition-colors">
+                <Image
+                  src="/images/apple.svg"
+                  alt="macOS"
+                  width={20}
+                  height={20}
+                />
+                <span>macOS</span>
+              </button>
+              <div className="absolute top-full left-0 mt-2 w-full bg-[#1C1C1C] border border-[#2C2C2C] rounded-lg py-2">
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-white hover:bg-[#2C2C2C] text-sm"
+                >
+                  Apple Silicon
+                </a>
+                <a
+                  href="#"
+                  className="block px-4 py-2 text-white hover:bg-[#2C2C2C] text-sm"
+                >
+                  Intel Mac
+                </a>
+              </div>
+            </div>
+
+            <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#1C1C1C] border border-[#2C2C2C] text-white hover:bg-[#2C2C2C] transition-colors">
+              <Image
+                src="/images/windows.svg"
+                alt="Windows"
+                width={20}
+                height={20}
+              />
+              <span>Windows</span>
+            </button>
+
+            <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#1C1C1C] border border-[#2C2C2C] text-white hover:bg-[#2C2C2C] transition-colors">
+              <Image
+                src="/images/linux.svg"
+                alt="Linux"
+                width={20}
+                height={20}
+              />
+              <span>Linux</span>
+            </button>
+          </div>
         </div>
 
         <div className="max-w-2xl mx-auto backdrop-blur-xl rounded-2xl">
