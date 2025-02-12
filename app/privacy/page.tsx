@@ -7,7 +7,7 @@ export default function Privacy() {
       <Header />
 
       <main className="container mx-auto px-4 pt-10 max-w-4xl">
-        <h1 className="text-3xl font-bold mb-8">INFINI Labs Privacy Policy</h1>
+        <h1 className="text-3xl font-bold mb-8">Coco Privacy Policy</h1>
 
         <div className="space-y-8 text-gray-300">
           <div className="text-sm space-y-2">
@@ -22,11 +22,11 @@ export default function Privacy() {
             </h2>
             <div className="text-sm space-y-4">
               <p>
-                INFINI Labs, Ltd. is committed to protecting your privacy. We
+                Coco is committed to protecting your privacy. We
                 have prepared this Privacy Policy to describe to you our
                 practices regarding the Personal Data (as defined below) we
-                collect from users of our website located at infinilabs.com and
-                in connection with our INFINI Labs products and services (the
+                collect from users of our website located at coco.rs and
+                in connection with our other INFINI Labs products and services (the
                 &ldquo;Products&rdquo;).
               </p>
               <p>
@@ -138,10 +138,6 @@ export default function Privacy() {
                     <tr className="border-b border-gray-700">
                       <td className="py-2 pr-4 font-medium">Email</td>
                       <td className="py-2">hello@infini.ltd</td>
-                    </tr>
-                    <tr className="border-b border-gray-700">
-                      <td className="py-2 pr-4 font-medium">Phone</td>
-                      <td className="py-2">(+86) 400-139-9200</td>
                     </tr>
                     <tr className="border-b border-gray-700">
                       <td className="py-2 pr-4 font-medium">Discord</td>

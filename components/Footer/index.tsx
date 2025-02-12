@@ -47,11 +47,11 @@ export default function Footer() {
 
       <div className="flex flex-col md:flex-row md:justify-between items-center gap-4 md:gap-0 mt-7 pb-10">
         <div className="text-[#9F9FAC] text-sm order-2 md:order-1">
-          Copyright © {new Date().getFullYear()} INFINI Labs
+          Copyright © {new Date().getFullYear()} Coco AI.
         </div>
         <div className="flex items-center gap-2 order-1 md:order-2">
           <a
-            href="/terms"
+            href="#/terms"
             className="text-[#9F9FAC] hover:text-[#04FEF6] transition-colors"
           >
             Terms
@@ -65,7 +65,7 @@ export default function Footer() {
           </a>
           <span className="text-[#9F9FAC]">|</span>
           <a
-            href="/cookies"
+            href="#/cookies"
             className="text-[#9F9FAC] hover:text-[#04FEF6] transition-colors"
           >
             Cookies
