@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const FeaturesData = [
   {
-    title: "Open Source",
+    title: "Open Source, Free and Freedom",
     description:
       "Fully transparent and customizable. Build on top of COCO AI to fit your unique needs.",
     image: "/svg/source.svg",
@@ -11,21 +11,21 @@ const FeaturesData = [
     url: "https://github.com/infinilabs/coco-app",
   },
   {
-    title: "Unified Search",
+    title: "Unified Search, Data Connected",
     description:
-      "Instantly find files, messages, and data across all your apps—Google Drive, Notion, GitHub, and more.",
+      "Instantly find files, messages, and data across all your apps—Google Drive, Notion, GitHub, and more. With the increasing local or cloud connectors.",
     image: "/svg/search.svg",
   },
   {
-    title: "AI Assistant",
+    title: "Your Personal AI Assistant",
     description:
       "Interact with your team’s knowledge base through AI-powered chat, driving faster insights and decisions.",
     image: "/svg/chat.svg",
   },
   {
-    title: "Stay Private",
+    title: "Privacy First, Secure In Mind",
     description:
-      "Host COCO AI on your own servers and connect to local LLMs. Your data stays within your environment—secure, compliant, and fully under your control.",
+      "Self hosting made: Easy. Free. Secure. You can host your own COCO AI server on your own servers and connect to local LLMs. Your data stays within your environment—secure, compliant, and fully under your control.",
     image: "/svg/private.svg",
     urlName: "Coco Al server",
     url: "https://docs.infinilabs.com/coco-server/main/",

@@ -34,14 +34,7 @@ export default function Home() {
               priority
             />
             <p className="text-lg text-[#676767] my-8">
-              Coco AI is a fully open-source, cross-platform unified search and
-              productivity tool that connects and searches across various data
-              sources, including applications, files, Google Drive, Notion,
-              Yuque, Hugo, and more, both local and cloud-based. By integrating
-              with large models like DeepSeek, Coco AI enables intelligent
-              personal knowledge management, emphasizing privacy and supporting
-              private deployment, helping users quickly and intelligently access
-              their information.
+Coco AI is a fully open-source, cross-platform unified search and productivity tool that connects and searches across various data sources, including applications, files, Google Drive, Notion, Yuque, Hugo, and more, both local and cloud-based. By integrating with large models like DeepSeek, Coco AI enables intelligent personal knowledge management, emphasizing privacy and supporting private deployment, helping users quickly and intelligently access their information.
             </p>
 
             <div className="flex justify-center mt-10">

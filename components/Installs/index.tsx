@@ -5,7 +5,7 @@ export default function Installs() {
   return (
     <div id="install" className="container mx-auto px-4">
       <div className="mt-[130px] font-medium text-[32px] md:text-[40px] text-white leading-[48px] md:leading-[64px] text-center">
-        Installs Everywhere
+Coco - Unified Across Platforms
       </div>
 
       <div className="flex justify-center gap-4 mt-8">
@@ -24,6 +24,15 @@ export default function Installs() {
             <span className="font-medium text-white text-xl">macOS</span>
           </div>
           <div className="space-y-4">
+ <a
+              href="https://release.infinilabs.com/coco/app/stable/Coco%20AI_0.1.0_universal.dmg.zip"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
+            >
+              <Image src="/svg/down.svg" alt="" width={16} height={16} />
+              <span className="text-[#04FEF6]">Apple Universal</span>
+            </a>
             <a
               href="https://release.infinilabs.com/coco/app/stable/Coco%20AI_0.1.0_aarch64.dmg.zip"
               target="_blank"
@@ -34,13 +43,13 @@ export default function Installs() {
               <span className="text-[#04FEF6]">Apple Silicon</span>
             </a>
             <a
-              href="https://release.infinilabs.com/coco/app/stable/Coco%20AI_0.1.0_universal.dmg.zip"
+              href="https://release.infinilabs.com/coco/app/stable/Coco%20AI_0.1.0_x64.dmg.zip"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Intel Mac</span>
+              <span className="text-[#04FEF6]">Intel Based</span>
             </a>
 
             <div className="flex items-center gap-2 text-[#676767]">
