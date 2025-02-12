@@ -43,10 +43,10 @@ export default function Installs() {
               <span className="text-[#04FEF6]">Intel Mac</span>
             </a>
 
-            <div className="flex items-center gap-2 text-[#676767] cursor-pointer">
+            <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/app-store.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">App Store</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#04FEF6]" />
+              <span className="text-[#676767]">App Store</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#676767]" />
             </div>
           </div>
         </div>
@@ -62,18 +62,18 @@ export default function Installs() {
             <span className="font-medium text-white text-xl">Windows</span>
           </div>
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-[#676767] cursor-pointer">
+            <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">32-bit</span>
+              <span className="text-[#676767]">32-bit</span>
             </div>
-            <div className="flex items-center gap-2 text-[#676767] cursor-pointer">
+            <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">64-bit</span>
+              <span className="text-[#676767]">64-bit</span>
             </div>
-            <div className="flex items-center gap-2 text-[#676767] cursor-pointer">
+            <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/m_store.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Microsoft Store</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#04FEF6]" />
+              <span className="text-[#676767]">Microsoft Store</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#676767]" />
             </div>
           </div>
         </div>
@@ -84,13 +84,13 @@ export default function Installs() {
             <span className="font-medium text-white text-xl">Linux</span>
           </div>
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-[#676767] cursor-pointer">
+            <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Amd64</span>
+              <span className="text-[#676767]">Amd64</span>
             </div>
-            <div className="flex items-center gap-2 text-[#676767] cursor-pointer">
+            <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">arm64</span>
+              <span className="text-[#676767]">arm64</span>
             </div>
           </div>
         </div>
