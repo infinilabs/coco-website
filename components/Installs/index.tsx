@@ -26,7 +26,7 @@ Cross-Platform App with Self-Hosted Servers
           </div>
           <div className="space-y-4">
  <a
-              href="https://release.infinilabs.com/coco/app/stable/Coco%20AI_0.1.0_universal.dmg.zip"
+              href="https://release.infinilabs.com/coco/app/stable/Coco_AI-0.1.1-002-mac-universal.dmg.zip"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -35,7 +35,7 @@ Cross-Platform App with Self-Hosted Servers
               <span className="text-[#04FEF6]">Apple Universal</span>
             </a>
             <a
-              href="https://release.infinilabs.com/coco/app/stable/Coco%20AI_0.1.0_aarch64.dmg.zip"
+              href="https://release.infinilabs.com/coco/app/stable/Coco_AI-0.1.1-002-mac-aarch64.dmg.zip"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -44,7 +44,7 @@ Cross-Platform App with Self-Hosted Servers
               <span className="text-[#04FEF6]">Apple Silicon</span>
             </a>
             <a
-              href="https://release.infinilabs.com/coco/app/stable/Coco%20AI_0.1.0_x64.dmg.zip"
+              href="https://release.infinilabs.com/coco/app/stable/Coco_AI-0.1.1-002-mac-x64.dmg.zip"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
