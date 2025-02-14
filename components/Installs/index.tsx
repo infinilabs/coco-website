@@ -128,7 +128,7 @@ Cross-Platform App with Self-Hosted Servers
           </div>
           <div className="space-y-4">
             <a
-              href="https://release.infinilabs.com/coco/server/snapshot/mac-arm64.zip"
+              href="https://release.infinilabs.com/coco/server/stable/coco-server-0.1.1-mac-arm64.zip"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -137,7 +137,7 @@ Cross-Platform App with Self-Hosted Servers
               <span className="text-[#04FEF6]">Apple Silicon</span>
             </a>
             <a
-              href="https://release.infinilabs.com/coco/server/snapshot/mac-amd64.zip"
+              href="https://release.infinilabs.com/coco/server/stable/coco-server-0.1.1-mac-amd64.zip"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -157,7 +157,7 @@ Cross-Platform App with Self-Hosted Servers
             <div className="flex items-center gap-2 text-[#676767]">
               <a   target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity" href="https://release.infinilabs.com/coco/server/snapshot/linux-amd64.tar.gz">
+              className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity" href="https://release.infinilabs.com/coco/server/stable/coco-server-0.1.1-linux-amd64.tar.gz">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
               <span className="text-[#04FEF6]">Amd64</span>
               </a>
@@ -165,7 +165,7 @@ Cross-Platform App with Self-Hosted Servers
             <div className="flex items-center gap-2 text-[#676767]">
             <a   target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity" href="https://release.infinilabs.com/coco/server/snapshot/linux-arm64.tar.gz">
+              className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity" href="https://release.infinilabs.com/coco/server/stable/coco-server-0.1.1-linux-arm64.tar.gz">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
               <span className="text-[#04FEF6]">Arm64</span>
               </a>
