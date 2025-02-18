@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Download } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,11 +17,10 @@ export default function Header() {
 
         <div className="hidden md:flex items-center gap-10">
           <a
-            href="https://docs.infinilabs.com/coco-server/main/"
+            href="#install"
             className="text-white hover:text-gray-300 transition-colors"
-            target="_blank"
           >
-            Documentation
+             <Download />
           </a>
           <a
             href="https://github.com/infinilabs/coco-app"

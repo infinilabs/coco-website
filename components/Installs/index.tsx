@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import { SunMoon } from 'lucide-react';
+import { Server } from 'lucide-react';
 
 export default function Installs() {
   return (
@@ -9,14 +11,18 @@ Cross-Platform App with Self-Hosted Servers
       </div>
 
       <div className="flex justify-center gap-4 mt-8">
-        <button className="px-6 py-2 bg-[#04FEF6] text-[#333] rounded-full">
-          Coco AI App
-        </button>
-        {/* <button className="px-6 py-2 bg-transparent text-white rounded-full">
-            Quick start
-          </button> */}
-      </div>
+  <button className="px-6 py-2 bg-[#04FEF6] text-[#333] rounded-full flex items-center">
+    <SunMoon className="mr-2" /> Coco AI App
+  </button>
+</div>
 
+      <div className="text-center gap-4 md:gap-4 mt-4 md:mt-4">
+  <a target="_blank" href="https://docs.infinilabs.com/coco-app/main/" 
+     className="text-teal-400 font-semibold text-lg hover:text-teal-500 transition-colors">
+    Coco AI App Documentation
+  </a>
+</div>
+     
       <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mt-8 md:mt-8">
 
         <div className="bg-[#0C1015] rounded-2xl p-6 w-full md:w-[31%]">
@@ -108,15 +114,15 @@ Cross-Platform App with Self-Hosted Servers
       </div>
 
       <div className="flex justify-center gap-4 mt-8">
-        <button className="px-6 py-2 bg-[#04FEF6] text-[#333] rounded-full">
-          Coco AI Server
-        </button>
-        
-      </div>
+  <button className="px-6 py-2 bg-[#04FEF6] text-[#333] rounded-full flex items-center">
+    <Server className="mr-2" /> Coco AI Server
+  </button>
+</div>
+
       <div className="text-center gap-4 md:gap-4 mt-4 md:mt-4">
-  <a href="https://docs.infinilabs.com/coco-server/main/" 
+  <a target="_blank" href="https://docs.infinilabs.com/coco-server/main/" 
      className="text-teal-400 font-semibold text-lg hover:text-teal-500 transition-colors">
-    Documentation
+    Coco AI Server Documentation
   </a>
 </div>
       <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mt-8 md:mt-8">
