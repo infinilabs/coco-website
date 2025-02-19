@@ -14,13 +14,13 @@ const FeaturesData = [
     title: "Unified Search, Data Connected",
     description:
       "Instantly find files, messages, and data across all your apps—Google Drive, Notion, GitHub, and more. With the increasing local or cloud connectors.",
-    image: "/svg/search.svg",
+    image: "/images/ai-search.gif",
   },
   {
     title: "Your Personal AI Assistant",
     description:
       "Interact with your team’s knowledge base through AI-powered chat, driving faster insights and decisions.",
-    image: "/svg/chat.svg",
+    image: "/images/ai-chat.gif",
   },
   {
     title: "Privacy First, Secure In Mind",
