@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { SunMoon } from "lucide-react";
 import { Server } from "lucide-react";
 
-const InstallApi = "https://release.infinilabs.com/coco/app/stable/"
+const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
 
 export default function Installs() {
   return (
@@ -34,6 +34,7 @@ export default function Installs() {
             <Image src="/svg/macos.svg" alt="macOS" width={24} height={24} />
             <span className="font-medium text-white text-xl">macOS</span>
           </div>
+          
           <div className="space-y-4">
             <a
               href={InstallApi + "Coco-AI-0.2.0-1992-mac-arm64.zip"}
