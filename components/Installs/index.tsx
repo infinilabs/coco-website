@@ -52,7 +52,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Intel Based</span>
+              <span className="text-[#04FEF6]">Intel</span>
             </a>
 
             <div className="flex items-center gap-2 text-[#676767]">
@@ -81,7 +81,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">X86</span>
+              <span className="text-[#04FEF6]">x86</span>
             </a>
             <a
               href={InstallApi + "Coco-AI-0.2.0-1992-windows-amd64.zip"}
@@ -90,7 +90,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">X64</span>
+              <span className="text-[#04FEF6]">amd64</span>
             </a>
             <a
               href={InstallApi + "Coco-AI-0.2.0-1992-windows-arm64.zip"}
@@ -99,7 +99,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Arm64</span>
+              <span className="text-[#04FEF6]">arm64</span>
             </a>
             <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/m_store.svg" alt="" width={16} height={16} />
@@ -119,7 +119,7 @@ export default function Installs() {
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#676767]">Amd64 (Coming soon)</span>
+              <span className="text-[#676767]">amd64 (Coming soon)</span>
             </div>
             <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
