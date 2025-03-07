@@ -7,7 +7,8 @@ import { ExternalLink, SunMoon, Server } from "lucide-react";
 const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
 const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
 const DockerCommand =
-  "docker run -p 9000:9000 -p 2900:2900 infinilabs/coco:0.2.0-1992";
+  "docker run -d --name cocoserver -p 9000:9000 infinilabs/coco:0.2.0-1992";
+const ServerHref = "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
 
 export default function Installs() {
   const copyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -182,6 +183,14 @@ export default function Installs() {
           >
             Copy
           </button>
+          <a
+            href={ServerHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4 text-teal-400 hover:text-teal-500 transition-colors"
+          >
+            View Details
+          </a>
         </div>
       </div>
 
