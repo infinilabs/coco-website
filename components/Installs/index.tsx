@@ -1,12 +1,37 @@
+"use client";
+
+import { useRef, useEffect } from "react";
 import Image from "next/image";
-import { ExternalLink } from "lucide-react";
-import { SunMoon } from "lucide-react";
-import { Server } from "lucide-react";
+import { ExternalLink, SunMoon, Server } from "lucide-react";
 
 const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
 const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
+const DockerCommand =
+  "docker run -p 9000:9000 -p 2900:2900 infinilabs/coco:0.2.0-1992";
 
 export default function Installs() {
+  const copyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleCopy = (button: HTMLButtonElement) => {
+    navigator.clipboard.writeText(DockerCommand);
+    const originalText = button.innerText;
+    button.innerText = "Copied!";
+    if (copyTimeoutRef.current) {
+      clearTimeout(copyTimeoutRef.current);
+    }
+    copyTimeoutRef.current = setTimeout(() => {
+      button.innerText = originalText;
+    }, 2000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (copyTimeoutRef.current) {
+        clearTimeout(copyTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div id="install" className="container mx-auto px-4">
       <div className="mt-[130px] font-medium text-[32px] md:text-[40px] text-white leading-[48px] md:leading-[64px] text-center">
@@ -145,6 +170,21 @@ export default function Installs() {
           Coco AI Server Documentation
         </a>
       </div>
+
+      <div className="flex justify-center mt-4">
+        <div className="bg-[#0C1015] text-white p-4 rounded-lg text-center inline-block">
+          <code className="bg-[#1A1A1A] text-[#04FEF6] p-1 rounded-md">
+            {DockerCommand}
+          </code>
+          <button
+            onClick={(e) => handleCopy(e.currentTarget)}
+            className="ml-2 bg-[#04FEF6] text-[#333] px-2 py-1 rounded-md hover:bg-[#03e5e0] transition-colors"
+          >
+            Copy
+          </button>
+        </div>
+      </div>
+
       <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 mt-8 md:mt-8">
         <div className="bg-[#0C1015] rounded-2xl p-6 w-full md:w-[31%]">
           <div className="flex items-center gap-2 mb-6">
