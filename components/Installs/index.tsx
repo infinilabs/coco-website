@@ -4,6 +4,7 @@ import { SunMoon } from "lucide-react";
 import { Server } from "lucide-react";
 
 const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
+const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
 
 export default function Installs() {
   return (
@@ -34,7 +35,7 @@ export default function Installs() {
             <Image src="/svg/macos.svg" alt="macOS" width={24} height={24} />
             <span className="font-medium text-white text-xl">macOS</span>
           </div>
-          
+
           <div className="space-y-4">
             <a
               href={InstallApi + "Coco-AI-0.2.0-1992-mac-arm64.zip"}
@@ -52,7 +53,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Intel Based</span>
+              <span className="text-[#04FEF6]">Intel</span>
             </a>
 
             <div className="flex items-center gap-2 text-[#676767]">
@@ -81,7 +82,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">X86</span>
+              <span className="text-[#04FEF6]">x86</span>
             </a>
             <a
               href={InstallApi + "Coco-AI-0.2.0-1992-windows-amd64.zip"}
@@ -90,7 +91,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">X64</span>
+              <span className="text-[#04FEF6]">amd64</span>
             </a>
             <a
               href={InstallApi + "Coco-AI-0.2.0-1992-windows-arm64.zip"}
@@ -99,7 +100,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Arm64</span>
+              <span className="text-[#04FEF6]">arm64</span>
             </a>
             <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/m_store.svg" alt="" width={16} height={16} />
@@ -119,7 +120,7 @@ export default function Installs() {
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#676767]">Amd64 (Coming soon)</span>
+              <span className="text-[#676767]">amd64 (Coming soon)</span>
             </div>
             <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
@@ -152,7 +153,7 @@ export default function Installs() {
           </div>
           <div className="space-y-4">
             <a
-              href="https://release.infinilabs.com/coco/server/stable/coco-server-0.1.1-mac-arm64.zip"
+              href={ServerApi + "coco-0.2.0-1992-mac-arm64.zip"}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -161,13 +162,36 @@ export default function Installs() {
               <span className="text-[#04FEF6]">Apple Silicon</span>
             </a>
             <a
-              href="https://release.infinilabs.com/coco/server/stable/coco-server-0.1.1-mac-amd64.zip"
+              href={ServerApi + "coco-0.2.0-1992-mac-amd64.zip"}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Intel Based</span>
+              <span className="text-[#04FEF6]">Intel</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="bg-[#0C1015] rounded-2xl p-6 w-full md:w-[31%]">
+          <div className="flex items-center gap-2 mb-6">
+            <Image
+              src="/svg/windows11.svg"
+              alt="Windows"
+              width={24}
+              height={24}
+            />
+            <span className="font-medium text-white text-xl">Windows</span>
+          </div>
+          <div className="space-y-4">
+            <a
+              href={ServerApi + "coco-0.2.0-1992-windows-amd64.zip"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
+            >
+              <Image src="/svg/down.svg" alt="" width={16} height={16} />
+              <span className="text-[#04FEF6]">amd64</span>
             </a>
           </div>
         </div>
@@ -183,10 +207,10 @@ export default function Installs() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
-                href="https://release.infinilabs.com/coco/server/stable/coco-server-0.1.1-linux-amd64.tar.gz"
+                href={ServerApi + "coco-0.2.0-1992-linux-amd64.tar.gz"}
               >
                 <Image src="/svg/down.svg" alt="" width={16} height={16} />
-                <span className="text-[#04FEF6]">Amd64</span>
+                <span className="text-[#04FEF6]">amd64</span>
               </a>
             </div>
             <div className="flex items-center gap-2 text-[#676767]">
@@ -194,10 +218,10 @@ export default function Installs() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
-                href="https://release.infinilabs.com/coco/server/stable/coco-server-0.1.1-linux-arm64.tar.gz"
+                href={ServerApi + "coco-0.2.0-1992-linux-arm64.tar.gz"}
               >
                 <Image src="/svg/down.svg" alt="" width={16} height={16} />
-                <span className="text-[#04FEF6]">Arm64</span>
+                <span className="text-[#04FEF6]">arm64</span>
               </a>
             </div>
           </div>
