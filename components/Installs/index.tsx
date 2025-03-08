@@ -1,13 +1,15 @@
 "use client";
 
-import data from '/data.json';
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ExternalLink, SunMoon, Server, Clipboard } from "lucide-react";
 
+import data from "@/public/data.json";
+
 const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
 const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
-const ServerHref = "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
+const ServerHref =
+  "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
 
 export default function Installs() {
   const copyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
