@@ -28,6 +28,8 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: production
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -74,7 +76,10 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Web
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        run: |
+          echo "NODE_ENV is: $NODE_ENV"
+          ${{ steps.detect-package-manager.outputs.runner }} next build
+          ls -lrt .
       - name: Add CNAME file
         run: echo "coco.rs" > docs/CNAME
       - name: Upload artifact
