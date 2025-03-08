@@ -75,12 +75,14 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Web
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          NODE_ENV: production
       - name: Add CNAME file
-        run: echo "coco.rs" > ./out/CNAME
+        run: echo "coco.rs" > ./docs/CNAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./docs
 
   # Deployment job
   deploy:
