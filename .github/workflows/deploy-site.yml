@@ -53,6 +53,20 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+
+      - name: Update data.json with latest version
+        run: |
+          set -euo pipefail
+
+          VERSION_INFO=$(curl -s --fail --max-time 10 https://release.infinilabs.com/.latest)
+          APP_VERSION=$(echo "$VERSION_INFO" | jq -r '.["coco-app"]')
+          SERVER_VERSION=$(echo "$VERSION_INFO" | jq -r '.["coco-server"]')
+          if ! [[ "$APP_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-[0-9]+$ ]] || ! [[ "$SERVER_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-[0-9]+$ ]]; then
+            echo "Error: Invalid version format." >&2  # 输出到 stderr
+            exit 1
+          fi
+          jq --arg app "$APP_VERSION" --arg server "$SERVER_VERSION" '.app = $app | .server = $server' public/data.json > temp.json && mv temp.json public/data.json
+          
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
