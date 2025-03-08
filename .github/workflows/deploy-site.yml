@@ -62,7 +62,7 @@ jobs:
           APP_VERSION=$(echo "$VERSION_INFO" | jq -r '.["coco-app"]')
           SERVER_VERSION=$(echo "$VERSION_INFO" | jq -r '.["coco-server"]')
           if ! [[ "$APP_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-[0-9]+$ ]] || ! [[ "$SERVER_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-[0-9]+$ ]]; then
-            echo "Error: Invalid version format." >&2  # 输出到 stderr
+            echo "Error: Invalid version format." >&2
             exit 1
           fi
           jq --arg app "$APP_VERSION" --arg server "$SERVER_VERSION" '.app = $app | .server = $server' public/data.json > temp.json && mv temp.json public/data.json
