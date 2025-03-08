@@ -1,19 +1,22 @@
 "use client";
 
+import data from '/data.json';
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ExternalLink, SunMoon, Server, Clipboard } from "lucide-react";
 
 const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
 const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
-const DockerCommand =
-  "docker run -d --name cocoserver -p 9000:9000 infinilabs/coco:0.2.0-1992";
-const ServerHref =
-  "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
+const ServerHref = "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
 
 export default function Installs() {
   const copyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [copyStatus, setCopyStatus] = useState<string>("");
+
+  const appVersion = data.app;
+  const serverVersion = data.server;
+
+  const DockerCommand = `docker run -d --name cocoserver -p 9000:9000 infinilabs/coco:${serverVersion}`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(DockerCommand);
@@ -65,7 +68,7 @@ export default function Installs() {
 
           <div className="space-y-4">
             <a
-              href={InstallApi + "Coco-AI-0.2.0-1992-mac-arm64.zip"}
+              href={`${InstallApi}Coco-AI-${appVersion}-mac-arm64.zip`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -74,7 +77,7 @@ export default function Installs() {
               <span className="text-[#04FEF6]">Apple Silicon</span>
             </a>
             <a
-              href={InstallApi + "Coco-AI-0.2.0-1992-mac-amd64.zip"}
+              href={`${InstallApi}Coco-AI-${appVersion}-mac-amd64.zip`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -103,7 +106,7 @@ export default function Installs() {
           </div>
           <div className="space-y-4">
             <a
-              href={InstallApi + "Coco-AI-0.2.0-1992-windows-386.zip"}
+              href={`${InstallApi}Coco-AI-${appVersion}-windows-386.zip`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -112,7 +115,7 @@ export default function Installs() {
               <span className="text-[#04FEF6]">x86</span>
             </a>
             <a
-              href={InstallApi + "Coco-AI-0.2.0-1992-windows-amd64.zip"}
+              href={`${InstallApi}Coco-AI-${appVersion}-windows-amd64.zip`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -121,7 +124,7 @@ export default function Installs() {
               <span className="text-[#04FEF6]">amd64</span>
             </a>
             <a
-              href={InstallApi + "Coco-AI-0.2.0-1992-windows-arm64.zip"}
+              href={`${InstallApi}Coco-AI-${appVersion}-windows-arm64.zip`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -210,7 +213,7 @@ export default function Installs() {
           </div>
           <div className="space-y-4">
             <a
-              href={ServerApi + "coco-0.2.0-1992-mac-arm64.zip"}
+              href={`${ServerApi}coco-${serverVersion}-mac-arm64.zip`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -219,7 +222,7 @@ export default function Installs() {
               <span className="text-[#04FEF6]">Apple Silicon</span>
             </a>
             <a
-              href={ServerApi + "coco-0.2.0-1992-mac-amd64.zip"}
+              href={`${ServerApi}coco-${serverVersion}-mac-amd64.zip`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -242,7 +245,7 @@ export default function Installs() {
           </div>
           <div className="space-y-4">
             <a
-              href={ServerApi + "coco-0.2.0-1992-windows-amd64.zip"}
+              href={`${ServerApi}coco-${serverVersion}-windows-amd64.zip`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
@@ -264,7 +267,7 @@ export default function Installs() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
-                href={ServerApi + "coco-0.2.0-1992-linux-amd64.tar.gz"}
+                href={`${ServerApi}coco-${serverVersion}-linux-amd64.tar.gz`}
               >
                 <Image src="/svg/down.svg" alt="" width={16} height={16} />
                 <span className="text-[#04FEF6]">amd64</span>
@@ -275,7 +278,7 @@ export default function Installs() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
-                href={ServerApi + "coco-0.2.0-1992-linux-arm64.tar.gz"}
+                href={`${ServerApi}coco-${serverVersion}-linux-arm64.tar.gz`}
               >
                 <Image src="/svg/down.svg" alt="" width={16} height={16} />
                 <span className="text-[#04FEF6]">arm64</span>
