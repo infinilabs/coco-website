@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-const isDev = process.env.NODE_ENV === "development";
-
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
@@ -10,7 +8,7 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     unoptimized: true,
   },
-  distDir: isDev ? "out" : "docs",
+  distDir: "docs",
 };
 
 export default nextConfig;
