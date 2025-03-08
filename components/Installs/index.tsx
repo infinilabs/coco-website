@@ -1,27 +1,28 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { ExternalLink, SunMoon, Server } from "lucide-react";
+import { ExternalLink, SunMoon, Server, Clipboard } from "lucide-react";
 
 const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
 const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
 const DockerCommand =
   "docker run -d --name cocoserver -p 9000:9000 infinilabs/coco:0.2.0-1992";
-const ServerHref = "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
+const ServerHref =
+  "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
 
 export default function Installs() {
   const copyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [copyStatus, setCopyStatus] = useState<string>("");
 
-  const handleCopy = (button: HTMLButtonElement) => {
+  const handleCopy = () => {
     navigator.clipboard.writeText(DockerCommand);
-    const originalText = button.innerText;
-    button.innerText = "Copied!";
+    setCopyStatus("Copied!");
     if (copyTimeoutRef.current) {
       clearTimeout(copyTimeoutRef.current);
     }
     copyTimeoutRef.current = setTimeout(() => {
-      button.innerText = originalText;
+      setCopyStatus("");
     }, 2000);
   };
 
@@ -172,24 +173,31 @@ export default function Installs() {
         </a>
       </div>
 
-      <div className="flex justify-center mt-4">
-        <div className="bg-[#0C1015] text-white p-4 rounded-lg text-center inline-block">
+      <div className="mt-4 text-center">
+        <div className="flex justify-center w-fit m-auto bg-[#0C1015] text-white p-4 rounded-lg text-center">
           <code className="bg-[#1A1A1A] text-[#04FEF6] p-1 rounded-md">
             {DockerCommand}
           </code>
-          <button
-            onClick={(e) => handleCopy(e.currentTarget)}
-            className="ml-2 bg-[#04FEF6] text-[#333] px-2 py-1 rounded-md hover:bg-[#03e5e0] transition-colors"
-          >
-            Copy
-          </button>
+          <div className="flex items-center">
+            <Clipboard
+              onClick={handleCopy}
+              className="ml-2 text-[#04FEF6] cursor-pointer hover:text-[#03e5e0] transition-colors"
+              size={24}
+            />
+            {copyStatus && (
+              <span className="ml-2 text-sm text-green-400">{copyStatus}</span>
+            )}
+          </div>
+        </div>
+        <div className="mt-2 text-sm text-gray-400">
+          * For other installation environments, please choose{" "}
           <a
             href={ServerHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-4 text-teal-400 hover:text-teal-500 transition-colors"
+            className="text-teal-400 hover:text-teal-500 transition-colors"
           >
-            View Details
+            Manual Installation
           </a>
         </div>
       </div>
