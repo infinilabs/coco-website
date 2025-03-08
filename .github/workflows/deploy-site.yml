@@ -53,14 +53,6 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Automatically inject basePath in your Web configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -76,13 +68,13 @@ jobs:
       - name: Build with Web
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Add CNAME file
-        run: echo "coco.rs" > ./out/CNAME
+        run: echo "coco.rs" > ./docs/CNAME
       - name: Disable Jekyll
-        run: touch out/.nojekyll
+        run: touch docs/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./docs
 
   # Deployment job
   deploy:
