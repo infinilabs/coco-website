@@ -76,13 +76,13 @@ jobs:
       - name: Build with Web
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Add CNAME file
-        run: echo "coco.rs" > ./docs/CNAME
+        run: echo "coco.rs" > ./out/CNAME
       - name: Disable Jekyll
-        run: touch docs/.nojekyll
+        run: touch out/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs
+          path: ./out
 
   # Deployment job
   deploy:
