@@ -79,6 +79,8 @@ jobs:
           NODE_ENV: production
       - name: Add CNAME file
         run: echo "coco.rs" > ./docs/CNAME
+      - name: Disable Jekyll
+        run: touch docs/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
