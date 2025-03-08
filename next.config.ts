@@ -10,7 +10,6 @@ const nextConfig: NextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     unoptimized: true,
   },
-  output: "export",
   distDir: isDev ? "out" : "docs",
 };
 
