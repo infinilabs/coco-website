@@ -85,7 +85,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Intel</span>
+              <span className="text-[#04FEF6]">Intel Based</span>
             </a>
 
             <div className="flex items-center gap-2 text-[#676767]">
@@ -230,7 +230,7 @@ export default function Installs() {
               className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
             >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#04FEF6]">Intel</span>
+              <span className="text-[#04FEF6]">Intel Based</span>
             </a>
           </div>
         </div>
