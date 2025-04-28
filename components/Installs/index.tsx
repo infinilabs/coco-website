@@ -150,10 +150,15 @@ export default function Installs() {
             <span className="font-medium text-white text-xl">Linux</span>
           </div>
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-[#676767]">
+            <a
+              href={`${InstallApi}Coco-AI-${appVersion}-deb-linux-amd64.zip`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-[#676767] cursor-pointer hover:opacity-80 transition-opacity"
+            >
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
-              <span className="text-[#676767]">amd64 (Coming soon)</span>
-            </div>
+              <span className="text-[#04FEF6]">amd64</span>
+            </a>
             <div className="flex items-center gap-2 text-[#676767]">
               <Image src="/svg/down.svg" alt="" width={16} height={16} />
               <span className="text-[#676767]">arm64 (Coming soon)</span>
