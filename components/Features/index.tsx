@@ -20,7 +20,7 @@ const FeaturesData = [
     title: "Your Personal AI Assistant",
     description:
       "Interact with your team’s knowledge base through AI-powered chat, driving faster insights and decisions.",
-    image: "/images/chat-20250428.gif",
+    image: "/images/ai-0429.gif",
   },
   {
     title: "Privacy First, Secure In Mind",
