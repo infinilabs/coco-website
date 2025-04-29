@@ -99,7 +99,7 @@ export default function Installs() {
         <div className="bg-[#0C1015] rounded-2xl p-6 w-full md:w-[31%]">
           <div className="flex items-center gap-2 mb-6">
             <Image
-              src="/svg/windows11.svg"
+              src="/svg/windows11-logo.svg"
               alt="Windows"
               width={24}
               height={24}
@@ -146,8 +146,8 @@ export default function Installs() {
 
         <div className="bg-[#0C1015] rounded-2xl p-6 w-full md:w-[31%]">
           <div className="flex items-center gap-2 mb-6">
-            <Image src="/svg/linux.svg" alt="Linux" width={24} height={24} />
-            <span className="font-medium text-white text-xl">Linux</span>
+            <Image src="/svg/ubuntu.svg" alt="Linux" width={24} height={24} />
+            <span className="font-medium text-white text-xl">Ubuntu (X11 only)</span>
           </div>
           <div className="space-y-4">
             <a
@@ -243,7 +243,7 @@ export default function Installs() {
         <div className="bg-[#0C1015] rounded-2xl p-6 w-full md:w-[31%]">
           <div className="flex items-center gap-2 mb-6">
             <Image
-              src="/svg/windows11.svg"
+              src="/svg/windows11-logo.svg"
               alt="Windows"
               width={24}
               height={24}
