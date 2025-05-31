@@ -35,7 +35,7 @@ const FeaturesData = [
 export default function Features() {
   return (
     <div className="container mx-auto px-4">
-      <div className="mt-[140px] md:mt-[240px] font-medium text-[32px] md:text-[40px] text-white leading-[48px] md:leading-[64px] text-center">
+      <div className="mt-[400px] md:mt-[600px] font-medium text-[32px] md:text-[40px] text-white leading-[48px] md:leading-[64px] text-center">
         Everything You Need, All in One Platform
       </div>
       <div className="max-w-[720px] m-auto mt-4 md:mt-6 font-normal text-sm text-[#676767] leading-[21px] text-center">
