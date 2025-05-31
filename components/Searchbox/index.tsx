@@ -110,28 +110,28 @@ export default () => {
         const cursor = svg.getElementById('cursor');
 
         const texts = [
-            "Find that 2022 client proposal",
-            "What's our Kubernetes upgrade policy?",
-            "Embed knowledge search into our support portal",
-            "Summarize last quarter's sales performance",
-            "Launch my development environment",
-            "Where can I find our remote work policy?",
+            "Find that 2025 client proposal",
+            "Search My Team's Knowledgebase",
             "Search Local Files",
+            "What's our Kubernetes upgrade policy?",
             "Search Local Applications",
-            "Search Local Images",
-            "Search Local Videos",
-            "Search Company Shared Documents",
             "Search My Family Photos",
+            "Embed knowledge search into our support portal",
+            "Search Local Images",
+            "Summarize last quarter's sales performance",
+            "Search Local Videos",
+            "Launch my development environment",
+            "Search Company Shared Documents",
+            "Where can I find our remote work policy?",
             "Search AI Commands",
             "Search AI Assistants",
             "Search My Company's News",
-            "Search My Team's Knowledgebase",
             "Search My Team's Blogs",
             "Search some issue no matter where are they",
         ];
 
         let textIndex = 0, charIndex = 0;
-        const typingSpeed = 150;
+        const typingSpeed = 80;
 
         function type() {
             if (charIndex < texts[textIndex].length) {
