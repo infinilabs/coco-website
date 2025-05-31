@@ -112,14 +112,14 @@ export default function Searchbox() {
         const texts = [
             "Find that 2025 client proposal",
             "Search My Team's Knowledgebase",
-            "Search Local Files",
+            "Search My Local Files",
             "What's our Kubernetes upgrade policy?",
             "Search Local Applications",
             "Search My Family Photos",
             "Embed knowledge search into our support portal",
-            "Search Local Images",
+            "Search My Local Images",
             "Summarize last quarter's sales performance",
-            "Search Local Videos",
+            "Search My Local Videos",
             "Launch my development environment",
             "Search Company Shared Documents",
             "Where can I find our remote work policy?",
@@ -127,7 +127,7 @@ export default function Searchbox() {
             "Search AI Assistants",
             "Search My Company's News",
             "Search My Team's Blogs",
-            "Search some issue no matter where are they",
+            "Search for issues no matter where they are",
         ];
 
         let textIndex = 0, charIndex = 0;
