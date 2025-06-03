@@ -3,7 +3,7 @@
 import Script from "next/script"
 
 export default function Searchbox() {
-  const svgContent = `<svg width="100%" height="200px" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  const svgContent = `<svg width="800px" height="200px" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g transform="translate(30, 20)">
         <title>编组 5</title>
         <defs>
