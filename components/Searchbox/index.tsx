@@ -3,9 +3,9 @@
 import Script from "next/script"
 
 export default function Searchbox() {
-  const svgContent = `<svg width="800px" height="200px" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  const svgContent = `<svg width="100%" height="200px" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g transform="translate(30, 20)">
-        <title>编组 5</title>
+        <title>Coco AI</title>
         <defs>
             <linearGradient x1="11.317145%" y1="49.5605469%" x2="97.1736012%" y2="50.3073602%" id="linearGradient-1">
                 <stop stop-color="#5E85FF" offset="0%"></stop>
