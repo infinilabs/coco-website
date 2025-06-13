@@ -167,7 +167,7 @@ export default function Searchbox() {
   return (
         <>
             <div id="searchbox-container"></div>
-            <div id="searchbox-trigger" className="cursor-pointer" dangerouslySetInnerHTML={{ __html: svgContent }}></div>
+            <div id="searchbox-trigger" className="cursor-pointer w-full" dangerouslySetInnerHTML={{ __html: svgContent }}></div>
             <Script
                 id="searchbox-module"
                 type="module"
