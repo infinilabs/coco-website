@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Script from 'next/script';
 
 import Header from "@/components/Header";
 import Community from "@/components/Community";
@@ -60,6 +61,8 @@ export default function Home() {
       <Community />
 
       <Footer />
+
+      <Script src="/js/reading-glass.js" strategy="afterInteractive" />
     </main>
   );
 }

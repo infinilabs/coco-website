@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <div className="relative">
       <div className="flex justify-between items-center py-4 px-4 md:px-40">
-        <div className="flex items-center">
+        <div className="flex items-center" id="logo-img">
           <Image src="/svg/Coco_logo.svg" alt="Coco" width={127} height={40} />
         </div>
 
