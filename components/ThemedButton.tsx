@@ -2,9 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-
-import PhMoonFill from "@/components/icons/moon";
-import PhSunBold from "@/components/icons/sun";
+import { Sun, SunMoon } from "lucide-react";
 
 export function ThemedButton() {
   const [mounted, setMounted] = useState(false);
@@ -16,7 +14,7 @@ export function ThemedButton() {
   }, []);
 
   if (!mounted) {
-    return <PhSunBold />;
+    return <Sun />;
   }
 
   return (
@@ -24,7 +22,7 @@ export function ThemedButton() {
       className="cursor-pointer"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      {theme === "light" ? <PhMoonFill /> : <PhSunBold />}
+      {theme === "light" ? <SunMoon /> : <Sun />}
     </div>
   );
 }
