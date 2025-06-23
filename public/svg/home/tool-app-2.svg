@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 14</title>
+    <g id="官网3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="coco-AI-zh" transform="translate(-352, -7680)" stroke="#4AF4F9">
+            <g id="编组-14" transform="translate(352, 7680)">
+                <circle id="椭圆形" cx="12" cy="12" r="11.5"></circle>
+                <g id="编组" transform="translate(12.7309, 11.9905) rotate(-45) translate(-12.7309, -11.9905)translate(7.4237, 9.3369)" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6.89936441,-8.52651283e-13 L7.96080508,-8.52651283e-13 C9.42634883,-8.52651283e-13 10.6144068,1.18805795 10.6144068,2.65360169 C10.6144068,4.11914544 9.42634883,5.30720339 7.96080508,5.30720339 L6.89936441,5.30720339 M3.71504237,5.30720339 L2.65360169,5.30720339 C1.18805795,5.30720339 -9.527934e-13,4.11914544 -9.527934e-13,2.65360169 C-9.527934e-13,1.18805795 1.18805795,-8.95727936e-13 2.65360169,-8.95727936e-13 L3.71504237,-8.95727936e-13" id="形状"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
