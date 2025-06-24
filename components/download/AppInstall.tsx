@@ -72,11 +72,11 @@ export default function AppInstall() {
   return (
     <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 pt-14 mx-auto">
       {/* macOS */}
-      <div className="bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-8 flex flex-col shadow-lg min-h-[200px]">
+      <div className="bg-[#EBF6FF] dark:bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-8 flex flex-col shadow-lg min-h-[200px]">
         <div className="flex items-center gap-3 mb-2">
           <Image src="/svg/macos.svg" alt="macOS" width={24} height={24} />
 
-          <span className="text-white text-xl font-semibold">macOS</span>
+          <span className="text-black dark:text-white text-xl font-semibold">macOS</span>
         </div>
         <div className="flex flex-col gap-3 mt-4">
           {macLinks.map((item) => (
@@ -85,7 +85,7 @@ export default function AppInstall() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between bg-[#151A2A] rounded-lg px-4 py-3 text-white transition hover:bg-[#232A3F]"
+              className="flex items-center justify-between bg-[#EBF6FF] dark:bg-[#0B1020] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
             >
               <div className="flex flex-col">
                 <span className="font-medium">{item.label}</span>
@@ -99,7 +99,7 @@ export default function AppInstall() {
         </div>
       </div>
       {/* Windows */}
-      <div className="bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-8 flex flex-col shadow-lg min-h-[200px]">
+      <div className="bg-[#EBF6FF] dark:bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-8 flex flex-col shadow-lg min-h-[200px]">
         <div className="flex items-center gap-3 mb-2">
           <Image
             src="/svg/windows11-logo.svg"
@@ -107,7 +107,7 @@ export default function AppInstall() {
             width={24}
             height={24}
           />
-          <span className="text-white text-xl font-semibold">Windows</span>
+          <span className="text-black dark:text-white text-xl font-semibold">Windows</span>
         </div>
         <div className="flex flex-col gap-3 mt-4">
           {winLinks.map((item) => (
@@ -116,7 +116,7 @@ export default function AppInstall() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between bg-[#151A2A] rounded-lg px-4 py-3 text-white transition hover:bg-[#232A3F]"
+              className="flex items-center justify-between bg-[#EBF6FF] dark:bg-[#0B1020] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
             >
               <div className="flex flex-col">
                 <span className="font-medium">{item.label}</span>
@@ -130,10 +130,10 @@ export default function AppInstall() {
         </div>
       </div>
       {/* Linux */}
-      <div className="bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-8 flex flex-col shadow-lg min-h-[200px]">
+      <div className="bg-[#EBF6FF] dark:bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-8 flex flex-col shadow-lg min-h-[200px]">
         <div className="flex items-center gap-3 mb-2">
           <Image src="/svg/ubuntu.svg" alt="Linux" width={24} height={24} />
-          <span className="text-white text-xl font-semibold">
+          <span className="text-black dark:text-white text-xl font-semibold">
             Ubuntu (X11 only)
           </span>
         </div>
@@ -144,7 +144,7 @@ export default function AppInstall() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between bg-[#151A2A] rounded-lg px-4 py-3 text-white transition hover:bg-[#232A3F]"
+              className="flex items-center justify-between bg-[#EBF6FF] dark:bg-[#0B1020] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
             >
               <div className="flex flex-col">
                 <span className="font-medium">{item.label}</span>

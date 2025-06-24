@@ -2,10 +2,15 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="container m-auto pt-64 sm:px-6 lg:px-8">
+    <footer className="container m-auto mt-44 pt-20 sm:px-6 lg:px-8 bg-[#EBF6FF] dark:bg-transparent">
       <div className="flex flex-col md:flex-row md:justify-between items-center gap-8 md:gap-0 pb-6 border-b border-b-[#2D2D2D]">
         <div className="flex items-center">
-          <Image src="/svg/Coco_logo.svg" alt="Coco" width={127} height={40} />
+          <Image
+            src="/svg/Coco_logo.svg"
+            alt="Coco"
+            width={127}
+            height={40}
+          />
         </div>
         <div className="flex gap-6">
           <a
@@ -40,6 +45,7 @@ export default function Footer() {
               alt="Discord"
               width={20}
               height={20}
+              className="w-[20px] h-auto"
             />
           </a>
         </div>
@@ -75,3 +81,4 @@ export default function Footer() {
     </footer>
   );
 }
+

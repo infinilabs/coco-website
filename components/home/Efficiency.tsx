@@ -16,7 +16,7 @@ export default function EfficiencyFeatures({
       <div className="mb-4 font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>
-      <div className="mb-14 font-normal text-[16px] leading-[22px] text-white">
+      <div className="mb-14 font-normal text-[16px] leading-[22px] text-black dark:text-white">
         {locale.description}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-7xl px-2">
@@ -25,7 +25,7 @@ export default function EfficiencyFeatures({
             key={f.title + i}
             className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
           >
-            <div className="h-full bg-[#04071B] rounded-[14px] p-8">
+            <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-[14px] p-8">
               <div className="mb-5">
                 <Image
                   src={f.icon}
@@ -35,7 +35,7 @@ export default function EfficiencyFeatures({
                   priority
                 />
               </div>
-              <div className="mb-5 font-medium text-[32px] leading-[45px] text-white">
+              <div className="mb-5 font-medium text-[32px] leading-[45px] text-black dark:text-white">
                 {f.title}
               </div>
               <div className="font-normal text-[16px] leading-[22px] text-[#9696B4]">

@@ -12,6 +12,7 @@ export const defaultLocale = "en";
 // you can use the `getLocale` to get the browser's language.
 export function getLocale(headers: any): string {
   let languages = new Negotiator({ headers }).languages();
+  console.log(111111, languages, new Negotiator({ headers }))
 
   return match(languages, locales, defaultLocale);
 }

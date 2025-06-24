@@ -3,8 +3,8 @@ import { Viewport } from "next";
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 
-import BaiDuAnalytics from "@/app/BaiDuAnalytics";
-import GoogleAnalytics from "@/app/GoogleAnalytics";
+// import BaiDuAnalytics from "@/app/BaiDuAnalytics";
+// import GoogleAnalytics from "@/app/GoogleAnalytics";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Footer from "@/components/footer/Footer";
@@ -79,8 +79,8 @@ export default async function RootLayout({
           <></>
         ) : (
           <>
-            <GoogleAnalytics />
-            <BaiDuAnalytics />
+            {/* <GoogleAnalytics />
+            <BaiDuAnalytics /> */}
           </>
         )}
       </body>

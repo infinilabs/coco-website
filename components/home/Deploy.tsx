@@ -13,17 +13,17 @@ export default function DeployFeature({
 
   return (
     <section className="w-full flex flex-col items-center pt-48 sm:px-6 lg:px-8">
-      <div className="mb-4 font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
+      <div className="mb-4 text-center font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>
-      <div className="mb-14 font-normal text-[16px] leading-[22px] text-white">
+      <div className="mb-14 text-center font-normal text-[16px] leading-[22px] text-black dark:text-white">
         {locale.description}
       </div>
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
         {DEPLOY.map((item, index) => (
           <div
             key={item.title + index}
-            className="bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-10 min-h-[160px] flex flex-col justify-start shadow-lg"
+            className="bg-[#EBF6FF] dark:bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-10 min-h-[160px] flex flex-col justify-start shadow-lg"
           >
             <Image
               src={item.icon}
@@ -33,10 +33,10 @@ export default function DeployFeature({
               priority
               className="mb-3"
             />
-            <div className="mb-5 text-xl font-semibold text-white">
+            <div className="mb-5 text-xl font-semibold text-black dark:text-white">
               {item.title}
             </div>
-            <div className="text-gray-400 text-sm">{item.description}</div>
+            <div className="text-[#9696B4] text-sm">{item.description}</div>
           </div>
         ))}
       </div>

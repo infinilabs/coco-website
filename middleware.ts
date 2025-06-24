@@ -1,6 +1,6 @@
-import { locales } from "./i18n/i18n";
-
 import { NextRequest } from "next/server";
+
+import { locales } from "./i18n/i18n";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -17,6 +17,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|terms|.*\\.(?:txt|xml|ico|png|jpg|jpeg|svg|gif|webp|js|css|woff|woff2|ttf|eot)).*)'
-  ]
+    "/((?!api|_next/static|_next/image|terms|.*\\.(?:txt|xml|ico|png|jpg|jpeg|svg|gif|webp|js|css|woff|woff2|ttf|eot)).*)",
+  ],
 };

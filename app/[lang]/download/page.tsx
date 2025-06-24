@@ -28,7 +28,7 @@ export default function DownloadPage({
   }, []);
 
   return (
-    <section className="w-full flex flex-col items-center justify-center pt-32 sm:px-6 lg:px-8">
+    <section className="w-full flex flex-col items-center justify-center pt-32 px-4 sm:px-6 lg:px-8">
       <div className="mb-4 text-[32px] leading-[45px] font-medium bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale?.title}
       </div>
@@ -44,8 +44,8 @@ export default function DownloadPage({
         />
       </div>
 
-      <div className="text-gray-400 text-sm pt-10">
-        {locale?.time}: 2025-06-13 &nbsp;|&nbsp; {locale?.version}: V 0.5.2
+      <div className="text-black dark:text-white text-sm pt-10">
+        {locale?.time}2025-06-13 &nbsp;|&nbsp; {locale?.version}: V 0.5.2
         &nbsp;
         <a href="#" className="text-cyan-300 hover:underline">
           {locale?.notes}

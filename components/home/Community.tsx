@@ -60,8 +60,8 @@ export default function Community({
       </div>
 
       <div className="mt-14 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-        <div className="rounded-lg bg-gray-900/70 py-10 px-6 flex flex-col justify-around items-start gap-4 sm:px-10">
-          <div className="text-gray-400 font-medium text-base">
+        <div className="rounded-lg bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 flex flex-col justify-around items-start gap-4 sm:px-10">
+          <div className="text-black dark:text-white font-medium text-base">
             {locale.cardName1}
           </div>
           <a href="https://github.com/infinilabs/coco-app" target={"_blank"}>
@@ -78,26 +78,27 @@ export default function Community({
             </LinearGradientBtn>
           </a>
         </div>
-        <div className="rounded-lg bg-gray-900/70 py-10 px-6 flex flex-col justify-around items-start gap-4 sm:px-10">
-          <div className="text-gray-400 font-medium text-base">
+        <div className="rounded-lg bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 flex flex-col justify-around items-start gap-4 sm:px-10">
+          <div className="text-black dark:text-white font-medium text-base">
             {locale.cardName2}
           </div>
           <a href="https://discord.com/invite/4tKTMkkvVX" target={"_blank"}>
             <LinearGradientBtn>
-              <div className="flex justify-start items-center gap-2 px-2 min-w-20">
+              <div className="flex justify-start items-center gap-2 px-2">
                 <Image
                   src="/svg/discord.svg"
                   alt="discord"
                   width={18}
                   height={18}
+                  className="h-auto"
                 />
                 <span className="text-yellow-200 text-sm">Discord</span>
               </div>
             </LinearGradientBtn>
           </a>
         </div>
-        <div className="rounded-lg bg-gray-900/70 py-10 px-6 col-span-2 flex flex-col justify-center items-center gap-4 sm:px-10 sm:items-start">
-          <div className="text-gray-400 font-medium text-base">
+        <div className="rounded-lg bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 col-span-2 flex flex-col justify-center items-center gap-4 sm:px-10 sm:items-start">
+          <div className="text-black dark:text-white font-medium text-base">
             {locale.cardName3}
           </div>
           <SubscriptionInput />

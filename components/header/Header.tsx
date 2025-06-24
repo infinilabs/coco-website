@@ -49,6 +49,7 @@ const Header = () => {
               alt="Coco"
               width={178}
               height={56}
+              priority
               className="hidden md:block"
             />
             <Image

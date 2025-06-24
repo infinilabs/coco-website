@@ -19,10 +19,10 @@ export default function FeatureAbility({ langName }: { langName: string }) {
             <div className="mb-10 font-normal text-[16px] leading-[22px] text-[#4AF4F9]">
               {feature.subtitle}
             </div>
-            <div className="mb-6 font-normal text-[16px] leading-[28px] text-[#C8C8C8]">
+            <div className="mb-6 font-normal text-[16px] leading-[28px] text-[#666] dark:text-[#C8C8C8]">
               {feature.content}
             </div>
-            <div className="font-normal text-[16px] leading-[28px] text-[#C8C8C8]">
+            <div className="font-normal text-[16px] leading-[28px] text-[#666] dark:text-[#C8C8C8]">
               {feature.ability1} <br />
               {feature.ability2} <br />
               {feature.ability3} <br />

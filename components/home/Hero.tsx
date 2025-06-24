@@ -7,10 +7,10 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         lang={langName}
         className="w-full flex flex-col items-center justify-center pt-24 sm:px-6 lg:px-8"
       >
-        <div className="text-center text-white text-base mb-4 font-normal">
+        <div className="text-center text-black dark:text-white text-base mb-4 font-normal">
           {locale.title1}
         </div>
-        <h1 className="text-center font-bold text-3xl md:text-5xl leading-snug text-white mb-12">
+        <h1 className="text-center font-bold text-3xl md:text-5xl leading-snug text-black dark:text-white mb-12">
           {locale.title2}
           <br />
           <span className="inline-block mt-2">{locale.title3}</span>
@@ -23,7 +23,7 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
             height={60}
           />
         </div>
-        <div className="text-center text-gray-300 text-sm max-w-2xl mx-auto mb-12">
+        <div className="text-center text-[#666] dark:text-[#c8c8c8] text-sm max-w-2xl mx-auto mb-12">
           {locale.description}
         </div>
         <a href="https://coco.rs/" className="mb-14">
@@ -42,7 +42,8 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
             autoPlay
             loop
             muted
-            preload="none"
+            preload="metadata"
+            src="/videos/preview.mp4"
           >
             <source src="/videos/preview.mp4" type="video/mp4" />
             Your browser does not support the video tag.

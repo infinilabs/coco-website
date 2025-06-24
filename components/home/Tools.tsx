@@ -16,16 +16,16 @@ export default function ToolsFeature({
       <div className="mb-4 font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>
-      <div className="mb-14 font-normal text-[16px] leading-[22px] text-white">
+      <div className="mb-14 font-normal text-[16px] leading-[22px] text-black dark:text-white">
         {locale.description}
       </div>
       <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
         {TOOLS.map((item, index) => (
           <div
             key={item.title + index}
-            className="bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-10 min-h-[340px] flex flex-col justify-start shadow-lg"
+            className="bg-[#EBF6FF] dark:bg-[#0B1020] border border-[#19F3FF] rounded-2xl p-10 min-h-[340px] flex flex-col justify-start shadow-lg"
           >
-            <div className="text-2xl font-semibold text-white mb-6">
+            <div className="text-2xl font-semibold text-black dark:text-white mb-6">
               {item.title}
             </div>
             <div className="flex flex-col gap-6">
@@ -39,8 +39,10 @@ export default function ToolsFeature({
                     priority
                   />
                   <div>
-                    <div className="font-medium text-white">{tool.name}</div>
-                    <div className="text-gray-400 text-sm">
+                    <div className="font-medium text-black dark:text-white">
+                      {tool.name}
+                    </div>
+                    <div className="text-[#9696B4] text-sm">
                       {tool.description}
                     </div>
                   </div>
