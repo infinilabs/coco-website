@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "docs/types/**/*.ts",
     "out/types/**/*.ts"
-  ],
+, "next.config.mjs"  ],
   "exclude": ["node_modules"]
 }
 

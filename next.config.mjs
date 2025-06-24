@@ -1,10 +1,9 @@
-import type { NextConfig } from "next";
-
+/** @type {import('next').NextConfig} */
 const isDev = process.env.NODE_ENV === "development";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   /* config options here */
-  output: 'export',
+  output: "export",
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
@@ -22,3 +21,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
