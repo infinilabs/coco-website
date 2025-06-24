@@ -8,6 +8,19 @@ import NavTab from "@/components/header/NavTab";
 import AppInstall from "@/components/download/AppInstall";
 import ServerInstall from "@/components/download/ServerInstall";
 import { defaultLocale, getDictionary } from "@/i18n/i18n";
+import data from "@/public/data.json";
+
+const appVersion = data.app;
+const serverVersion = data.server;
+
+const appPublish = data.app_publish;
+const serverPublish = data.server_publish;
+
+const appNotes = "https://github.com/infinilabs/coco-app/releases";
+const serverNotes = "https://github.com/infinilabs/coco-server/releases";
+
+const appDocs = "https://docs.infinilabs.com/coco-app/main/";
+const serverDocs = "https://docs.infinilabs.com/coco-server/main/";
 
 export default function DownloadPage({
   params: { lang },
@@ -28,8 +41,8 @@ export default function DownloadPage({
   }, []);
 
   return (
-    <section className="w-full flex flex-col items-center justify-center pt-32 px-4 sm:px-6 lg:px-8">
-      <div className="mb-4 text-[32px] leading-[45px] font-medium bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
+    <section className="w-full flex flex-col items-center justify-center pt-24 px-4 sm:px-6 lg:px-8">
+      <div className="mb-4 text-[56px] leading-[85px] font-medium bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale?.title}
       </div>
 
@@ -44,20 +57,31 @@ export default function DownloadPage({
         />
       </div>
 
-      <div className="text-black dark:text-white text-sm pt-10">
-        {locale?.time}2025-06-13 &nbsp;|&nbsp; {locale?.version}: V 0.5.2
-        &nbsp;
-        <a href="#" className="text-cyan-300 hover:underline">
+      <div className="text-black dark:text-white text-base pt-10">
+        {locale?.time}
+        {activeTab === "app" ? appPublish : serverPublish}
+        <span className="mx-2">|</span>
+        {locale?.version}
+        {activeTab === "app" ? appVersion : serverVersion}
+        <a
+          href={activeTab === "app" ? appNotes : serverNotes}
+          target="_blank"
+          className="text-[#14C4C9] hover:underline ml-2.5"
+        >
           {locale?.notes}
         </a>
-        &nbsp;|&nbsp;
-        <a href="#" className="text-cyan-300 hover:underline">
+        <span className="mx-2">|</span>
+        <a
+          href={activeTab === "app" ? appDocs : serverDocs}
+          target="_blank"
+          className="text-[#14C4C9] hover:underline"
+        >
           {locale?.docs}
         </a>
       </div>
 
       {activeTab === "app" && <AppInstall />}
-      {activeTab === "server" && <ServerInstall locale={locale}/>}
+      {activeTab === "server" && <ServerInstall locale={locale} />}
     </section>
   );
 }

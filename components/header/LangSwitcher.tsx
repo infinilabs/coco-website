@@ -42,7 +42,7 @@ export const LangSwitcher = () => {
   return (
     <Select value={langName as string} onValueChange={handleSwitchLanguage}>
       <SelectTrigger className="w-fit" aria-label="LangSwitcher">
-        <Globe />
+        <Globe className="text-[#666] dark:text-[#999]"/>
       </SelectTrigger>
 
       <SelectContent>

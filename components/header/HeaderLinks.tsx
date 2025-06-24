@@ -15,10 +15,12 @@ const HeaderLinks = () => {
           href={link.href}
           target="_blank"
           rel="noopener norefferer nofollow"
-          className={` flex max-w-[24px] flex-col items-center justify-center`}
+          className={`flex max-w-[24px] flex-col items-center justify-center`}
         >
           {link.icon &&
-            React.createElement(link.icon, { className: "text-lg" })}
+            React.createElement(link.icon, {
+              className: "text-lg text-[#666] dark:text-[#999]",
+            })}
         </Link>
       ))}
     </div>

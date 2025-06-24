@@ -1,11 +1,10 @@
 "use client";
 
+import { ScrollShadow } from "@nextui-org/react";
+import React from "react";
 import type { ScrollShadowProps } from "@nextui-org/react";
 
 import { cn } from "@/lib/utils";
-import { ScrollShadow } from "@nextui-org/react";
-import React from "react";
-
 interface ScrollingBannerProps extends React.HTMLAttributes<HTMLDivElement> {
   isReverse?: boolean;
   showShadow?: boolean;
@@ -81,3 +80,4 @@ const ScrollingBanner = React.forwardRef<HTMLDivElement, ScrollingBannerProps>(
 ScrollingBanner.displayName = "ScrollingBanner";
 
 export default ScrollingBanner;
+

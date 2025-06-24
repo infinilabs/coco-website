@@ -31,7 +31,7 @@ export default function NavTab({
 
   return (
     <div className={`inline-block p-[2px] rounded-[41px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]`}>
-      <div className={`h-[56px] px-1 flex items-center justify-center bg-[#EBF6FF] dark:bg-[#04071B] text-white rounded-[39px]`}>
+      <div className={`h-[52px] px-1 flex items-center justify-center bg-[#EBF6FF] dark:bg-[#04071B] text-white rounded-[39px]`}>
         {tabs.map((tab, idx) => {
           const isActive = active === tab.value;
           return (

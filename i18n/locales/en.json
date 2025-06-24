@@ -36,8 +36,8 @@
   },
   "Download": {
     "title": "Get Coco. Get Productive",
-    "time": "Release Time:",
-    "version": "Version:",
+    "time": "Release Time: ",
+    "version": "Version: ",
     "notes": "Release Notes",
     "docs": "Docs",
     "envText": "* For other installation environments, please select",

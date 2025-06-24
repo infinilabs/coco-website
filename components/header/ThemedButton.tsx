@@ -14,7 +14,7 @@ export function ThemedButton() {
   }, []);
 
   if (!mounted) {
-    return <Sun />;
+    return <Sun className="text-[#666] dark:text-[#999]" />;
   }
 
   return (
@@ -22,7 +22,11 @@ export function ThemedButton() {
       className="cursor-pointer"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      {theme === "light" ? <SunMoon /> : <Sun />}
+      {theme === "light" ? (
+        <SunMoon className="text-[#666] dark:text-[#999]" />
+      ) : (
+        <Sun className="text-[#666] dark:text-[#999]" />
+      )}
     </div>
   );
 }

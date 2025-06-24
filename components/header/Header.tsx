@@ -4,15 +4,15 @@ import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 
 import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
 import NavTab from "@/components/header/NavTab";
 import { siteConfig } from "@/config/site";
-import { defaultLocale, getDictionary } from "@/i18n/i18n";
-import { ThemedButton } from "../ThemedButton";
+import { defaultLocale } from "@/i18n/i18n";
+import { ThemedButton } from "./ThemedButton";
 import { ALL_HEADER } from "@/config/header";
 
 const Header = () => {
