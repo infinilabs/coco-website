@@ -44,21 +44,75 @@ jobs:
           node-version: "20"
           cache: 'pnpm'
 
-      - name: Update data.json with latest version
+      - name: Update data.json with latest versions and publish dates
         run: |
-          set -euo pipefail
+          set -e
 
+          DATA_JSON_PATH="public/data.json"
+
+          echo "Fetching latest version info..."
           VERSION_INFO=$(curl -s --fail --max-time 10 https://release.infinilabs.com/.latest)
-          APP_VERSION=$(echo "$VERSION_INFO" | jq -r '.["coco-app"]')
-          SERVER_VERSION=$(echo "$VERSION_INFO" | jq -r '.["coco-server"]')
-          if ! [[ "$APP_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-[0-9]+$ ]] || ! [[ "$SERVER_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+-[0-9]+$ ]]; then
-            echo "Error: Invalid version format." >&2
-            exit 1
-          fi
-          echo "Publish app version: $APP_VERSION, server version: $SERVER_VERSION"
-          # Update the JSON file with the new version
-          jq --arg app "$APP_VERSION" --arg server "$SERVER_VERSION" '.app = $app | .server = $server' public/data.json > temp.json && mv temp.json public/data.json
-          cat public/data.json
+          APP_FULL_VERSION=$(echo "$VERSION_INFO" | jq -r '.["coco-app"]')
+          SERVER_FULL_VERSION=$(echo "$VERSION_INFO" | jq -r '.["coco-server"]')
+
+          echo "App Version: $APP_FULL_VERSION, Server Version: $SERVER_FULL_VERSION"
+
+          get_gh_publish_date() {
+            local repo_slug="$1"  # e.g., infinilabs/coco-app
+            local full_ver_from_latest="$2"   # e.g., 0.5.3-2323 (this is the version string from .latest)
+            local date_val
+
+            # Extract X.Y.Z part from the full version string
+            local xyz_part=$(echo "$full_ver_from_latest" | cut -d'-' -f1) # e.g., 0.5.3
+
+            # Construct the X.Y.0 part
+            local xy_part=$(echo "$xyz_part" | cut -d'.' -f1,2) # e.g., 0.5
+            local xyz_zero_patch_part="${xy_part}.0" # e.g., 0.5.0
+
+            local tag_attempt1="v${xyz_part}"          # Primary attempt, e.g., v0.5.3
+            local tag_attempt2="v${xyz_zero_patch_part}" # Fallback, e.g., v0.5.0
+
+            echo "Attempting to fetch publish date for ${repo_slug}..."
+            
+            # Attempt 1: X.Y.Z version tag (e.g., v0.5.3)
+            echo "  Trying tag: ${tag_attempt1}"
+            date_val=$(curl -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt1}" | \
+              jq -r '.published_at | split("T")[0 // empty]' 2>/dev/null)
+
+            # Attempt 2: X.Y.0 version tag (e.g., v0.5.0)
+            if [[ -z "$date_val" || "$date_val" == "null" ]]; then
+              echo "  Tag ${tag_attempt1} not found or no publish date. Trying tag: ${tag_attempt2}"
+              date_val=$(curl -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt2}" | \
+                jq -r '.published_at | split("T")[0 // empty]' 2>/dev/null)
+            fi
+
+            # Final fallback to current date
+            if [[ -z "$date_val" || "$date_val" == "null" ]]; then
+              echo "  No release date found for ${repo_slug} (tags ${tag_attempt1} or ${tag_attempt2}). Using current date."
+              date_val=$(date +%Y-%m-%d)
+            else
+              echo "  Found publish date: ${date_val}"
+            fi
+            echo "$date_val"
+          }
+
+          APP_PUBLISH_DATE=$(get_gh_publish_date "infinilabs/coco-app" "$APP_FULL_VERSION")
+          SERVER_PUBLISH_DATE=$(get_gh_publish_date "infinilabs/coco-server" "$SERVER_FULL_VERSION")
+
+          echo "App Publish Date: $APP_PUBLISH_DATE"
+          echo "Server Publish Date: $SERVER_PUBLISH_DATE"
+
+          jq \
+            --arg app_ver "$APP_FULL_VERSION" \
+            --arg server_ver "$SERVER_FULL_VERSION" \
+            --arg app_date "$APP_PUBLISH_DATE" \
+            --arg server_date "$SERVER_PUBLISH_DATE" \
+            '.app = $app_ver | .server = $server_ver | .app_publish = $app_date | .server_publish = $server_date' \
+            "$DATA_JSON_PATH" > tmp_data.json && mv tmp_data.json "$DATA_JSON_PATH"
+
+          echo "Updated $DATA_JSON_PATH"
+          echo
+          cat "$DATA_JSON_PATH"
           
       - name: Setup Pages
         uses: actions/configure-pages@v5
