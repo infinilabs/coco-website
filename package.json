@@ -4,13 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "postbuild": "next-sitemap",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "create-docker-image": "docker build -t coco-website .",
-    "save-docker-image": "docker save -o coco-website.tar coco-website",
-    "docker": "pnpm build && pnpm postbuild && pnpm create-docker-image && pnpm save-docker-image"
+    "lint": "next lint"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
