@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import NavTab from "@/components/header/NavTab";
-import { ALL_SERVER } from "@/config/server";
+import { ALL_SERVER } from "@/data/server";
 
 export default function ServerFeature({
   locale,

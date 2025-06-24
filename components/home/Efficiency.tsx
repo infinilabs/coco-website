@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ALL_EFFICIENCY } from "@/config/efficiency";
+import { ALL_EFFICIENCY } from "@/data/efficiency";
 
 export default function EfficiencyFeatures({
   locale,

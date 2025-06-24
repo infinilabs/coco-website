@@ -1,6 +1,9 @@
+import { useTheme } from "next-themes";
 import Image from "next/image";
 
 const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
+  const { theme } = useTheme();
+
   return (
     <>
       <section
@@ -17,7 +20,11 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         </h1>
         <div className="flex justify-center mb-12">
           <Image
-            src="/svg/home/input-zh.svg"
+            src={
+              theme === "dark"
+                ? "/svg/home/input-zh.svg"
+                : "/svg/home/input-light.svg"
+            }
             alt="input"
             width={640}
             height={60}
@@ -35,16 +42,7 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
           />
         </a>
         <div className="max-w-7xl text-center mx-auto">
-          <video
-            width={1280}
-            height={720}
-            controls
-            autoPlay
-            loop
-            muted
-            preload="metadata"
-            src="/videos/preview.mp4"
-          >
+          <video controls width="1280" height="720" className="rounded-2xl">
             <source src="/videos/preview.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

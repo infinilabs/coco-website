@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ALL_DEPLOY } from "@/config/deploy";
+import { ALL_DEPLOY } from "@/data/deploy";
 
 export default function DeployFeature({
   locale,

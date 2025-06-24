@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/data/site";
 
 const FooterLinks = () => {
   const links = siteConfig.footerLinks;
@@ -25,3 +25,4 @@ const FooterLinks = () => {
 };
 
 export default FooterLinks;
+

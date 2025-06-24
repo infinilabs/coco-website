@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ALL_TOOLS } from "@/config/tools";
+import { ALL_TOOLS } from "@/data/tools";
 
 export default function ToolsFeature({
   locale,

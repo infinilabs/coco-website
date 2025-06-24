@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/data/site";
 
 const HeaderLinks = () => {
   const links = siteConfig.headerLinks;

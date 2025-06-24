@@ -1,7 +1,7 @@
-import Image from "next/image";
-import { useRef, useState } from "react";
 import { Copy } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useRef, useState } from "react";
 
 import data from "@/public/data.json";
 
@@ -88,7 +88,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
             {DockerCommand}
           </span>
           <button
-            className="ml-3 p-1 rounded hover:bg-[#232A3F] transition"
+            className="ml-3 p-1 rounded dark:hover:bg-[#232A3F] transition"
             onClick={handleCopy}
             aria-label="复制"
             type="button"
@@ -138,7 +138,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition "
               >
                 <div className="flex flex-col">
                   <span className="font-medium">{item.label}</span>
@@ -181,7 +181,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition "
               >
                 <div className="flex flex-col">
                   <span className="font-medium">{item.label}</span>
@@ -219,7 +219,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition "
               >
                 <div className="flex flex-col">
                   <span className="font-medium">{item.label}</span>

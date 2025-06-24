@@ -9,7 +9,7 @@ import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/data/site";
 import { defaultLocale } from "@/i18n/i18n";
 import { cn } from "@/lib/utils";
 
@@ -61,7 +61,7 @@ export default async function RootLayout({
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
           geistSans.variable,
-          geistMono.variable,
+          geistMono.variable
         )}
       >
         <ThemeProvider

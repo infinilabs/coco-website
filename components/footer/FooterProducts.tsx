@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/data/site";
 
 const FooterProducts = () => {
   const footerProducts = siteConfig.footerProducts;
@@ -28,3 +28,4 @@ const FooterProducts = () => {
 };
 
 export default FooterProducts;
+

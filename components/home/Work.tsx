@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ALL_WORK } from "@/config/work";
+import { ALL_WORK } from "@/data/work";
 
 export default function WorkFeature({
   locale,
@@ -36,11 +36,15 @@ export default function WorkFeature({
                 />
               </div>
               <div>
-                <div className="text-black dark:text-white font-medium text-base">{f.name}</div>
+                <div className="text-black dark:text-white font-medium text-base">
+                  {f.name}
+                </div>
                 <div className="text-[#9696B4] text-xs">{f.role}</div>
               </div>
             </div>
-            <div className="text-black dark:text-white text-sm">{f.content}</div>
+            <div className="text-black dark:text-white text-sm">
+              {f.content}
+            </div>
           </div>
         ))}
       </div>
