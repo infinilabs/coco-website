@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
+  const { theme } = useTheme();
+
   return (
     <>
       <section
@@ -17,7 +20,11 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         </h1>
         <div className="flex justify-center mb-12">
           <Image
-            src="/svg/home/input-zh.svg"
+            src={
+              theme === "dark"
+                ? "/svg/home/input-zh.svg"
+                : "/svg/home/input-light.svg"
+            }
             alt="input"
             width={640}
             height={60}
