@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ALL_WORK } from "@/config/work";
+import { ALL_WORK } from "@/data/work";
 
 export default function WorkFeature({
   locale,

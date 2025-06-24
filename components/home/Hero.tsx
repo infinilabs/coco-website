@@ -35,16 +35,7 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
           />
         </a>
         <div className="max-w-7xl text-center mx-auto">
-          <video
-            width={1280}
-            height={720}
-            controls
-            autoPlay
-            loop
-            muted
-            preload="metadata"
-            src="/videos/preview.mp4"
-          >
+          <video controls width="1280" height="720" className="rounded-2xl">
             <source src="/videos/preview.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

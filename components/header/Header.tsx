@@ -10,10 +10,10 @@ import { CgClose } from "react-icons/cg";
 import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
 import NavTab from "@/components/header/NavTab";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/data/site";
 import { defaultLocale } from "@/i18n/i18n";
 import { ThemedButton } from "./ThemedButton";
-import { ALL_HEADER } from "@/config/header";
+import { ALL_HEADER } from "@/data/header";
 
 const Header = () => {
   const { lang } = useParams() as { lang?: string };

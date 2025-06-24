@@ -84,11 +84,11 @@ export default function ServerInstall({ locale }: { locale: any }) {
           </span>
         </div>
         <div className="flex items-center bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 mb-2">
-          <span className="text-cyan-200 font-mono text-sm flex-1 select-all">
+          <span className="text-black dark:text-cyan-200 font-mono text-sm flex-1 select-all">
             {DockerCommand}
           </span>
           <button
-            className="ml-3 p-1 rounded hover:bg-[#232A3F] transition"
+            className="ml-3 p-1 rounded dark:hover:bg-[#232A3F] transition"
             onClick={handleCopy}
             aria-label="复制"
             type="button"
@@ -99,7 +99,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
             <span className="ml-2 text-cyan-300 text-xs">{copyStatus}</span>
           )}
         </div>
-        <div className="text-gray-400 text-xs mt-1">
+        <div className="text-[#9696B4] dark:text-gray-400 text-xs mt-1">
           {locale?.envText}
           <a
             href={ServerHref}
@@ -138,7 +138,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition"
               >
                 <div className="flex flex-col">
                   <span className="font-medium">{item.label}</span>
@@ -181,7 +181,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition"
               >
                 <div className="flex flex-col">
                   <span className="font-medium">{item.label}</span>
@@ -219,7 +219,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition"
               >
                 <div className="flex flex-col">
                   <span className="font-medium">{item.label}</span>

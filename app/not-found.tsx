@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import FollowButton from "@/components/FollowButton";
-import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/data/site";
 
 export default function NotFound() {
   return (

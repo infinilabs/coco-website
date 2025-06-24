@@ -103,7 +103,7 @@ export default function AppInstall() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+              className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition"
             >
               <div className="flex flex-col">
                 <span className="font-medium">{item.label}</span>
@@ -148,7 +148,7 @@ export default function AppInstall() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+              className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition"
             >
               <div className="flex flex-col">
                 <span className="font-medium">{item.label}</span>
@@ -188,7 +188,7 @@ export default function AppInstall() {
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition hover:bg-[#232A3F]"
+              className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 text-black dark:text-white transition"
             >
               <div className="flex flex-col">
                 <span className="font-medium">{item.label}</span>

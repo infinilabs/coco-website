@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import NavTab from "@/components/header/NavTab";
-import { ALL_SERVER } from "@/config/server";
+import { ALL_SERVER } from "@/data/server";
 
 export default function ServerFeature({
   locale,
@@ -35,14 +35,10 @@ export default function ServerFeature({
       </a>
       <div className="w-full flex justify-center mb-14">
         <div className="rounded-3xl overflow-hidden border-4 border-[#E6F0FF] bg-gradient-to-br from-[#7B61FF] via-[#7B61FF22] to-[#00E5FF22] p-2 max-w-3xl w-full">
-          <Image
-            src={SERVER[active].imgUrl}
-            alt={SERVER[active].label}
-            width={1280}
-            height={720}
-            className="rounded-2xl w-full h-auto"
-            style={{ background: "transparent" }}
-          />
+          <video width="1280" height="720" controls preload="none">
+            <source src={SERVER[active].videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
       <div className="mb-10">

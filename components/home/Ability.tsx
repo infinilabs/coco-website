@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ALL_FEATURES } from "@/config/feature";
+import { ALL_FEATURES } from "@/data/feature";
 
 export default function FeatureAbility({ langName }: { langName: string }) {
   const FEATURES = ALL_FEATURES[`FEATURES_${langName.toUpperCase()}`];

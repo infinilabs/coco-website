@@ -10,7 +10,7 @@
     "lint": "next lint",
     "create-docker-image": "docker build -t coco-website .",
     "save-docker-image": "docker save -o coco-website.tar coco-website",
-    "docker": "pnpm build && pnpm postbuild && pnpm create-docker-image && pnpm save-docker-image"
+    "docker": "npm run build && npm run postbuild && npm run create-docker-image && npm run save-docker-image"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
@@ -26,11 +26,10 @@
     "jsdom": "^24.1.1",
     "lucide-react": "^0.522.0",
     "negotiator": "^0.6.3",
-    "next": "14.1.0",
+    "next": "15.3.4",
     "next-themes": "^0.2.1",
-    "pnpm": "^10.12.2",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.4",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
@@ -41,8 +40,8 @@
   "devDependencies": {
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
@@ -53,4 +52,3 @@
   },
   "packageManager": "pnpm@10.12.1+sha512.f0dda8580f0ee9481c5c79a1d927b9164f2c478e90992ad268bbb2465a736984391d6333d2c327913578b2804af33474ca554ba29c04a8b13060a717675ae3ac"
 }
-
