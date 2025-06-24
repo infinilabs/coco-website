@@ -10,7 +10,7 @@
     "lint": "next lint",
     "create-docker-image": "docker build -t coco-website .",
     "save-docker-image": "docker save -o coco-website.tar coco-website",
-    "docker": "npm run build && npm run postbuild && npm run create-docker-image && npm run save-docker-image"
+    "docker": "pnpm build && pnpm postbuild && pnpm create-docker-image && pnpm save-docker-image"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
