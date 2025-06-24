@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { CgClose } from "react-icons/cg";
+import { useTheme } from "next-themes";
 
 import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
@@ -16,6 +17,8 @@ import { ThemedButton } from "./ThemedButton";
 import { ALL_HEADER } from "@/data/header";
 
 const Header = () => {
+  const { theme } = useTheme();
+
   const { lang } = useParams() as { lang?: string };
   const langName = lang || defaultLocale;
 
@@ -45,7 +48,11 @@ const Header = () => {
             className="flex items-center space-x-1 font-bold"
           >
             <Image
-              src="/svg/Coco_logo.svg"
+              src={
+                theme === "dark"
+                  ? "/svg/Coco_logo.svg"
+                  : "/svg/cocoLogo-light.svg"
+              }
               alt="Coco"
               width={178}
               height={56}

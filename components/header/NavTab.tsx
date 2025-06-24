@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 interface NavTabItem {
   label: string;
   value: string;
   href?: string;
   external?: boolean;
+  icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   onClick?: () => void;
 }
 
@@ -16,11 +18,9 @@ interface NavTabProps {
   onChange?: (tab: NavTabItem, index: number) => void;
 }
 
-export default function NavTab({
-  tabs,
-  value,
-  onChange,
-}: NavTabProps) {
+export default function NavTab({ tabs, value, onChange }: NavTabProps) {
+  const { theme } = useTheme();
+
   const [active, setActive] = useState(tabs[0]?.value);
 
   const handleTabClick = (tab: NavTabItem, idx: number) => {
@@ -30,14 +30,19 @@ export default function NavTab({
   };
 
   return (
-    <div className={`inline-block p-[2px] rounded-[41px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]`}>
-      <div className={`h-[52px] px-1 flex items-center justify-center bg-[#EBF6FF] dark:bg-[#04071B] text-white rounded-[39px]`}>
+    <div
+      className={`inline-block p-[2px] rounded-[41px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]`}
+    >
+      <div
+        className={`h-[52px] px-1 flex items-center justify-center bg-[#EBF6FF] dark:bg-[#04071B] text-white rounded-[39px]`}
+      >
         {tabs.map((tab, idx) => {
           const isActive = active === tab.value;
+          const Icon = tab.icon;
           return (
             <button
               key={tab.value}
-              className={`relative z-10 h-12 px-8 rounded-full font-semibold text-base transition-colors
+              className={`relative z-10 h-12 px-8 flex items-center gap-2 rounded-full font-semibold text-base transition-colors
               ${
                 isActive
                   ? "text-[#04071b]"
@@ -51,7 +56,15 @@ export default function NavTab({
               }}
               onClick={() => handleTabClick(tab, idx)}
             >
-              {tab.label}
+              {Icon ? (
+                <Icon
+                  color={
+                    isActive ? "#04071b" : theme === "dark" ? "#fff" : "#04071b"
+                  }
+                  className={`w-6 h-6`}
+                />
+              ) : null}
+              <span className="hidden sm:inline-block">{tab.label}</span>
             </button>
           );
         })}
@@ -59,3 +72,4 @@ export default function NavTab({
     </div>
   );
 }
+

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CircleArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default function SubscriptionInput() {
   const [email, setEmail] = useState("");
@@ -61,10 +61,16 @@ export default function SubscriptionInput() {
             type="submit"
             className="absolute w-8 -right-2 top-1/2 translate  -translate-x-1/2 -translate-y-1/2 cursor-pointer"
           >
-            <CircleArrowRight className="w-8 h-8 text-black" />
+            <Image
+              src="/svg/home/arrow-right.svg"
+              alt="arrow-right"
+              width={32}
+              height={32}
+            />
           </button>
         </form>
       )}
     </div>
   );
 }
+

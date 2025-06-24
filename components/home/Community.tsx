@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 import LinearGradientBtn from "@/components/LinearGradientBtn";
 import SubscriptionInput from "@/components/SubscriptionInput";
@@ -18,6 +19,8 @@ export default function Community({
   locale: any;
   langName: string;
 }) {
+  const { theme } = useTheme();
+
   const [githubStars, setGithubStars] = useState<string>("Star");
 
   const fetchGithubStars = async () => {
@@ -68,12 +71,18 @@ export default function Community({
             <LinearGradientBtn>
               <div className="flex justify-start items-center gap-2 px-2 min-w-20">
                 <Image
-                  src="/svg/github.svg"
+                  src={
+                    theme === "dark"
+                      ? "/svg/github.svg"
+                      : "/svg/github-light.svg"
+                  }
                   width={18}
                   height={18}
                   alt="github"
                 />
-                <span className="text-yellow-200 text-sm">{githubStars}</span>
+                <span className="text-black dark:text-yellow-200 text-sm">
+                  {githubStars}
+                </span>
               </div>
             </LinearGradientBtn>
           </a>
@@ -86,13 +95,19 @@ export default function Community({
             <LinearGradientBtn>
               <div className="flex justify-start items-center gap-2 px-2">
                 <Image
-                  src="/svg/discord.svg"
+                  src={
+                    theme === "dark"
+                      ? "/svg/discord.svg"
+                      : "/svg/discord-light.svg"
+                  }
                   alt="discord"
                   width={18}
                   height={18}
                   className="h-auto"
                 />
-                <span className="text-yellow-200 text-sm">Discord</span>
+                <span className="text-black dark:text-yellow-200 text-sm">
+                  Discord
+                </span>
               </div>
             </LinearGradientBtn>
           </a>

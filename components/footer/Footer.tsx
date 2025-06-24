@@ -1,12 +1,21 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 export default function Footer() {
+  const { theme } = useTheme();
+
   return (
     <footer className="container m-auto mt-44 pt-20 sm:px-6 lg:px-8 bg-[#EBF6FF] dark:bg-transparent">
       <div className="flex flex-col md:flex-row md:justify-between items-center gap-8 md:gap-0 pb-6 border-b border-b-[#2D2D2D]">
         <div className="flex items-center">
           <Image
-            src="/svg/Coco_logo.svg"
+            src={
+              theme === "dark"
+                ? "/svg/Coco_logo.svg"
+                : "/svg/cocoLogo-light.svg"
+            }
             alt="Coco"
             width={127}
             height={40}
@@ -19,7 +28,14 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="text-[#676767] hover:text-[#04FEF6] transition-colors"
           >
-            <Image src="/svg/github.svg" alt="Github" width={20} height={20} />
+            <Image
+              src={
+                theme === "dark" ? "/svg/github.svg" : "/svg/github-light.svg"
+              }
+              alt="Github"
+              width={20}
+              height={20}
+            />
           </a>
           <a
             href="https://x.com/infinilabs"
@@ -28,7 +44,7 @@ export default function Footer() {
             className="text-[#676767] hover:text-[#04FEF6] transition-colors"
           >
             <Image
-              src="/svg/twitter.svg"
+              src={theme === "dark" ? "/svg/twitter.svg" : "/svg/x-light.svg"}
               alt="Twitter"
               width={20}
               height={20}
@@ -41,7 +57,9 @@ export default function Footer() {
             className="text-[#676767] hover:text-[#04FEF6] transition-colors"
           >
             <Image
-              src="/svg/discord.svg"
+              src={
+                theme === "dark" ? "/svg/discord.svg" : "/svg/discord-light.svg"
+              }
               alt="Discord"
               width={20}
               height={20}

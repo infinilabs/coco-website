@@ -1,6 +1,7 @@
-'use client'
+"use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 
 const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
@@ -35,14 +36,30 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         <div className="text-center text-[#666] dark:text-[#c8c8c8] text-sm max-w-2xl mx-auto mb-12">
           {locale.description}
         </div>
-        <a href="https://coco.rs/" className="mb-14">
-          <Image
-            src="/svg/home/download-zh.svg"
-            alt="download"
-            width={160}
-            height={48}
-          />
-        </a>
+        <Link
+          href={`/${langName}/download`}
+          aria-label="download"
+          className="mb-14"
+        >
+          {theme === "dark" ? (
+            <Image
+              src="/svg/home/download-zh.svg"
+              alt="download"
+              width={160}
+              height={48}
+            />
+          ) : (
+            <div
+              className={`h-12 leading-[48px] px-8 rounded-full font-semibold text-base transition-colors text-[#04071b]`}
+              style={{
+                background: "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
+                boxShadow: "0 2px 12px 0 #19F3FF55",
+              }}
+            >
+              {locale.download}
+            </div>
+          )}
+        </Link>
         <div className="max-w-7xl text-center mx-auto">
           <video controls width="1280" height="720" className="rounded-2xl">
             <source src="/videos/preview.mp4" type="video/mp4" />

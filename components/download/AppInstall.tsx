@@ -69,7 +69,7 @@ const linuxLinks = [
   },
 ];
 
-export default function AppInstall() {
+export default function AppInstall({ locale }: { locale: any }) {
   const { theme } = useTheme();
 
   return (
@@ -94,7 +94,7 @@ export default function AppInstall() {
           </span>
         </div>
         <div className="font-normal text-base text-[#9696B4] leading-[22px]">
-          Supports macOS 12 and later versions
+          {locale?.macOS}
         </div>
         <div className="flex flex-col gap-3 mt-4">
           {macLinks.map((item) => (
@@ -139,7 +139,7 @@ export default function AppInstall() {
           </span>
         </div>
         <div className="font-normal text-base text-[#9696B4] leading-[22px]">
-          Support for Windows 10 and above versions
+          {locale?.window}
         </div>
         <div className="flex flex-col gap-3 mt-4">
           {winLinks.map((item) => (
@@ -179,7 +179,7 @@ export default function AppInstall() {
           </span>
         </div>
         <div className="font-normal text-base text-[#9696B4] leading-[22px]">
-          X11 only
+          {locale?.unbuntu}
         </div>
         <div className="flex flex-col gap-3 mt-4">
           {linuxLinks.map((item) => (

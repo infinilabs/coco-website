@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 import NavTab from "@/components/header/NavTab";
 import { ALL_SERVER } from "@/data/server";
@@ -13,6 +14,8 @@ export default function ServerFeature({
   locale: any;
   langName: string;
 }) {
+  const { theme } = useTheme();
+
   const [active, setActive] = useState(0);
 
   const SERVER = ALL_SERVER[`SERVER_${langName.toUpperCase()}`];
@@ -26,15 +29,27 @@ export default function ServerFeature({
         {locale.description}
       </div>
       <a href="https://coco.rs/" className="mb-14">
-        <Image
-          src="/svg/home/download-zh.svg"
-          alt="download"
-          width={160}
-          height={48}
-        />
+        {theme === "dark" ? (
+          <Image
+            src="/svg/home/download-zh.svg"
+            alt="download"
+            width={160}
+            height={48}
+          />
+        ) : (
+          <div
+            className={`h-12 leading-[48px] px-8 rounded-full font-semibold text-base transition-colors text-[#04071b]`}
+            style={{
+              background: "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
+              boxShadow: "0 2px 12px 0 #19F3FF55",
+            }}
+          >
+            {locale.demo}
+          </div>
+        )}
       </a>
       <div className="w-full flex justify-center mb-14">
-        <div className="rounded-3xl overflow-hidden border-4 border-[#E6F0FF] bg-gradient-to-br from-[#7B61FF] via-[#7B61FF22] to-[#00E5FF22] p-2 max-w-3xl w-full">
+        <div className="rounded-3xl overflow-hidden border-4 border-[#E6F0FF] bg-gradient-to-br from-[#7B61FF] via-[#7B61FF22] to-[#00E5FF22] p-2 max-w-7xl w-full">
           <video width="1280" height="720" controls preload="none">
             <source src={SERVER[active].videoUrl} type="video/mp4" />
             Your browser does not support the video tag.

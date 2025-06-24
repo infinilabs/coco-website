@@ -80,7 +80,7 @@ export default function DownloadPage({
         </a>
       </div>
 
-      {activeTab === "app" && <AppInstall />}
+      {activeTab === "app" && <AppInstall locale={locale}/>}
       {activeTab === "server" && <ServerInstall locale={locale} />}
     </section>
   );

@@ -3,7 +3,8 @@
     "title1": "Where Knowledge Meets Collaboration",
     "title2": "Unified enterprise search and",
     "title3": "Gen-AI assistant for modern teams",
-    "description": "Coco AI is a fully open-source, cross-platform intelligent search and assistant system designed for modern enterprises. It provides a unified search entry point to connect heterogeneous internal and external data sources, integrates large language model capabilities, and empowers teams to access knowledge efficiently, make smarter decisions, and collaborate intelligently."
+    "description": "Coco AI is a fully open-source, cross-platform intelligent search and assistant system designed for modern enterprises. It provides a unified search entry point to connect heterogeneous internal and external data sources, integrates large language model capabilities, and empowers teams to access knowledge efficiently, make smarter decisions, and collaborate intelligently.",
+    "download": "Download"
   },
   "Efficiency": {
     "title": "Get It Done, Fast",
@@ -11,7 +12,8 @@
   },
   "Server": {
     "title": "Your AI Brain, Powered by Coco Server",
-    "description": "As the core backend of Coco AI, Coco Server supports data source integration, AI assistant & model management, knowledge base construction, as well as MCP services and embedding capabilities, helping enterprises and developers deploy flexibly, manage centrally, and build customized intelligent work platforms."
+    "description": "As the core backend of Coco AI, Coco Server supports data source integration, AI assistant & model management, knowledge base construction, as well as MCP services and embedding capabilities, helping enterprises and developers deploy flexibly, manage centrally, and build customized intelligent work platforms.",
+    "demo": "Demo"
   },
   "Tools": {
     "title": "Extend Your Stack",
@@ -41,7 +43,10 @@
     "notes": "Release Notes",
     "docs": "Docs",
     "envText": "* For other installation environments, please select",
-    "manual": "Manual installation"
+    "manual": "Manual installation",
+    "macOS": "Supports macOS 12 and later versions",
+    "window": "Support for Windows 10 and above versions",
+    "unbuntu": "X11 only"
   }
 }
 

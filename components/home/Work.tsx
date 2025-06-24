@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 import { ALL_WORK } from "@/data/work";
 
@@ -9,6 +12,8 @@ export default function WorkFeature({
   locale: any;
   langName: string;
 }) {
+  const { theme } = useTheme();
+
   const WORK = ALL_WORK[`WORK_${langName.toUpperCase()}`];
 
   return (
@@ -36,11 +41,15 @@ export default function WorkFeature({
                 />
               </div>
               <div>
-                <div className="text-black dark:text-white font-medium text-base">{f.name}</div>
+                <div className="text-black dark:text-white font-medium text-base">
+                  {f.name}
+                </div>
                 <div className="text-[#9696B4] text-xs">{f.role}</div>
               </div>
             </div>
-            <div className="text-black dark:text-white text-sm">{f.content}</div>
+            <div className="text-black dark:text-white text-sm">
+              {f.content}
+            </div>
           </div>
         ))}
       </div>
@@ -50,7 +59,9 @@ export default function WorkFeature({
         </div>
         <a href="#" target="_blank">
           <Image
-            src={locale.btnImg}
+            src={
+              theme === "dark" ? locale.btnImg : "/svg/home/work-en-light.svg"
+            }
             alt={locale.title2}
             width={160}
             height={48}
@@ -60,7 +71,11 @@ export default function WorkFeature({
         </a>
         <div className="w-full flex justify-center pb-8">
           <Image
-            src="/svg/home/ai-power.svg"
+            src={
+              theme === "dark"
+                ? "/svg/home/ai-power.svg"
+                : "/svg/home/ai-power-light.svg"
+            }
             alt="AI Power"
             width={1178}
             height={403}
