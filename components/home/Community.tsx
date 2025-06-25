@@ -62,61 +62,69 @@ export default function Community({
         {locale.description}
       </div>
 
-      <div className="mt-14 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-        <div className="rounded-lg bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 flex flex-col justify-around items-start gap-4 sm:px-10">
-          <div className="text-black dark:text-white font-medium text-base">
-            {locale.cardName1}
+      <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+        <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+          <div className="h-full rounded-[14px] bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 flex flex-col justify-around items-start gap-4 sm:px-10">
+            <div className="text-black dark:text-white font-medium text-base">
+              {locale.cardName1}
+            </div>
+            <a href="https://github.com/infinilabs/coco-app" target={"_blank"}>
+              <LinearGradientBtn>
+                <div className="flex justify-start items-center gap-2 px-2 min-w-20">
+                  <Image
+                    src={
+                      theme === "dark"
+                        ? "/svg/github.svg"
+                        : "/svg/github-light.svg"
+                    }
+                    width={18}
+                    height={18}
+                    alt="github"
+                  />
+                  <span className="text-black dark:text-yellow-200 text-sm">
+                    {githubStars}
+                  </span>
+                </div>
+              </LinearGradientBtn>
+            </a>
           </div>
-          <a href="https://github.com/infinilabs/coco-app" target={"_blank"}>
-            <LinearGradientBtn>
-              <div className="flex justify-start items-center gap-2 px-2 min-w-20">
-                <Image
-                  src={
-                    theme === "dark"
-                      ? "/svg/github.svg"
-                      : "/svg/github-light.svg"
-                  }
-                  width={18}
-                  height={18}
-                  alt="github"
-                />
-                <span className="text-black dark:text-yellow-200 text-sm">
-                  {githubStars}
-                </span>
-              </div>
-            </LinearGradientBtn>
-          </a>
         </div>
-        <div className="rounded-lg bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 flex flex-col justify-around items-start gap-4 sm:px-10">
-          <div className="text-black dark:text-white font-medium text-base">
-            {locale.cardName2}
+
+        <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+          <div className="h-full rounded-[14px] bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 flex flex-col justify-around items-start gap-4 sm:px-10">
+            <div className="text-black dark:text-white font-medium text-base">
+              {locale.cardName2}
+            </div>
+            <a href="https://discord.com/invite/4tKTMkkvVX" target={"_blank"}>
+              <LinearGradientBtn>
+                <div className="flex justify-start items-center gap-2 px-2">
+                  <Image
+                    src={
+                      theme === "dark"
+                        ? "/svg/discord.svg"
+                        : "/svg/discord-light.svg"
+                    }
+                    alt="discord"
+                    width={18}
+                    height={18}
+                    className="h-auto"
+                  />
+                  <span className="text-black dark:text-yellow-200 text-sm">
+                    Discord
+                  </span>
+                </div>
+              </LinearGradientBtn>
+            </a>
           </div>
-          <a href="https://discord.com/invite/4tKTMkkvVX" target={"_blank"}>
-            <LinearGradientBtn>
-              <div className="flex justify-start items-center gap-2 px-2">
-                <Image
-                  src={
-                    theme === "dark"
-                      ? "/svg/discord.svg"
-                      : "/svg/discord-light.svg"
-                  }
-                  alt="discord"
-                  width={18}
-                  height={18}
-                  className="h-auto"
-                />
-                <span className="text-black dark:text-yellow-200 text-sm">
-                  Discord
-                </span>
-              </div>
-            </LinearGradientBtn>
-          </a>
         </div>
-        <div className="rounded-lg bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 col-span-2 flex flex-col justify-center items-center gap-4 sm:px-10 sm:items-start">
-          <div className="text-black dark:text-white font-medium text-base">
-            {locale.cardName3}
+
+        <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+          <div className="h-full rounded-[14px] bg-[#EBF6FF] dark:bg-[#04071B] py-10 px-6 col-span-2 flex flex-col justify-center items-center gap-4 sm:px-10 sm:items-start">
+            <div className="text-black dark:text-white font-medium text-base">
+              {locale.cardName3}
+            </div>
+            <SubscriptionInput />
           </div>
-          <SubscriptionInput />
         </div>
       </div>
     </div>

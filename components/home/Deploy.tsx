@@ -23,20 +23,22 @@ export default function DeployFeature({
         {DEPLOY.map((item, index) => (
           <div
             key={item.title + index}
-            className="bg-[#EBF6FF] dark:bg-[#0B1020] border border-[#19F3FF22] rounded-2xl p-10 min-h-[160px] flex flex-col justify-start shadow-lg"
+            className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
           >
-            <Image
-              src={item.icon}
-              alt={item.title}
-              width={item.iconWidth}
-              height={item.iconHeight}
-              priority
-              className="mb-3"
-            />
-            <div className="mb-5 text-xl font-semibold text-black dark:text-white">
-              {item.title}
+            <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-10 min-h-[160px] flex flex-col justify-start shadow-lg">
+              <Image
+                src={item.icon}
+                alt={item.title}
+                width={item.iconWidth}
+                height={item.iconHeight}
+                priority
+                className="mb-3"
+              />
+              <div className="mb-5 text-xl font-semibold text-black dark:text-white">
+                {item.title}
+              </div>
+              <div className="text-[#9696B4] text-sm">{item.description}</div>
             </div>
-            <div className="text-[#9696B4] text-sm">{item.description}</div>
           </div>
         ))}
       </div>

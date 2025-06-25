@@ -48,8 +48,8 @@ export default function ServerFeature({
           </div>
         )}
       </a>
-      <div className="w-full flex justify-center mb-14">
-        <div className="rounded-3xl overflow-hidden border-4 border-[#E6F0FF] bg-gradient-to-br from-[#7B61FF] via-[#7B61FF22] to-[#00E5FF22] p-2 max-w-7xl w-full">
+      <div className="w-full flex justify-center mb-14 rounded-[16px] p-[2px] bg-gradient-to-br from-[#7B61FF] via-[#7B61FF22] to-[#00E5FF22]">
+        <div className="rounded-[14px] overflow-hidden max-w-7xl w-full">
           <video width="1280" height="720" controls preload="none">
             <source src={SERVER[active].videoUrl} type="video/mp4" />
             Your browser does not support the video tag.

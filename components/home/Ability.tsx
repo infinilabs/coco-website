@@ -29,7 +29,7 @@ export default function FeatureAbility({ langName }: { langName: string }) {
             </div>
           </div>
           <div className="flex-1 flex justify-center">
-            <div className="rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-[#d2e7ff] to-[#b6f0e7] p-2">
+            <div className="rounded-2xl overflow-hidden shadow-xl p-[2px] bg-gradient-to-br from-[#d2e7ff] to-[#b6f0e7] ">
               <Image
                 src={feature.imgUrl}
                 alt={feature.title}

@@ -23,31 +23,33 @@ export default function ToolsFeature({
         {TOOLS.map((item, index) => (
           <div
             key={item.title + index}
-            className="bg-[#EBF6FF] dark:bg-[#0B1020] border border-[#19F3FF] rounded-2xl p-10 min-h-[340px] flex flex-col justify-start shadow-lg"
+            className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
           >
-            <div className="text-2xl font-semibold text-black dark:text-white mb-6">
-              {item.title}
-            </div>
-            <div className="flex flex-col gap-6">
-              {item.tool.map((tool, idx) => (
-                <div key={tool.name + idx} className="flex items-start gap-3">
-                  <Image
-                    src={tool.icon}
-                    alt={tool.name}
-                    width={24}
-                    height={24}
-                    priority
-                  />
-                  <div>
-                    <div className="font-medium text-black dark:text-white">
-                      {tool.name}
-                    </div>
-                    <div className="text-[#9696B4] text-sm">
-                      {tool.description}
+            <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-10 min-h-[340px] flex flex-col justify-start shadow-lg">
+              <div className="text-2xl font-semibold text-black dark:text-white mb-6">
+                {item.title}
+              </div>
+              <div className="flex flex-col gap-6">
+                {item.tool.map((tool, idx) => (
+                  <div key={tool.name + idx} className="flex items-start gap-3">
+                    <Image
+                      src={tool.icon}
+                      alt={tool.name}
+                      width={24}
+                      height={24}
+                      priority
+                    />
+                    <div>
+                      <div className="font-medium text-black dark:text-white">
+                        {tool.name}
+                      </div>
+                      <div className="text-[#9696B4] text-sm">
+                        {tool.description}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         ))}

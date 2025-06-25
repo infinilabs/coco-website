@@ -1,8 +1,6 @@
 "use client";
 
-import { Copy, ExternalLink } from "lucide-react";
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import NavTab from "@/components/header/NavTab";
 import AppInstall from "@/components/download/AppInstall";
