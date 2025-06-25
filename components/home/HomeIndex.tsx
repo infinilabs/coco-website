@@ -14,11 +14,10 @@ import Community from "@/components/home/Community";
 import { defaultLocale } from "@/i18n/i18n";
 
 export default function HomeIndex() {
-
   const [lang, setLang] = useState(defaultLocale);
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const lang = params.get("lang") || localStorage.getItem("lang") || defaultLocale;
+    const lang = localStorage.getItem("lang") || defaultLocale;
+    localStorage.setItem("lang", lang);
     setLang(lang);
   }, []);
 

@@ -18,12 +18,10 @@ import {
 } from "@/data/download";
 
 export default function DownloadPage() {
-
   const [lang, setLang] = useState(defaultLocale);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const lang = params.get("lang") || localStorage.getItem("lang") || defaultLocale;
+    const lang = localStorage.getItem("lang") || defaultLocale;
     setLang(lang);
   }, []);
 

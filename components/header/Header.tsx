@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 
 import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
@@ -16,13 +17,14 @@ import { ThemedButton } from "./ThemedButton";
 import { ALL_HEADER } from "@/data/header";
 
 const Header = () => {
+  const router = useRouter();
+
   const { theme } = useTheme();
 
   const [lang, setLang] = useState(defaultLocale);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const lang = params.get("lang") || localStorage.getItem("lang") || defaultLocale;
+    const lang = localStorage.getItem("lang") || defaultLocale;
     setLang(lang);
   }, []);
 
@@ -34,9 +36,7 @@ const Header = () => {
     if (tab.external) {
       window.open(tab.href, "_blank");
     } else {
-      const params = new URLSearchParams(window.location.search);
-      const newUrl = `${tab.href}?${params.toString()}`;
-      window.location.href = newUrl
+      router.push(`${tab.href}`);
     }
   };
 
@@ -138,11 +138,7 @@ const Header = () => {
                     {links.map((link) => (
                       <li key={link.label + link.value}>
                         <Link
-                          href={
-                            link.external
-                              ? link.href
-                              : `${link.href}`
-                          }
+                          href={link.external ? link.href : `${link.href}`}
                           aria-label={link.label}
                           title={link.label}
                           className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
