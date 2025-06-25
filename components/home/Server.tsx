@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
 import NavTab from "@/components/header/NavTab";
@@ -19,6 +19,14 @@ export default function ServerFeature({
   const [active, setActive] = useState(0);
 
   const SERVER = ALL_SERVER[`SERVER_${langName.toUpperCase()}`];
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  }, [SERVER[active].videoUrl]);
 
   return (
     <section className="w-full flex flex-col items-center pt-48 sm:px-6 lg:px-8">
@@ -48,9 +56,18 @@ export default function ServerFeature({
           </div>
         )}
       </a>
-      <div className="w-full flex justify-center mb-14 rounded-[16px] p-[2px] bg-gradient-to-br from-[#7B61FF] via-[#7B61FF22] to-[#00E5FF22]">
-        <div className="rounded-[14px] overflow-hidden max-w-7xl w-full">
-          <video width="1280" height="720" controls preload="none">
+      <div className="w-full max-w-7xl flex justify-center mb-14 rounded-[16px] p-[2px] bg-gradient-to-br from-[#7B61FF] via-[#7B61FF22] to-[#00E5FF22]">
+        <div className="h-full w-full rounded-[14px] overflow-hidden">
+          <video
+            ref={videoRef}
+            width="1280"
+            height="720"
+            controls
+            autoPlay
+            muted
+            preload="none"
+            playsInline
+          >
             <source src={SERVER[active].videoUrl} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -59,7 +76,7 @@ export default function ServerFeature({
       <div className="mb-10">
         <NavTab
           tabs={SERVER}
-          value="source"
+          value={SERVER[active].value}
           onChange={(tab: any, index: number) => setActive(index)}
         />
       </div>

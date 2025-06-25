@@ -21,14 +21,15 @@ const appDocs = "https://docs.infinilabs.com/coco-app/main/";
 const serverDocs = "https://docs.infinilabs.com/coco-server/main/";
 
 export default function DownloadPage({
-  params: { lang },
+  params,
 }: {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
   const [locale, setLocale] = useState<any>();
   const [activeTab, setActiveTab] = useState<"app" | "server">("app");
 
   const getLocale = async () => {
+    const { lang } = await params;
     const langName = lang || defaultLocale;
     const dict = await getDictionary(langName);
     setLocale(dict.Download);
@@ -78,7 +79,7 @@ export default function DownloadPage({
         </a>
       </div>
 
-      {activeTab === "app" && <AppInstall locale={locale}/>}
+      {activeTab === "app" && <AppInstall locale={locale} />}
       {activeTab === "server" && <ServerInstall locale={locale} />}
     </section>
   );

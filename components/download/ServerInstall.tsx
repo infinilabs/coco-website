@@ -138,9 +138,11 @@ export default function ServerInstall({ locale }: { locale: any }) {
             </div>
             <div className="flex flex-col gap-3 mt-4">
               {macLinksServer.map((item) => (
-                <div className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+                <div
+                  key={item.label}
+                  className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
+                >
                   <a
-                    key={item.label}
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -185,9 +187,11 @@ export default function ServerInstall({ locale }: { locale: any }) {
 
             <div className="flex flex-col gap-3 mt-4">
               {winLinksServer.map((item) => (
-                <div className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+                <div
+                  key={item.label}
+                  className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
+                >
                   <a
-                    key={item.label}
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -227,9 +231,11 @@ export default function ServerInstall({ locale }: { locale: any }) {
             <div></div>
             <div className="flex flex-col gap-3 mt-4">
               {linuxLinkServer.map((item) => (
-                <div className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+                <div
+                  key={item.label}
+                  className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
+                >
                   <a
-                    key={item.label}
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"

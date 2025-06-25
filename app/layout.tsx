@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
+import { notFound } from 'next/navigation';
 
 // import BaiDuAnalytics from "@/app/BaiDuAnalytics";
 // import GoogleAnalytics from "@/app/GoogleAnalytics";
@@ -48,11 +49,13 @@ export const viewport: Viewport = {
 
 export default async function RootLayout({
   children,
-  params: { lang },
+  params,
 }: {
   children: React.ReactNode;
-  params: { lang: string | undefined };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
+
   return (
     <html lang={lang || defaultLocale} suppressHydrationWarning>
       <head />

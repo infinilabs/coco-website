@@ -101,9 +101,9 @@ export default function AppInstall({ locale }: { locale: any }) {
           </div>
           <div className="flex flex-col gap-3 mt-4">
             {macLinks.map((item) => (
-              <div className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+              <div  key={item.label} className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
                 <a
-                  key={item.label}
+                 
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -151,9 +151,9 @@ export default function AppInstall({ locale }: { locale: any }) {
           </div>
           <div className="flex flex-col gap-3 mt-4">
             {winLinks.map((item) => (
-              <div className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+              <div key={item.label} className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
                 <a
-                  key={item.label}
+                  
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -196,9 +196,9 @@ export default function AppInstall({ locale }: { locale: any }) {
           </div>
           <div className="flex flex-col gap-3 mt-4">
             {linuxLinks.map((item) => (
-              <div className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+              <div key={item.label} className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
                 <a
-                  key={item.label}
+                  
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
