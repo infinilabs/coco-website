@@ -1,7 +1,18 @@
 import data from "@/public/data.json";
 
-const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
-const appVersion = data.app;
+export const appVersion = data.app;
+export const serverVersion = data.server;
+
+export const appPublish = data.app_publish;
+export const serverPublish = data.server_publish;
+
+export const appNotes = "https://github.com/infinilabs/coco-app/releases";
+export const serverNotes = "https://github.com/infinilabs/coco-server/releases";
+
+export const appDocs = "https://docs.infinilabs.com/coco-app/main/";
+export const serverDocs = "https://docs.infinilabs.com/coco-server/main/";
+
+export const InstallApi = "https://release.infinilabs.com/coco/app/stable/";
 
 export const macLinks = [
   {
@@ -69,7 +80,6 @@ export const linuxLinks = [
 export const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
 export const ServerHref =
   "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
-export const serverVersion = data.server;
 
 export const DockerCommand = `docker run -d --name cocoserver -p 9000:9000 infinilabs/coco:${serverVersion}`;
 

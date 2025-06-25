@@ -7,10 +7,7 @@
     "postbuild": "next-sitemap",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "create-docker-image": "docker build -t coco-website .",
-    "save-docker-image": "docker save -o coco-website.tar coco-website",
-    "docker": "pnpm build && pnpm postbuild && pnpm create-docker-image && pnpm save-docker-image"
+    "lint": "next lint"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
@@ -38,6 +35,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^15.3.4",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/react": "^18.3.23",

@@ -1,92 +1,11 @@
-"use client";
+import { Suspense } from "react";
 
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import DownloadPageClient from "@/components/download/DownloadPageClient";
 
-import NavTab from "@/components/header/NavTab";
-import AppInstall from "@/components/download/AppInstall";
-import ServerInstall from "@/components/download/ServerInstall";
-import { defaultLocale, getDictionary } from "@/i18n/i18n";
-import data from "@/public/data.json";
-
-const appVersion = data.app;
-const serverVersion = data.server;
-
-const appPublish = data.app_publish;
-const serverPublish = data.server_publish;
-
-const appNotes = "https://github.com/infinilabs/coco-app/releases";
-const serverNotes = "https://github.com/infinilabs/coco-server/releases";
-
-const appDocs = "https://docs.infinilabs.com/coco-app/main/";
-const serverDocs = "https://docs.infinilabs.com/coco-server/main/";
-
-export default function DownloadPage() {
-  const searchParams = useSearchParams();
-
-  const [lang, setLang] = useState(defaultLocale);
-
-  useEffect(() => {
-    const localLang =
-      typeof window !== "undefined" ? localStorage.getItem("lang") : null;
-    setLang(localLang || searchParams.get("lang") || defaultLocale);
-  }, [searchParams]);
-
-  const [locale, setLocale] = useState<any>();
-  const [activeTab, setActiveTab] = useState<"app" | "server">("app");
-
-  const getLocale = async () => {
-    const dict = await getDictionary(lang);
-    setLocale(dict.Download);
-  };
-
-  useEffect(() => {
-    getLocale();
-  }, []);
-
+export default function Download() {
   return (
-    <section className="w-full flex flex-col items-center justify-center pt-24 px-4 sm:px-6 lg:px-8">
-      <div className="mb-4 text-[56px] leading-[85px] font-medium bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
-        {locale?.title}
-      </div>
-
-      <div className="pt-16">
-        <NavTab
-          tabs={[
-            { label: "Coco AI App", value: "app" },
-            { label: "Coco AI Server", value: "server" },
-          ]}
-          value="app"
-          onChange={(tab) => setActiveTab(tab.value as "app" | "server")}
-        />
-      </div>
-
-      <div className="text-black dark:text-white text-base pt-10">
-        {locale?.time}
-        {activeTab === "app" ? appPublish : serverPublish}
-        <span className="mx-2">|</span>
-        {locale?.version}
-        {activeTab === "app" ? appVersion : serverVersion}
-        <a
-          href={activeTab === "app" ? appNotes : serverNotes}
-          target="_blank"
-          className="text-[#14C4C9] hover:underline ml-2.5"
-        >
-          {locale?.notes}
-        </a>
-        <span className="mx-2">|</span>
-        <a
-          href={activeTab === "app" ? appDocs : serverDocs}
-          target="_blank"
-          className="text-[#14C4C9] hover:underline"
-        >
-          {locale?.docs}
-        </a>
-      </div>
-
-      {activeTab === "app" && <AppInstall locale={locale} />}
-      {activeTab === "server" && <ServerInstall locale={locale} />}
-    </section>
+    <Suspense>
+      <DownloadPageClient />
+    </Suspense>
   );
 }
-

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { getDictionary } from "@/i18n/i18n";
 import Hero from "@/components/home/Hero";
@@ -11,18 +12,28 @@ import ToolsFeature from "@/components/home/Tools";
 import DeployFeature from "@/components/home/Deploy";
 import WorkFeature from "@/components/home/Work";
 import Community from "@/components/home/Community";
+import { defaultLocale } from "@/i18n/i18n";
 
-export default function HomeIndex({ lang }: { lang: string }) {
+export default function HomeIndex() {
+  const searchParams = useSearchParams();
+
+  const [lang, setLang] = useState(defaultLocale);
+  useEffect(() => {
+    const localLang =
+      typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+    setLang(localLang || searchParams.get("lang") || defaultLocale);
+  }, [searchParams]);
+
   const [dict, setDict] = useState<any>();
 
-  const getLocale = async () => {
+  const getLocale = useCallback(async () => {
     const dict = await getDictionary(lang);
     setDict(dict);
-  };
+  }, [lang]);
 
   useEffect(() => {
     getLocale();
-  }, []);
+  }, [getLocale]);
 
   return (
     <>

@@ -26,7 +26,7 @@ export default function ServerFeature({
     if (videoRef.current) {
       videoRef.current.load();
     }
-  }, [SERVER[active].videoUrl]);
+  }, [active]);
 
   return (
     <section className="w-full flex flex-col items-center pt-48 sm:px-6 lg:px-8">
