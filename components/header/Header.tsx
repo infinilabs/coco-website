@@ -3,7 +3,6 @@
 import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { useTheme } from "next-themes";
@@ -19,19 +18,15 @@ import { ALL_HEADER } from "@/data/header";
 const Header = () => {
   const { theme } = useTheme();
 
-  const searchParams = useSearchParams();
-
   const [lang, setLang] = useState(defaultLocale);
 
   useEffect(() => {
-    const localLang =
-      typeof window !== "undefined" ? localStorage.getItem("lang") : null;
-    setLang(localLang || searchParams.get("lang") || defaultLocale);
-  }, [searchParams]);
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("lang") || localStorage.getItem("lang") || defaultLocale;
+    setLang(lang);
+  }, []);
 
   const links = ALL_HEADER[`HEADER_${lang.toUpperCase()}`];
-
-  const router = useRouter();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const onChangeNavTab = (tab: any, index: number) => {
@@ -39,9 +34,9 @@ const Header = () => {
     if (tab.external) {
       window.open(tab.href, "_blank");
     } else {
-      const params = new URLSearchParams(searchParams.toString());
+      const params = new URLSearchParams(window.location.search);
       const newUrl = `${tab.href}?${params.toString()}`;
-      router.push(newUrl);
+      window.location.href = newUrl
     }
   };
 

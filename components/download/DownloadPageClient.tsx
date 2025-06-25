@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
 
 import NavTab from "@/components/header/NavTab";
 import AppInstall from "@/components/download/AppInstall";
@@ -19,15 +18,14 @@ import {
 } from "@/data/download";
 
 export default function DownloadPage() {
-  const searchParams = useSearchParams();
 
   const [lang, setLang] = useState(defaultLocale);
 
   useEffect(() => {
-    const localLang =
-      typeof window !== "undefined" ? localStorage.getItem("lang") : null;
-    setLang(localLang || searchParams.get("lang") || defaultLocale);
-  }, [searchParams]);
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("lang") || localStorage.getItem("lang") || defaultLocale;
+    setLang(lang);
+  }, []);
 
   const [locale, setLocale] = useState<any>();
   const [activeTab, setActiveTab] = useState<"app" | "server">("app");

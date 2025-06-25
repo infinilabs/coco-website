@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Globe } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -13,31 +12,27 @@ import {
 import { defaultLocale, localeNames } from "@/i18n/i18n";
 
 export const LangSwitcher = () => {
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const searchParams = useSearchParams();
 
   const [lang, setLang] = useState(defaultLocale);
 
   useEffect(() => {
-    const localLang =
-      typeof window !== "undefined" ? localStorage.getItem("lang") : null;
-    setLang(localLang || searchParams.get("lang") || defaultLocale);
-  }, [searchParams]);
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("lang") || localStorage.getItem("lang") || defaultLocale;
+    setLang(lang);
+  }, []);
 
   const handleSwitchLanguage = (value: string) => {
     localStorage.setItem("lang", value);
     //
-    const params = new URLSearchParams(searchParams.toString());
+    const params = new URLSearchParams(window.location.search);
     if (value === defaultLocale) {
       params.delete("lang");
     } else {
       params.set("lang", value);
     }
 
-    const newUrl = `${pathname}?${params.toString()}`;
-    router.push(newUrl);
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    window.location.href = newUrl
   };
 
   return (

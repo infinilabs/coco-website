@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="23px" viewBox="0 0 25 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组</title>
+    <g id="官网3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="coco-AI-zh" transform="translate(-1002, -7777)" stroke="#C06BFA" stroke-width="0.87804878">
+            <g id="编组" transform="translate(1002, 7778)">
+                <line x1="0.585365854" y1="21" x2="0.585365854" y2="0" id="路径"></line>
+                <path d="M0.585365854,2.33333333 L21.6585366,2.33333333 C22.9516911,2.33333333 24,3.37800225 24,4.66666667 L24,14 C24,15.2886644 22.9516911,16.3333333 21.6585366,16.3333333 L0.889756098,16.3333333" id="路径"></path>
+                <path d="M6.43902439,16.3333333 L6.43902439,19.8333333 C6.43902439,20.4776655 6.96317883,21 7.6097561,21 L13.4634146,21 C14.1099919,21 14.6341463,20.4776655 14.6341463,19.8333333 L14.6341463,16.3333333" id="路径"></path>
+                <ellipse id="椭圆形" cx="16.9756098" cy="9.33333333" rx="2.34146341" ry="2.33333333"></ellipse>
+                <ellipse id="椭圆形" cx="7.6097561" cy="9.33333333" rx="2.34146341" ry="2.33333333"></ellipse>
+            </g>
+        </g>
+    </g>
+</svg>
