@@ -2,9 +2,14 @@
 
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
   const { theme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   return (
     <footer className="m-auto mt-44 pt-20 sm:px-6 lg:px-8 bg-[#EBF6FF] dark:bg-transparent">

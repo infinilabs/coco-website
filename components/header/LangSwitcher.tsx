@@ -1,7 +1,8 @@
 "use client";
 
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Globe } from "lucide-react";
+import { useState, useEffect } from "react";
 
 import {
   Select,
@@ -12,37 +13,37 @@ import {
 import { defaultLocale, localeNames } from "@/i18n/i18n";
 
 export const LangSwitcher = () => {
-  const params = useParams();
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
 
-  let langName = (params.lang as string) || defaultLocale;
+  const searchParams = useSearchParams();
+
+  const [lang, setLang] = useState(defaultLocale);
+
+  useEffect(() => {
+    const localLang =
+      typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+    setLang(localLang || searchParams.get("lang") || defaultLocale);
+  }, [searchParams]);
 
   const handleSwitchLanguage = (value: string) => {
-    const pathSegments = pathname
-      .split("/")
-      .filter((segment) => segment !== "");
-    let newPath;
-
-    if (pathSegments[0] === params.lang) {
-      // Current path has a language code
-      newPath = pathSegments.slice(1).join("/");
-    } else {
-      // Current path doesn't have a language code
-      newPath = pathSegments.join("/");
-    }
-
+    localStorage.setItem("lang", value);
+    //
+    const params = new URLSearchParams(searchParams.toString());
     if (value === defaultLocale) {
-      router.push(`/${newPath}`);
+      params.delete("lang");
     } else {
-      router.push(`/${value}/${newPath}`);
+      params.set("lang", value);
     }
+
+    const newUrl = `${pathname}?${params.toString()}`;
+    router.push(newUrl);
   };
 
   return (
-    <Select value={langName as string} onValueChange={handleSwitchLanguage}>
+    <Select value={lang as string} onValueChange={handleSwitchLanguage}>
       <SelectTrigger className="w-fit" aria-label="LangSwitcher">
-        <Globe className="text-[#666] dark:text-[#999]"/>
+        <Globe className="text-[#666] dark:text-[#999]" />
       </SelectTrigger>
 
       <SelectContent>

@@ -3,9 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
   const { theme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   return (
     <>
@@ -61,7 +66,16 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
           )}
         </Link>
         <div className="max-w-7xl text-center mx-auto">
-          <video width="1280" height="720" controls autoPlay muted preload="auto" playsInline className="rounded-2xl">
+          <video
+            width="1280"
+            height="720"
+            controls
+            autoPlay
+            muted
+            preload="auto"
+            playsInline
+            className="rounded-2xl"
+          >
             <source src="/videos/preview.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>

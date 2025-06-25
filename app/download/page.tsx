@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import NavTab from "@/components/header/NavTab";
 import AppInstall from "@/components/download/AppInstall";
@@ -20,18 +21,22 @@ const serverNotes = "https://github.com/infinilabs/coco-server/releases";
 const appDocs = "https://docs.infinilabs.com/coco-app/main/";
 const serverDocs = "https://docs.infinilabs.com/coco-server/main/";
 
-export default function DownloadPage({
-  params,
-}: {
-  params: Promise<{ lang: string }>;
-}) {
+export default function DownloadPage() {
+  const searchParams = useSearchParams();
+
+  const [lang, setLang] = useState(defaultLocale);
+
+  useEffect(() => {
+    const localLang =
+      typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+    setLang(localLang || searchParams.get("lang") || defaultLocale);
+  }, [searchParams]);
+
   const [locale, setLocale] = useState<any>();
   const [activeTab, setActiveTab] = useState<"app" | "server">("app");
 
   const getLocale = async () => {
-    const { lang } = await params;
-    const langName = lang || defaultLocale;
-    const dict = await getDictionary(langName);
+    const dict = await getDictionary(lang);
     setLocale(dict.Download);
   };
 

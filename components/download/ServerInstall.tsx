@@ -1,57 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Copy } from "lucide-react";
 import { useTheme } from "next-themes";
 
-import data from "@/public/data.json";
-
-const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
-const ServerHref =
-  "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
-const serverVersion = data.server;
-
-const DockerCommand = `docker run -d --name cocoserver -p 9000:9000 infinilabs/coco:${serverVersion}`;
-
-const macLinksServer = [
-  {
-    label: "Apple Silicon",
-    size: "11MB",
-    url: `${ServerApi}coco-${serverVersion}-mac-arm64.zip`,
-    icon: "download",
-  },
-  {
-    label: "Intel Mac",
-    size: "11MB",
-    url: `${ServerApi}coco-${serverVersion}-mac-amd64.zip`,
-    icon: "download",
-  },
-];
-
-const winLinksServer = [
-  {
-    label: "AMD 64",
-    size: "11MB",
-    url: `${ServerApi}coco-${serverVersion}-windows-amd64.zip`,
-    icon: "download",
-  },
-];
-
-const linuxLinkServer = [
-  {
-    label: "AMD 64",
-    size: "11MB",
-    url: `${ServerApi}coco-${serverVersion}-linux-amd64.tar.gz`,
-    icon: "download",
-  },
-  {
-    label: "ARM 64",
-    size: "11MB",
-    url: `${ServerApi}coco-${serverVersion}-linux-arm64.tar.gz`,
-    icon: "download",
-  },
-];
+import {
+  macLinksServer,
+  winLinksServer,
+  linuxLinkServer,
+  ServerHref,
+  DockerCommand,
+} from "@/data/download";
 
 export default function ServerInstall({ locale }: { locale: any }) {
   const { theme } = useTheme();
@@ -69,6 +29,10 @@ export default function ServerInstall({ locale }: { locale: any }) {
       setCopyStatus("");
     }, 2000);
   };
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   return (
     <div className="w-full max-w-7xl pt-14">

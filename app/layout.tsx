@@ -2,7 +2,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
 import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
-import { notFound } from 'next/navigation';
 
 // import BaiDuAnalytics from "@/app/BaiDuAnalytics";
 // import GoogleAnalytics from "@/app/GoogleAnalytics";
@@ -47,24 +46,22 @@ export const viewport: Viewport = {
   themeColor: siteConfig.themeColors,
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await params;
+  const lang = defaultLocale;
 
   return (
-    <html lang={lang || defaultLocale} suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <head />
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable,
           geistSans.variable,
-          geistMono.variable,
+          geistMono.variable
         )}
       >
         <ThemeProvider

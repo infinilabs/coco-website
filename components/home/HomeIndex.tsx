@@ -1,4 +1,8 @@
-import { defaultLocale, getDictionary } from "@/i18n/i18n";
+"use client";
+
+import { useEffect, useState } from "react";
+
+import { getDictionary } from "@/i18n/i18n";
 import Hero from "@/components/home/Hero";
 import FeatureAbility from "@/components/home/Ability";
 import EfficiencyFeatures from "@/components/home/Efficiency";
@@ -8,20 +12,32 @@ import DeployFeature from "@/components/home/Deploy";
 import WorkFeature from "@/components/home/Work";
 import Community from "@/components/home/Community";
 
-export default async function HomeIndex({ lang }: { lang: string }) {
-  const langName = lang || defaultLocale;
-  const dict = await getDictionary(langName);
+export default function HomeIndex({ lang }: { lang: string }) {
+  const [dict, setDict] = useState<any>();
+
+  const getLocale = async () => {
+    const dict = await getDictionary(lang);
+    setDict(dict);
+  };
+
+  useEffect(() => {
+    getLocale();
+  }, []);
 
   return (
     <>
-      <Hero locale={dict.Hero} langName={langName} />
-      <FeatureAbility langName={langName} />
-      <EfficiencyFeatures locale={dict.Efficiency} langName={langName} />
-      <ServerFeature locale={dict.Server} langName={langName} />
-      <ToolsFeature locale={dict.Tools} langName={langName} />
-      <DeployFeature locale={dict.Deploy} langName={langName} />
-      <WorkFeature locale={dict.Work} langName={langName} />
-      <Community locale={dict.Community} langName={langName}/>
+      {dict ? (
+        <>
+          <Hero locale={dict.Hero} langName={lang} />
+          <FeatureAbility langName={lang} />
+          <EfficiencyFeatures locale={dict.Efficiency} langName={lang} />
+          <ServerFeature locale={dict.Server} langName={lang} />
+          <ToolsFeature locale={dict.Tools} langName={lang} />
+          <DeployFeature locale={dict.Deploy} langName={lang} />
+          <WorkFeature locale={dict.Work} langName={lang} />
+          <Community locale={dict.Community} langName={lang} />
+        </>
+      ) : null}
     </>
   );
 }

@@ -3,8 +3,8 @@
 import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { useTheme } from "next-themes";
 
@@ -19,10 +19,17 @@ import { ALL_HEADER } from "@/data/header";
 const Header = () => {
   const { theme } = useTheme();
 
-  const { lang } = useParams() as { lang?: string };
-  const langName = lang || defaultLocale;
+  const searchParams = useSearchParams();
 
-  const links = ALL_HEADER[`HEADER_${langName.toUpperCase()}`];
+  const [lang, setLang] = useState(defaultLocale);
+
+  useEffect(() => {
+    const localLang =
+      typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+    setLang(localLang || searchParams.get("lang") || defaultLocale);
+  }, [searchParams]);
+
+  const links = ALL_HEADER[`HEADER_${lang.toUpperCase()}`];
 
   const router = useRouter();
 
@@ -32,9 +39,15 @@ const Header = () => {
     if (tab.external) {
       window.open(tab.href, "_blank");
     } else {
-      router.push(`/${langName}${tab.href}`);
+      const params = new URLSearchParams(searchParams.toString());
+      const newUrl = `${tab.href}?${params.toString()}`;
+      router.push(newUrl);
     }
   };
+
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   return (
     <header className="py-4 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -133,7 +146,7 @@ const Header = () => {
                           href={
                             link.external
                               ? link.href
-                              : `/${langName}${link.href}`
+                              : `${link.href}`
                           }
                           aria-label={link.label}
                           title={link.label}
