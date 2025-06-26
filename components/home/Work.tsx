@@ -57,7 +57,7 @@ export default function WorkFeature({
         ))}
       </div>
       <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-        <div className="h-full w-full max-w-7xl bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-0 md:p-8 md:pb-0 flex flex-col items-center shadow-lg">
+        <div className="h-full w-full max-w-7xl bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-0 md:pt-8 flex flex-col items-center shadow-lg">
           <div className="m-4 text-center font-medium text-3xl md:text-5xl bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
             {locale.title2}
           </div>

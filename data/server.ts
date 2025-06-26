@@ -29,14 +29,14 @@ export const SERVER_EN = [
   {
     label: "MCP",
     value: "mcp",
-    desc: "Embed COCO AI as a component into web pages or systems, rapidly empower your products or business processes",
+    desc: "Compatible with the MCP protocol, enabling you to easily integrate different AI tools, enhancing the flexibility and efficiency of intelligent services",
     videoUrl: "/videos/MCP.mp4",
     icon: MCPIconSvg,
   },
   {
     label: "Integration",
     value: "embed",
-    desc: "Compatible with the MCP protocol, enabling you to easily integrate different AI tools, enhancing the flexibility and efficiency of intelligent services",
+    desc: "Embed COCO AI as a component into web pages or systems, rapidly empower your products or business processes",
     videoUrl: "/videos/Integration.mp4",
     icon: IntegrationIconSvg,
   },
@@ -67,14 +67,14 @@ export const SERVER_ZH = [
   {
     label: "MCP",
     value: "mcp",
-    desc: "将 COCO AI 作为组件嵌入网页或系统，快速赋能你的产品或业务流程",
+    desc: "兼容 MCP 协议，您轻松接入不同的 AI 工具，提升智能服务的灵活性与效率",
     videoUrl: "/videos/MCP.mp4",
     icon: MCPIconSvg,
   },
   {
     label: "嵌入组件",
     value: "embed",
-    desc: "兼容 MCP 协议，您轻松接入不同的 AI 工具，提升智能服务的灵活性与效率",
+    desc: "将 COCO AI 作为组件嵌入网页或系统，快速赋能你的产品或业务流程",
     videoUrl: "/videos/Integration.mp4",
     icon: IntegrationIconSvg,
   },
