@@ -53,6 +53,7 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
             height="720"
             controls
             autoPlay
+            loop
             muted
             preload="auto"
             playsInline
