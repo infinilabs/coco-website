@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - uses: pnpm/action-setup@v4
         with:
           package_json_file: "package.json"
@@ -42,7 +42,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: Update data.json with latest versions and publish dates
         run: |
@@ -72,26 +72,20 @@ jobs:
             local tag_attempt1="v${xyz_part}"          # Primary attempt, e.g., v0.5.3
             local tag_attempt2="v${xyz_zero_patch_part}" # Fallback, e.g., v0.5.0
 
-            echo "Attempting to fetch publish date for ${repo_slug}..."
-            
+            sleep 10
             # Attempt 1: X.Y.Z version tag (e.g., v0.5.3)
-            echo "  Trying tag: ${tag_attempt1}"
-            date_val=$(curl -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt1}" | \
-              jq -r '.published_at | split("T")[0 // empty]' 2>/dev/null)
-
+            date_val=$(curl -m60 -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt1}" | \
+              jq -r '.created_at | split("T")[0 // empty]' 2>/dev/null)
+            sleep 10
             # Attempt 2: X.Y.0 version tag (e.g., v0.5.0)
             if [[ -z "$date_val" || "$date_val" == "null" ]]; then
-              echo "  Tag ${tag_attempt1} not found or no publish date. Trying tag: ${tag_attempt2}"
-              date_val=$(curl -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt2}" | \
-                jq -r '.published_at | split("T")[0 // empty]' 2>/dev/null)
+              date_val=$(curl -m60 -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt2}" | \
+                jq -r '.created_at | split("T")[0 // empty]' 2>/dev/null)
             fi
-
+            
             # Final fallback to current date
             if [[ -z "$date_val" || "$date_val" == "null" ]]; then
-              echo "  No release date found for ${repo_slug} (tags ${tag_attempt1} or ${tag_attempt2}). Using current date."
               date_val=$(date +%Y-%m-%d)
-            else
-              echo "  Found publish date: ${date_val}"
             fi
             echo "$date_val"
           }
@@ -113,7 +107,7 @@ jobs:
           echo "Updated $DATA_JSON_PATH"
           echo
           cat "$DATA_JSON_PATH"
-          
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -143,15 +137,15 @@ jobs:
         run: pnpm build
 
       - name: Add CNAME file
-        run: echo "coco.rs" > ./out/CNAME
+        run: echo "coco.rs" > ./docs/CNAME
 
       - name: Disable Jekyll
-        run: touch out/.nojekyll
+        run: touch docs/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./docs
 
   # Deployment job
   deploy:
@@ -164,3 +158,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
