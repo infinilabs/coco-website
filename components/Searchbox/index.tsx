@@ -104,12 +104,16 @@ export default function Searchbox() {
     <script type="text/javascript"><![CDATA[
     // 获取当前 SVG 的文档对象
     const svg = document.currentScript.ownerDocument;
+
+    console.log(222222)
     
     // **添加 DOM 加载监听**
     svg.addEventListener('DOMContentLoaded', function() {
         // 在这里放置原动画逻辑（获取元素、初始化变量等）
         const typingContent = svg.getElementById('typing-content');
         const cursor = svg.getElementById('cursor');
+
+        console.log(111111, typingContent, cursor)
 
         const texts = [
             "Find that 2025 client proposal",

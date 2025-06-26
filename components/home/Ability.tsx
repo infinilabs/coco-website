@@ -6,7 +6,7 @@ export default function FeatureAbility({ langName }: { langName: string }) {
   const FEATURES = ALL_FEATURES[`FEATURES_${langName.toUpperCase()}`];
 
   return (
-    <section className="w-full flex flex-col items-center justify-center gap-20 pt-40 sm:px-6 lg:px-8">
+    <section className="w-full flex flex-col items-center justify-center gap-20 pt-40 px-4 sm:px-6 lg:px-8">
       {FEATURES?.map((feature, index) => (
         <div
           key={feature.title + index}

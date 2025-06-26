@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { getDictionary } from "@/i18n/i18n";
 import Hero from "@/components/home/Hero";
@@ -15,11 +16,15 @@ import { defaultLocale } from "@/i18n/i18n";
 
 export default function HomeIndex() {
   const [lang, setLang] = useState(defaultLocale);
+
+  const searchParams = useSearchParams();
+
   useEffect(() => {
-    const lang = localStorage.getItem("lang") || defaultLocale;
+    const lang =
+      searchParams.get("lang") || localStorage.getItem("lang") || defaultLocale;
     localStorage.setItem("lang", lang);
     setLang(lang);
-  }, []);
+  }, [searchParams.get("lang")]);
 
   const [dict, setDict] = useState<any>();
 

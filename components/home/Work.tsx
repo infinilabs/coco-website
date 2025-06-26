@@ -17,14 +17,14 @@ export default function WorkFeature({
   const WORK = ALL_WORK[`WORK_${langName.toUpperCase()}`];
 
   return (
-    <section className="w-full flex flex-col items-center pt-48 sm:px-6 lg:px-8">
+    <section className="w-full flex flex-col items-center pt-48 px-4 sm:px-6 lg:px-8">
       <div className="mb-4 font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>
       <div className="mb-14 font-normal text-[16px] leading-[22px] text-black dark:text-white">
         {locale.description}
       </div>
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 px-4">
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 px-4">
         {WORK.map((f, i) => (
           <div
             key={f.name + i}
@@ -56,7 +56,7 @@ export default function WorkFeature({
         ))}
       </div>
       <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-        <div className="h-full w-full max-w-5xl bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-0 md:p-8 flex flex-col items-center shadow-lg">
+        <div className="h-full w-full max-w-7xl bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-0 md:p-8 flex flex-col items-center shadow-lg">
           <div className="mb-4 text-center font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
             {locale.title2}
           </div>

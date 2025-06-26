@@ -58,7 +58,7 @@ export default function Community({
   if (!mounted) return null;
 
   return (
-    <div className="container m-auto text-center section-community relative pt-48 sm:px-6 lg:px-8">
+    <div className="container m-auto text-center section-community relative pt-48 px-4 sm:px-6 lg:px-8">
       <div className="mb-4 font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>

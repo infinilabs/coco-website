@@ -29,7 +29,7 @@ export default function ServerFeature({
   }, [active]);
 
   return (
-    <section className="w-full flex flex-col items-center pt-48 sm:px-6 lg:px-8">
+    <section className="w-full flex flex-col items-center pt-48 px-4 sm:px-6 lg:px-8">
       <div className="mb-4 text-center font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>
@@ -63,7 +63,6 @@ export default function ServerFeature({
             width="1280"
             height="720"
             controls
-            autoPlay
             muted
             preload="none"
             playsInline

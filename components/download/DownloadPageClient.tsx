@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 
 import NavTab from "@/components/header/NavTab";
 import AppInstall from "@/components/download/AppInstall";
@@ -19,11 +20,13 @@ import {
 
 export default function DownloadPage() {
   const [lang, setLang] = useState(defaultLocale);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    const lang = localStorage.getItem("lang") || defaultLocale;
+    const lang =
+      searchParams.get("lang") || localStorage.getItem("lang") || defaultLocale;
     setLang(lang);
-  }, []);
+  }, [searchParams.get("lang")]);
 
   const [locale, setLocale] = useState<any>();
   const [activeTab, setActiveTab] = useState<"app" | "server">("app");
@@ -54,20 +57,24 @@ export default function DownloadPage() {
         />
       </div>
 
-      <div className="text-black dark:text-white text-base pt-10">
-        {locale?.time}
-        {activeTab === "app" ? appPublish : serverPublish}
-        <span className="mx-2">|</span>
-        {locale?.version}
-        {activeTab === "app" ? appVersion : serverVersion}
+      <div className="text-center text-black dark:text-white text-base pt-10 flex flex-col md:flex-row md:items-center md:gap-2">
+        <span>
+          {locale?.time}
+          {activeTab === "app" ? appPublish : serverPublish}
+        </span>
+        <span className="mx-2 hidden md:inline-block">|</span>
+        <span>
+          {locale?.version}
+          {activeTab === "app" ? appVersion : serverVersion}
+        </span>
         <a
           href={activeTab === "app" ? appNotes : serverNotes}
           target="_blank"
-          className="text-[#14C4C9] hover:underline ml-2.5"
+          className="text-[#14C4C9] hover:underline"
         >
           {locale?.notes}
         </a>
-        <span className="mx-2">|</span>
+        <span className="mx-2 hidden md:inline-block">|</span>
         <a
           href={activeTab === "app" ? appDocs : serverDocs}
           target="_blank"

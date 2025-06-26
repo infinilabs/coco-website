@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
@@ -18,15 +18,16 @@ import { ALL_HEADER } from "@/data/header";
 
 const Header = () => {
   const router = useRouter();
+  const searchParams = useSearchParams()
 
   const { theme } = useTheme();
 
   const [lang, setLang] = useState(defaultLocale);
 
   useEffect(() => {
-    const lang = localStorage.getItem("lang") || defaultLocale;
+    const lang = searchParams.get("lang") || localStorage.getItem("lang") || defaultLocale;
     setLang(lang);
-  }, []);
+  }, [searchParams.get("lang")]);
 
   const links = ALL_HEADER[`HEADER_${lang.toUpperCase()}`];
 

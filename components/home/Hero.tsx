@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+import Searchbox from "@/components/Searchbox";
+
 const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
   const { theme } = useTheme();
 
@@ -16,7 +18,7 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
     <>
       <section
         lang={langName}
-        className="w-full flex flex-col items-center justify-center pt-24 sm:px-6 lg:px-8"
+        className="w-full flex flex-col items-center justify-center pt-28 px-4 sm:px-6 lg:px-8"
       >
         <div className="text-center text-black dark:text-white text-base mb-4 font-normal">
           {locale.title1}
@@ -26,6 +28,9 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
           <br />
           <span className="inline-block mt-2">{locale.title3}</span>
         </h1>
+        <div className="flex justify-center">
+          <Searchbox />
+        </div>
         <div className="flex justify-center mb-12">
           <Image
             src={
@@ -38,7 +43,7 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
             height={60}
           />
         </div>
-        <div className="text-center text-[#666] dark:text-[#c8c8c8] text-sm max-w-2xl mx-auto mb-12">
+        <div className="text-center text-[#666] dark:text-[#c8c8c8] text-base max-w-2xl mx-auto mb-12">
           {locale.description}
         </div>
         <Link

@@ -21,7 +21,7 @@ interface NavTabProps {
 export default function NavTab({ tabs, value, onChange }: NavTabProps) {
   const { theme } = useTheme();
 
-  const [active, setActive] = useState(tabs[0]?.value);
+  const [active, setActive] = useState(tabs && tabs[0]?.value);
 
   const handleTabClick = (tab: NavTabItem, idx: number) => {
     setActive(tab.value);
