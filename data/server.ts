@@ -29,14 +29,14 @@ export const SERVER_EN = [
   {
     label: "MCP",
     value: "mcp",
-    desc: "Embed COCO AI as a component into web pages or systems, rapidly empower your products or business processes",
+    desc: "Compatible with the MCP protocol, enabling you to easily integrate different AI tools, enhancing the flexibility and efficiency of intelligent services",
     videoUrl: "/videos/MCP.mp4",
     icon: MCPIconSvg,
   },
   {
     label: "Integration",
     value: "embed",
-    desc: "Compatible with the MCP protocol, enabling you to easily integrate different AI tools, enhancing the flexibility and efficiency of intelligent services",
+    desc: "Embed COCO AI as a component into web pages or systems, rapidly empower your products or business processes",
     videoUrl: "/videos/Integration.mp4",
     icon: IntegrationIconSvg,
   },
