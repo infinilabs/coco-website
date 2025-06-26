@@ -139,6 +139,7 @@ export default function Searchbox() {
 </svg>`;
 
   useEffect(() => {
+    let timeID: any;
     typeRef.current = false;
     const typingContent = document.getElementById(
       "__typing-content__"
@@ -158,9 +159,9 @@ export default function Searchbox() {
               INPUTTEXTS[textIndex].charAt(charIndex));
           charIndex++;
           cursor && cursor.setAttribute("x", 135 + textLen.toString());
-          setTimeout(type, typingSpeed);
+          timeID = setTimeout(type, typingSpeed);
         } else {
-          setTimeout(erase, 2000);
+          timeID = setTimeout(erase, 2000);
         }
       }
 
@@ -173,15 +174,20 @@ export default function Searchbox() {
             ));
           charIndex--;
           cursor && cursor.setAttribute("x", 135 + textLen.toString());
-          setTimeout(erase, typingSpeed / 2);
+          timeID = setTimeout(erase, typingSpeed / 2);
         } else {
           textIndex = (textIndex + 1) % INPUTTEXTS.length;
-          setTimeout(type, 500);
+          timeID = setTimeout(type, 500);
         }
       }
 
-      setTimeout(type, 1000);
+      timeID = setTimeout(type, 1000);
     }
+
+    return () => {
+      typeRef.current = true;
+      timeID && clearTimeout(timeID);
+    };
   }, [theme]);
 
   return (
