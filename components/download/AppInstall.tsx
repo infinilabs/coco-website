@@ -36,7 +36,7 @@ export default function AppInstall({ locale }: { locale: any }) {
               macOS
             </span>
           </div>
-          <div className="font-normal text-base text-[#9696B4] leading-[22px]">
+          <div className="h-11 font-normal text-base text-[#9696B4] leading-[22px]">
             {locale?.macOS}
           </div>
           <div className="flex flex-col gap-3 mt-4">
@@ -95,7 +95,7 @@ export default function AppInstall({ locale }: { locale: any }) {
               Windows
             </span>
           </div>
-          <div className="font-normal text-base text-[#9696B4] leading-[22px]">
+          <div className="h-11 font-normal text-base text-[#9696B4] leading-[22px]">
             {locale?.window}
           </div>
           <div className="flex flex-col gap-3 mt-4">
@@ -149,7 +149,7 @@ export default function AppInstall({ locale }: { locale: any }) {
               Ubuntu
             </span>
           </div>
-          <div className="font-normal text-base text-[#9696B4] leading-[22px]">
+          <div className="h-11 font-normal text-base text-[#9696B4] leading-[22px]">
             {locale?.unbuntu}
           </div>
           <div className="flex flex-col gap-3 mt-4">

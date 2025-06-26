@@ -45,43 +45,43 @@ export const WORK_EN = [
 
 export const WORK_ZH = [
   {
-    name: "刘良",
+    name: "刘晨",
     role: "内容运营",
     avatar: "/images/home/work-user-1.png",
     content:
-      "平时找文件用半天，现在一句话查出来了，室之间 Notion 里的都能精确到",
+      "平时找文件最头疼，现在一句话全搜出来了，连之前 Notion 里写的都能搜到",
   },
   {
-    name: "奥利维亚",
+    name: "Olivia",
     role: "内容经理",
     avatar: "/images/home/work-user-2.png",
-    content: "COCO 省掉了个⼈快捷栏用量，切助手比切标签要流畅",
+    content: "COCO 就像十个AI秘书驻扎在我屏幕上，切助手比切标签页还快",
   },
   {
-    name: "柯晨",
+    name: "Ke Chen",
     role: "IT 负责人",
     avatar: "/images/home/work-user-3.png",
     content:
-      "在群里把 Coco AI 组件群聊了内网系统，大家现在习惯问问题先找 Coco AI，再问人",
+      "我直接把 Coco Ai 组件嵌到了内网系统，大家现在习惯有问题先搜 Coco AI，再问人",
   },
   {
-    name: "托马斯",
+    name: "Thomas",
     role: "销售经理",
     avatar: "/images/home/work-user-4.png",
-    content: "最喜欢不用切来切去，资料、邮件、窗口都能在一个地方搞定",
+    content: "最喜欢它不用切来切去，查资料、算个数、翻译都能在一个地方搞定",
   },
   {
-    name: "王涵",
+    name: "Han Wang",
     role: "CTO",
     avatar: "/images/home/work-user-5.png",
     content:
-      "Coco 直接接入内部知识系统，研发/内容同事直接多角色 AI 助手联动。我们从一个文档检索点，体验到一个双模助手，用起来感觉每个人多了个秘书，而且会进化，不会掉队。",
+      "Coco 能对接公司自己的权限系统、部署在内网，还能设置多角色 AI 助手。我们给人事一个文档检索助手，给财务一个数据解释助手，用起来就像每个人多了个秘书，而且不会出错、不会辞职。",
   },
   {
-    name: "吴天",
+    name: "Tian Wu",
     role: "程序员",
     avatar: "/images/home/work-user-6.png",
-    content: "感觉就是 Raycast + ChatGPT + 搜索引擎都装进了一个柜⼦",
+    content: "感觉是把 Raycast + ChatGPT + 搜索引擎都装进了一个框",
   },
 ];
 

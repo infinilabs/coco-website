@@ -15,6 +15,7 @@ import { ALL_HEADER } from "@/data/header";
 import { siteConfig } from "@/data/site";
 import { defaultLocale } from "@/i18n/i18n";
 import { ThemedButton } from "./ThemedButton";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const Header = () => {
   const router = useRouter();
@@ -86,7 +87,7 @@ const Header = () => {
         {/* Right section */}
         <div className="hidden md:flex items-center justify-end gap-x-6 flex-1">
           <ThemedButton />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<LoadingScreen />}>
             <LangSwitcher />
           </Suspense>
           <HeaderLinks />
