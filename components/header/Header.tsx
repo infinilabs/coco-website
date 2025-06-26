@@ -4,7 +4,7 @@ import { MenuIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
 
@@ -19,8 +19,19 @@ import LoadingScreen from "@/components/LoadingScreen";
 
 const Header = () => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const { theme } = useTheme();
+
+  const [navActive, setNavActive] = useState("home");
+  useEffect(() => {
+    if (pathname === "/") {
+      setNavActive("home");
+    } else {
+      const cleanPath = pathname.startsWith("/") ? pathname.slice(1) : pathname;
+      setNavActive(cleanPath);
+    }
+  }, [pathname]);
 
   const [lang, setLang] = useState(defaultLocale);
 
@@ -81,7 +92,7 @@ const Header = () => {
 
         {/* Nav */}
         <div className="hidden md:flex flex-1 justify-center">
-          <NavTab tabs={links} value="home" onChange={onChangeNavTab} />
+          <NavTab tabs={links} value={navActive} onChange={onChangeNavTab} />
         </div>
 
         {/* Right section */}
