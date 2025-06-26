@@ -30,7 +30,7 @@ export const macLinks = [
   {
     label: "App store",
     size: "",
-    url: "#",
+    url: "",
     icon: "external",
   },
 ];
@@ -57,7 +57,7 @@ export const winLinks = [
   {
     label: "Microsoft Store",
     size: "",
-    url: "#",
+    url: "",
     icon: "external",
   },
 ];

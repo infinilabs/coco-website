@@ -32,6 +32,7 @@ const Header = () => {
   const links = ALL_HEADER[`HEADER_${lang.toUpperCase()}`];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const onChangeNavTab = (tab: any, index: number) => {
     // Handle tab change logic here
     if (tab.external) {

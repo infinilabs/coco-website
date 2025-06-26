@@ -23,13 +23,13 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         <div className="text-center text-black dark:text-white text-base mb-4 font-normal">
           {locale.title1}
         </div>
-        <h1 className="max-w-4xl text-center font-bold text-3xl md:text-5xl leading-snug text-black dark:text-white mb-12">
+        <h1 className="max-w-4xl text-center font-bold text-3xl md:text-5xl leading-snug text-black dark:text-white md:mb-12">
           {locale.title2}
         </h1>
         <div className="w-full flex justify-center">
           <Searchbox />
         </div>
-        <div className="text-center text-[#666] dark:text-[#c8c8c8] text-base max-w-2xl mx-auto mb-12">
+        <div className="text-center text-[#666] dark:text-[#c8c8c8] text-base max-w-3xl mx-auto mb-12">
           {locale.description}
         </div>
         <Link

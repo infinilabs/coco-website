@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
-import { Inter as FontSans } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter as FontSans, Poppins } from "next/font/google";
+// import localFont from "next/font/local";
 
 // import BaiDuAnalytics from "@/app/BaiDuAnalytics";
 // import GoogleAnalytics from "@/app/GoogleAnalytics";
@@ -16,20 +16,25 @@ import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import "@/styles/loading.css";
 
-const fontSans = FontSans({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
 });
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const fontSans = FontSans({
+//   subsets: ["latin"],
+//   variable: "--font-sans",
+// });
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata = {
   title: siteConfig.name,
@@ -58,10 +63,11 @@ export default function RootLayout({
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          geistSans.variable,
-          geistMono.variable
+          "min-h-screen bg-background antialiased",
+          // fontSans.variable,
+          // geistSans.variable,
+          // geistMono.variable,
+          poppins.variable
         )}
       >
         <ThemeProvider

@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 import { macLinks, winLinks, linuxLinks } from "@/data/download";
+import { divider } from "@nextui-org/react";
 
 export default function AppInstall({ locale }: { locale: any }) {
   const { theme } = useTheme();
@@ -44,25 +45,36 @@ export default function AppInstall({ locale }: { locale: any }) {
                 key={item.label}
                 className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
               >
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
-                >
-                  <div className="flex flex-col">
-                    <span className="font-medium">{item.label}</span>
-                    <span className="text-xs text-gray-400">{item.size}</span>
-                  </div>
-                  <span>
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
+                  >
+                    <div className="flex flex-col">
+                      <span className="font-medium">{item.label}</span>
+                      <span className="text-xs text-gray-400">{item.size}</span>
+                    </div>
                     <Image
-                      src={"/svg/download/down-light.svg"}
+                      src={
+                        item.label === "App store"
+                          ? "/svg/download/link.svg"
+                          : "/svg/download/down-light.svg"
+                      }
                       alt="down"
                       width={16}
                       height={16}
                     />
-                  </span>
-                </a>
+                  </a>
+                ) : (
+                  <div className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-[#676767] transition">
+                    <div className="flex flex-col">
+                      <span className="font-medium">{item.label}</span>
+                      <span className="text-xs text-gray-400">{item.size}</span>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -92,25 +104,36 @@ export default function AppInstall({ locale }: { locale: any }) {
                 key={item.label}
                 className="p-[2px] rounded-[16px] hover:bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
               >
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
-                >
-                  <div className="flex flex-col">
-                    <span className="font-medium">{item.label}</span>
-                    <span className="text-xs text-gray-400">{item.size}</span>
-                  </div>
-                  <span>
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
+                  >
+                    <div className="flex flex-col">
+                      <span className="font-medium">{item.label}</span>
+                      <span className="text-xs text-gray-400">{item.size}</span>
+                    </div>
                     <Image
-                      src={"/svg/download/down-light.svg"}
+                      src={
+                        item.label === "Microsoft Store"
+                          ? "/svg/download/link.svg"
+                          : "/svg/download/down-light.svg"
+                      }
                       alt="down"
                       width={16}
                       height={16}
                     />
-                  </span>
-                </a>
+                  </a>
+                ) : (
+                  <div className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-[#676767] transition">
+                    <div className="flex flex-col">
+                      <span className="font-medium">{item.label}</span>
+                      <span className="text-xs text-gray-400">{item.size}</span>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -145,14 +168,12 @@ export default function AppInstall({ locale }: { locale: any }) {
                     <span className="font-medium">{item.label}</span>
                     <span className="text-xs text-gray-400">{item.size}</span>
                   </div>
-                  <span>
-                    <Image
-                      src={"/svg/download/down-light.svg"}
-                      alt="down"
-                      width={16}
-                      height={16}
-                    />
-                  </span>
+                  <Image
+                    src={"/svg/download/down-light.svg"}
+                    alt="down"
+                    width={16}
+                    height={16}
+                  />
                 </a>
               </div>
             ))}
@@ -161,28 +182,24 @@ export default function AppInstall({ locale }: { locale: any }) {
                 href="https://snapcraft.io/coco"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
+                className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
               >
-                <div className="flex flex-col">
-                  <Image
-                    src={
-                      theme === "dark"
-                        ? "/svg/download/snap-install.svg"
-                        : "/svg/download/snap-install-light.svg"
-                    }
-                    alt="snap"
-                    width={170}
-                    height={32}
-                  />
-                </div>
-                <span>
-                  <Image
-                    src={"/svg/download/link.svg"}
-                    alt="link"
-                    width={14}
-                    height={14}
-                  />
-                </span>
+                <Image
+                  src={
+                    theme === "dark"
+                      ? "/svg/download/snap-install.svg"
+                      : "/svg/download/snap-install-light.svg"
+                  }
+                  alt="snap"
+                  width={137}
+                  height={32}
+                />
+                <Image
+                  src={"/svg/download/link.svg"}
+                  alt="link"
+                  width={14}
+                  height={14}
+                />
               </a>
             </div>
           </div>

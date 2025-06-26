@@ -24,7 +24,7 @@ export default function NavTab({ tabs, value, onChange }: NavTabProps) {
   const [active, setActive] = useState(tabs && tabs[0]?.value);
 
   const handleTabClick = (tab: NavTabItem, idx: number) => {
-    setActive(tab.value);
+    !tab.external && setActive(tab.value);
     onChange?.(tab, idx);
     tab.onClick?.();
   };

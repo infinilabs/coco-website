@@ -57,7 +57,7 @@ export default function ServerFeature({
         )}
       </a> */}
       <div className="w-full max-w-7xl flex justify-center mb-14 rounded-[16px] p-[2px] bg-gradient-to-br from-[#7B61FF] via-[#7B61FF22] to-[#00E5FF22]">
-        <div className="h-full w-full rounded-[14px] overflow-hidden">
+        <div className="max-w-7xl h-auto rounded-[14px] overflow-hidden">
           <video
             ref={videoRef}
             width="1280"
