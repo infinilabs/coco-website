@@ -1,14 +1,14 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
-import { Inter as FontSans, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 // import localFont from "next/font/local";
 
 // import BaiDuAnalytics from "@/app/BaiDuAnalytics";
 // import GoogleAnalytics from "@/app/GoogleAnalytics";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 import { siteConfig } from "@/data/site";
 import { defaultLocale } from "@/i18n/i18n";
 import { cn } from "@/lib/utils";

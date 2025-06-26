@@ -21,7 +21,7 @@ import AppIcon from "@/components/icons/AppIcon";
 import ServerIcon from "@/components/icons/ServerIcon";
 
 
-export default function DownloadPage() {
+export default function DownloadPageClient() {
   const [lang, setLang] = useState(defaultLocale);
   const searchParams = useSearchParams();
 
@@ -29,7 +29,7 @@ export default function DownloadPage() {
     const lang =
       searchParams.get("lang") || localStorage.getItem("lang") || defaultLocale;
     setLang(lang);
-  }, [searchParams.get("lang")]);
+  }, [searchParams]);
 
   const [locale, setLocale] = useState<any>();
   const [activeTab, setActiveTab] = useState<"app" | "server">("app");

@@ -24,7 +24,7 @@ export default function HomeIndex() {
       searchParams.get("lang") || localStorage.getItem("lang") || defaultLocale;
     localStorage.setItem("lang", lang);
     setLang(lang);
-  }, [searchParams.get("lang")]);
+  }, [searchParams]);
 
   const [dict, setDict] = useState<any>();
 

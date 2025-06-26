@@ -1,38 +1,37 @@
 "use client";
 
 import { MenuIcon } from "lucide-react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { CgClose } from "react-icons/cg";
-import { useTheme } from "next-themes";
-import { useRouter, useSearchParams } from "next/navigation";
 
 import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
 import NavTab from "@/components/header/NavTab";
+import { ALL_HEADER } from "@/data/header";
 import { siteConfig } from "@/data/site";
 import { defaultLocale } from "@/i18n/i18n";
 import { ThemedButton } from "./ThemedButton";
-import { ALL_HEADER } from "@/data/header";
 
 const Header = () => {
   const router = useRouter();
-  const searchParams = useSearchParams()
 
   const { theme } = useTheme();
 
   const [lang, setLang] = useState(defaultLocale);
 
   useEffect(() => {
-    const lang = searchParams.get("lang") || localStorage.getItem("lang") || defaultLocale;
+    const lang = localStorage.getItem("lang") || defaultLocale;
     setLang(lang);
-  }, [searchParams.get("lang")]);
+  }, []);
 
   const links = ALL_HEADER[`HEADER_${lang.toUpperCase()}`];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const onChangeNavTab = (tab: any, index: number) => {
     // Handle tab change logic here
     if (tab.external) {
@@ -47,7 +46,7 @@ const Header = () => {
   if (!mounted) return null;
 
   return (
-    <header className="py-4 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <header className="w-full py-4 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <nav className="relative z-50 flex justify-between items-center">
         {/* Left section */}
         <div className="flex items-center md:gap-x-12 flex-1">
@@ -87,7 +86,9 @@ const Header = () => {
         {/* Right section */}
         <div className="hidden md:flex items-center justify-end gap-x-6 flex-1">
           <ThemedButton />
-          <LangSwitcher />
+          <Suspense fallback={<div>Loading...</div>}>
+            <LangSwitcher />
+          </Suspense>
           <HeaderLinks />
         </div>
 

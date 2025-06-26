@@ -4,7 +4,7 @@ import PrivacyClient from "@/components/privacy/PrivacyClient";
 
 export default function PrivacyPage() {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <PrivacyClient />
     </Suspense>
   );

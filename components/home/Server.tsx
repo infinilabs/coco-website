@@ -66,6 +66,7 @@ export default function ServerFeature({
             muted
             preload="none"
             playsInline
+            poster="/images/home/Server.png"
           >
             <source src={SERVER[active].videoUrl} type="video/mp4" />
             Your browser does not support the video tag.

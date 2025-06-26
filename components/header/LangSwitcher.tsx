@@ -1,8 +1,8 @@
 "use client";
 
 import { Globe } from "lucide-react";
-import { useState, useEffect } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import {
   Select,
@@ -15,13 +15,11 @@ import { defaultLocale, localeNames } from "@/i18n/i18n";
 export const LangSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const [lang, setLang] = useState(defaultLocale);
 
   useEffect(() => {
-    const lang =
-      searchParams.get("lang") || localStorage.getItem("lang") || defaultLocale;
+    const lang = localStorage.getItem("lang") || defaultLocale;
     setLang(lang);
   }, []);
 
