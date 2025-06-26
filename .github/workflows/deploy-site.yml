@@ -72,12 +72,14 @@ jobs:
             local tag_attempt1="v${xyz_part}"          # Primary attempt, e.g., v0.5.3
             local tag_attempt2="v${xyz_zero_patch_part}" # Fallback, e.g., v0.5.0
 
+            sleep 10
             # Attempt 1: X.Y.Z version tag (e.g., v0.5.3)
-            date_val=$(curl -m30 -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt1}" | \
+            date_val=$(curl -m60 -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt1}" | \
               jq -r '.created_at | split("T")[0 // empty]' 2>/dev/null)
+            sleep 10
             # Attempt 2: X.Y.0 version tag (e.g., v0.5.0)
             if [[ -z "$date_val" || "$date_val" == "null" ]]; then
-              date_val=$(curl -m30 -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt2}" | \
+              date_val=$(curl -m60 -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt2}" | \
                 jq -r '.created_at | split("T")[0 // empty]' 2>/dev/null)
             fi
             
