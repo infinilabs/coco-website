@@ -26,20 +26,8 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         <h1 className="max-w-4xl text-center font-bold text-3xl md:text-5xl leading-snug text-black dark:text-white mb-12">
           {locale.title2}
         </h1>
-        <div className="flex justify-center">
+        <div className="w-full flex justify-center">
           <Searchbox />
-        </div>
-        <div className="flex justify-center mb-12">
-          <Image
-            src={
-              theme === "dark"
-                ? "/svg/home/input-zh.svg"
-                : "/svg/home/input-light.svg"
-            }
-            alt="input"
-            width={640}
-            height={60}
-          />
         </div>
         <div className="text-center text-[#666] dark:text-[#c8c8c8] text-base max-w-2xl mx-auto mb-12">
           {locale.description}
