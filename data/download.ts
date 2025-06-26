@@ -71,8 +71,8 @@ export const linuxLinks = [
   },
   {
     label: "ARM 64",
-    size: "",
-    url: "",
+    size: "10MB",
+    url: `${InstallApi}Coco-AI-${appVersion}-deb-linux-arm64.zip`,
     icon: "external",
   },
 ];

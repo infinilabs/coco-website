@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 interface NavTabItem {
@@ -22,6 +22,9 @@ export default function NavTab({ tabs, value, onChange }: NavTabProps) {
   const { theme } = useTheme();
 
   const [active, setActive] = useState(tabs && tabs[0]?.value);
+  useEffect(() => {
+    if (value) setActive(value);
+  }, [value]);
 
   const handleTabClick = (tab: NavTabItem, idx: number) => {
     !tab.external && setActive(tab.value);
