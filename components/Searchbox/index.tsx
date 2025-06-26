@@ -1,9 +1,13 @@
 "use client";
 
-import Script from "next/script"
+import Script from "next/script";
+import { useEffect, useRef } from "react";
 
 export default function Searchbox() {
-  const svgContent = `<svg width="100%" height="200px" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    const typeRef = useRef(true)
+
+    const svgContent = `<svg width="100%" height="200px" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g transform="translate(30, 20)">
         <title>Coco AI</title>
         <defs>
@@ -94,81 +98,74 @@ export default function Searchbox() {
         <!-- 动态文字和光标 -->
         <g>
             <text x="135" y="108" class="typing-text">
-                <tspan id="typing-content"></tspan>
+                <tspan id="__typing-content__"></tspan>
             </text>
-            <rect x="135" y="93" width="2" height="16" class="cursor" id="cursor">
+            <rect x="135" y="93" width="2" height="16" class="cursor" id="__cursor__">
                 <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
             </rect>
         </g>
-
-    <script type="text/javascript"><![CDATA[
-    // 获取当前 SVG 的文档对象
-    const svg = document.currentScript.ownerDocument;
-
-    console.log(222222)
-    
-    // **添加 DOM 加载监听**
-    svg.addEventListener('DOMContentLoaded', function() {
-        // 在这里放置原动画逻辑（获取元素、初始化变量等）
-        const typingContent = svg.getElementById('typing-content');
-        const cursor = svg.getElementById('cursor');
-
-        console.log(111111, typingContent, cursor)
-
-        const texts = [
-            "Find that 2025 client proposal",
-            "Search My Team's Knowledgebase",
-            "Search My Local Files",
-            "What's our Kubernetes upgrade policy?",
-            "Search Local Applications",
-            "Search My Family Photos",
-            "Embed knowledge search into our support portal",
-            "Search My Local Images",
-            "Summarize last quarter's sales performance",
-            "Search My Local Videos",
-            "Launch my development environment",
-            "Search Company Shared Documents",
-            "Where can I find our remote work policy?",
-            "Search AI Commands",
-            "Search AI Assistants",
-            "Search My Company's News",
-            "Search My Team's Blogs",
-            "Search for issues no matter where they are",
-        ];
-
-        let textIndex = 0, charIndex = 0;
-        const typingSpeed = 80;
-
-        function type() {
-            if (charIndex < texts[textIndex].length) {
-                typingContent.textContent += texts[textIndex].charAt(charIndex);
-                charIndex++;
-                cursor.setAttribute('x', 135 + typingContent.getComputedTextLength());
-                setTimeout(type, typingSpeed);
-            } else {
-                setTimeout(erase, 2000);
-            }
-        }
-
-        function erase() {
-            if (charIndex > 0) {
-                typingContent.textContent = texts[textIndex].substring(0, charIndex - 1);
-                charIndex--;
-                cursor.setAttribute('x', 135 + typingContent.getComputedTextLength());
-                setTimeout(erase, typingSpeed / 2);
-            } else {
-                textIndex = (textIndex + 1) % texts.length;
-                setTimeout(type, 500);
-            }
-        }
-
-        setTimeout(type, 1000);
-    });
-  ]]></script>
     </g>
 </svg>`
 
-  return (
+    useEffect(() => {
+        if (typeRef.current) {
+            typeRef.current = false
+            const typingContent = document.getElementById('__typing-content__');
+            const cursor = document.getElementById('__cursor__');
+            if (typingContent && cursor) {
+                const texts = [
+                    "Find that 2025 client proposal",
+                    "Search My Team's Knowledgebase",
+                    "Search My Local Files",
+                    "What's our Kubernetes upgrade policy?",
+                    "Search Local Applications",
+                    "Search My Family Photos",
+                    "Embed knowledge search into our support portal",
+                    "Search My Local Images",
+                    "Summarize last quarter's sales performance",
+                    "Search My Local Videos",
+                    "Launch my development environment",
+                    "Search Company Shared Documents",
+                    "Where can I find our remote work policy?",
+                    "Search AI Commands",
+                    "Search AI Assistants",
+                    "Search My Company's News",
+                    "Search My Team's Blogs",
+                    "Search for issues no matter where they are",
+                ];
+
+                let textIndex = 0, charIndex = 0;
+                const typingSpeed = 80;
+
+                function type() {
+                    if (charIndex < texts[textIndex].length) {
+                        typingContent.textContent += texts[textIndex].charAt(charIndex);
+                        charIndex++;
+                        cursor.setAttribute('x', 135 + typingContent.getComputedTextLength());
+                        setTimeout(type, typingSpeed);
+                    } else {
+                        setTimeout(erase, 2000);
+                    }
+                }
+
+                function erase() {
+                    if (charIndex > 0) {
+                        typingContent.textContent = texts[textIndex].substring(0, charIndex - 1);
+                        charIndex--;
+                        cursor.setAttribute('x', 135 + typingContent.getComputedTextLength());
+                        setTimeout(erase, typingSpeed / 2);
+                    } else {
+                        textIndex = (textIndex + 1) % texts.length;
+                        setTimeout(type, 500);
+                    }
+                }
+
+                setTimeout(type, 1000);
+            }
+        }
+    }, []);
+
+    return (
         <>
             <div id="searchbox-container"></div>
             <div id="searchbox-trigger" className="cursor-pointer w-full" dangerouslySetInnerHTML={{ __html: svgContent }}></div>
@@ -183,5 +180,5 @@ export default function Searchbox() {
                 `}
             </Script>
         </>
-  )
+    )
 }
