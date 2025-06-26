@@ -17,6 +17,9 @@ import {
   appDocs,
   serverDocs,
 } from "@/data/download";
+import AppIcon from "@/components/icons/AppIcon";
+import ServerIcon from "@/components/icons/ServerIcon";
+
 
 export default function DownloadPage() {
   const [lang, setLang] = useState(defaultLocale);
@@ -42,15 +45,15 @@ export default function DownloadPage() {
 
   return (
     <section className="w-full flex flex-col items-center justify-center pt-24 px-4 sm:px-6 lg:px-8">
-      <div className="mb-4 text-[56px] leading-[85px] font-medium bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
+      <div className="mb-4 text-center text-4xl md:text-6xl font-medium bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale?.title}
       </div>
 
       <div className="pt-16">
         <NavTab
           tabs={[
-            { label: "Coco AI App", value: "app" },
-            { label: "Coco AI Server", value: "server" },
+            { label: "Coco AI App", value: "app", icon: AppIcon },
+            { label: "Coco AI Server", value: "server", icon: ServerIcon },
           ]}
           value="app"
           onChange={(tab) => setActiveTab(tab.value as "app" | "server")}

@@ -23,10 +23,8 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         <div className="text-center text-black dark:text-white text-base mb-4 font-normal">
           {locale.title1}
         </div>
-        <h1 className="text-center font-bold text-3xl md:text-5xl leading-snug text-black dark:text-white mb-12">
+        <h1 className="max-w-4xl text-center font-bold text-3xl md:text-5xl leading-snug text-black dark:text-white mb-12">
           {locale.title2}
-          <br />
-          <span className="inline-block mt-2">{locale.title3}</span>
         </h1>
         <div className="flex justify-center">
           <Searchbox />
@@ -47,28 +45,19 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
           {locale.description}
         </div>
         <Link
-          href={`/${langName}/download`}
+          href={`/download?lang=${langName}`}
           aria-label="download"
           className="mb-14"
         >
-          {theme === "dark" ? (
-            <Image
-              src="/svg/home/download-zh.svg"
-              alt="download"
-              width={160}
-              height={48}
-            />
-          ) : (
-            <div
-              className={`h-12 leading-[48px] px-8 rounded-full font-semibold text-base transition-colors text-[#04071b]`}
-              style={{
-                background: "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
-                boxShadow: "0 2px 12px 0 #19F3FF55",
-              }}
-            >
-              {locale.download}
-            </div>
-          )}
+          <div
+            className={`h-12 leading-[48px] px-8 rounded-full font-semibold text-base transition-colors text-[#04071b]`}
+            style={{
+              background: "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
+              boxShadow: "0 2px 12px 0 #19F3FF55",
+            }}
+          >
+            {locale.download}
+          </div>
         </Link>
         <div className="max-w-7xl text-center mx-auto">
           <video

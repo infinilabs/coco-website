@@ -37,7 +37,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
   return (
     <div className="w-full max-w-7xl pt-14">
       <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-        <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-2xl shadow-lg p-8 mx-auto">
+        <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-2xl shadow-lg p-4 md:p-8 mx-auto">
           <div className="flex items-center gap-2 mb-3">
             <Image
               src="/svg/download/Docker.svg"
@@ -83,7 +83,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
       <div className="w-full pt-5 grid grid-cols-1 md:grid-cols-3 gap-5 mx-auto">
         {/* macOS */}
         <div className="min-h-[200px] p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-          <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-2xl px-8 py-10 flex flex-col shadow-lg">
+          <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-2xl px-4 py-5 md:px-8 md:py-10 flex flex-col shadow-lg">
             <div className="flex items-center gap-3 mb-2">
               <Image
                 src={
@@ -110,7 +110,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-4 py-3 text-black dark:text-white transition"
+                    className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-4 py-3 text-black dark:text-white transition"
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">{item.label}</span>
@@ -118,11 +118,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                     </div>
                     <span>
                       <Image
-                        src={
-                          theme === "dark"
-                            ? "/svg/download/down.svg"
-                            : "/svg/download/down-light.svg"
-                        }
+                        src={"/svg/download/down-light.svg"}
                         alt="down"
                         width={16}
                         height={16}
@@ -136,7 +132,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
         </div>
         {/* Windows */}
         <div className="min-h-[200px] p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-          <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-2xl px-8 py-10 flex flex-col shadow-lg">
+          <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-2xl px-4 py-5 md:px-8 md:py-10 flex flex-col shadow-lg">
             <div className="flex items-center gap-3 mb-2">
               <Image
                 src="/svg/windows11-logo.svg"
@@ -159,7 +155,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-4 py-3 text-black dark:text-white transition"
+                    className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-4 py-3 text-black dark:text-white transition"
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">{item.label}</span>
@@ -167,11 +163,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                     </div>
                     <span>
                       <Image
-                        src={
-                          theme === "dark"
-                            ? "/svg/download/down.svg"
-                            : "/svg/download/down-light.svg"
-                        }
+                        src={"/svg/download/down-light.svg"}
                         alt="down"
                         width={16}
                         height={16}
@@ -185,7 +177,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
         </div>
         {/* Linux */}
         <div className="min-h-[200px] p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-          <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-2xl px-8 py-10 flex flex-col shadow-lg">
+          <div className="h-full bg-[#EBF6FF] dark:bg-[#04071B] rounded-2xl px-4 py-5 md:px-8 md:py-10 flex flex-col shadow-lg">
             <div className="flex items-center gap-3 mb-2">
               <Image src="/svg/linux.svg" alt="Linux" width={24} height={24} />
               <span className="text-black dark:text-white text-xl font-semibold">
@@ -203,7 +195,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-4 py-3 text-black dark:text-white transition"
+                    className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-4 py-3 text-black dark:text-white transition"
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">{item.label}</span>
@@ -211,11 +203,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
                     </div>
                     <span>
                       <Image
-                        src={
-                          theme === "dark"
-                            ? "/svg/download/down.svg"
-                            : "/svg/download/down-light.svg"
-                        }
+                        src={"/svg/download/down-light.svg"}
                         alt="down"
                         width={16}
                         height={16}

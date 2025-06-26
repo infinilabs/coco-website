@@ -135,7 +135,7 @@ const Header = () => {
                   </div>
                 </div>
                 <nav>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 my-8">
                     {links.map((link) => (
                       <li key={link.label + link.value}>
                         <Link

@@ -13,13 +13,13 @@ export default function EfficiencyFeatures({
 
   return (
     <section className="w-full flex flex-col items-center pt-48 px-4 sm:px-6 lg:px-8">
-      <div className="mb-4 font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
+      <div className="mb-4 font-medium text-3xl md:text-5xl bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>
-      <div className="mb-14 font-normal text-[16px] leading-[22px] text-black dark:text-white">
+      <div className="mb-14 font-normal text-base text-black dark:text-white">
         {locale.description}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-7xl px-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-7xl">
         {EFFICIENCY.map((f, i) => (
           <div
             key={f.title + i}
@@ -38,7 +38,7 @@ export default function EfficiencyFeatures({
               <div className="mb-5 font-medium text-[32px] leading-[45px] text-black dark:text-white">
                 {f.title}
               </div>
-              <div className="font-normal text-[16px] leading-[22px] text-[#9696B4]">
+              <div className="font-normal text-base text-[#9696B4]">
                 {f.content}
               </div>
             </div>

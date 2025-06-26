@@ -42,7 +42,7 @@ export default function NavTab({ tabs, value, onChange }: NavTabProps) {
           return (
             <button
               key={tab.value}
-              className={`relative z-10 h-12 px-8 flex items-center gap-2 rounded-full font-semibold text-base transition-colors
+              className={`relative z-10 h-12 px-4 md:px-8 flex items-center gap-1 md:gap-2 rounded-full font-semibold text-sm md:text-base transition-colors
               ${
                 isActive
                   ? "text-[#04071b]"
@@ -61,10 +61,18 @@ export default function NavTab({ tabs, value, onChange }: NavTabProps) {
                   color={
                     isActive ? "#04071b" : theme === "dark" ? "#fff" : "#04071b"
                   }
-                  className={`w-6 h-6`}
+                  className={`w-5 h-5 md:w-6 md:h-6`}
                 />
               ) : null}
-              <span className="hidden sm:inline-block">{tab.label}</span>
+              <span
+                className={
+                  isActive
+                    ? "inline-block sm:inline-block"
+                    : "hidden sm:inline-block"
+                }
+              >
+                {tab.label}
+              </span>
             </button>
           );
         })}

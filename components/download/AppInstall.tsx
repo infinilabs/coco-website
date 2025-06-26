@@ -17,7 +17,7 @@ export default function AppInstall({ locale }: { locale: any }) {
     <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 pt-14 mx-auto">
       {/* macOS */}
       <div className="min-h-[200px] p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-        <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-8 flex flex-col shadow-lg">
+        <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl px-4 py-5 md:px-8 md:py-10 flex flex-col shadow-lg">
           <div className="flex items-center gap-3 mb-2">
             <Image
               src={
@@ -48,7 +48,7 @@ export default function AppInstall({ locale }: { locale: any }) {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
+                  className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
                 >
                   <div className="flex flex-col">
                     <span className="font-medium">{item.label}</span>
@@ -71,7 +71,7 @@ export default function AppInstall({ locale }: { locale: any }) {
 
       {/* Windows */}
       <div className="min-h-[200px] p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-        <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-8 flex flex-col shadow-lg ">
+        <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl px-4 py-5 md:px-8 md:py-10 flex flex-col shadow-lg ">
           <div className="flex items-center gap-3 mb-2">
             <Image
               src="/svg/windows11-logo.svg"
@@ -96,7 +96,7 @@ export default function AppInstall({ locale }: { locale: any }) {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
+                  className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
                 >
                   <div className="flex flex-col">
                     <span className="font-medium">{item.label}</span>
@@ -119,7 +119,7 @@ export default function AppInstall({ locale }: { locale: any }) {
 
       {/* Linux */}
       <div className="min-h-[200px] p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-        <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl p-8 flex flex-col shadow-lg">
+        <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-2xl px-4 py-5 md:px-8 md:py-10 flex flex-col shadow-lg">
           <div className="flex items-center gap-3 mb-2">
             <Image src="/svg/ubuntu.svg" alt="Linux" width={24} height={24} />
             <span className="text-black dark:text-white text-xl font-semibold">
@@ -139,7 +139,7 @@ export default function AppInstall({ locale }: { locale: any }) {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
+                  className="h-[72px] flex items-center justify-between bg-[#CBE8FF] dark:bg-[#0A1727] rounded-[14px] px-6 py-3 text-black dark:text-white transition"
                 >
                   <div className="flex flex-col">
                     <span className="font-medium">{item.label}</span>

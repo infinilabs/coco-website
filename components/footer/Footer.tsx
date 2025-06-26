@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer className="m-auto mt-44 pt-20 sm:px-6 lg:px-8 bg-[#EBF6FF] dark:bg-transparent">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:justify-between items-center gap-8 md:gap-0 pb-6 border-b border-b-[#2D2D2D]">
+        <div className="flex flex-col md:flex-row md:justify-between items-center gap-8 md:gap-0 pb-6 border-b border-b-[#CBCBCB] dark:border-b-[#2D2D2D]">
           <div className="flex items-center">
             <Image
               src={
@@ -27,7 +27,7 @@ export default function Footer() {
               height={40}
             />
           </div>
-          <div className="flex gap-6">
+          <div className="flex items-center gap-6">
             <a
               href="https://github.com/infinilabs"
               target="_blank"
@@ -54,6 +54,7 @@ export default function Footer() {
                 alt="Twitter"
                 width={20}
                 height={20}
+                className="w-[20px] h-auto"
               />
             </a>
             <a

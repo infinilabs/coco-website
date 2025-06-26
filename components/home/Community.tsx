@@ -59,10 +59,10 @@ export default function Community({
 
   return (
     <div className="container m-auto text-center section-community relative pt-48 px-4 sm:px-6 lg:px-8">
-      <div className="mb-4 font-medium text-[48px] leading-[67px] bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
+      <div className="mb-4 font-medium text-3xl md:text-5xl bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>
-      <div className="mb-14 font-normal text-[16px] leading-[22px] text-white">
+      <div className="mb-14 font-normal text-base text-black dark:text-white">
         {locale.description}
       </div>
 
