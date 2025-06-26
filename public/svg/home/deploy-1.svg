@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="42px" viewBox="0 0 34 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组</title>
+    <g id="官网3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="coco-AI-zh" transform="translate(-351, -8314)" stroke="#4AF4F9" stroke-width="1.5">
+            <g id="编组" transform="translate(352, 8315)">
+                <path d="M32,22.0008991 C32,32.0008991 25,37.0008991 16.68,39.9008991 C16.244325,40.048534 15.7710749,40.0414706 15.34,39.8808991 C7,37.0008991 0,32.0008991 0,22.0008991 L0,8.0008991 C0,6.8963296 0.8954305,6.0008991 2,6.0008991 C6,6.0008991 11,3.6008991 14.48,0.560899103 C15.3553475,-0.186966368 16.6446525,-0.186966368 17.52,0.560899103 C21.02,3.6208991 26,6.0008991 30,6.0008991 C31.1045695,6.0008991 32,6.8963296 32,8.0008991 L32,22.0008991 Z" id="路径"></path>
+                <line x1="16" y1="40.0008991" x2="16" y2="0.00089910348" id="路径"></line>
+            </g>
+        </g>
+    </g>
+</svg>

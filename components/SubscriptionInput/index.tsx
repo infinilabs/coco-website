@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CircleArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export default function SubscriptionInput() {
   const [email, setEmail] = useState("");
@@ -53,7 +53,7 @@ export default function SubscriptionInput() {
             required
             placeholder="you@example.com"
             autoComplete="email"
-            className="block w-full rounded-full border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="bg-white block w-full rounded-full border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -61,10 +61,16 @@ export default function SubscriptionInput() {
             type="submit"
             className="absolute w-8 -right-2 top-1/2 translate  -translate-x-1/2 -translate-y-1/2 cursor-pointer"
           >
-            <CircleArrowRight className="w-8 h-8 text-black" />
+            <Image
+              src="/svg/home/arrow-right.svg"
+              alt="arrow-right"
+              width={32}
+              height={32}
+            />
           </button>
         </form>
       )}
     </div>
   );
 }
+
