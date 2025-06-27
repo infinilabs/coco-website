@@ -62,7 +62,7 @@ export const WORK_ZH = [
     role: "IT 负责人",
     avatar: "/images/home/work-user-3.png",
     content:
-      "我直接把 Coco Ai 组件嵌到了内网系统，大家现在习惯有问题先搜 Coco AI，再问人",
+      "我直接把 Coco AI 组件嵌到了内网系统，大家现在习惯有问题先搜 Coco AI，再问人",
   },
   {
     name: "Thomas",

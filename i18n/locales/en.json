@@ -1,7 +1,8 @@
 {
   "Hero": {
     "title1": "Where Knowledge Meets Collaboration",
-    "title2": "Unified enterprise search and Gen-AI assistant for modern teams",
+    "title2": "Unified enterprise search and",
+    "title3": "Gen-AI assistant for modern teams",
     "description": "Coco AI is a fully open-source, cross-platform intelligent search and assistant system designed for modern enterprises. It provides a unified search entry point to connect heterogeneous internal and external data sources, integrates large language model capabilities, and empowers teams to access knowledge efficiently, make smarter decisions, and collaborate intelligently.",
     "download": "Download"
   },

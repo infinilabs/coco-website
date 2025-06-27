@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import Searchbox from "@/components/Searchbox";
@@ -23,9 +22,11 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         <div className="text-center text-black dark:text-white text-base mb-4 font-normal">
           {locale.title1}
         </div>
-        <h1 className="max-w-5xl text-center font-semibold text-3xl md:text-[56px] md:leading-[85px] text-black dark:text-white md:mb-12">
+        <div className="max-w-5xl text-center font-semibold text-3xl md:text-[56px] md:leading-[85px] text-black dark:text-white md:mb-12">
           {locale.title2}
-        </h1>
+          <br />
+          <div>{locale.title3}</div>
+        </div>
         <div className="w-full flex justify-center">
           <Searchbox />
         </div>
@@ -57,6 +58,7 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
             muted
             preload="auto"
             playsInline
+            poster="/images/home/app.png"
             className="rounded-2xl"
           >
             <source src="/videos/preview.mp4" type="video/mp4" />
