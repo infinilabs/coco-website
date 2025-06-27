@@ -1,14 +1,13 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Viewport } from "next";
 import { Poppins } from "next/font/google";
-// import localFont from "next/font/local";
 
-// import BaiDuAnalytics from "@/app/BaiDuAnalytics";
-// import GoogleAnalytics from "@/app/GoogleAnalytics";
+// import BaiDuAnalytics from "@/components/BaiDuAnalytics";
+// import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import Header from "@/components/header/Header";
 import { siteConfig } from "@/data/site";
 import { defaultLocale } from "@/i18n/i18n";
 import { cn } from "@/lib/utils";
@@ -21,20 +20,6 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   variable: "--font-poppins",
 });
-// const fontSans = FontSans({
-//   subsets: ["latin"],
-//   variable: "--font-sans",
-// });
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 
 export const metadata = {
   title: siteConfig.name,
@@ -53,10 +38,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { lang: string };
 }) {
-  const lang = defaultLocale;
+  const lang = params.lang || defaultLocale;
 
   return (
     <html lang={lang} suppressHydrationWarning>
@@ -64,9 +51,6 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background antialiased",
-          // fontSans.variable,
-          // geistSans.variable,
-          // geistMono.variable,
           poppins.variable
         )}
       >
@@ -75,7 +59,7 @@ export default function RootLayout({
           defaultTheme={siteConfig.nextThemeColor}
           enableSystem
         >
-          <Header />
+          <Header lang={lang} />
           <main className="flex flex-col items-center">{children}</main>
           <Footer />
           <Analytics />
