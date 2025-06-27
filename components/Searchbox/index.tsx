@@ -1,8 +1,8 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import Script from "next/script";
 import { useEffect, useRef } from "react";
-import { useTheme } from "next-themes";
 
 const INPUTTEXTS = [
   "Find that 2025 client proposal",
@@ -119,7 +119,7 @@ export default function Searchbox() {
             .static-text { font: 18px sans-serif; fill: #ffffff; }
             .typing-text { font: 18px sans-serif; fill: ${
               theme === "dark" ? "#49FFF3" : "#000"
-            }; }
+            };}
             .cursor { fill: #49FFF3; }
         </style>
         
@@ -150,15 +150,15 @@ export default function Searchbox() {
         charIndex = 0;
       const typingSpeed = 80;
 
-      const textLen = typingContent.getComputedTextLength();
-
       function type() {
         if (charIndex < INPUTTEXTS[textIndex].length) {
           typingContent &&
             (typingContent.textContent +=
               INPUTTEXTS[textIndex].charAt(charIndex));
           charIndex++;
-          cursor && cursor.setAttribute("x", 135 + textLen.toString());
+          const textLen =
+            (typingContent && typingContent.getComputedTextLength()) || 0;
+          cursor && cursor.setAttribute("x", (135 + textLen).toString());
           timeID = setTimeout(type, typingSpeed);
         } else {
           timeID = setTimeout(erase, 2000);
@@ -173,7 +173,9 @@ export default function Searchbox() {
               charIndex - 1
             ));
           charIndex--;
-          cursor && cursor.setAttribute("x", 135 + textLen.toString());
+          const textLen =
+            (typingContent && typingContent.getComputedTextLength()) || 0;
+          cursor && cursor.setAttribute("x", (135 + textLen).toString());
           timeID = setTimeout(erase, typingSpeed / 2);
         } else {
           textIndex = (textIndex + 1) % INPUTTEXTS.length;

@@ -28,7 +28,7 @@ export const DEPLOY_ZH = [
   },
   {
     title: "跨平台支持",
-    description: "支持 MacOS、Windows Linux 操作系统，满足不同用户的使用需求",
+    description: "支持 MacOS、Windows、Linux 操作系统，满足不同用户的使用需求",
     icon: "/svg/home/deploy-2.svg",
     iconWidth: 40,
     iconHeight: 33,
@@ -40,8 +40,8 @@ interface DeployCollection {
     title: string;
     description: string;
     icon: string;
-    iconWidth: number,
-    iconHeight: number,
+    iconWidth: number;
+    iconHeight: number;
   }[];
 }
 
