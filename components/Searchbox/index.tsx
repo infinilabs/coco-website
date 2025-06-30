@@ -1,57 +1,110 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
-const INPUTTEXTS = [
-    "Find that 2025 client proposal",
-    "Search My Team's Knowledgebase",
-    "Search My Local Files",
-    "What's our Kubernetes upgrade policy?",
-    "Search Local Applications",
-    "Search My Family Photos",
-    "Embed knowledge search into our support portal",
-    "Search My Local Images",
-    "Summarize last quarter's sales performance",
-    "Search My Local Videos",
-    "Launch my development environment",
-    "Search Company Shared Documents",
-    "Where can I find our remote work policy?",
-    "Search AI Commands",
-    "Search AI Assistants",
-    "Search My Company's News",
-    "Search My Team's Blogs",
-    "Search for issues no matter where they are",
+const INPUT_TEXTS = [
+  "Find that 2025 client proposal",
+  "Search My Team's Knowledgebase",
+  "Search My Local Files",
+  "What's our Kubernetes upgrade policy?",
+  "Search Local Applications",
+  "Search My Family Photos",
+  "Embed knowledge search into our support portal",
+  "Search My Local Images",
+  "Summarize last quarter's sales performance",
+  "Search My Local Videos",
+  "Launch my development environment",
+  "Search Company Shared Documents",
+  "Where can I find our remote work policy?",
+  "Search AI Commands",
+  "Search AI Assistants",
+  "Search My Company's News",
+  "Search My Team's Blogs",
+  "Search for issues no matter where they are",
 ];
 
 export default function Searchbox() {
-    const { theme } = useTheme();
+  const { theme } = useTheme();
+  const typeRef = useRef(false);
+  const scriptRef = useRef<HTMLScriptElement | null>(null);
 
-    const typeRef = useRef(true);
+  // Mount external widget
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "module";
+    script.textContent = `
+      import { searchbox } from "https://coco.infini.cloud/integration/d0taohm2a89828kdfebg/widget";
+      setTimeout(() => searchbox({container: "#searchbox-container", trigger: "searchbox-trigger"}), 0);
+    `;
+    document.body.appendChild(script);
+    scriptRef.current = script;
 
-    const pathname = usePathname();
+    console.log("Searchbox mounted");
 
-    const scriptRef = useRef<HTMLScriptElement>()
+    return () => {
+      if (scriptRef.current) document.body.removeChild(scriptRef.current);
+    };
+  }, []);
 
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.type = 'module';
-        script.textContent = `
-            import { searchbox } from "https://coco.infini.cloud/integration/d0taohm2a89828kdfebg/widget";
-            setTimeout(() => searchbox({container: "#searchbox-container", trigger: "searchbox-trigger"}), 0);
-        `
-        document.body.appendChild(script);
-        scriptRef.current = script;
-        return () => {
-            if (scriptRef.current) {
-                document.body.removeChild(scriptRef.current);
-            }
-        };
-    }, [pathname])
+  // Typing effect
+  useEffect(() => {
+    typeRef.current = false;
+    const typingContent: any = document.getElementById("__typing-content__");
+    const cursor = document.getElementById("__cursor__");
+    let textIndex = 0,
+      charIndex = 0,
+      timeoutId: any;
 
-    const svgContent = `<svg width="100%" height="200px" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g transform="translate(30, 20)">
+    const typingSpeed = 80;
+    const updateCursor = () => {
+      const length = typingContent?.getComputedTextLength?.() || 0;
+      cursor?.setAttribute("x", `${135 + length}`);
+    };
+
+    const type = () => {
+      if (typeRef.current) return;
+      if (charIndex < INPUT_TEXTS[textIndex].length) {
+        typingContent!.textContent += INPUT_TEXTS[textIndex][charIndex++];
+        updateCursor();
+        timeoutId = setTimeout(type, typingSpeed);
+      } else {
+        timeoutId = setTimeout(erase, 2000);
+      }
+    };
+
+    const erase = () => {
+      if (typeRef.current) return;
+      if (charIndex > 0) {
+        typingContent!.textContent = INPUT_TEXTS[textIndex].slice(
+          0,
+          --charIndex
+        );
+        updateCursor();
+        timeoutId = setTimeout(erase, typingSpeed / 2);
+      } else {
+        textIndex = (textIndex + 1) % INPUT_TEXTS.length;
+        timeoutId = setTimeout(type, 500);
+      }
+    };
+
+    timeoutId = setTimeout(type, 1000);
+    return () => {
+      typeRef.current = true;
+      clearTimeout(timeoutId);
+    };
+  }, [theme]);
+
+  // SVG 内容通过 useMemo 渲染，避免主题变化时重复执行逻辑
+  const svgContent = useMemo(() => {
+    const isDark = theme === "dark";
+    const textFill = isDark ? "#49FFF3" : "#000";
+    const rectFill = isDark ? "#04071B" : "#EBF6FF";
+    const iconFill = isDark ? "#FFFFFF" : "#828282";
+
+    return `
+      <svg width="100%" height="200px" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(30, 20)">
         <title>Coco AI</title>
         <defs>
             <linearGradient x1="11.317145%" y1="49.5605469%" x2="97.1736012%" y2="50.3073602%" id="linearGradient-1">
@@ -82,8 +135,7 @@ export default function Searchbox() {
                 <g id="编组-5" transform="translate(640, 391)">
                     <rect id="矩形" stroke="url(#linearGradient-1)" stroke-width="10" filter="url(#filter-2)" x="0" y="0" width="640" height="60" rx="30"></rect>
                     <rect id="矩形" stroke="url(#linearGradient-1)" stroke-width="4" filter="url(#filter-3)" x="0" y="0" width="640" height="60" rx="30"></rect>
-                    <rect id="矩形" stroke="url(#linearGradient-4)" stroke-width="2" fill=${theme === "dark" ? "#04071B" : "#EBF6FF"
-        } x="1" y="1" width="638" height="58" rx="29"></rect>
+                    <rect id="矩形" stroke="url(#linearGradient-4)" stroke-width="2" fill=${rectFill} x="1" y="1" width="638" height="58" rx="29"></rect>
                     <rect id="矩形备份-2" stroke="url(#linearGradient-5)" stroke-width="0.904761905" x="582.452381" y="18.452381" width="37.0952381" height="23.0952381" rx="7.23809524"></rect>
                     <g id="编组-5备份-2" transform="translate(19, 19)">
                         <mask id="mask-7" fill="white">
@@ -92,13 +144,13 @@ export default function Searchbox() {
                         <g id="矩形"></g>
                         <g id="编组-3备份-11" mask="url(#mask-7)">
                             <g transform="translate(-1.65, -1.5)">
-                                <path d="M25.597563,3.09685112 C25.6755881,3.6532308 25.2972354,4.17178225 24.7524886,4.25506821 L20.160031,4.95575613 L19.4534978,6.28532461 C19.9290295,6.4576 20.4553117,6.55492426 21.0366911,6.57684038 L21.0511334,6.5761666 C21.4446376,6.59469279 21.8185863,6.84973301 21.9521434,7.28154431 C22.3585588,8.59554952 23.0988232,9.89606684 24.1817796,11.1834072 C24.3110794,11.3371095 24.3921721,11.5271499 24.4146178,11.7290625 L24.5256182,12.7189035 C24.8237074,13.951259 24.7867916,15.3688762 24.3497591,16.9999037 C22.7331289,23.0332497 16.528171,26.612787 10.4905977,24.9950241 C4.54486573,23.4018701 0.978743058,17.36245 2.41559766,11.4168979 C2.76678088,12.1312504 3.38212001,12.7238814 4.18926582,13.0364209 L4.1514766,13.0202369 C3.80818784,16.0654791 5.01381259,19.0350475 7.24372474,21.0051477 C7.10251512,20.4978737 7.00829841,20.1038795 6.96040006,19.815015 C6.8904878,19.3933892 6.85477788,18.8778594 6.8500984,18.261571 C6.84583717,17.7003679 7.28950111,17.2351963 7.84104953,17.2225811 C8.39259796,17.2099659 8.8431707,17.6546843 8.84743192,18.2158874 C8.85020518,18.5811254 8.86530224,18.894494 8.89160413,19.1535752 C9.16508602,20.8858806 9.79882129,21.7712445 10.7923387,21.8087836 L10.9078935,21.80873 C11.8233715,21.7909073 12.8508745,20.9238769 13.9904023,19.207639 C14.3469392,18.6097713 14.6300984,17.9391331 14.8399879,17.1940919 C14.9823685,16.6886858 15.4729705,16.3803071 15.9676359,16.4654492 L16.0735725,16.4897889 C16.6023118,16.6423196 16.907273,17.2049479 16.7547223,17.7464544 C16.4395366,18.865264 15.9814806,19.8674898 15.3797666,20.7485193 C14.675797,21.7792713 13.8792218,22.6438867 12.9904992,23.3382967 C17.2838675,23.5504659 21.2778259,20.7682898 22.4257029,16.4843544 C22.5373138,16.0678171 22.6169363,15.673181 22.6658596,15.2988133 L22.6821188,15.1394303 L22.5700444,15.1760941 C21.6212922,15.4568069 20.5782454,15.473747 19.50012,15.1848641 C18.6007411,14.9438763 17.7747294,14.5296284 17.0667253,13.9758746 L16.853284,13.7983437 L16.6878226,13.8206496 C15.7662769,13.9165408 14.8089449,13.8638034 13.8602184,13.6608192 L13.3867777,13.546799 C12.3330645,13.2644574 11.3556115,12.8099057 10.5059074,12.2160231 C10.8613292,11.8787022 11.1248127,11.4676512 11.2864534,11.0192231 L11.3017466,10.9688258 L11.399754,10.9346149 C11.5684275,10.868162 11.7310957,10.7876397 11.8858508,10.6938831 C12.4823925,11.0728821 13.1659266,11.3775599 13.9142933,11.5780842 C15.1870609,11.9191212 16.4480563,11.905495 17.5318425,11.6030138 C18.1286063,12.3532045 18.9912293,12.9384451 20.0276355,13.2161493 C20.9881106,13.4735078 21.8440137,13.3699743 22.5616047,13.013515 C22.5244766,12.7714394 22.4667667,12.5340159 22.3892261,12.3027702 L22.3037072,12.0702045 C21.59895,11.1727394 21.0294426,10.2567642 20.5970951,9.3223462 L20.5214649,9.14954033 L20.3441783,9.23590126 C19.5034276,9.60719684 18.5871912,9.68408444 17.6232244,9.46402749 L17.3255387,9.38591904 L17.1961724,9.42830959 C15.857266,9.81035674 14.3473523,9.46684507 13.3435058,8.57714759 C13.4836162,7.81620366 13.3326415,7.04366163 12.9495626,6.38797251 L12.9736298,6.34204199 C13.1839069,5.8758432 13.2795783,5.35946673 13.2445279,4.83772722 C13.369082,4.8060715 13.4920078,4.7639578 13.6115299,4.71254388 C13.9414867,4.57060893 14.3194013,4.6195999 14.6020855,4.84095456 C15.5040879,5.54726367 16.4146832,5.74395622 17.4240938,5.46423713 C17.4975307,5.44388693 17.5721548,5.43236994 17.6465822,5.42940588 L18.648362,3.54390808 C18.7988026,3.26061587 19.070789,3.06571076 19.3820959,3.01811526 L24.4699347,2.24023915 C25.0146815,2.1569532 25.5195379,2.54047144 25.597563,3.09685112 Z" id="形状结合" stroke="none" fill=${theme === "dark" ? "#FFFFFF" : "#828282"
-        } fill-rule="nonzero"></path>
+                                <path d="M25.597563,3.09685112 C25.6755881,3.6532308 25.2972354,4.17178225 24.7524886,4.25506821 L20.160031,4.95575613 L19.4534978,6.28532461 C19.9290295,6.4576 20.4553117,6.55492426 21.0366911,6.57684038 L21.0511334,6.5761666 C21.4446376,6.59469279 21.8185863,6.84973301 21.9521434,7.28154431 C22.3585588,8.59554952 23.0988232,9.89606684 24.1817796,11.1834072 C24.3110794,11.3371095 24.3921721,11.5271499 24.4146178,11.7290625 L24.5256182,12.7189035 C24.8237074,13.951259 24.7867916,15.3688762 24.3497591,16.9999037 C22.7331289,23.0332497 16.528171,26.612787 10.4905977,24.9950241 C4.54486573,23.4018701 0.978743058,17.36245 2.41559766,11.4168979 C2.76678088,12.1312504 3.38212001,12.7238814 4.18926582,13.0364209 L4.1514766,13.0202369 C3.80818784,16.0654791 5.01381259,19.0350475 7.24372474,21.0051477 C7.10251512,20.4978737 7.00829841,20.1038795 6.96040006,19.815015 C6.8904878,19.3933892 6.85477788,18.8778594 6.8500984,18.261571 C6.84583717,17.7003679 7.28950111,17.2351963 7.84104953,17.2225811 C8.39259796,17.2099659 8.8431707,17.6546843 8.84743192,18.2158874 C8.85020518,18.5811254 8.86530224,18.894494 8.89160413,19.1535752 C9.16508602,20.8858806 9.79882129,21.7712445 10.7923387,21.8087836 L10.9078935,21.80873 C11.8233715,21.7909073 12.8508745,20.9238769 13.9904023,19.207639 C14.3469392,18.6097713 14.6300984,17.9391331 14.8399879,17.1940919 C14.9823685,16.6886858 15.4729705,16.3803071 15.9676359,16.4654492 L16.0735725,16.4897889 C16.6023118,16.6423196 16.907273,17.2049479 16.7547223,17.7464544 C16.4395366,18.865264 15.9814806,19.8674898 15.3797666,20.7485193 C14.675797,21.7792713 13.8792218,22.6438867 12.9904992,23.3382967 C17.2838675,23.5504659 21.2778259,20.7682898 22.4257029,16.4843544 C22.5373138,16.0678171 22.6169363,15.673181 22.6658596,15.2988133 L22.6821188,15.1394303 L22.5700444,15.1760941 C21.6212922,15.4568069 20.5782454,15.473747 19.50012,15.1848641 C18.6007411,14.9438763 17.7747294,14.5296284 17.0667253,13.9758746 L16.853284,13.7983437 L16.6878226,13.8206496 C15.7662769,13.9165408 14.8089449,13.8638034 13.8602184,13.6608192 L13.3867777,13.546799 C12.3330645,13.2644574 11.3556115,12.8099057 10.5059074,12.2160231 C10.8613292,11.8787022 11.1248127,11.4676512 11.2864534,11.0192231 L11.3017466,10.9688258 L11.399754,10.9346149 C11.5684275,10.868162 11.7310957,10.7876397 11.8858508,10.6938831 C12.4823925,11.0728821 13.1659266,11.3775599 13.9142933,11.5780842 C15.1870609,11.9191212 16.4480563,11.905495 17.5318425,11.6030138 C18.1286063,12.3532045 18.9912293,12.9384451 20.0276355,13.2161493 C20.9881106,13.4735078 21.8440137,13.3699743 22.5616047,13.013515 C22.5244766,12.7714394 22.4667667,12.5340159 22.3892261,12.3027702 L22.3037072,12.0702045 C21.59895,11.1727394 21.0294426,10.2567642 20.5970951,9.3223462 L20.5214649,9.14954033 L20.3441783,9.23590126 C19.5034276,9.60719684 18.5871912,9.68408444 17.6232244,9.46402749 L17.3255387,9.38591904 L17.1961724,9.42830959 C15.857266,9.81035674 14.3473523,9.46684507 13.3435058,8.57714759 C13.4836162,7.81620366 13.3326415,7.04366163 12.9495626,6.38797251 L12.9736298,6.34204199 C13.1839069,5.8758432 13.2795783,5.35946673 13.2445279,4.83772722 C13.369082,4.8060715 13.4920078,4.7639578 13.6115299,4.71254388 C13.9414867,4.57060893 14.3194013,4.6195999 14.6020855,4.84095456 C15.5040879,5.54726367 16.4146832,5.74395622 17.4240938,5.46423713 C17.4975307,5.44388693 17.5721548,5.43236994 17.6465822,5.42940588 L18.648362,3.54390808 C18.7988026,3.26061587 19.070789,3.06571076 19.3820959,3.01811526 L24.4699347,2.24023915 C25.0146815,2.1569532 25.5195379,2.54047144 25.597563,3.09685112 Z" id="形状结合" stroke="none" fill=${
+                                  theme === "dark" ? "#FFFFFF" : "#828282"
+                                } fill-rule="nonzero"></path>
                                 <mask id="mask-9" fill="white">
                                     <use xlink:href="#path-8"></use>
                                 </mask>
-                                <use id="形状结合" stroke="none" fill=${theme === "dark" ? "#FFFFFF" : "#828282"
-        } fill-rule="nonzero" transform="translate(6.6366, 6.5991) rotate(-243) translate(-6.6366, -6.5991)" xlink:href="#path-8"></use>
+                                <use id="形状结合" stroke="none" fill=${iconFill} fill-rule="nonzero" transform="translate(6.6366, 6.5991) rotate(-243) translate(-6.6366, -6.5991)" xlink:href="#path-8"></use>
                             </g>
                         </g>
                     </g>
@@ -130,93 +182,32 @@ export default function Searchbox() {
         </g>
     </g>
 
-    <!-- 打字机效果SVG（置于最上层） -->
-    <g>
-        <style>
-            .static-text { font: 18px sans-serif; fill: #ffffff; }
-            .typing-text { font: 18px sans-serif; fill: ${theme === "dark" ? "#49FFF3" : "#000"
-        };}
-            .cursor { fill: #49FFF3; }
-        </style>
-        
-        <!-- 静态文字：调整位置以匹配搜索框 -->
-        <text x="135" y="108" class="static-text"></text>
-        
-        <!-- 动态文字和光标 -->
+        <!-- 动态打字机效果部分 -->
         <g>
-            <text x="135" y="108" class="typing-text">
-                <tspan id="__typing-content__"></tspan>
-            </text>
-            <rect x="135" y="93" width="2" height="16" class="cursor" id="__cursor__">
-                <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
-            </rect>
+          <style>
+            .typing-text { font: 18px sans-serif; fill: ${textFill}; }
+            .cursor { fill: #49FFF3; }
+          </style>
+          <text x="135" y="108" class="typing-text">
+            <tspan id="__typing-content__"></tspan>
+          </text>
+          <rect x="135" y="93" width="2" height="16" class="cursor" id="__cursor__">
+            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+          </rect>
         </g>
-    </g>
-</svg>`;
+      </svg>
+    `;
+  }, [theme]);
 
-    useEffect(() => {
-        let timeID: any;
-        typeRef.current = false;
-        const typingContent = document.getElementById(
-            "__typing-content__"
-        ) as SVGTextElement | null;
-        const cursor = document.getElementById("__cursor__");
-        if (typingContent && cursor) {
-            let textIndex = 0,
-                charIndex = 0;
-            const typingSpeed = 80;
-
-            function type() {
-                if (charIndex < INPUTTEXTS[textIndex].length) {
-                    typingContent &&
-                        (typingContent.textContent +=
-                            INPUTTEXTS[textIndex].charAt(charIndex));
-                    charIndex++;
-                    const textLen =
-                        (typingContent && typingContent.getComputedTextLength()) || 0;
-                    cursor && cursor.setAttribute("x", (135 + textLen).toString());
-                    timeID = setTimeout(type, typingSpeed);
-                } else {
-                    timeID = setTimeout(erase, 2000);
-                }
-            }
-
-            function erase() {
-                if (charIndex > 0) {
-                    typingContent &&
-                        (typingContent.textContent = INPUTTEXTS[textIndex].substring(
-                            0,
-                            charIndex - 1
-                        ));
-                    charIndex--;
-                    const textLen =
-                        (typingContent && typingContent.getComputedTextLength()) || 0;
-                    cursor && cursor.setAttribute("x", (135 + textLen).toString());
-                    timeID = setTimeout(erase, typingSpeed / 2);
-                } else {
-                    textIndex = (textIndex + 1) % INPUTTEXTS.length;
-                    timeID = setTimeout(type, 500);
-                }
-            }
-
-            timeID = setTimeout(type, 1000);
-        }
-
-        return () => {
-            typeRef.current = true;
-            timeID && clearTimeout(timeID);
-        };
-    }, [theme]);
-
-    return (
-        <>
-            <div id="searchbox-container"></div>
-            <div
-                id="searchbox-trigger"
-                className="cursor-pointer w-full"
-                dangerouslySetInnerHTML={{ __html: svgContent }}
-            ></div>
-        </>
-    );
+  return (
+    <>
+      <div id="searchbox-container"></div>
+      <div
+        id="searchbox-trigger"
+        className="cursor-pointer w-full"
+        dangerouslySetInnerHTML={{ __html: svgContent }}
+      ></div>
+    </>
+  );
 }
 

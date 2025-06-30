@@ -3,17 +3,16 @@
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import HeaderLinks from "@/components/header/HeaderLinks";
 import { LangSwitcher } from "@/components/header/LangSwitcher";
-import LoadingScreen from "@/components/LoadingScreen";
 import { siteConfig } from "@/data/site";
 import HeaderMenu from "./HeaderMenu";
 import MobileMenu from "./MobileMenu";
 import { ThemedButton } from "./ThemedButton";
 
-const Header = () => {
+const Header = ({ lang }: { lang: string }) => {
   const { theme } = useTheme();
 
   const [mounted, setMounted] = useState(false);
@@ -54,23 +53,17 @@ const Header = () => {
         </div>
 
         {/* Nav */}
-        <Suspense fallback={<LoadingScreen />}>
-          <HeaderMenu />
-        </Suspense>
+        <HeaderMenu lang={lang} />
 
         {/* Right section */}
         <div className="hidden md:flex items-center justify-end gap-x-6 flex-1">
           <ThemedButton />
-          <Suspense fallback={<LoadingScreen />}>
-            <LangSwitcher />
-          </Suspense>
+          <LangSwitcher lang={lang} />
           <HeaderLinks />
         </div>
 
         {/* Mobile menu button */}
-        <Suspense fallback={<LoadingScreen />}>
-          <MobileMenu />
-        </Suspense>
+        <MobileMenu lang={lang} />
       </nav>
     </header>
   );
