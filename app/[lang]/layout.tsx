@@ -48,7 +48,9 @@ export default function RootLayout({
           enableSystem
         >
           <Header lang={lang} />
-          <main className="flex flex-col items-center">{children}</main>
+          <main className="flex flex-col items-center min-h-screen">
+            {children}
+          </main>
           <Footer />
           <Analytics />
           <TailwindIndicator />

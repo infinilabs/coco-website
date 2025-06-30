@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 interface NavTabItem {
   label: string;
@@ -42,7 +43,44 @@ export default function NavTab({ tabs, value, onChange }: NavTabProps) {
         {tabs.map((tab, idx) => {
           const isActive = active === tab.value;
           const Icon = tab.icon;
-          return (
+          return tab.href ? (
+            <Link
+              key={tab.value}
+              href={tab.href}
+              target={tab.external ? "_blank" : "_self"}
+              className={`relative z-10 h-12 px-4 md:px-8 flex items-center gap-1 md:gap-2 rounded-full font-semibold text-sm md:text-base transition-colors
+              ${
+                isActive
+                  ? "text-[#04071b]"
+                  : "text-black dark:text-white opacity-80 hover:opacity-100"
+              }`}
+              style={{
+                background: isActive
+                  ? "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)"
+                  : "transparent",
+                boxShadow: isActive ? "0 2px 12px 0 #19F3FF55" : "none",
+              }}
+              onClick={() => handleTabClick(tab, idx)}
+            >
+              {Icon ? (
+                <Icon
+                  color={
+                    isActive ? "#04071b" : theme === "dark" ? "#fff" : "#04071b"
+                  }
+                  className={`w-5 h-5 md:w-6 md:h-6`}
+                />
+              ) : null}
+              <span
+                className={
+                  isActive
+                    ? "inline-block sm:inline-block"
+                    : "hidden sm:inline-block"
+                }
+              >
+                {tab.label}
+              </span>
+            </Link>
+          ) : (
             <button
               key={tab.value}
               className={`relative z-10 h-12 px-4 md:px-8 flex items-center gap-1 md:gap-2 rounded-full font-semibold text-sm md:text-base transition-colors

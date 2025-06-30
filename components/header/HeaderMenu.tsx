@@ -1,25 +1,15 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import NavTab from "@/components/header/NavTab";
 import { ALL_HEADER } from "@/data/header";
 
 export default function HeaderMenu({ lang }: { lang: string }) {
-  const router = useRouter();
   const pathname = usePathname();
 
   const links = ALL_HEADER[`HEADER_${lang.toUpperCase()}`];
-
-  const onChangeNavTab = (tab: any) => {
-    // Handle tab change logic here
-    if (tab.external) {
-      window.open(tab.href, "_blank");
-    } else {
-      router.push(`${tab.href}`);
-    }
-  };
 
   const [navActive, setNavActive] = useState("home");
   useEffect(() => {
@@ -33,7 +23,7 @@ export default function HeaderMenu({ lang }: { lang: string }) {
 
   return (
     <div className="hidden md:flex flex-1 justify-center">
-      <NavTab tabs={links} value={navActive} onChange={onChangeNavTab} />
+      <NavTab tabs={links} value={navActive} />
     </div>
   );
 }
