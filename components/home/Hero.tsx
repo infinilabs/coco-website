@@ -31,7 +31,7 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
           {locale.description}
         </div>
         <Link
-          href={`/download?lang=${langName}`}
+          href={`/${langName}/download`}
           aria-label="download"
           className="mb-14"
         >
