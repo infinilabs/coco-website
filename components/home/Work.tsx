@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ALL_WORK } from "@/data/work";
@@ -61,7 +61,11 @@ export default function WorkFeature({
           <div className="m-4 text-center font-medium text-3xl md:text-5xl bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
             {locale.title2}
           </div>
-          <Link href={`/download?lang=${langName}`} aria-label="now" className="mt-8">
+          <Link
+            href={`/${langName}/download`}
+            aria-label="now"
+            className="mt-8"
+          >
             <div
               className={`h-12 leading-[48px] px-8 rounded-full font-semibold text-base transition-colors text-[#04071b]`}
               style={{

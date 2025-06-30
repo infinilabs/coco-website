@@ -1,6 +1,6 @@
 export default function PrivacyClient() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white">
       <main className="container mx-auto px-4 pt-10 max-w-4xl">
         <h1 className="text-3xl font-bold mb-8">Coco Privacy Policy</h1>
 

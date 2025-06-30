@@ -51,7 +51,7 @@ export default function RootLayout({
           <main className="flex flex-col items-center min-h-screen">
             {children}
           </main>
-          <Footer />
+          <Footer lang={lang} />
           <Analytics />
           <TailwindIndicator />
         </ThemeProvider>

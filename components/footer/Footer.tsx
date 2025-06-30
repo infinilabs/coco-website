@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
-export default function Footer() {
+export default function Footer({ lang }: { lang: string }) {
   const { theme } = useTheme();
 
   const [mounted, setMounted] = useState(false);
@@ -91,7 +91,7 @@ export default function Footer() {
             </a>
             <span className="text-[#9F9FAC]">|</span>
             <a
-              href="/privacy"
+              href={`${lang}/privacy`}
               className="text-[#9F9FAC] hover:text-[#04FEF6] transition-colors"
             >
               Privacy
