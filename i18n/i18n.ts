@@ -7,7 +7,9 @@ export const localeNames: any = {
   zh: "简体中文",
 };
 export const defaultLocale = "en";
-
+export const staticParams = [{ lang: "en" }, { lang: "zh" }];
+export const langs = ["en", "zh"];
+export const slugs = ["download", "privacy"];
 // If you wish to automatically redirect users to a URL that matches their browser's language setting,
 // you can use the `getLocale` to get the browser's language.
 export function getLocale(headers: any): string {

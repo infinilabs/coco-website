@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
@@ -19,7 +21,13 @@ const RobotIcon: React.FC<IconProps> = ({
     {...props}
   >
     <rect x="0" y="0" width="24" height="24" fill="none" />
-    <g transform="translate(2, 4)" stroke={color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+    <g
+      transform="translate(2, 4)"
+      stroke={color}
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="10 4 10 0 6 0" />
       <rect x="2" y="4" width="16" height="12" rx="2" />
       <line x1="0" y1="10" x2="2" y2="10" />
@@ -31,3 +39,4 @@ const RobotIcon: React.FC<IconProps> = ({
 );
 
 export default RobotIcon;
+

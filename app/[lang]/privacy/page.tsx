@@ -1,12 +1,13 @@
 import { Suspense } from "react";
 
-import DownloadPageClient from "@/components/download/DownloadPageClient";
 import LoadingScreen from "@/components/LoadingScreen";
+import PrivacyClient from "@/components/privacy/PrivacyClient";
 
-export default function Download() {
+export default function PrivacyPage() {
   return (
     <Suspense fallback={<LoadingScreen />}>
-      <DownloadPageClient />
+      <PrivacyClient />
     </Suspense>
   );
 }
+

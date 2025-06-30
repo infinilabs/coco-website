@@ -1,13 +1,16 @@
-import { Suspense } from "react";
+'use client';
 
-import HomeIndex from "@/components/home/HomeIndex";
-import LoadingScreen from "@/components/LoadingScreen";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <Suspense fallback={<LoadingScreen />}>
-      <HomeIndex />
-    </Suspense>
-  );
+export default function HomeRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const userLang = navigator.language || navigator.userLanguage;
+    const targetLang = userLang.startsWith('zh') ? 'zh' : 'en';
+    router.replace(`/${targetLang}`);
+  }, [router]);
+
+  return <p>Redirecting...</p>;
 }
-

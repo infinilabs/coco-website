@@ -1,36 +1,29 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
-import NavTab from "@/components/header/NavTab";
 import AppInstall from "@/components/download/AppInstall";
 import ServerInstall from "@/components/download/ServerInstall";
-import { defaultLocale, getDictionary } from "@/i18n/i18n";
-import {
-  appVersion,
-  serverVersion,
-  appPublish,
-  serverPublish,
-  appNotes,
-  serverNotes,
-  appDocs,
-  serverDocs,
-} from "@/data/download";
+import NavTab from "@/components/header/NavTab";
 import AppIcon from "@/components/icons/AppIcon";
 import ServerIcon from "@/components/icons/ServerIcon";
+import {
+  appDocs,
+  appNotes,
+  appPublish,
+  appVersion,
+  serverDocs,
+  serverNotes,
+  serverPublish,
+  serverVersion,
+} from "@/data/download";
+import { defaultLocale, getDictionary } from "@/i18n/i18n";
 
-
-export default function DownloadPageClient() {
-  const [lang, setLang] = useState(defaultLocale);
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const lang =
-      searchParams.get("lang") || localStorage.getItem("lang") || defaultLocale;
-    setLang(lang);
-  }, [searchParams]);
-
+export default function DownloadPageClient({
+  lang = defaultLocale,
+}: {
+  lang: string;
+}) {
   const [locale, setLocale] = useState<any>();
   const [activeTab, setActiveTab] = useState<"app" | "server">("app");
 

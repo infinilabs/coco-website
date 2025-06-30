@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
@@ -26,3 +28,4 @@ const MCPIcon: React.FC<IconProps> = ({
 );
 
 export default MCPIcon;
+
