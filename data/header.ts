@@ -1,6 +1,6 @@
 export const HEADER_EN = [
-  { label: "Homepage", value: "home", href: "/" },
-  { label: "Download", value: "download", href: "/download" },
+  { label: "Homepage", value: "home", href: "/en" },
+  { label: "Download", value: "download", href: "/en/download" },
   {
     label: "Documents",
     value: "docs",
@@ -10,8 +10,8 @@ export const HEADER_EN = [
 ];
 
 export const HEADER_ZH = [
-  { label: "首页", value: "home", href: "/" },
-  { label: "下载", value: "download", href: "/download" },
+  { label: "首页", value: "home", href: "/zh" },
+  { label: "下载", value: "download", href: "/zh/download" },
   {
     label: "文档",
     value: "docs",

@@ -7,9 +7,9 @@ import { useState } from "react";
 import { CgClose } from "react-icons/cg";
 
 import HeaderLinks from "@/components/header/HeaderLinks";
-import { LangSwitcher } from "@/components/header/LangSwitcher";
 import { ALL_HEADER } from "@/data/header";
 import { siteConfig } from "@/data/site";
+import { LangSwitcher } from "./LangSwitcher";
 import { ThemedButton } from "./ThemedButton";
 
 export default function MobileMenu({ lang }: { lang: string }) {
@@ -83,7 +83,7 @@ export default function MobileMenu({ lang }: { lang: string }) {
                 <HeaderLinks />
                 <div className="flex items-center justify-end gap-x-5">
                   <ThemedButton />
-                  <LangSwitcher />
+                  <LangSwitcher lang={lang} />
                 </div>
               </div>
             </div>

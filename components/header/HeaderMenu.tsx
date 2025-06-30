@@ -23,11 +23,11 @@ export default function HeaderMenu({ lang }: { lang: string }) {
 
   const [navActive, setNavActive] = useState("home");
   useEffect(() => {
-    if (pathname === "/" || pathname === "/en" || pathname === "/zh") {
+    const match = pathname.match(/^\/(en|zh)?\/?([^\/]*)/);
+    if (!match || !match[2]) {
       setNavActive("home");
     } else {
-      const cleanPath = pathname.startsWith("/") ? pathname.slice(3) : pathname;
-      setNavActive(cleanPath);
+      setNavActive(match[2]);
     }
   }, [pathname]);
 

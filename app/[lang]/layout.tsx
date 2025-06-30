@@ -21,7 +21,7 @@ const poppins = Poppins({
 });
 
 export function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'zh' }];
+  return [{ lang: "en" }, { lang: "zh" }];
 }
 
 export default function RootLayout({
@@ -32,7 +32,6 @@ export default function RootLayout({
   params: { lang: string };
 }) {
   const lang = params.lang || defaultLocale;
-  console.log("lang", lang);
 
   return (
     <html lang={lang} suppressHydrationWarning>

@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function HomeRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    const userLang = navigator.language || navigator.userLanguage;
-    const targetLang = userLang.startsWith('zh') ? 'zh' : 'en';
-    router.replace(`/${targetLang}`);
+    router.replace(`/${"en"}`);
   }, [router]);
 
   return <p>Redirecting...</p>;
 }
+
