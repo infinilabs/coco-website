@@ -1,14 +1,11 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import Searchbox from "@/components/Searchbox";
 
 const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
-  const { theme } = useTheme();
-
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   if (!mounted) return null;
