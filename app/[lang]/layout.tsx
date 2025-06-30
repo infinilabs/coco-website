@@ -1,5 +1,4 @@
 import { Analytics } from "@vercel/analytics/react";
-import { Viewport } from "next";
 import { Poppins } from "next/font/google";
 
 // import BaiDuAnalytics from "@/components/BaiDuAnalytics";
@@ -21,20 +20,9 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-export const metadata = {
-  title: siteConfig.name,
-  description: siteConfig.description,
-  keywords: siteConfig.keywords,
-  authors: siteConfig.authors,
-  creator: siteConfig.creator,
-  icons: siteConfig.icons,
-  metadataBase: siteConfig.metadataBase,
-  openGraph: siteConfig.openGraph,
-  twitter: siteConfig.twitter,
-};
-export const viewport: Viewport = {
-  themeColor: siteConfig.themeColors,
-};
+export function generateStaticParams() {
+  return [{ lang: 'en' }, { lang: 'zh' }];
+}
 
 export default function RootLayout({
   children,
@@ -44,6 +32,7 @@ export default function RootLayout({
   params: { lang: string };
 }) {
   const lang = params.lang || defaultLocale;
+  console.log("lang", lang);
 
   return (
     <html lang={lang} suppressHydrationWarning>

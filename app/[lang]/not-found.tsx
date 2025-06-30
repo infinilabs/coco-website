@@ -1,10 +1,5 @@
 import Link from "next/link";
 
-import { staticParams } from "@/i18n/i18n";
-
-export async function generateStaticParams() {
-  return staticParams;
-}
 export default function NotFound() {
   return (
     <div className="w-screen flex flex-col items-center justify-center min-h-screen bg-transparent text-black dark:text-white">
