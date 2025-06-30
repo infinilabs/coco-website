@@ -91,7 +91,7 @@ export default function Footer({ lang }: { lang: string }) {
             </a>
             <span className="text-[#9F9FAC]">|</span>
             <a
-              href={`${lang}/privacy`}
+              href={`/${lang}/privacy`}
               className="text-[#9F9FAC] hover:text-[#04FEF6] transition-colors"
             >
               Privacy
