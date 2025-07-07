@@ -24,17 +24,18 @@ export function generateStaticParams() {
   return [{ lang: "en" }, { lang: "zh" }];
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  const lang = params.lang || defaultLocale;
+  const { lang } = await params;
+  const currentLang = lang || defaultLocale;
 
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html lang={currentLang} suppressHydrationWarning>
       <head />
       <body
         className={cn(
@@ -47,11 +48,11 @@ export default function RootLayout({
           defaultTheme={siteConfig.nextThemeColor}
           enableSystem
         >
-          <Header lang={lang} />
+          <Header lang={currentLang} />
           <main className="flex flex-col items-center min-h-screen">
             {children}
           </main>
-          <Footer lang={lang} />
+          <Footer lang={currentLang} />
           <Analytics />
           <TailwindIndicator />
         </ThemeProvider>

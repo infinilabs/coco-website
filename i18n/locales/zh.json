@@ -48,6 +48,10 @@
     "macOS": "支持 macOS 12 及更高版本",
     "window": "支持 Windows 10 及以上版本",
     "unbuntu": "仅支持 X11"
+  },
+  "NotFound": {
+    "title": "页面未找到",
+    "backHome": "返回首页"
   }
 }
 
