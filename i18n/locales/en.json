@@ -48,6 +48,10 @@
     "macOS": "Supports macOS 12 and later versions",
     "window": "Support for Windows 10 and above versions",
     "unbuntu": "X11 only"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "backHome": "Back to Home"
   }
 }
 
