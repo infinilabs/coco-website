@@ -1,8 +1,10 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+import { defaultLocale, langs } from "@/i18n/i18n";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export const GithubStarPrefixKey = "github_star_";
@@ -40,10 +42,55 @@ export async function fetchGithubStats(repo: string) {
     const data = await response.json();
     return {
       stars: data.stargazers_count,
-      forks: data.forks_count
+      forks: data.forks_count,
     };
   } catch (error) {
-    console.error('Error fetching GitHub stats:', error);
+    console.error("Error fetching GitHub stats:", error);
     return null;
   }
 }
+
+export const getBrowserLanguage = (): string => {
+  if (typeof window !== "undefined") {
+    const browserLang = navigator.language || navigator.languages?.[0];
+    if (browserLang) {
+      const langCode = browserLang.split("-")[0];
+      return langs.includes(langCode) ? langCode : defaultLocale;
+    }
+  }
+  return defaultLocale;
+};
+
+export const LANG_STORAGE_KEY = "preferred_language";
+
+export const saveLanguagePreference = (lang: string) => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(LANG_STORAGE_KEY, lang);
+  }
+};
+
+export const getSavedLanguagePreference = (): string | null => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem(LANG_STORAGE_KEY);
+  }
+  return null;
+};
+
+export const getLangFromPath = () => {
+  if (typeof window !== "undefined") {
+    const pathLang = window.location.pathname.split("/")[1];
+
+    if (langs.includes(pathLang)) {
+      return pathLang;
+    }
+
+    const savedLang = getSavedLanguagePreference();
+    if (savedLang && langs.includes(savedLang)) {
+      return savedLang;
+    }
+
+    return getBrowserLanguage();
+  }
+  return defaultLocale;
+};
+

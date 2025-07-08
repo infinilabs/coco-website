@@ -10,12 +10,15 @@ import {
   SelectTrigger,
 } from "@/components/ui/select-lang";
 import { localeNames } from "@/i18n/i18n";
+import { saveLanguagePreference } from "@/lib/utils";
 
 export const LangSwitcher = ({ lang }: { lang: string }) => {
   const router = useRouter();
   const pathname = usePathname();
 
   const handleSwitchLanguage = (value: string) => {
+    saveLanguagePreference(value);
+
     const newPath = pathname.replace(/^\/[^/]+/, `/${value}`);
     router.push(newPath);
   };
