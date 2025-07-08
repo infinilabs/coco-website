@@ -52,6 +52,10 @@
   "NotFound": {
     "title": "Page not found",
     "backHome": "Back to Home"
+  },
+  "FAQ": {
+    "title": "FAQ",
+    "description": "Quick answers to common Coco use cases and features"
   }
 }
 
