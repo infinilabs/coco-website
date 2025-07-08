@@ -31,6 +31,13 @@ export default function Searchbox() {
 
   // Mount external widget
   useEffect(() => {
+    // Check if the container already has a Shadow DOM
+    const container = document.getElementById("searchbox-container");
+    if (container && container.shadowRoot) {
+      console.log("Searchbox already mounted");
+      return;
+    }
+
     const script = document.createElement("script");
     script.type = "module";
     script.textContent = `

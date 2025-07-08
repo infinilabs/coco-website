@@ -52,6 +52,10 @@
   "NotFound": {
     "title": "页面未找到",
     "backHome": "返回首页"
+  },
+  "FAQ": {
+    "title": "常见问题",
+    "description": "针对常见的 Coco 用例和功能的快速解答"
   }
 }
 

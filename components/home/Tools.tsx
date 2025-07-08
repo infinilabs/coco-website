@@ -13,7 +13,7 @@ export default function ToolsFeature({
 
   return (
     <section className="w-full flex flex-col items-center pt-48 px-4 sm:px-6 lg:px-8">
-      <div className="mb-4 text-cener font-medium text-3xl md:text-5xl bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
+      <div className="mb-4 text-center font-medium text-3xl md:text-5xl bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
         {locale.title}
       </div>
       <div className="mb-14 font-normal text-base text-black dark:text-white">

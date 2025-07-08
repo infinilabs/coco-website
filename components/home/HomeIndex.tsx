@@ -6,6 +6,7 @@ import FeatureAbility from "@/components/home/Ability";
 import Community from "@/components/home/Community";
 import DeployFeature from "@/components/home/Deploy";
 import EfficiencyFeatures from "@/components/home/Efficiency";
+import FAQFeature from "@/components/home/FAQ";
 import Hero from "@/components/home/Hero";
 import ServerFeature from "@/components/home/Server";
 import ToolsFeature from "@/components/home/Tools";
@@ -35,6 +36,7 @@ export default function HomeIndex({ lang = defaultLocale }: { lang: string }) {
           <ToolsFeature locale={dict.Tools} langName={lang} />
           <DeployFeature locale={dict.Deploy} langName={lang} />
           <WorkFeature locale={dict.Work} langName={lang} />
+          <FAQFeature locale={dict.FAQ} langName={lang} />
           <Community locale={dict.Community} langName={lang} />
         </>
       ) : null}

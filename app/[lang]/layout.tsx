@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
 import { Poppins } from "next/font/google";
 
 // import BaiDuAnalytics from "@/components/BaiDuAnalytics";
@@ -42,18 +41,20 @@ export default async function RootLayout({
           "min-h-screen bg-background antialiased",
           poppins.variable
         )}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
           defaultTheme={siteConfig.nextThemeColor}
           enableSystem
+          disableTransitionOnChange
+          storageKey="theme"
         >
           <Header lang={currentLang} />
           <main className="flex flex-col items-center min-h-screen">
             {children}
           </main>
           <Footer lang={currentLang} />
-          <Analytics />
           <TailwindIndicator />
         </ThemeProvider>
         {process.env.NODE_ENV === "development" ? (

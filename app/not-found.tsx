@@ -7,6 +7,8 @@ import { useCallback, useEffect, useState } from "react";
 import { defaultLocale, getDictionary } from "@/i18n/i18n";
 
 export default function NotFound() {
+  const [dict, setDict] = useState<any>();
+
   const getLangFromPath = () => {
     if (typeof window !== "undefined") {
       const pathLang = window.location.pathname.split("/")[1];
@@ -14,14 +16,13 @@ export default function NotFound() {
     }
     return defaultLocale;
   };
-  const lang = getLangFromPath();
-
-  const [dict, setDict] = useState<any>();
 
   const getLocale = useCallback(async () => {
+    const lang = getLangFromPath();
+
     const dict = await getDictionary(lang);
     setDict(dict);
-  }, [lang]);
+  }, []);
 
   useEffect(() => {
     getLocale();
