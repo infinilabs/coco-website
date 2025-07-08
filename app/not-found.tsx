@@ -4,22 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
-import { defaultLocale, getDictionary } from "@/i18n/i18n";
+import { getDictionary } from "@/i18n/i18n";
+import { getLangFromPath } from "@/lib/utils";
 
 export default function NotFound() {
   const [dict, setDict] = useState<any>();
 
-  const getLangFromPath = () => {
-    if (typeof window !== "undefined") {
-      const pathLang = window.location.pathname.split("/")[1];
-      return ["en", "zh"].includes(pathLang) ? pathLang : defaultLocale;
-    }
-    return defaultLocale;
-  };
-
   const getLocale = useCallback(async () => {
     const lang = getLangFromPath();
-
     const dict = await getDictionary(lang);
     setDict(dict);
   }, []);

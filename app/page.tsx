@@ -4,11 +4,14 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+import { getLangFromPath } from "@/lib/utils";
+
 export default function HomeRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace(`/${"en"}`);
+    const lang = getLangFromPath();
+    router.replace(`/${lang}`);
   }, [router]);
 
   return (
