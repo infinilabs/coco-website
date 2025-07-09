@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { macLinks, winLinks, linuxLinks } from "@/data/download";
-import { divider } from "@nextui-org/react";
+import { Badge } from "@/components/ui/badge";
+import { linuxLinks, macLinks, winLinks } from "@/data/download";
 
 export default function AppInstall({ locale }: { locale: any }) {
   const { theme } = useTheme();
@@ -35,6 +35,7 @@ export default function AppInstall({ locale }: { locale: any }) {
             <span className="text-black dark:text-white text-xl font-semibold">
               macOS
             </span>
+            <Badge className="bg-[#04FEF6] text-[#04071B] text-xs">Beta</Badge>
           </div>
           <div className="h-11 font-normal text-base text-[#9696B4] leading-[22px]">
             {locale?.macOS}
@@ -94,6 +95,7 @@ export default function AppInstall({ locale }: { locale: any }) {
             <span className="text-black dark:text-white text-xl font-semibold">
               Windows
             </span>
+            <Badge className="bg-[#04FEF6] text-[#04071B] text-xs">Alpha</Badge>
           </div>
           <div className="h-11 font-normal text-base text-[#9696B4] leading-[22px]">
             {locale?.window}
@@ -148,6 +150,7 @@ export default function AppInstall({ locale }: { locale: any }) {
             <span className="text-black dark:text-white text-xl font-semibold">
               Ubuntu
             </span>
+            <Badge className="bg-[#04FEF6] text-[#04071B] text-xs">Alpha</Badge>
           </div>
           <div className="h-11 font-normal text-base text-[#9696B4] leading-[22px]">
             {locale?.unbuntu}
