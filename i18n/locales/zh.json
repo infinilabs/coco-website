@@ -47,7 +47,7 @@
     "manual": "手动安装",
     "macOS": "支持 macOS 12 及更高版本",
     "window": "支持 Windows 10 及以上版本",
-    "unbuntu": "仅支持 X11"
+    "unbuntu": "支持 Ubuntu 22.04 及以上版本（仅支持 X11）"
   },
   "NotFound": {
     "title": "页面未找到",

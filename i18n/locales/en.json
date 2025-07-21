@@ -47,7 +47,7 @@
     "manual": "Manual installation",
     "macOS": "Supports macOS 12 and later versions",
     "window": "Support for Windows 10 and above versions",
-    "unbuntu": "X11 only"
+    "unbuntu": "Supports Ubuntu 22.04 and later versions (X11 only)"
   },
   "NotFound": {
     "title": "Page not found",
