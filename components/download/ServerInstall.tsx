@@ -1,16 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
 import { Copy } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 import {
-  macLinksServer,
-  winLinksServer,
-  linuxLinkServer,
-  ServerHref,
   DockerCommand,
+  linuxLinkServer,
+  macLinksServer,
+  ServerHref,
+  winLinksServer,
 } from "@/data/download";
 
 export default function ServerInstall({ locale }: { locale: any }) {
@@ -51,7 +51,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
             </span>
           </div>
           <div className="flex items-center bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 mb-2">
-            <span className="text-black dark:text-cyan-200 font-mono text-sm flex-1 select-all">
+            <span className="text-black dark:text-cyan-200 font-mono text-sm flex-1">
               {DockerCommand}
             </span>
             <button
@@ -219,4 +219,3 @@ export default function ServerInstall({ locale }: { locale: any }) {
     </div>
   );
 }
-
