@@ -43,7 +43,7 @@
     "version": "版本：",
     "notes": "更新说明",
     "docs": "文档",
-    "envText": "* 其他安装环境，请选择",
+    "envText": "* 请修改密码后再运行上面的 docker 命令，其他安装环境，请选择",
     "manual": "手动安装",
     "macOS": "支持 macOS 12 及更高版本",
     "window": "支持 Windows 10 及以上版本",
@@ -58,4 +58,3 @@
     "description": "针对常见的 Coco 用例和功能的快速解答"
   }
 }
-
