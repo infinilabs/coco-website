@@ -84,9 +84,9 @@ export const ServerHref =
 export const DockerCommand = `docker run -d 
   --name cocoserver 
   -p 9000:9000 
-  -v ezs_data:/app/easysearch/data 
-  -v ezs_config:/app/easysearch/config 
-  -v ezs_logs:/app/easysearch/logs 
+  -v data:/app/easysearch/data 
+  -v config:/app/easysearch/config 
+  -v logs:/app/easysearch/logs 
   -e EASYSEARCH_INITIAL_ADMIN_PASSWORD="coco-server" 
   infinilabs/coco:${serverVersion}`;
 
