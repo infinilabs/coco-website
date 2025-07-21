@@ -81,7 +81,14 @@ export const ServerApi = "https://release.infinilabs.com/coco/server/stable/";
 export const ServerHref =
   "https://docs.infinilabs.com/coco-server/main/docs/getting-started/install/";
 
-export const DockerCommand = `docker run -d --name cocoserver -p 9000:9000 infinilabs/coco:${serverVersion}`;
+export const DockerCommand = `docker run -d 
+  --name cocoserver 
+  -p 9000:9000 
+  -v ezs_data:/app/easysearch/data 
+  -v ezs_config:/app/easysearch/config 
+  -v ezs_logs:/app/easysearch/logs 
+  -e EASYSEARCH_INITIAL_ADMIN_PASSWORD="coco-server" 
+  infinilabs/coco:${serverVersion}`;
 
 export const macLinksServer = [
   {
