@@ -87,7 +87,6 @@ export const DockerCommand = `docker run -d
   -v data:/app/easysearch/data 
   -v config:/app/easysearch/config 
   -v logs:/app/easysearch/logs 
-  -e EASYSEARCH_INITIAL_ADMIN_PASSWORD="coco-server" 
   infinilabs/coco:${serverVersion}`;
 
 export const macLinksServer = [
