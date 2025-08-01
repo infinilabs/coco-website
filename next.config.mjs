@@ -2,7 +2,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  ...(isDev ? {} : { output: "export" }),
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
@@ -17,7 +17,16 @@ const nextConfig = {
     unoptimized: true,
   },
   distDir: isDev ? "out" : "docs",
+  ...(isDev && {
+    async rewrites() {
+      return [
+        {
+          source: "/api/extensions/:path*",
+          destination: "https://coco.infini.cloud/store/extension/:path*",
+        },
+      ];
+    },
+  }),
 };
 
 export default nextConfig;
-
