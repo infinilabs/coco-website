@@ -56,5 +56,12 @@
   "FAQ": {
     "title": "常见问题",
     "description": "针对常见的 Coco 用例和功能的快速解答"
+  },
+  "Integration": {
+    "title": "扩展",
+    "description": "增强 Coco 应用的功能",
+    "build": "构建您自己的扩展 →",
+    "search": "搜索扩展...",
+    "install": "安装"
   }
 }

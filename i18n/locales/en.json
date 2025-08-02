@@ -56,5 +56,12 @@
   "FAQ": {
     "title": "FAQ",
     "description": "Quick answers to common Coco use cases and features"
+  },
+  "Integration": {
+    "title": "Extensions",
+    "description": "Enhance the functionality of Coco App",
+    "build": "Build your own Extension →",
+    "search": "Search extensions...",
+    "install": "Install"
   }
 }
