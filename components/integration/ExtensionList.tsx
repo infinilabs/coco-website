@@ -11,59 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-interface Developer {
-  avatar: string;
-  bio: string;
-  created: string;
-  github_handle: string;
-  id: string;
-  location: string;
-  name: string;
-  updated: string;
-  website: string;
-}
-
-interface Screenshot {
-  title: string;
-  url: string;
-}
-
-interface Stats {
-  installs: number;
-  views: number;
-}
-
-interface Url {
-  code: string;
-  download: string;
-}
-
-interface Version {
-  number: string;
-}
-
-interface Action {
-  args: string[];
-  exec: string;
-}
-
-interface Extension {
-  action: Action;
-  category: string;
-  created: string;
-  description: string;
-  developer: Developer;
-  icon: string;
-  id: string;
-  name: string;
-  platforms: string[];
-  screenshots: Screenshot[];
-  stats: Stats;
-  type: string;
-  updated: string;
-  url: Url;
-  version: Version;
-}
+import type { Extension } from "@/data/integration";
 
 interface ExtensionListProps {
   extensions: Extension[];
@@ -73,6 +21,7 @@ interface ExtensionListProps {
   locale: {
     install: string;
   };
+  onDetail: (id: string) => void;
   onPageChange: (page: number) => void;
 }
 
@@ -82,6 +31,7 @@ export default function ExtensionList({
   totalCount,
   pageSize,
   locale,
+  onDetail,
   onPageChange,
 }: ExtensionListProps) {
   const { theme } = useTheme();
@@ -140,6 +90,9 @@ export default function ExtensionList({
             className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
+            onClick={() => {
+              onDetail(extension.id);
+            }}
           >
             <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl p-8 min-h-[380px] flex flex-col justify-between shadow-lg">
               <div>

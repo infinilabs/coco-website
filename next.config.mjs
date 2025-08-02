@@ -1,4 +1,6 @@
 const isDev = process.env.NODE_ENV === "development";
+const devUrl = "https://coco.infini.cloud";
+//const devUrl = "http://dev.infini.cloud:27200";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,11 +10,11 @@ const nextConfig = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: `
       default-src 'self';
-      script-src 'self' https://coco.infini.cloud;
-      style-src 'self' 'unsafe-inline' https://coco.infini.cloud;
-      img-src 'self' data: https://coco.infini.cloud;
-      connect-src 'self' https://coco.infini.cloud;
-      frame-src https://coco.infini.cloud;
+      script-src 'self' ${devUrl};
+      style-src 'self' 'unsafe-inline' ${devUrl};
+      img-src 'self' data: ${devUrl};
+      connect-src 'self' ${devUrl};
+      frame-src ${devUrl};
     `,
     unoptimized: true,
   },
@@ -22,7 +24,7 @@ const nextConfig = {
       return [
         {
           source: "/api/extensions/:path*",
-          destination: "https://coco.infini.cloud/store/extension/:path*",
+          destination: `${devUrl}/store/extension/:path*`,
         },
       ];
     },

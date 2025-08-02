@@ -6,86 +6,16 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 import NavTab from "@/components/header/NavTab";
-import { ALL_INTEGRATION } from "@/data/integration";
+import { ALL_INTEGRATION, ApiResponse, Extension } from "@/data/integration";
 import { defaultLocale, getDictionary } from "@/i18n/i18n";
 import ExtensionList from "./ExtensionList";
 
-// Extension data type definitions
-interface Developer {
-  avatar: string;
-  bio: string;
-  created: string;
-  github_handle: string;
-  id: string;
-  location: string;
-  name: string;
-  updated: string;
-  website: string;
-}
-
-interface Screenshot {
-  title: string;
-  url: string;
-}
-
-interface Stats {
-  installs: number;
-  views: number;
-}
-
-interface Url {
-  code: string;
-  download: string;
-}
-
-interface Version {
-  number: string;
-}
-
-interface Action {
-  args: string[];
-  exec: string;
-}
-
-interface Extension {
-  action: Action;
-  category: string;
-  created: string;
-  description: string;
-  developer: Developer;
-  icon: string;
-  id: string;
-  name: string;
-  platforms: string[];
-  screenshots: Screenshot[];
-  stats: Stats;
-  type: string;
-  updated: string;
-  url: Url;
-  version: Version;
-}
-
-// API response type definition
-interface ApiResponse {
-  hits: {
-    total: {
-      relation: string;
-      value: number;
-    };
-    hits?: Array<{
-      _index: string;
-      _type: string;
-      _id: string;
-      _score: number;
-      _source: Extension;
-    }>;
-  };
-}
-
 export default function IntegrationIndex({
   lang = defaultLocale,
+  onDetail,
 }: {
   lang: string;
+  onDetail: (id: string) => void;
 }) {
   const [locale, setLocale] = useState<any>();
   const { theme } = useTheme();
@@ -290,6 +220,7 @@ export default function IntegrationIndex({
             totalCount={totalCount}
             pageSize={pageSize}
             locale={locale}
+            onDetail={onDetail}
             onPageChange={handlePageChange}
           />
         )}
