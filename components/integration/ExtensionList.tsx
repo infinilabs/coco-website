@@ -9,6 +9,7 @@ import {
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import type { Extension } from "@/data/integration";
@@ -21,7 +22,7 @@ interface ExtensionListProps {
   locale: {
     install: string;
   };
-  onDetail: (id: string) => void;
+  lang: string;
   onPageChange: (page: number) => void;
 }
 
@@ -31,10 +32,12 @@ export default function ExtensionList({
   totalCount,
   pageSize,
   locale,
-  onDetail,
+  lang,
   onPageChange,
 }: ExtensionListProps) {
   const { theme } = useTheme();
+  const router = useRouter();
+
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
@@ -90,9 +93,7 @@ export default function ExtensionList({
             className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
-            onClick={() => {
-              onDetail(extension.id);
-            }}
+            onClick={() => router.push(`/${lang}/integration/${extension.id}`)}
           >
             <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl p-8 min-h-[380px] flex flex-col justify-between shadow-lg">
               <div>

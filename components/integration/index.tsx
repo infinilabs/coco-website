@@ -1,230 +1,229 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { MoveRight, Search } from "lucide-react";
 import { useTheme } from "next-themes";
-import Image from "next/image";
+import Images from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
-import NavTab from "@/components/header/NavTab";
-import { ALL_INTEGRATION, ApiResponse, Extension } from "@/data/integration";
-import { defaultLocale, getDictionary } from "@/i18n/i18n";
-import ExtensionList from "./ExtensionList";
+import { getDictionary } from "@/i18n/i18n";
 
-export default function IntegrationIndex({
-  lang = defaultLocale,
-  onDetail,
-}: {
+interface IntegrationIndexProps {
   lang: string;
-  onDetail: (id: string) => void;
-}) {
-  const [locale, setLocale] = useState<any>();
+}
+
+export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
   const { theme } = useTheme();
-  const [extensions, setExtensions] = useState<Extension[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [locale, setLocale] = useState<any>();
   const [searchQuery, setSearchQuery] = useState("");
-  const [active, setActive] = useState(0);
-
-  // Pagination state
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalCount, setTotalCount] = useState(0);
-  const pageSize = 9;
-
-  const INTEGRATION = ALL_INTEGRATION[`INTEGRATION_${lang.toUpperCase()}`];
-
-  // Fetch extensions with pagination and sorting support
-  const fetchExtensions = useCallback(
-    async (query: string = "", page: number = 1) => {
-      try {
-        setLoading(true);
-        const from = (page - 1) * pageSize;
-
-        // Add sort parameter for 'recently' tab
-        const sortParam =
-          INTEGRATION[active].value === "recently" ? "&sort=created:desc" : "";
-
-        const apiUrl =
-          process.env.NODE_ENV === "development"
-            ? `/api/extensions/_search?query=${encodeURIComponent(
-                query
-              )}&from=${from}&size=${pageSize}${sortParam}`
-            : `https://coco.infini.cloud/store/extension/_search?query=${encodeURIComponent(
-                query
-              )}&from=${from}&size=${pageSize}${sortParam}`;
-
-        const response = await fetch(apiUrl);
-        const data: ApiResponse = await response.json();
-
-        if (data.hits && data.hits.hits) {
-          const extensionList = data.hits.hits.map((hit) => ({
-            ...hit._source,
-            icon: hit._source.icon?.replace(/`/g, "").trim(),
-            developer: {
-              ...hit._source.developer,
-              avatar: hit._source.developer.avatar?.replace(/`/g, "").trim(),
-              website: hit._source.developer.website?.replace(/`/g, "").trim(),
-            },
-            screenshots: hit._source.screenshots?.map((screenshot) => ({
-              ...screenshot,
-              url: screenshot.url?.replace(/`/g, "").trim(),
-            })),
-            url: {
-              code: hit._source.url.code?.replace(/`/g, "").trim(),
-              download: hit._source.url.download?.replace(/`/g, "").trim(),
-            },
-          }));
-          setExtensions(extensionList);
-          setTotalCount(data.hits.total.value);
-        } else {
-          setExtensions([]);
-          setTotalCount(0);
-        }
-      } catch (error) {
-        console.error("Failed to fetch extensions:", error);
-        setExtensions([]);
-        setTotalCount(0);
-      } finally {
-        setLoading(false);
-      }
-    },
-    [active, INTEGRATION]
-  );
 
   const getLocale = useCallback(async () => {
     const dict = await getDictionary(lang);
-    setLocale(dict.Integration);
+    setLocale(dict);
   }, [lang]);
 
   useEffect(() => {
     getLocale();
-    fetchExtensions("", 1);
-  }, [getLocale, fetchExtensions]);
+  }, [getLocale]);
 
-  const handleSearch = useCallback(
-    (e: React.FormEvent) => {
-      e.preventDefault();
-      setCurrentPage(1);
-      fetchExtensions(searchQuery, 1);
-    },
-    [searchQuery, fetchExtensions]
-  );
+  const integrationModules = locale
+    ? [
+        {
+          id: "extensions",
+          title: locale.Integration.modules.extensions.title,
+          subtitle: locale.Integration.modules.extensions.subtitle,
+          description: locale.Integration.modules.extensions.description,
+          icon: "/svg/extension/extension.svg",
+          href: `/${lang}/integration/extensions`,
+          gradient: "from-purple-500 to-blue-500",
+          size: "large",
+        },
+        {
+          id: "connector",
+          title: locale.Integration.modules.connector.title,
+          subtitle: locale.Integration.modules.connector.subtitle,
+          description: locale.Integration.modules.connector.description,
+          icon: "/svg/extension/Connector.svg",
+          href: ``,
+          gradient: "from-green-500 to-teal-500",
+          size: "large",
+        },
+        {
+          id: "ai-assistant",
+          title: locale.Integration.modules.aiAssistant.title,
+          subtitle: locale.Integration.modules.aiAssistant.subtitle,
+          description: locale.Integration.modules.aiAssistant.description,
+          icon: "/svg/extension/Assistant.svg",
+          href: ``,
+          gradient: "from-blue-500 to-cyan-500",
+          size: "small",
+        },
+        {
+          id: "mcp-server",
+          title: locale.Integration.modules.mcpServer.title,
+          subtitle: locale.Integration.modules.mcpServer.subtitle,
+          description: locale.Integration.modules.mcpServer.description,
+          icon: "/svg/extension/mcp.svg",
+          href: ``,
+          gradient: "from-indigo-500 to-purple-500",
+          size: "small",
+        },
+        {
+          id: "quicklink",
+          title: locale.Integration.modules.quicklink.title,
+          subtitle: locale.Integration.modules.quicklink.subtitle,
+          description: locale.Integration.modules.quicklink.description,
+          icon: "/svg/extension/Quicklink.svg",
+          href: ``,
+          gradient: "from-purple-500 to-pink-500",
+          size: "small",
+        },
+      ]
+    : [];
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === "Tab") {
-        e.preventDefault();
-        setCurrentPage(1);
-        fetchExtensions(searchQuery, 1);
-      }
-    },
-    [searchQuery, fetchExtensions]
-  );
-
-  const handlePageChange = useCallback(
-    (page: number) => {
-      setCurrentPage(page);
-      fetchExtensions(searchQuery, page);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    },
-    [searchQuery, fetchExtensions]
-  );
-
-  const handleSearchChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchQuery(e.target.value);
-    },
-    []
-  );
+  if (!locale) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
 
   return (
-    <section className="w-full flex flex-col items-center pt-28 md:pt-48 px-4 sm:px-6 lg:px-8">
-      <div className="mb-4 font-medium text-3xl md:text-5xl bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent flex items-center">
-        <Image
-          src="/svg/extension/extension.svg"
-          alt="extension"
-          width={56}
-          height={56}
-          className="mr-2"
-        />
-        {locale?.title || "Loading..."}
-      </div>
-      <div className="mb-14 font-normal text-base text-black dark:text-white">
-        {locale?.description || "Loading..."}
-      </div>
-      <div>
-        <a
-          href="https://github.com/infinilabs/coco-extensions"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#00CEFF] font-medium"
-        >
-          {locale?.build || "Loading..."}
-        </a>
+    <div className="min-h-screen relative overflow-hidden transition-colors duration-300">
+      <div className="h-[480px] mt-14 max-w-6xl mx-auto py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:bg-[url('/svg/extension/store-bg.svg')] dark:bg-cover dark:bg-center dark:bg-no-repeat">
+        <div className="h-[79px] mb-4 text-center font-medium text-3xl md:text-5xl bg-gradient-to-r from-purple-600 to-blue-600 dark:from-[#843DFF] dark:to-[#00CEFF] bg-clip-text text-transparent">
+          {locale.Integration.title}
+        </div>
+        <p className="text-base text-center mb-20 text-gray-600 dark:text-gray-400">
+          {locale.Integration.description}
+        </p>
+
+        <div className="max-w-2xl mx-auto mb-16 p-[2px] rounded-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-[#5E85FF33] dark:to-[#49FFF333]">
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 z-10 pl-4 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+            </div>
+            <input
+              type="text"
+              placeholder={locale.Integration.searchPlaceholder}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full rounded-full pl-12 pr-4 py-4 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white border-gray-200 text-gray-900 placeholder-gray-500 dark:bg-[#04071B] dark:border-[#04071B] dark:text-white dark:placeholder-gray-400"
+            />
+          </div>
+        </div>
       </div>
 
-      <div className="w-full max-w-2xl mt-12 mb-16">
-        <form onSubmit={handleSearch} className="relative">
-          <div className="relative w-full h-16 rounded-full border-2 border-gradient-to-r from-[#5E85FF] to-[#49FFF3] bg-white dark:bg-[#04071B] shadow-lg overflow-hidden">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5E85FF] via-[#EBC8FE] to-[#49FFF3] p-[2px]">
-              <div className="w-full h-full rounded-full bg-white dark:bg-[#04071B] flex items-center px-6">
-                <Search className="flex-shrink-0 w-6 h-6 mr-4 text-[#828282]" />
+      {/* Integration Modules Grid */}
+      <div className="mt-14 max-w-7xl mx-auto p-4">
+        {/* Top Row - Large Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          {/* Extensions - Large Card */}
+          <Link href={integrationModules[0].href}>
+            <div className="h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+              <div className="absolute inset-0 opacity-0 rounded-3xl p-8 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                  onKeyDown={handleKeyDown}
-                  placeholder={locale?.search || "Loading..."}
-                  className="flex-1 bg-transparent border-none outline-none text-lg text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
-                />
+              <div className="relative z-10 h-full flex flex-col p-10">
+                <div className="flex items-center justify-between mb-5">
+                  <Images
+                    src={integrationModules[0].icon}
+                    alt={integrationModules[0].title}
+                    width={56}
+                    height={56}
+                  />
+                </div>
 
-                <div className="flex-shrink-0 ml-4">
-                  <div className="px-3 py-1 rounded-lg bg-gradient-to-r from-[#49FFF3] to-[#5E85FF] text-white text-sm font-medium">
-                    Tab
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                  {integrationModules[0].title}
+                  <span className="px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-semibold rounded-full">
+                    {integrationModules[0].subtitle}
+                  </span>
+                </h3>
+
+                <p className="text-sm flex-grow text-gray-600 dark:text-gray-300">
+                  {integrationModules[0].description}
+                </p>
+
+                <div className="absolute bottom-6 left-10">
+                  <div className="inline-flex items-center transition-colors text-blue-600 group-hover:text-blue-500 dark:text-blue-400 dark:group-hover:text-blue-300">
+                    <MoveRight className="w-6 h-6" />
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </Link>
 
-      <div className="w-full max-w-7xl flex mt-40 justify-start">
-        <NavTab
-          tabs={INTEGRATION}
-          value={INTEGRATION[active].value}
-          onChange={(tab: any, index: number) => {
-            setActive(index);
-            setCurrentPage(1);
-            fetchExtensions(searchQuery, 1);
-          }}
-        />
-      </div>
+          {/* Connector - Large Card */}
+          <div>
+            <div className="h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+              <div className="absolute inset-0 opacity-0 rounded-3xl p-8 group-hover:opacity-100 transition-opacity duration-300" />
 
-      <div className="w-full max-w-7xl mt-10">
-        {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="text-lg text-gray-500 dark:text-gray-400">
-              Loading extensions...
+              <div className="relative z-10 h-full flex flex-col p-10">
+                <div className="flex items-center justify-between mb-5">
+                  <Images
+                    src={integrationModules[1].icon}
+                    alt={integrationModules[1].title}
+                    width={56}
+                    height={56}
+                  />
+                </div>
+
+                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                  {integrationModules[1].title}
+                  <span className="px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-semibold rounded-full">
+                    {integrationModules[1].subtitle}
+                  </span>
+                </h3>
+
+                <p className="text-sm flex-grow text-gray-600 dark:text-gray-300">
+                  {integrationModules[1].description}
+                </p>
+
+                <div className="absolute bottom-6 left-10">
+                  <MoveRight className="w-6 h-6" />
+                </div>
+              </div>
             </div>
           </div>
-        ) : extensions.length === 0 ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="text-lg text-gray-500 dark:text-gray-400">
-              No extensions found
+        </div>
+
+        {/* Bottom Row - Small Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {integrationModules.slice(2).map((module, index) => (
+            <div key={module.id}>
+              <div className="h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+                <div className="relative z-10 h-full flex flex-col p-10">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="text-2xl">
+                      <Images
+                        src={module.icon}
+                        alt={module.title}
+                        width={56}
+                        height={56}
+                      />
+                    </div>
+                  </div>
+
+                  <h3 className="text-lg font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
+                    {module.title}
+                    <span className="px-2 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-semibold rounded-full">
+                      {module.subtitle}
+                    </span>
+                  </h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    {module.description}
+                  </p>
+
+                  <div className="absolute bottom-6 left-10">
+                    <MoveRight className="w-6 h-6" />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        ) : (
-          <ExtensionList
-            extensions={extensions}
-            currentPage={currentPage}
-            totalCount={totalCount}
-            pageSize={pageSize}
-            locale={locale}
-            onDetail={onDetail}
-            onPageChange={handlePageChange}
-          />
-        )}
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

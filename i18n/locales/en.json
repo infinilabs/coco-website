@@ -80,6 +80,36 @@
     "buildYourOwn": "Build your own Extension",
     "repo": "Repo",
     "loading": "Loading...",
-    "unknownError": "Unknown error"
+    "unknownError": "Unknown error",
+    "store_title": "Integrated Resources Hub",
+    "store_description": "From extensions to connectors — everything you need to build your ideal workflow in one place",
+    "searchPlaceholder": "Search integrations...",
+    "modules": {
+      "extensions": {
+        "title": "Extensions",
+        "subtitle": "App",
+        "description": "Extend Coco AI functionality in the App with one click"
+      },
+      "connector": {
+        "title": "Connector",
+        "subtitle": "Server",
+        "description": "Link external services to Coco Server seamlessly"
+      },
+      "aiAssistant": {
+        "title": "AI Assistant",
+        "subtitle": "Server",
+        "description": "Import prompt templates to quickly create an AI assistant"
+      },
+      "mcpServer": {
+        "title": "MCP Server",
+        "subtitle": "Server",
+        "description": "Import MCP configurations to optimize Coco Server's model performance"
+      },
+      "quicklink": {
+        "title": "Quicklink",
+        "subtitle": "App",
+        "description": "Launch quicklinks to streamline tasks in Coco AI App"
+      }
+    }
   }
 }

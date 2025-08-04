@@ -80,6 +80,36 @@
     "buildYourOwn": "构建您自己的扩展",
     "repo": "仓库",
     "loading": "加载中...",
-    "unknownError": "未知错误"
+    "unknownError": "未知错误",
+    "store_title": "集成资源中心",
+    "store_description": "从扩展到连接器——构建理想工作流所需的一切，尽在一处",
+    "searchPlaceholder": "搜索集成...",
+    "modules": {
+      "extensions": {
+        "title": "扩展",
+        "subtitle": "新功能",
+        "description": "一键扩展 Coco AI 应用功能"
+      },
+      "connector": {
+        "title": "连接器",
+        "subtitle": "测试版",
+        "description": "无缝连接外部服务到 Coco Server"
+      },
+      "aiAssistant": {
+        "title": "AI 助手",
+        "subtitle": "测试版",
+        "description": "导入提示模板，快速创建 AI 助手"
+      },
+      "mcpServer": {
+        "title": "MCP 服务器",
+        "subtitle": "测试版",
+        "description": "导入 MCP 配置，优化 Coco Server 模型性能"
+      },
+      "quicklink": {
+        "title": "快捷链接",
+        "subtitle": "新功能",
+        "description": "启动快捷链接，简化 Coco AI 应用中的任务"
+      }
+    }
   }
 }
