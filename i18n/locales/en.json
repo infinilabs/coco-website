@@ -62,6 +62,24 @@
     "description": "Enhance the functionality of Coco App",
     "build": "Build your own Extension →",
     "search": "Search extensions...",
-    "install": "Install"
+    "install": "Install",
+    "extensionNotFound": "Extension Not Found",
+    "extensionNotFoundDesc": "The requested extension could not be found.",
+    "backToExtensions": "Back to Extensions",
+    "extensions": "Extensions",
+    "details": "Details",
+    "description_title": "Description",
+    "commands": "Commands",
+    "tags": "Tags",
+    "lastUpdate": "Last update",
+    "noCommands": "No commands available",
+    "youMayAlsoLike": "You may also like",
+    "more": "More →",
+    "developer": "Developer",
+    "moreBy": "More by",
+    "buildYourOwn": "Build your own Extension",
+    "repo": "Repo",
+    "loading": "Loading...",
+    "unknownError": "Unknown error"
   }
 }

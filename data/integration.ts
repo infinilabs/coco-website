@@ -35,6 +35,14 @@ export interface Action {
   args: string[];
 }
 
+export interface Command {
+  action: Action;
+  description: string;
+  icon: string;
+  name: string;
+  type: string;
+}
+
 export interface Extension {
   id: string;
   created: string;
@@ -48,10 +56,20 @@ export interface Extension {
   url: Url;
   version: Version;
   screenshots: Screenshot[];
-  action: Action;
-  enabled: boolean;
+  action?: Action;
   stats: Stats;
   category?: string;
+  enabled?: boolean;
+  commands?: Command[];
+  tags?: string[];
+}
+
+export interface ExtensionApiResponse {
+  _index: string;
+  _type: string;
+  _id: string;
+  _score: number;
+  _source: Extension;
 }
 
 export interface ExtensionApiResponse {
