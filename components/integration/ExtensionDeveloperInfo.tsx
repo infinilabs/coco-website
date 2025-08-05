@@ -1,6 +1,6 @@
-import Image from "next/image";
-import { Github, Globe, MapPin } from "lucide-react";
 import type { Extension } from "@/data/integration";
+import { Github, Globe, MapPin } from "lucide-react";
+import Image from "next/image";
 
 interface DeveloperExtension {
   id: string;
@@ -27,36 +27,36 @@ export default function ExtensionDeveloperInfo({
   renderExtensionIcon,
 }: ExtensionDeveloperInfoProps) {
   return (
-    <div className="w-[29%] space-y-6">
+    <div className="w-full lg:w-[29%] space-y-4 sm:space-y-6">
       <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-        <div className="p-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl">
-          <div className="text-xl font-semibold text-black dark:text-white mb-6">
+        <div className="p-3 sm:p-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl">
+          <div className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-4 sm:mb-6">
             {locale?.developer || "Developer"}
           </div>
 
           <Image
             src={extension.developer.avatar}
             alt={extension.developer.name}
-            width={40}
-            height={40}
-            className="rounded-full mb-3"
+            width={32}
+            height={32}
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full mb-3"
           />
 
-          <div className="text-black dark:text-white font-semibold text-xl mb-4">
+          <div className="text-black dark:text-white font-semibold text-lg sm:text-xl mb-3 sm:mb-4">
             {extension.developer.name}
           </div>
           {extension.developer.bio && (
-            <p className="text-[#9696B4] text-sm leading-relaxed mb-6">
+            <p className="text-[#9696B4] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
               {extension.developer.bio}
             </p>
           )}
 
           {/* Developer contact info */}
-          <div className="space-y-3 text-sm pb-6">
+          <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm pb-4 sm:pb-6">
             {extension.developer.location && (
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-black dark:text-white" />
-                <span className="text-[#9696B4]">
+              <div className="flex items-center space-x-2 sm:space-x-3">
+                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white flex-shrink-0" />
+                <span className="text-[#9696B4] truncate">
                   {extension.developer.location}
                 </span>
               </div>
@@ -64,7 +64,7 @@ export default function ExtensionDeveloperInfo({
 
             {extension.developer.github_handle && (
               <div
-                className="flex items-center space-x-3 cursor-pointer"
+                className="flex items-center space-x-2 sm:space-x-3 cursor-pointer"
                 onClick={() =>
                   window.open(
                     `https://github.com/${extension.developer.github_handle}`,
@@ -72,8 +72,8 @@ export default function ExtensionDeveloperInfo({
                   )
                 }
               >
-                <Github className="w-4 h-4 text-black dark:text-white" />
-                <span className="text-[#9696B4]">
+                <Github className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white flex-shrink-0" />
+                <span className="text-[#9696B4] truncate">
                   @{extension.developer.github_handle}
                 </span>
               </div>
@@ -81,7 +81,7 @@ export default function ExtensionDeveloperInfo({
 
             {extension.developer.twitter_handle && (
               <div
-                className="flex items-center space-x-3 cursor-pointer"
+                className="flex items-center space-x-2 sm:space-x-3 cursor-pointer"
                 onClick={() =>
                   window.open(
                     `https://twitter.com/${extension.developer.twitter_handle}`,
@@ -90,13 +90,13 @@ export default function ExtensionDeveloperInfo({
                 }
               >
                 <svg
-                  className="w-4 h-4 text-black dark:text-white"
+                  className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white flex-shrink-0"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                 >
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
-                <span className="text-[#9696B4]">
+                <span className="text-[#9696B4] truncate">
                   @{extension.developer.twitter_handle}
                 </span>
               </div>
@@ -104,44 +104,41 @@ export default function ExtensionDeveloperInfo({
 
             {extension.developer.website && (
               <div
-                className="flex items-center space-x-3 cursor-pointer"
+                className="flex items-center space-x-2 sm:space-x-3 cursor-pointer"
                 onClick={() =>
                   window.open(extension.developer.website, "_blank")
                 }
               >
-                <Globe className="w-4 h-4 text-black dark:text-white" />
-                <span className="text-[#9696B4]">
+                <Globe className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white flex-shrink-0" />
+                <span className="text-[#9696B4] truncate">
                   {extension.developer.website}
                 </span>
               </div>
             )}
           </div>
 
-          <div className="border-t border-gray-800 py-6">
-            <div className="text-xl font-semibold text-black dark:text-white mb-6">
+          <div className="border-t border-gray-800 py-4 sm:py-6">
+            <div className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-4 sm:mb-6">
               {locale?.moreBy || "More by"} {extension.developer.name}
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {getDeveloperExtensions(extension.developer.id).map(
                 (ext, index) => (
                   <div
                     key={ext.id}
-                    className={`flex items-center space-x-4 p-2  rounded-xl hover:bg-[#161b22] transition-colors cursor-pointer group`}
+                    className={`flex items-center space-x-3 sm:space-x-4 p-2 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors cursor-pointer group`}
                     onClick={() => {
-                      window.open(
-                        `/${lang}/integration/${ext.id}`,
-                        "_blank"
-                      );
+                      window.open(`/${lang}/integration/${ext.id}`, "_blank");
                     }}
                   >
                     <div
-                      className={`w-12 h-12 bg-gradient-to-br ${ext.gradientFrom} ${ext.gradientTo} rounded-xl flex items-center justify-center flex-shrink-0`}
+                      className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${ext.gradientFrom} ${ext.gradientTo} rounded-xl flex items-center justify-center flex-shrink-0`}
                     >
                       {renderExtensionIcon(ext.iconType)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4 className="text-black dark:text-white font-medium text-sm group-hover:text-blue-400 transition-colors">
+                      <h4 className="text-black dark:text-white font-medium text-xs sm:text-sm group-hover:text-blue-400 transition-colors truncate">
                         {ext.name}
                       </h4>
                       <p className="text-gray-400 text-xs mt-1 truncate">
@@ -153,7 +150,7 @@ export default function ExtensionDeveloperInfo({
               )}
             </div>
 
-            <button className="mt-6 px-2 inline-flex items-center space-x-1 text-[#28A3FF] hover:text-blue-300 text-base font-medium transition-colors">
+            <button className="mt-4 sm:mt-6 px-2 inline-flex items-center space-x-1 text-[#28A3FF] hover:text-blue-300 text-sm sm:text-base font-medium transition-colors">
               {locale?.more || "More →"}
             </button>
           </div>
@@ -162,9 +159,9 @@ export default function ExtensionDeveloperInfo({
 
       {/* Build your own Extension */}
       <div className="p-[2px] rounded-full bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-        <div className="h-[52px] leading-[52px] px-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-full">
+        <div className="h-[44px] sm:h-[52px] leading-[44px] sm:leading-[52px] px-4 sm:px-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-full flex items-center justify-center">
           <div
-            className="text-[#28A3FF] font-base mb-2 flex items-center justify-center cursor-pointer"
+            className="text-[#28A3FF] text-sm sm:text-base flex items-center justify-center cursor-pointer"
             onClick={() =>
               window.open(
                 "https://github.com/infinilabs/coco-extensions",

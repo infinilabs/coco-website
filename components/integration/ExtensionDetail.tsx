@@ -131,235 +131,13 @@ export default function ExtensionDetail({
           ? `/api/extensions/${extensionId}`
           : `https://coco.infini.cloud/store/extension/${extensionId}`;
 
-      // const response = await fetch(url);
+      const response = await fetch(url);
 
-      // if (!response.ok) {
-      //   throw new Error(`Failed to fetch extension: ${response.status}`);
-      // }
+      if (!response.ok) {
+        throw new Error(`Failed to fetch extension: ${response.status}`);
+      }
 
-      // const data = await response.json();
-      const data = {
-        _index: "coco_extension",
-        _type: "_doc",
-        _id: "23488499b6c95b54c623265f9416699e",
-        _score: 1,
-        _source: {
-          category: "Media",
-          commands: [
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item "播放"\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Play music in QQ Music.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Play",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item 1\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Toggle play or pause in QQ Music.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Play/Pause",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item "下一首"\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Play the next track.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Next Track",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item "上一首"\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Play the previous track.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Previous Track",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item "暂停"\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Pause the current track.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Pause",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item "喜欢歌曲"\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Mark the current song as liked.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Like Song",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item "取消喜欢"\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Remove like mark from the current song.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Unlike Song",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item "音量加"\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Increase the volume by one step.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Volume Up",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item "音量减"\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Decrease the volume by one step.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Volume Down",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'delay 1\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item 1 of menu 1 of menu item 7\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Switch QQ Music to shuffle play mode.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Set Shuffle Mode",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'delay 1\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item 2 of menu 1 of menu item 7\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Switch QQ Music to repeat play mode.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Set Repeat Mode",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'delay 1\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item 3 of menu 1 of menu item 7\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Switch QQ Music to sequential play mode.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Set Sequential Mode",
-              type: "command",
-            },
-            {
-              action: {
-                args: [
-                  "-c",
-                  'osascript -e \'tell application "QQMusic" to activate\' -e \'delay 1\' -e \'tell application "System Events" to tell process "QQMusic" to tell menu bar 1 to tell menu bar item "播放控制" to tell menu "播放控制" to click menu item 8\'',
-                ],
-                exec: "zsh",
-              },
-              description: "Toggle display of lyrics in QQ Music.",
-              icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-              name: "Toggle Lyrics",
-              type: "command",
-            },
-          ],
-          created: "2025-07-28T10:48:55.383879735Z",
-          description:
-            "Control QQ Music playback and volume with quick commands via AppleScript. Supports play, pause, next, previous, volume up/down, mute toggle, like/unlike song, and more.",
-          developer: {
-            avatar:
-              "https://coco.infini.cloud//extensions/medcl/assets/avatar.jpg",
-            bio: "Make it work, make it better.",
-            created: "2025-07-28T10:48:55.379412739Z",
-            github_handle: "medcl",
-            id: "medcl",
-            location: "Internet",
-            name: "Medcl",
-            twitter_handle: "medcl",
-            updated: "2025-07-28T10:48:55.379412739Z",
-            website: "https://medcl.com/",
-          },
-          icon: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/icon.png",
-          id: "23488499b6c95b54c623265f9416699e",
-          name: "QQ Music Controls",
-          platforms: ["macos"],
-          screenshots: [
-            {
-              title: "QQ Music Playback and Volume Controls",
-              url: "https://coco.infini.cloud//extensions/medcl/qq_music_controls/assets/screenshot.jpeg",
-            },
-          ],
-          stats: {
-            installs: 1,
-            views: 1,
-          },
-          tags: ["Music", "Media", "Playback", "Volume", "QQMusic", "Audio"],
-          type: "extension",
-          updated: "2025-07-28T10:48:55.383879735Z",
-          url: {
-            code: "https://github.com/infinilabs/coco-extensions/tree/main/extensions/medcl/qq_music_controls",
-            download:
-              "https://coco.infini.cloud/pkg/medcl/23488499b6c95b54c623265f9416699e/qq_music_controls-0.1.zip",
-          },
-          version: {
-            number: "0.1",
-          },
-        },
-      };
-
+      const data = await response.json();
       setExtension(data._source);
     } catch (err) {
       console.error("Error fetching extension:", err);
@@ -394,7 +172,7 @@ export default function ExtensionDetail({
             </p>
 
             <button
-              onClick={() => router.push(`/${lang}/integration`)}
+              onClick={() => router.push(`/${lang}/integration/extensions`)}
               className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -445,48 +223,51 @@ export default function ExtensionDetail({
 
   return (
     <div className="min-h-screen pt-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header with back button */}
-        <div className="mb-20">
-          <button onClick={() => router.push(`/${lang}/integration`)}>
+        <div className="mb-12 md:mb-20">
+          <button
+            onClick={() => router.push(`/${lang}/integration/extensions`)}
+          >
             {locale?.extensions || "Extensions"}
           </button>
           {` > ${extension.name}`}
         </div>
 
         {/* Extension header */}
-        <div className="flex items-start space-x-6 mb-7">
-          <div className="flex-shrink-0">
+        <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-6 mb-6 md:mb-7">
+          <div className="flex-shrink-0 self-center md:self-start">
             <Image
               src={extension.icon}
               alt={extension.name}
-              width={128}
-              height={128}
+              width={96}
+              height={96}
+              className="md:w-32 md:h-32"
             />
           </div>
 
-          <div className="flex-1">
-            <div className="text-3xl font-medium text-gray-900 dark:text-white mb-4">
+          <div className="flex-1 text-center md:text-left">
+            <div className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-3 md:mb-4">
               {extension.name}
             </div>
 
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex items-center justify-center md:justify-start space-x-2 mb-3 md:mb-4">
               <Image
                 src={extension.developer.avatar}
                 alt={extension.developer.name}
-                width={24}
-                height={24}
-                className="rounded-full"
+                width={20}
+                height={20}
+                className="md:w-6 md:h-6 rounded-full"
                 onError={() => {}}
               />
-              <span className="text-gray-600 dark:text-[#c8c8c8] font-normal text-base">
+              <span className="text-gray-600 dark:text-[#c8c8c8] font-normal text-sm md:text-base">
                 {extension.developer.name}
               </span>
             </div>
 
-            <div className="flex items-center space-x-10 mb-4">
-              <div className="flex items-center space-x-4">
-                <MonitorCheck className="w-6 h-6 text-black dark:text-white" />
+            <div className="flex flex-col space-y-3 md:flex-row md:items-center md:space-y-0 md:space-x-10 mb-3 md:mb-4">
+              <div className="flex items-center justify-center md:justify-start space-x-3 md:space-x-4">
+                <MonitorCheck className="w-5 h-5 md:w-6 md:h-6 text-black dark:text-white" />
                 {extension.platforms.includes("macos") && (
                   <Image
                     src={
@@ -495,17 +276,18 @@ export default function ExtensionDetail({
                         : "/svg/download/macos-light.svg"
                     }
                     alt="macOS"
-                    width={24}
-                    height={24}
-                    className="dark:text-black"
+                    width={20}
+                    height={20}
+                    className="md:w-6 md:h-6 dark:text-black"
                   />
                 )}
                 {extension.platforms.includes("windows") && (
                   <Image
                     src="/svg/windows11-logo.svg"
                     alt="Windows"
-                    width={24}
-                    height={24}
+                    width={20}
+                    height={20}
+                    className="md:w-6 md:h-6"
                   />
                 )}
 
@@ -513,53 +295,62 @@ export default function ExtensionDetail({
                   <Image
                     src="/svg/ubuntu.svg"
                     alt="Linux"
-                    width={24}
-                    height={24}
+                    width={20}
+                    height={20}
+                    className="md:w-6 md:h-6"
                   />
                 )}
               </div>
 
-              <div className="flex items-center space-x-2">
-                <FolderDown className="w-6 h-6" />
-                <span>
-                  {extension.stats.installs >= 1000
-                    ? `${(extension.stats.installs / 1000).toFixed(1)}k`
-                    : extension.stats.installs}
-                </span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <GitFork className="w-6 h-6" />
-                <span>{extension.stats.views}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Github className="w-6 h-6" />
-                <span>{locale?.repo || "Repo"}</span>
+              <div className="flex items-center justify-center md:justify-start space-x-6 md:space-x-10">
+                <div className="flex items-center space-x-1 md:space-x-2">
+                  <FolderDown className="w-5 h-5 md:w-6 md:h-6" />
+                  <span className="text-sm md:text-base">
+                    {extension.stats.installs >= 1000
+                      ? `${(extension.stats.installs / 1000).toFixed(1)}k`
+                      : extension.stats.installs}
+                  </span>
+                </div>
+                <div className="flex items-center space-x-1 md:space-x-2">
+                  <GitFork className="w-5 h-5 md:w-6 md:h-6" />
+                  <span className="text-sm md:text-base">
+                    {extension.stats.views}
+                  </span>
+                </div>
+                <div className="flex items-center space-x-1 md:space-x-2">
+                  <Github className="w-5 h-5 md:w-6 md:h-6" />
+                  <span className="text-sm md:text-base">
+                    {locale?.repo || "Repo"}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-10">
+        <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed mb-8 md:mb-10 text-center md:text-left px-2 md:px-0">
           {extension.description}
         </p>
 
-        <Link
-          href={extension.url.download}
-          aria-label="install"
-          target="_blank"
-        >
-          <div
-            className={`h-12 w-32 text-center mb-14 leading-[48px] px-4 rounded-full font-medium text-base transition-colors text-[#04071b]`}
-            style={{
-              background: "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
-              boxShadow: "0 2px 12px 0 #19F3FF55",
-            }}
+        <div className="flex justify-center md:justify-start mb-10 md:mb-14">
+          <Link
+            href={`coco://install_extension_from_store?id=${extension.id}`}
+            aria-label="install"
+            target="_blank"
           >
-            {locale?.install || "Loading..."}
-          </div>
-        </Link>
+            <div
+              className={`h-10 md:h-12 w-28 md:w-32 text-center leading-[40px] md:leading-[48px] px-3 md:px-4 rounded-full font-medium text-sm md:text-base transition-colors text-[#04071b]`}
+              style={{
+                background: "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
+                boxShadow: "0 2px 12px 0 #19F3FF55",
+              }}
+            >
+              {locale?.install || "Loading..."}
+            </div>
+          </Link>
+        </div>
 
-        <div className="flex justify-between">
+        <div className="flex flex-col lg:flex-row lg:justify-between space-y-8 lg:space-y-0">
           <ExtensionDetailContent
             extension={extension}
             locale={locale}

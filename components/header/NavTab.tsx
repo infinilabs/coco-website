@@ -115,7 +115,6 @@ export default function NavTab({
           const Icon = tab.icon;
 
           const commonProps = {
-            key: tab.value,
             className: getTabItemStyles(isActive),
             style: {
               background: isActive
@@ -142,6 +141,7 @@ export default function NavTab({
 
           return tab.href ? (
             <Link
+              key={tab.value}
               {...commonProps}
               href={tab.href}
               target={tab.external ? "_blank" : "_self"}
@@ -149,7 +149,9 @@ export default function NavTab({
               {content}
             </Link>
           ) : (
-            <button {...commonProps}>{content}</button>
+            <button key={tab.value} {...commonProps}>
+              {content}
+            </button>
           );
         })}
       </div>

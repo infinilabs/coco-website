@@ -90,10 +90,12 @@ export default function ExtensionList({
         {extensions.map((extension, index) => (
           <div
             key={extension.id}
-            className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"
+            className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333] cursor-pointer"
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
-            onClick={() => router.push(`/${lang}/integration/${extension.id}`)}
+            onClick={() =>
+              router.push(`/${lang}/integration/extensions/${extension.id}`)
+            }
           >
             <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl p-8 min-h-[380px] flex flex-col justify-between shadow-lg">
               <div>
@@ -121,9 +123,12 @@ export default function ExtensionList({
                     )}
                   </div>
                   <Link
-                    href={extension.url.download}
+                    href={`coco://install_extension_from_store?id=${extension.id}`}
                     aria-label="install"
                     target="_blank"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
                   >
                     {hoveredCard === index ? (
                       <div
@@ -174,7 +179,7 @@ export default function ExtensionList({
                 <div className="flex items-center space-x-2">
                   <MonitorCheck className="w-5 h-5 text-black dark:text-white" />
 
-                  {extension.platforms.includes("macos") && (
+                  {extension.platforms?.includes("macos") && (
                     <Image
                       src={
                         theme === "dark"
@@ -187,7 +192,7 @@ export default function ExtensionList({
                       className="dark:text-black"
                     />
                   )}
-                  {extension.platforms.includes("windows") && (
+                  {extension.platforms?.includes("windows") && (
                     <Image
                       src="/svg/windows11-logo.svg"
                       alt="Windows"
@@ -195,7 +200,7 @@ export default function ExtensionList({
                       height={20}
                     />
                   )}
-                  {extension.platforms.includes("linux") && (
+                  {extension.platforms?.includes("linux") && (
                     <Image
                       src="/svg/ubuntu.svg"
                       alt="Linux"
