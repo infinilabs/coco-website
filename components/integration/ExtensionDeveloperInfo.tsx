@@ -1,31 +1,61 @@
-import type { Extension } from "@/data/integration";
 import { Github, Globe, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-interface DeveloperExtension {
-  id: string;
-  name: string;
-  description: string;
-  iconType: "volume" | "eject" | "music" | "check";
-  gradientFrom: string;
-  gradientTo: string;
-}
+import type { ApiResponse, Extension } from "@/data/integration";
 
 interface ExtensionDeveloperInfoProps {
   extension: Extension;
   locale: any;
   lang: string;
-  getDeveloperExtensions: (developerId: string) => DeveloperExtension[];
-  renderExtensionIcon: (iconType: string) => JSX.Element | null;
 }
 
 export default function ExtensionDeveloperInfo({
   extension,
   locale,
   lang,
-  getDeveloperExtensions,
-  renderExtensionIcon,
 }: ExtensionDeveloperInfoProps) {
+  const [developerExtensions, setDeveloperExtensions] = useState<Extension[]>(
+    []
+  );
+  const [loading, setLoading] = useState(false);
+
+  const fetchDeveloperExtensions = async (developerName: string) => {
+    try {
+      setLoading(true);
+
+      const apiUrl =
+        process.env.NODE_ENV === "development"
+          ? `/api/extensions/_search?query=${developerName}&from=0&size=10`
+          : `https://coco.infini.cloud/store/extension/_search?query=${developerName}&from=0&size=5`;
+
+      const response = await fetch(apiUrl);
+      const data: ApiResponse = await response.json();
+
+      if (data.hits && data.hits.hits) {
+        const extensionList = data.hits.hits
+          .map((hit) => hit._source)
+          .filter((ext) => ext.developer.name === extension.developer.name);
+
+        setDeveloperExtensions(extensionList);
+      } else {
+        setDeveloperExtensions([]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch developer extensions:", error);
+      setDeveloperExtensions([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (extension.developer.name) {
+      fetchDeveloperExtensions(extension.developer.name);
+    }
+  }, []);
+
   return (
     <div className="w-full lg:w-[29%] space-y-4 sm:space-y-6">
       <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
@@ -51,8 +81,7 @@ export default function ExtensionDeveloperInfo({
             </p>
           )}
 
-          {/* Developer contact info */}
-          <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm pb-4 sm:pb-6">
+          <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
             {extension.developer.location && (
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white flex-shrink-0" />
@@ -89,13 +118,11 @@ export default function ExtensionDeveloperInfo({
                   )
                 }
               >
-                <svg
-                  className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white flex-shrink-0"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
+                <div className="w-3 h-3 sm:w-4 sm:h-4 text-black dark:text-white flex-shrink-0">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </div>
                 <span className="text-[#9696B4] truncate">
                   @{extension.developer.twitter_handle}
                 </span>
@@ -117,43 +144,56 @@ export default function ExtensionDeveloperInfo({
             )}
           </div>
 
-          <div className="border-t border-gray-800 py-4 sm:py-6">
-            <div className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-4 sm:mb-6">
-              {locale?.moreBy || "More by"} {extension.developer.name}
-            </div>
+          {developerExtensions.length > 0 && (
+            <div className="border-t border-blue-400/20 dark:border-gray-700 py-4 sm:py-6">
+              <div className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-4 sm:mb-6">
+                {locale?.moreBy || "More by"} {extension.developer.name}
+              </div>
 
-            <div className="space-y-2 sm:space-y-3">
-              {getDeveloperExtensions(extension.developer.id).map(
-                (ext, index) => (
-                  <div
-                    key={ext.id}
-                    className={`flex items-center space-x-3 sm:space-x-4 p-2 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors cursor-pointer group`}
-                    onClick={() => {
-                      window.open(`/${lang}/integration/${ext.id}`, "_blank");
-                    }}
-                  >
+              {loading ? (
+                <div className="text-center py-4">
+                  <div className="text-[#9696B4] text-sm">Loading...</div>
+                </div>
+              ) : (
+                <div className="space-y-2 sm:space-y-3">
+                  {developerExtensions.map((ext, index) => (
                     <div
-                      className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br ${ext.gradientFrom} ${ext.gradientTo} rounded-xl flex items-center justify-center flex-shrink-0`}
+                      key={ext.id}
+                      className="flex items-center space-x-3 sm:space-x-4 p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-[#161b22] transition-colors cursor-pointer group"
+                      onClick={() => {
+                        window.open(`/${lang}/integration/${ext.id}`, "_blank");
+                      }}
                     >
-                      {renderExtensionIcon(ext.iconType)}
+                      <Image
+                        src={ext.icon}
+                        alt={ext.name}
+                        width={40}
+                        height={40}
+                        className="rounded"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-black dark:text-white font-medium text-xs sm:text-sm group-hover:text-blue-400 transition-colors truncate">
+                          {ext.name}
+                        </h4>
+                        <p className="text-gray-400 text-xs mt-1 truncate">
+                          {ext.description}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-black dark:text-white font-medium text-xs sm:text-sm group-hover:text-blue-400 transition-colors truncate">
-                        {ext.name}
-                      </h4>
-                      <p className="text-gray-400 text-xs mt-1 truncate">
-                        {ext.description}
-                      </p>
-                    </div>
-                  </div>
-                )
+                  ))}
+                </div>
               )}
-            </div>
 
-            <button className="mt-4 sm:mt-6 px-2 inline-flex items-center space-x-1 text-[#28A3FF] hover:text-blue-300 text-sm sm:text-base font-medium transition-colors">
-              {locale?.more || "More →"}
-            </button>
-          </div>
+              <Link
+                href={`/${lang}/integration/extensions?developer=${encodeURIComponent(
+                  extension.developer.name
+                )}`}
+                className="mt-4 sm:mt-6 px-2 inline-flex items-center space-x-1 text-[#28A3FF] hover:text-blue-300 text-sm sm:text-base font-medium transition-colors"
+              >
+                {locale?.more || "More →"}
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import NavTab from "@/components/header/NavTab";
 import { ALL_INTEGRATION, ApiResponse, Extension } from "@/data/integration";
@@ -21,6 +22,7 @@ export default function IntegrationIndex({
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [active, setActive] = useState(0);
+  const searchParams = useSearchParams();
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -94,8 +96,16 @@ export default function IntegrationIndex({
 
   useEffect(() => {
     getLocale();
-    fetchExtensions("", 1);
-  }, [getLocale, fetchExtensions]);
+    
+    // Check for developer parameter in URL
+    const developerParam = searchParams.get('developer');
+    if (developerParam) {
+      setSearchQuery(developerParam);
+      fetchExtensions(developerParam, 1);
+    } else {
+      fetchExtensions("", 1);
+    }
+  }, [getLocale, fetchExtensions, searchParams]);
 
   const handleSearch = useCallback(
     (e: React.FormEvent) => {
@@ -174,12 +184,6 @@ export default function IntegrationIndex({
                   placeholder={locale?.search || "Loading..."}
                   className="flex-1 bg-transparent border-none outline-none text-lg text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                 />
-
-                <div className="flex-shrink-0 ml-4">
-                  <div className="px-3 py-1 rounded-lg bg-gradient-to-r from-[#49FFF3] to-[#5E85FF] text-white text-sm font-medium">
-                    Tab
-                  </div>
-                </div>
               </div>
             </div>
           </div>

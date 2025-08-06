@@ -1,6 +1,6 @@
 "use client";
 
-import { MoveRight, Search } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import Images from "next/image";
 import Link from "next/link";
@@ -91,7 +91,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
 
   return (
     <div className="min-h-screen relative overflow-hidden transition-colors duration-300">
-      <div className="h-[480px] mt-14 max-w-6xl mx-auto py-20 bg-[url('/svg/extension/store-bg.svg')] bg-cover bg-center bg-no-repeat">
+      <div className="h-[445px] w-[1000px] mt-14 mx-auto py-20 bg-[url('/svg/extension/store-bg.svg')] bg-cover bg-center bg-no-repeat">
         <div className="h-[79px] mb-4 text-center font-medium text-3xl md:text-5xl bg-gradient-to-r from-purple-600 to-blue-600 dark:from-[#843DFF] dark:to-[#00CEFF] bg-clip-text text-transparent">
           {locale.Integration.title}
         </div>
@@ -99,7 +99,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
           {locale.Integration.description}
         </p>
 
-        <div className="max-w-xs sm:max-w-md md:max-w-2xl mx-auto mb-16 p-[2px] rounded-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-[#5E85FF33] dark:to-[#49FFF333]">
+        {/* <div className="max-w-xs sm:max-w-md md:max-w-2xl mx-auto mb-16 p-[2px] rounded-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-[#5E85FF33] dark:to-[#49FFF333]">
           <div className="w-full relative">
             <div className="absolute inset-y-0 left-0 z-10 pl-4 flex items-center pointer-events-none">
               <Search className="h-4 w-4 md:h-5 md:w-5 text-gray-500 dark:text-gray-400" />
@@ -112,17 +112,19 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
               className="w-full rounded-full pl-10 md:pl-12 pr-4 py-3 md:py-4 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 bg-white border-gray-200 text-gray-900 placeholder-gray-500 dark:bg-[#04071B] dark:border-[#04071B] dark:text-white dark:placeholder-gray-400 text-sm md:text-base"
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Integration Modules Grid */}
-      <div className="mt-14 max-w-7xl mx-auto p-4">
+      <div className="mt-8 max-w-7xl mx-auto p-4">
         {/* Top Row - Large Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           {/* Extensions - Large Card */}
           <Link href={integrationModules[0].href}>
-            <div className="h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-              <div className="relative z-10 h-full flex flex-col p-10 rounded-[16px] bg-[#EBF6FF] dark:bg-[#0B1020]">
+            <div
+              className={`h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333] cursor-pointer`}
+            >
+              <div className="relative z-10 h-full flex flex-col p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
                 <div className="flex items-center justify-between mb-5">
                   <Images
                     src={integrationModules[0].icon}
@@ -145,7 +147,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
 
                 <div className="absolute bottom-6 left-10">
                   <div className="inline-flex items-center transition-colors text-blue-600 group-hover:text-blue-500 dark:text-blue-400 dark:group-hover:text-blue-300">
-                    <MoveRight className="w-6 h-6" />
+                    <MoveRight className="w-6 h-6 text-[#28A3FF]" />
                   </div>
                 </div>
               </div>
@@ -154,8 +156,8 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
 
           {/* Connector - Large Card */}
           <div>
-            <div className="h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-              <div className="relative z-10 h-full flex flex-col p-10 rounded-[16px] bg-[#EBF6FF] dark:bg-[#0B1020]">
+            <div className="h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+              <div className="relative z-10 h-full flex flex-col p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
                 <div className="flex items-center justify-between mb-5">
                   <Images
                     src={integrationModules[1].icon}
@@ -177,7 +179,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
                 </p>
 
                 <div className="absolute bottom-6 left-10">
-                  <MoveRight className="w-6 h-6" />
+                  <MoveRight className="w-6 h-6 text-[#D4DFE7] dark:text-[#133348]" />
                 </div>
               </div>
             </div>
@@ -188,8 +190,8 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {integrationModules.slice(2).map((module, index) => (
             <div key={module.id}>
-              <div className="h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-                <div className="relative z-10 h-full flex flex-col p-10 rounded-[16px] bg-[#EBF6FF] dark:bg-[#0B1020]">
+              <div className="h-[380px] group relative backdrop-blur-sm hover:scale-105 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+                <div className="relative z-10 h-full flex flex-col p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
                   <div className="flex items-center justify-between mb-5">
                     <div className="text-2xl">
                       <Images
@@ -212,7 +214,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
                   </p>
 
                   <div className="absolute bottom-6 left-10">
-                    <MoveRight className="w-6 h-6" />
+                    <MoveRight className="w-6 h-6 text-[#D4DFE7] dark:text-[#133348]" />
                   </div>
                 </div>
               </div>

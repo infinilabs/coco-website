@@ -6,7 +6,6 @@ import {
   FolderDown,
   MonitorCheck,
 } from "lucide-react";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -35,15 +34,9 @@ export default function ExtensionList({
   lang,
   onPageChange,
 }: ExtensionListProps) {
-  const { theme } = useTheme();
   const router = useRouter();
 
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
-
-  const handleImageError = (extensionId: string) => {
-    setImageErrors((prev) => new Set(prev).add(extensionId));
-  };
 
   // Calculate total pages
   const totalPages = Math.ceil(totalCount / pageSize);
@@ -97,31 +90,16 @@ export default function ExtensionList({
               router.push(`/${lang}/integration/extensions/${extension.id}`)
             }
           >
-            <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl p-8 min-h-[380px] flex flex-col justify-between shadow-lg">
+            <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-[15px] p-8 min-h-[380px] flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden">
-                    {extension.icon && !imageErrors.has(extension.id) ? (
-                      <Image
-                        src={extension.icon}
-                        alt={extension.name}
-                        width={56}
-                        height={56}
-                        className="object-cover rounded-xl"
-                        onError={() => handleImageError(extension.id)}
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <svg
-                          className="w-8 h-8 text-gray-400"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                        </svg>
-                      </div>
-                    )}
-                  </div>
+                  <Image
+                    src={extension.icon}
+                    alt={extension.name}
+                    width={56}
+                    height={56}
+                    className="object-cover rounded-xl"
+                  />
                   <Link
                     href={`coco://install_extension_from_store?id=${extension.id}`}
                     aria-label="install"
@@ -132,7 +110,7 @@ export default function ExtensionList({
                   >
                     {hoveredCard === index ? (
                       <div
-                        className={`h-8 leading-[32px] px-4 rounded-full font-medium text-sm transition-colors text-[#04071b]`}
+                        className={`h-8 leading-[32px] px-4 rounded-full font-medium text-base transition-colors text-[#04071b]`}
                         style={{
                           background:
                             "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
@@ -143,7 +121,7 @@ export default function ExtensionList({
                       </div>
                     ) : (
                       <div className="h-8 p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-                        <div className="h-full leading-[28px] bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl shadow-lg flex justify-center text-base font-normal text-[#28A3FF] px-4">
+                        <div className="h-full leading-[28px] bg-[#EBF6FF] dark:bg-[#0B1020] rounded-[15px] shadow-lg flex justify-center text-base font-normal text-[#28A3FF] px-4">
                           {locale?.install || "Loading..."}
                         </div>
                       </div>
@@ -171,7 +149,7 @@ export default function ExtensionList({
                     {extension.developer.name}
                   </span>
                 </div>
-                <p className="text-gray-400 text-sm mb-6">
+                <p className="text-gray-400 text-sm mb-6 line-clamp-4">
                   {extension.description}
                 </p>
               </div>
@@ -181,11 +159,7 @@ export default function ExtensionList({
 
                   {extension.platforms?.includes("macos") && (
                     <Image
-                      src={
-                        theme === "dark"
-                          ? "/svg/download/macos.svg"
-                          : "/svg/download/macos-light.svg"
-                      }
+                      src={"/svg/extension/macos.svg"}
                       alt="macOS"
                       width={20}
                       height={20}

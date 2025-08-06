@@ -16,7 +16,7 @@ export default function FeatureAbility({ langName }: { langName: string }) {
             <div className="mb-4 text-[32px] leading-[45px] font-medium bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent">
               {feature.title}
             </div>
-            <div className="mb-10 font-normal text-base text-[#4AF4F9]">
+            <div className="mb-10 font-normal text-base text-[#28A3FF]">
               {feature.subtitle}
             </div>
             <div className="mb-6 font-normal text-base text-[#666] dark:text-[#C8C8C8]">
@@ -46,4 +46,3 @@ export default function FeatureAbility({ langName }: { langName: string }) {
     </section>
   );
 }
-

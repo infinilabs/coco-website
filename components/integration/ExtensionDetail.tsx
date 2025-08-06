@@ -19,87 +19,6 @@ import { getDictionary } from "@/i18n/i18n";
 import ExtensionDetailContent from "./ExtensionDetailContent";
 import ExtensionDeveloperInfo from "./ExtensionDeveloperInfo";
 
-interface RelatedExtension {
-  id: string;
-  name: string;
-  description: string;
-  icon?: string;
-  iconBg?: string;
-}
-
-const relatedExtensions: RelatedExtension[] = [
-  {
-    id: "netease-music-controls",
-    name: "NetEaseMusic Controls Eng...",
-    description: "Keyboard control Spotify | Play/Paus...",
-    iconBg: "bg-red-500",
-  },
-  {
-    id: "sound-volume-controls",
-    name: "Sound Volume Controls",
-    description: "Quickly control your Mac's sound volu...",
-    iconBg: "bg-blue-500",
-  },
-  {
-    id: "qq-music-controls",
-    name: "QQ Music Controls",
-    description: "Control QQ Music playback and volu...",
-    iconBg: "bg-green-500",
-  },
-  {
-    id: "eject-all-disks",
-    name: "Eject All Disks",
-    description: "Ejects all mounted disk images",
-    iconBg: "bg-teal-500",
-  },
-];
-
-interface DeveloperExtension {
-  id: string;
-  name: string;
-  description: string;
-  iconType: "volume" | "eject" | "music" | "check";
-  gradientFrom: string;
-  gradientTo: string;
-}
-
-const getDeveloperExtensions = (developerId: string): DeveloperExtension[] => {
-  return [
-    {
-      id: "sound-volume-controls",
-      name: "Sound Volume Controls",
-      description: "Quickly control your Macs sound volume",
-      iconType: "volume",
-      gradientFrom: "from-purple-500",
-      gradientTo: "to-purple-600",
-    },
-    {
-      id: "eject-all-disks",
-      name: "Eject All Disks",
-      description: "Ejects all mounted disk images",
-      iconType: "eject",
-      gradientFrom: "from-teal-500",
-      gradientTo: "to-teal-600",
-    },
-    {
-      id: "netease-music-controls",
-      name: "NetEaseMusic Controls Eng...",
-      description: "Keyboard control Spotify | Play/Pause...",
-      iconType: "check",
-      gradientFrom: "from-red-500",
-      gradientTo: "to-red-600",
-    },
-    {
-      id: "qq-music-controls",
-      name: "QQ Music Controls",
-      description: "Control QQ Music playback and volume",
-      iconType: "music",
-      gradientFrom: "from-yellow-500",
-      gradientTo: "to-yellow-600",
-    },
-  ];
-};
-
 interface ExtensionDetailProps {
   lang: string;
   extensionId: string;
@@ -184,48 +103,11 @@ export default function ExtensionDetail({
     );
   }
 
-  const renderExtensionIcon = (iconType: string) => {
-    const iconProps = {
-      className: "text-white",
-      viewBox: "0 0 24 24",
-      fill: "currentColor",
-    };
-
-    switch (iconType) {
-      case "volume":
-        return (
-          <svg {...iconProps} className="w-10 h-10 text-white">
-            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
-          </svg>
-        );
-      case "eject":
-        return (
-          <svg {...iconProps} className="w-6 h-6 text-white">
-            <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
-          </svg>
-        );
-      case "check":
-        return (
-          <svg {...iconProps} className="w-6 h-6 text-white">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-          </svg>
-        );
-      case "music":
-        return (
-          <svg {...iconProps} className="w-6 h-6 text-white">
-            <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
-          </svg>
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
     <div className="min-h-screen pt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header with back button */}
-        <div className="mb-12 md:mb-20">
+        <div className="hidden md:block mb-12 md:mb-20 text-[#666] dark:text-[#C8C8C8]">
           <button
             onClick={() => router.push(`/${lang}/integration/extensions`)}
           >
@@ -240,9 +122,8 @@ export default function ExtensionDetail({
             <Image
               src={extension.icon}
               alt={extension.name}
-              width={96}
-              height={96}
-              className="md:w-32 md:h-32"
+              width={144}
+              height={144}
             />
           </div>
 
@@ -251,7 +132,7 @@ export default function ExtensionDetail({
               {extension.name}
             </div>
 
-            <div className="flex items-center justify-center md:justify-start space-x-2 mb-3 md:mb-4">
+            <div className="flex items-center justify-center md:justify-start space-x-2 mb-4 md:mb-6">
               <Image
                 src={extension.developer.avatar}
                 alt={extension.developer.name}
@@ -265,23 +146,19 @@ export default function ExtensionDetail({
               </span>
             </div>
 
-            <div className="flex flex-col space-y-3 md:flex-row md:items-center md:space-y-0 md:space-x-10 mb-3 md:mb-4">
+            <div className="flex flex-col space-y-3 md:flex-row md:items-center md:space-y-0 md:space-x-10">
               <div className="flex items-center justify-center md:justify-start space-x-3 md:space-x-4">
                 <MonitorCheck className="w-5 h-5 md:w-6 md:h-6 text-black dark:text-white" />
-                {extension.platforms.includes("macos") && (
+                {extension.platforms?.includes("macos") && (
                   <Image
-                    src={
-                      theme === "dark"
-                        ? "/svg/download/macos.svg"
-                        : "/svg/download/macos-light.svg"
-                    }
+                    src={"/svg/extension/macos.svg"}
                     alt="macOS"
                     width={20}
                     height={20}
                     className="md:w-6 md:h-6 dark:text-black"
                   />
                 )}
-                {extension.platforms.includes("windows") && (
+                {extension.platforms?.includes("windows") && (
                   <Image
                     src="/svg/windows11-logo.svg"
                     alt="Windows"
@@ -291,7 +168,7 @@ export default function ExtensionDetail({
                   />
                 )}
 
-                {extension.platforms.includes("linux") && (
+                {extension.platforms?.includes("linux") && (
                   <Image
                     src="/svg/ubuntu.svg"
                     alt="Linux"
@@ -302,7 +179,7 @@ export default function ExtensionDetail({
                 )}
               </div>
 
-              <div className="flex items-center justify-center md:justify-start space-x-6 md:space-x-10">
+              <div className="flex items-center justify-center md:justify-start space-x-6 md:space-x-10 text-[#666666] dark:text-[#C8C8C8]">
                 <div className="flex items-center space-x-1 md:space-x-2">
                   <FolderDown className="w-5 h-5 md:w-6 md:h-6" />
                   <span className="text-sm md:text-base">
@@ -355,15 +232,12 @@ export default function ExtensionDetail({
             extension={extension}
             locale={locale}
             lang={lang}
-            relatedExtensions={relatedExtensions}
           />
 
           <ExtensionDeveloperInfo
             extension={extension}
             locale={locale}
             lang={lang}
-            getDeveloperExtensions={getDeveloperExtensions}
-            renderExtensionIcon={renderExtensionIcon}
           />
         </div>
       </div>
