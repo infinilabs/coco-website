@@ -65,8 +65,8 @@ export default function NavTab({
         text: "text-sm md:text-base",
       },
       compact: {
-        padding: "px-0.5 md:px-2",
-        gap: "gap-1",
+        padding: "px-2 md:px-4",
+        gap: "gap-2",
         text: "text-xs md:text-sm",
       },
       large: {
@@ -97,9 +97,7 @@ export default function NavTab({
 
   const getTextStyles = (isActive: boolean) => {
     const variants = {
-      default: isActive
-        ? "inline-block sm:inline-block"
-        : "hidden sm:inline-block",
+      default: "inline-block",
       compact: isActive ? "inline-block" : "hidden md:inline-block",
       large: "inline-block",
     };

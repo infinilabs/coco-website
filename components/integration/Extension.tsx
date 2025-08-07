@@ -3,8 +3,8 @@
 import { Search } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 
 import NavTab from "@/components/header/NavTab";
 import { ALL_INTEGRATION, ApiResponse, Extension } from "@/data/integration";
@@ -96,9 +96,9 @@ export default function IntegrationIndex({
 
   useEffect(() => {
     getLocale();
-    
+
     // Check for developer parameter in URL
-    const developerParam = searchParams.get('developer');
+    const developerParam = searchParams.get("developer");
     if (developerParam) {
       setSearchQuery(developerParam);
       fetchExtensions(developerParam, 1);
@@ -190,7 +190,7 @@ export default function IntegrationIndex({
         </form>
       </div>
 
-      <div className="w-full max-w-7xl flex mt-40 justify-start">
+      <div className="w-full flex mt-40 justify-start">
         <NavTab
           tabs={INTEGRATION}
           value={INTEGRATION[active].value}
