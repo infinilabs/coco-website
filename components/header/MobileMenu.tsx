@@ -66,10 +66,11 @@ export default function MobileMenu({ lang }: { lang: string }) {
                 {links.map((link) => (
                   <li key={link.label + link.value}>
                     <Link
-                      href={link.external ? link.href : `/${link.href}`}
+                      href={link.external ? link.href : `/${lang}${link.href}`}
                       aria-label={link.label}
                       title={link.label}
                       className="font-medium tracking-wide transition-colors duration-200 hover:text-deep-purple-accent-400"
+                      target={link.external ? "_blank" : "_self"}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {link.label}
@@ -93,4 +94,3 @@ export default function MobileMenu({ lang }: { lang: string }) {
     </div>
   );
 }
-

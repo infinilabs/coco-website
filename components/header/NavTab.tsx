@@ -19,6 +19,7 @@ interface NavTabProps {
   onChange?: (tab: NavTabItem, index: number) => void;
   variant?: "default" | "compact" | "large";
   size?: "sm" | "md" | "lg";
+  lang?: string;
 }
 
 export default function NavTab({
@@ -27,6 +28,7 @@ export default function NavTab({
   onChange,
   variant = "default",
   size = "md",
+  lang = "en",
 }: NavTabProps) {
   const { theme } = useTheme();
 
@@ -108,7 +110,7 @@ export default function NavTab({
   return (
     <div className="inline-block p-[2px] rounded-[41px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
       <div className={getContainerStyles()}>
-        {tabs.map((tab, idx) => {
+        {tabs?.map((tab, idx) => {
           const isActive = active === tab.value;
           const Icon = tab.icon;
 
@@ -141,7 +143,7 @@ export default function NavTab({
             <Link
               key={tab.value}
               {...commonProps}
-              href={tab.href}
+              href={tab.external ? tab.href : `/${lang}${tab.href}`}
               target={tab.external ? "_blank" : "_self"}
             >
               {content}

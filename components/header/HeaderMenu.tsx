@@ -23,7 +23,7 @@ export default function HeaderMenu({ lang }: { lang: string }) {
 
   return (
     <div className="hidden md:flex flex-1 justify-center">
-      <NavTab tabs={links} value={navActive} />
+      <NavTab tabs={links} value={navActive} lang={lang} />
     </div>
   );
 }

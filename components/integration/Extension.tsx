@@ -190,7 +190,7 @@ export default function IntegrationIndex({
         </form>
       </div>
 
-      <div className="w-full flex mt-40 justify-start">
+      <div className="w-full max-w-7xl flex mt-40 justify-start">
         <NavTab
           tabs={INTEGRATION}
           value={INTEGRATION[active].value}

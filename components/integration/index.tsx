@@ -101,7 +101,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
       </div>
 
       {/* Integration Modules Grid */}
-      <div className="mt-6 sm:mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
+      <div className="mt-6 sm:mt-8 max-w-7xl mx-auto px-4 sm:p-6 lg:p-4">
         {/* Top Row - Large Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
           {/* Extensions - Large Card */}
