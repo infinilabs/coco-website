@@ -143,7 +143,9 @@ export default function NavTab({
             <Link
               key={tab.value}
               {...commonProps}
-              href={tab.external ? tab.href : `/${lang}${tab.href}`}
+              href={
+                tab.href?.startsWith("http") ? tab.href : `/${lang}${tab.href}`
+              }
               target={tab.external ? "_blank" : "_self"}
             >
               {content}
