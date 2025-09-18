@@ -1,7 +1,3 @@
-# Sample workflow for building and deploying a Web site to GitHub Pages
-#
-# To get started with Web see: https://nextjs.org/docs/getting-started
-#
 name: Deploy Web site to Pages
 
 on:
@@ -45,6 +41,8 @@ jobs:
           cache: "pnpm"
 
       - name: Update data.json with latest versions and publish dates
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -e
 
@@ -57,34 +55,74 @@ jobs:
 
           echo "App Version: $APP_FULL_VERSION, Server Version: $SERVER_FULL_VERSION"
 
-          get_gh_publish_date() {
-            local repo_slug="$1"  # e.g., infinilabs/coco-app
-            local full_ver_from_latest="$2"   # e.g., 0.5.3-2323 (this is the version string from .latest)
-            local date_val
+          # Function to get the publish date for a given tag.
+          # It first tries to get the date from a GitHub Release.
+          # If that fails, it tries to get the date from the Git Tag object itself.
+          get_date_for_tag() {
+            local repo_slug="$1"
+            local tag="$2"
+            local date_val=""
 
-            # Extract X.Y.Z part from the full version string
-            local xyz_part=$(echo "$full_ver_from_latest" | cut -d'-' -f1) # e.g., 0.5.3
+            echo "  - Checking release for tag: $tag"
+            # Attempt 1: Get date from the GitHub Release
+            date_val=$(curl -m60 -s -H "Authorization: Bearer $GH_TOKEN" \
+              "https://api.github.com/repos/${repo_slug}/releases/tags/${tag}" | \
+              jq -r '.created_at | split("T")[0]' 2>/dev/null)
 
-            # Construct the X.Y.0 part
-            local xy_part=$(echo "$xyz_part" | cut -d'.' -f1,2) # e.g., 0.5
-            local xyz_zero_patch_part="${xy_part}.0" # e.g., 0.5.0
-
-            local tag_attempt1="v${xyz_part}"          # Primary attempt, e.g., v0.5.3
-            local tag_attempt2="v${xyz_zero_patch_part}" # Fallback, e.g., v0.5.0
-
-            sleep 10
-            # Attempt 1: X.Y.Z version tag (e.g., v0.5.3)
-            date_val=$(curl -m60 -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt1}" | \
-              jq -r '.created_at | split("T")[0 // empty]' 2>/dev/null)
-            sleep 10
-            # Attempt 2: X.Y.0 version tag (e.g., v0.5.0)
+            # Attempt 2: If release not found, get date from the Git Tag object
             if [[ -z "$date_val" || "$date_val" == "null" ]]; then
-              date_val=$(curl -m60 -s "https://api.github.com/repos/${repo_slug}/releases/tags/${tag_attempt2}" | \
-                jq -r '.created_at | split("T")[0 // empty]' 2>/dev/null)
+              echo "  - Release for tag '$tag' not found. Checking Git Tag object..."
+              # First, get the SHA of the tag object
+              TAG_SHA=$(curl -m60 -s -H "Authorization: Bearer $GH_TOKEN" \
+                "https://api.github.com/repos/${repo_slug}/git/refs/tags/${tag}" | \
+                jq -r '.object.sha' 2>/dev/null)
+              
+              if [[ -n "$TAG_SHA" && "$TAG_SHA" != "null" ]]; then
+                # Then, use the SHA to get the tagger's date from the tag object
+                date_val=$(curl -m60 -s -H "Authorization: Bearer $GH_TOKEN" \
+                  "https://api.github.com/repos/${repo_slug}/git/tags/${TAG_SHA}" | \
+                  jq -r '.tagger.date | split("T")[0]' 2>/dev/null)
+                echo "  - Found tag date: $date_val"
+              else
+                echo "  - Git Tag object for '$tag' not found."
+              fi
+            else
+              echo "  - Found release date: $date_val"
             fi
             
-            # Final fallback to current date
+            # Return the found date (which might still be empty)
+            echo "$date_val"
+          }
+
+          get_gh_publish_date() {
+            local repo_slug="$1"
+            local full_ver_from_latest="$2"
+            local date_val
+
+            # Extract X.Y.Z part from the full version string (e.g., "0.5.3-2323" -> "0.5.3")
+            local xyz_part=$(echo "$full_ver_from_latest" | cut -d'-' -f1)
+
+            # Construct the X.Y.0 part for fallback (e.g., "0.5.3" -> "0.5.0")
+            local xy_part=$(echo "$xyz_part" | cut -d'.' -f1,2)
+            local xyz_zero_patch_part="${xy_part}.0"
+
+            local tag_attempt1="v${xyz_part}"           # Primary attempt, e.g., v0.5.3
+            local tag_attempt2="v${xyz_zero_patch_part}" # Fallback, e.g., v0.5.0
+
+            echo "Searching for publish date for version ${full_ver_from_latest} in ${repo_slug}..."
+            
+            # Try primary tag (vX.Y.Z) first
+            date_val=$(get_date_for_tag "$repo_slug" "$tag_attempt1")
+
+            # If not found, try fallback tag (vX.Y.0)
             if [[ -z "$date_val" || "$date_val" == "null" ]]; then
+              echo "  - Primary tag date not found. Trying fallback..."
+              date_val=$(get_date_for_tag "$repo_slug" "$tag_attempt2")
+            fi
+            
+            # Final fallback to current date if all else fails
+            if [[ -z "$date_val" || "$date_val" == "null" ]]; then
+              echo "  - No release or tag date found. Using current date as a fallback."
               date_val=$(date +%Y-%m-%d)
             fi
             echo "$date_val"
