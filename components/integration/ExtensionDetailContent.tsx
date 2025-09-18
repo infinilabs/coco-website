@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import NavTab from "@/components/header/NavTab";
 import ImagePreviewModal from "@/components/integration/ImagePreviewModal";
@@ -44,7 +44,7 @@ export default function ExtensionDetailContent({
   const [previewOpen, setPreviewOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const fetchRelatedExtensions = async () => {
+  const fetchRelatedExtensions = useCallback(async () => {
     try {
       setLoading(true);
       const apiUrl = `/api/extensions/_search?from=0&size=10`;
@@ -66,11 +66,11 @@ export default function ExtensionDetailContent({
     } finally {
       setLoading(false);
     }
-  };
+  }, [extension.id]);
 
   useEffect(() => {
     fetchRelatedExtensions();
-  }, []);
+  }, [fetchRelatedExtensions]);
 
   const openPreview = (index: number) => {
     setCurrentImageIndex(index);
@@ -81,17 +81,17 @@ export default function ExtensionDetailContent({
     setPreviewOpen(false);
   };
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     setCurrentImageIndex((prev) =>
       prev === 0 ? (extension.screenshots?.length || 1) - 1 : prev - 1
     );
-  };
+  }, [extension.screenshots?.length]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentImageIndex((prev) =>
       prev === (extension.screenshots?.length || 1) - 1 ? 0 : prev + 1
     );
-  };
+  }, [extension.screenshots?.length]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -108,7 +108,7 @@ export default function ExtensionDetailContent({
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [previewOpen]);
+  }, [previewOpen, goToPrevious, goToNext]);
 
   return (
     <>
@@ -249,7 +249,7 @@ export default function ExtensionDetailContent({
                   key={relatedExt.id || index}
                   className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer"
                   onClick={() => {
-                    window.location.href = `/${lang}/integration/${relatedExt.id}`;
+                    window.location.href = `/${lang}/integration/extensions/detail?id=${relatedExt.id}`;
                   }}
                 >
                   {relatedExt.icon ? (
