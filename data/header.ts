@@ -1,6 +1,7 @@
 export const HEADER_EN = [
-  { label: "Homepage", value: "home", href: "/en" },
-  { label: "Download", value: "download", href: "/en/download" },
+  { label: "Homepage", value: "home", href: "/" },
+  { label: "Integration", value: "integration", href: "/integration" },
+  { label: "Download", value: "download", href: "/download" },
   {
     label: "Documents",
     value: "docs",
@@ -10,8 +11,9 @@ export const HEADER_EN = [
 ];
 
 export const HEADER_ZH = [
-  { label: "首页", value: "home", href: "/zh" },
-  { label: "下载", value: "download", href: "/zh/download" },
+  { label: "首页", value: "home", href: "/" },
+  { label: "集成", value: "integration", href: "/integration" },
+  { label: "下载", value: "download", href: "/download" },
   {
     label: "文档",
     value: "docs",
@@ -33,4 +35,3 @@ export const ALL_HEADER: HeaderCollection = {
   HEADER_EN,
   HEADER_ZH,
 };
-

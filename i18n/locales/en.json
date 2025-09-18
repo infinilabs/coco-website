@@ -56,5 +56,60 @@
   "FAQ": {
     "title": "FAQ",
     "description": "Quick answers to common Coco use cases and features"
+  },
+  "Integration": {
+    "title": "Extensions",
+    "description": "Enhance the functionality of Coco App",
+    "build": "Build your own Extension →",
+    "search": "Search extensions...",
+    "install": "Install",
+    "extensionNotFound": "Extension Not Found",
+    "extensionNotFoundDesc": "The requested extension could not be found.",
+    "backToExtensions": "Back to Extensions",
+    "extensions": "Extensions",
+    "details": "Details",
+    "description_title": "Description",
+    "commands": "Commands",
+    "tags": "Tags",
+    "lastUpdate": "Last update",
+    "noCommands": "No commands available",
+    "youMayAlsoLike": "You may also like",
+    "more": "More →",
+    "developer": "Developer",
+    "moreBy": "More by",
+    "buildYourOwn": "Build your own Extension",
+    "repo": "Repo",
+    "loading": "Loading...",
+    "unknownError": "Unknown error",
+    "store_title": "Integrated Resources Hub",
+    "store_description": "From extensions to connectors — everything you need to build your ideal workflow in one place",
+    "searchPlaceholder": "Search integrations...",
+    "modules": {
+      "extensions": {
+        "title": "Extensions",
+        "subtitle": "App",
+        "description": "Extend Coco AI functionality in the App with one click"
+      },
+      "connector": {
+        "title": "Connector",
+        "subtitle": "Server",
+        "description": "Link external services to Coco Server seamlessly"
+      },
+      "aiAssistant": {
+        "title": "AI Assistant",
+        "subtitle": "Server",
+        "description": "Import prompt templates to quickly create an AI assistant"
+      },
+      "mcpServer": {
+        "title": "MCP Server",
+        "subtitle": "Server",
+        "description": "Import MCP configurations to optimize Coco Server's model performance"
+      },
+      "quicklink": {
+        "title": "Quicklink",
+        "subtitle": "App",
+        "description": "Launch quicklinks to streamline tasks in Coco AI App"
+      }
+    }
   }
 }

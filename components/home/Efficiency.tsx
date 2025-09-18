@@ -20,7 +20,7 @@ export default function EfficiencyFeatures({
         {locale.description}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full max-w-7xl">
-        {EFFICIENCY.map((f, i) => (
+        {EFFICIENCY?.map((f, i) => (
           <div
             key={f.title + i}
             className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]"

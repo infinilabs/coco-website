@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
+import { useEffect, useRef, useState } from "react";
 
 import NavTab from "@/components/header/NavTab";
 import { ALL_SERVER } from "@/data/server";
@@ -77,6 +76,7 @@ export default function ServerFeature({
         <NavTab
           tabs={SERVER}
           value={SERVER[active].value}
+          variant="compact"
           onChange={(tab: any, index: number) => setActive(index)}
         />
       </div>
