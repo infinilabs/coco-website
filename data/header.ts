@@ -1,7 +1,11 @@
 export const HEADER_EN = [
-  { label: "Homepage", value: "home", href: "/" },
-  { label: "Integration", value: "integration", href: "/integration" },
-  { label: "Download", value: "download", href: "/download" },
+  { label: "Homepage", value: "home", href: "https://coco.rs/en" },
+  {
+    label: "Integration",
+    value: "integration",
+    href: "https://coco.rs/en/integration",
+  },
+  { label: "Download", value: "download", href: "https://coco.rs/en/download" },
   {
     label: "Documents",
     value: "docs",
@@ -11,9 +15,13 @@ export const HEADER_EN = [
 ];
 
 export const HEADER_ZH = [
-  { label: "首页", value: "home", href: "/" },
-  { label: "集成", value: "integration", href: "/integration" },
-  { label: "下载", value: "download", href: "/download" },
+  { label: "首页", value: "home", href: "https://coco.rs/zh" },
+  {
+    label: "集成",
+    value: "integration",
+    href: "https://coco.rs/zh/integration",
+  },
+  { label: "下载", value: "download", href: "https://coco.rs/zh/download" },
   {
     label: "文档",
     value: "docs",

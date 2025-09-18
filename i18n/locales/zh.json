@@ -87,27 +87,27 @@
     "modules": {
       "extensions": {
         "title": "扩展",
-        "subtitle": "新功能",
+        "subtitle": "客户端",
         "description": "一键扩展 Coco AI 应用功能"
       },
       "connector": {
         "title": "连接器",
-        "subtitle": "测试版",
+        "subtitle": "服务端",
         "description": "无缝连接外部服务到 Coco Server"
       },
       "aiAssistant": {
         "title": "AI 助手",
-        "subtitle": "测试版",
+        "subtitle": "服务端",
         "description": "导入提示模板，快速创建 AI 助手"
       },
       "mcpServer": {
         "title": "MCP 服务器",
-        "subtitle": "测试版",
+        "subtitle": "服务端",
         "description": "导入 MCP 配置，优化 Coco Server 模型性能"
       },
       "quicklink": {
         "title": "快捷链接",
-        "subtitle": "新功能",
+        "subtitle": "服务端",
         "description": "启动快捷链接，简化 Coco AI 应用中的任务"
       }
     }

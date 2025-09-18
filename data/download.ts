@@ -7,7 +7,8 @@ export const appPublish = data.app_publish;
 export const serverPublish = data.server_publish;
 
 export const appNotes = "https://github.com/infinilabs/coco-app/releases";
-export const serverNotes = "https://github.com/infinilabs/coco-server/releases";
+export const serverNotes =
+  "https://docs.infinilabs.com/coco-server/main/docs/release-notes/";
 
 export const appDocs = "https://docs.infinilabs.com/coco-app/main/";
 export const serverDocs = "https://docs.infinilabs.com/coco-server/main/";
@@ -127,3 +128,4 @@ export const linuxLinkServer = [
     icon: "download",
   },
 ];
+

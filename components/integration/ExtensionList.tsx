@@ -159,30 +159,57 @@ export default function ExtensionList({
                 <div className="flex items-center space-x-2">
                   <MonitorCheck className="w-5 h-5 text-black dark:text-white" />
 
-                  {extension.platforms?.includes("macos") && (
-                    <Image
-                      src={"/svg/extension/macos.svg"}
-                      alt="macOS"
-                      width={20}
-                      height={20}
-                      className="dark:text-black"
-                    />
-                  )}
-                  {extension.platforms?.includes("windows") && (
-                    <Image
-                      src="/svg/windows11-logo.svg"
-                      alt="Windows"
-                      width={20}
-                      height={20}
-                    />
-                  )}
-                  {extension.platforms?.includes("linux") && (
-                    <Image
-                      src="/svg/ubuntu.svg"
-                      alt="Linux"
-                      width={20}
-                      height={20}
-                    />
+                  {/* Show all platforms if platforms array is empty or show specific platforms */}
+                  {!extension.platforms || extension.platforms.length === 0 ? (
+                    <>
+                      <Image
+                        src="/svg/extension/macos.svg"
+                        alt="macOS"
+                        width={20}
+                        height={20}
+                        className="dark:text-black"
+                      />
+                      <Image
+                        src="/svg/windows11-logo.svg"
+                        alt="Windows"
+                        width={20}
+                        height={20}
+                      />
+                      <Image
+                        src="/svg/ubuntu.svg"
+                        alt="Linux"
+                        width={20}
+                        height={20}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      {extension.platforms?.includes("macos") && (
+                        <Image
+                          src="/svg/extension/macos.svg"
+                          alt="macOS"
+                          width={20}
+                          height={20}
+                          className="dark:text-black"
+                        />
+                      )}
+                      {extension.platforms?.includes("windows") && (
+                        <Image
+                          src="/svg/windows11-logo.svg"
+                          alt="Windows"
+                          width={20}
+                          height={20}
+                        />
+                      )}
+                      {extension.platforms?.includes("linux") && (
+                        <Image
+                          src="/svg/ubuntu.svg"
+                          alt="Linux"
+                          width={20}
+                          height={20}
+                        />
+                      )}
+                    </>
                   )}
                 </div>
                 <div className="flex items-center space-x-4">
