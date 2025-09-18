@@ -1,7 +1,7 @@
 import { Github, Globe, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import type { ApiResponse, Extension } from "@/data/integration";
 
@@ -21,40 +21,43 @@ export default function ExtensionDeveloperInfo({
   );
   const [loading, setLoading] = useState(false);
 
-  const fetchDeveloperExtensions = async (developerName: string) => {
-    try {
-      setLoading(true);
+  const fetchDeveloperExtensions = useCallback(
+    async (developerName: string) => {
+      try {
+        setLoading(true);
 
-      const apiUrl =
-        process.env.NODE_ENV === "development"
-          ? `/api/extensions/_search?query=${developerName}&from=0&size=10`
-          : `https://coco.infini.cloud/store/extension/_search?query=${developerName}&from=0&size=5`;
+        const apiUrl =
+          process.env.NODE_ENV === "development"
+            ? `/api/extensions/_search?query=${developerName}&from=0&size=10`
+            : `https://coco.infini.cloud/store/extension/_search?query=${developerName}&from=0&size=5`;
 
-      const response = await fetch(apiUrl);
-      const data: ApiResponse = await response.json();
+        const response = await fetch(apiUrl);
+        const data: ApiResponse = await response.json();
 
-      if (data.hits && data.hits.hits) {
-        const extensionList = data.hits.hits
-          .map((hit) => hit._source)
-          .filter((ext) => ext.developer.name === extension.developer.name);
+        if (data.hits && data.hits.hits) {
+          const extensionList = data.hits.hits
+            .map((hit) => hit._source)
+            .filter((ext) => ext.developer.name === extension.developer.name);
 
-        setDeveloperExtensions(extensionList);
-      } else {
+          setDeveloperExtensions(extensionList);
+        } else {
+          setDeveloperExtensions([]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch developer extensions:", error);
         setDeveloperExtensions([]);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error("Failed to fetch developer extensions:", error);
-      setDeveloperExtensions([]);
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    [extension.developer.name]
+  );
 
   useEffect(() => {
     if (extension.developer.name) {
       fetchDeveloperExtensions(extension.developer.name);
     }
-  }, []);
+  }, [extension.developer.name, fetchDeveloperExtensions]);
 
   return (
     <div className="w-full lg:w-[29%] space-y-4 sm:space-y-6">
@@ -161,7 +164,10 @@ export default function ExtensionDeveloperInfo({
                       key={ext.id}
                       className="flex items-center space-x-3 sm:space-x-4 p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-[#161b22] transition-colors cursor-pointer group"
                       onClick={() => {
-                        window.open(`/${lang}/integration/${ext.id}`, "_blank");
+                        window.open(
+                          `/${lang}/integration/extensions/detail?id=${ext.id}`,
+                          "_blank"
+                        );
                       }}
                     >
                       <Image

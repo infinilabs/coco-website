@@ -87,7 +87,9 @@ export default function ExtensionList({
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
             onClick={() =>
-              router.push(`/${lang}/integration/extensions/${extension.id}`)
+              router.push(
+                `/${lang}/integration/extensions/detail?id=${extension.id}`
+              )
             }
           >
             <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-[15px] p-8 min-h-[380px] flex flex-col justify-between shadow-lg">
