@@ -111,5 +111,232 @@
         "description": "启动快捷链接，简化 Coco AI 应用中的任务"
       }
     }
+  },
+  "Roadmap": {
+    "title": "路线图总览",
+    "subtitle": "当前正在开发的功能和未来计划的功能",
+    "cta": "我有一个主意？",
+    "progressad": {
+      "icon": "/svg/roadmap/progress.svg",
+      "title": "进行中",
+      "subTitle": "当前正在积极开发中的功能模块",
+      "content": [
+        {
+          "title": "支持语音输入",
+          "subTitle": "Coco AI 允许用户通过语音与系统互动，解放双手，尤其适用于繁忙时刻或不便打字的场景。"
+        },
+        {
+          "title": "聊天模式支持文本朗读",
+          "subTitle": "Coco AI 的聊天模式可以将文字内容转化为语音，帮助用户更轻松地获取信息，特别是对于有听觉需求的用户。"
+        },
+        {
+          "title": "聊天模式支持上传文件",
+          "subTitle": "用户可以在Coco AI 的聊天模式中上传文件，帮助用户高效处理与文件相关的任务和问题。"
+        },
+        {
+          "title": "Web 搜索组件",
+          "subTitle": "Coco AI 新增了一个嵌入组件类型，提供完整的网页版搜索模式，用户可以直接在网页中使用 Coco AI 进行搜索。"
+        }
+      ]
+    },
+    "next": {
+      "icon": "/svg/roadmap/next.svg",
+      "title": "下一步计划",
+      "subTitle": "已列入下一阶段开发计划的功能，优先级较高",
+      "content": [
+        {
+          "title": "高级搜索过滤",
+          "subTitle": "支持按数据来源、文件类型、时间范围等多维度进行精准过滤，帮助用户快速定位所需信息。"
+        },
+        {
+          "title": "多模态混合搜索",
+          "subTitle": "同时支持文本、图像等多模态内容的联合搜索，提升跨格式信息的发现能力。"
+        },
+        {
+          "title": "本地文件预览",
+          "subTitle": "无需离开 Coco AI 即可预览本地文件内容，支持文档、表格、图片等多种格式。"
+        },
+        {
+          "title": "支持 Quicklink 插件",
+          "subTitle": "提供 Quicklink 插件，支持从搜索结果中快速跳转并执行相关操作（如打开文件、发送邮件等）。"
+        }
+      ]
+    },
+    "completed": {
+      "icon": "/svg/roadmap/completed.svg",
+      "title": "已完成",
+      "subTitle": "已成功实现并向用户提供的功能特性。",
+      "versionContent": [
+        {
+          "version": "V0.7.1 (2025-07-27)",
+          "content": [
+            {
+              "title": "输入行为修复",
+              "subTitle": "修正 \"Enter 键\" 的行为问题（在某些上下文中操作不当的问题）以提升一致性。"
+            },
+            {
+              "title": "界面与通知体验改进",
+              "subTitle": "新增通知组件；改善窗口在不同模式下的默认行为（比如 Pin window、加入所有空间之类的行为）以更好地符合用户期望。"
+            }
+          ]
+        },
+        {
+          "version": "V0.7.0 (2025-07-25)",
+          "content": [
+            {
+              "title": "文件搜索增强",
+              "subTitle": "支持 Spotlight 搜索 (macOS)、Windows 文件搜索。"
+            },
+            {
+              "title": "语音输入 / 文本转语音",
+              "subTitle": "搜索模式与聊天模式支持语音输入；文本转语音的能力由 LLM 驱动。"
+            },
+            {
+              "title": "快速 AI 助手访问优化",
+              "subTitle": "在搜索栏／聊天界面中改进快捷方式／快速切换 AI 助手的体验。"
+            }
+          ]
+        },
+        {
+          "version": "V0.6.0 (2025-06-29)",
+          "content": [
+            {
+              "title": "扩展商店 (Extension Store)",
+              "subTitle": "实现扩展商店界面，让用户从中浏览／安装扩展。"
+            },
+            {
+              "title": "键盘／导航体验提升",
+              "subTitle": "支持使用 Tab 和 Enter 操作 delete 对话框按钮；Back 键通过 Delete 实现\"返回\"导航。"
+            },
+            {
+              "title": "更新检查功能",
+              "subTitle": "加入检测更新功能，让用户知道是否有新版本可用。"
+            }
+          ]
+        },
+        {
+          "version": "V0.5.0 (2025-06-13)",
+          "content": [
+            {
+              "title": "聊天输入增强",
+              "subTitle": "支持多行输入 (Shift+Enter／Enter 换行)；聊天输入框多行支持。"
+            },
+            {
+              "title": "AI 概览 & 快速访问",
+              "subTitle": "AI summary component；Quick AI Access in 搜索模式；AI overview 支持快捷键；优化搜索结果排名。"
+            },
+            {
+              "title": "上下文菜单与右键操作",
+              "subTitle": "文本选中后右键菜单操作支持；次级页 (secondary pages) 支持右键操作。"
+            },
+            {
+              "title": "证书 & 安全连接支持",
+              "subTitle": "支持自签名 TLS；允许用户启用／禁用自签名证书。"
+            }
+          ]
+        },
+        {
+          "version": "V0.4.0 (2025-04-27)",
+          "content": [
+            {
+              "title": "历史记录功能强化",
+              "subTitle": "支持搜索历史记录、重命名、删除历史记录。"
+            },
+            {
+              "title": "图标与界面改进",
+              "subTitle": "为搜索结果、数据源、辅助功能等显示自定义图标；Windows 主窗口边框样式；字体图标显示；图标按钮快捷操作。"
+            },
+            {
+              "title": "AI 助手 & 计算器功能",
+              "subTitle": "加入 AI 助手；支持计算器功能 (Calculator)；搜索分页支持；增加支持第三方扩展。"
+            },
+            {
+              "title": "右键菜单、键盘操作、辅助导航",
+              "subTitle": "右键菜单支持、键盘仅操作支持、搜索列表／历史列表／服务列表的键盘导航。"
+            }
+          ]
+        },
+        {
+          "version": "V0.3.0 (2025-03-31)",
+          "content": [
+            {
+              "title": "网页组件 & 小部件",
+              "subTitle": "支持可嵌入网页组件，支持 Web Widget 嵌入。"
+            },
+            {
+              "title": "预设快捷键自定义",
+              "subTitle": "允许用户自定义一些默认（preset）快捷键。"
+            },
+            {
+              "title": "多 WebSocket 连接支持",
+              "subTitle": "提升系统与后台／多个服务器通信的能力。"
+            }
+          ]
+        },
+        {
+          "version": "V0.2.1 (2025-03-14)",
+          "content": [
+            {
+              "title": "自动应用内更新功能",
+              "subTitle": "支持应用内部自动更新 (auto-updates)。"
+            },
+            {
+              "title": "界面/聊天体验优化",
+              "subTitle": "包括聊天组件重构、端点显示、对话框尺寸／输入框样式的细节调整；处理聊天滚动／渲染问题等。"
+            }
+          ]
+        },
+        {
+          "version": "V0.2.0 (2025-03-07)",
+          "content": [
+            {
+              "title": "多平台支持 & 本地化",
+              "subTitle": "支持 Windows、Linux；加入中文语言支持 (i18n)。"
+            },
+            {
+              "title": "网络搜索 & 数据源选择",
+              "subTitle": "网络搜索（networked search）中可以选择数据源；支持禁用／启用服务器。"
+            },
+            {
+              "title": "DeepThink & Knowledge Search",
+              "subTitle": "在基于 RAG 的聊天模式中，加入 DeepThink、knowledge search 选项。"
+            },
+            {
+              "title": "界面 & 启动体验改进",
+              "subTitle": "App 启动时在后台初始化搜索、图标加载、服务器状态刷新等性能和用户体验方面的提升。"
+            }
+          ]
+        },
+        {
+          "version": "V0.1.0 (2025-02-16)",
+          "content": [
+            {
+              "title": "Fusion 搜索",
+              "subTitle": "支持跨服务器／跨数据源融合搜索（Fusion Search）功能，让用户可以统一检索多个 backend／知识源。"
+            },
+            {
+              "title": "AI 聊天助理",
+              "subTitle": "提供与 AI 助手聊天界面（AI Assistant Chat）功能。"
+            },
+            {
+              "title": "基于 RAG 的聊天",
+              "subTitle": "结合检索增强生成（RAG, Retrieval-Augmented Generation）实现智能对话。"
+            },
+            {
+              "title": "常规设置功能",
+              "subTitle": "包括全局配置、快捷键支持、开机自启等通用设置 (General Settings, Global Shortcut, Auto Start on Startup)"
+            },
+            {
+              "title": "应用搜索（macOS 平台）",
+              "subTitle": "在 macOS 上可以搜索安装的应用程序。"
+            },
+            {
+              "title": "连接自托管服务器",
+              "subTitle": "可连接自己部署的 Coco Server。"
+            }
+          ]
+        }
+      ]
+    }
   }
 }
