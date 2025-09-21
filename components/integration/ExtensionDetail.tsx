@@ -174,9 +174,6 @@ export default function ExtensionDetail({
               width={144}
               height={144}
               className="w-full h-full object-contain"
-              style={{
-                filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
-              }}
             />
           </div>
 
@@ -267,30 +264,16 @@ export default function ExtensionDetail({
                   </span>
                 </div>
                 <div className="flex items-center space-x-1 md:space-x-2">
-                  <a
-                    href={extension.url?.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-1 md:space-x-2"
-                  >
-                    <GitFork className="w-5 h-5 md:w-6 md:h-6" />
-                    <span className="text-sm md:text-base">
-                      {extension.stats.views}
-                    </span>
-                  </a>
+                  <GitFork className="w-5 h-5 md:w-6 md:h-6" />
+                  <span className="text-sm md:text-base">
+                    {extension.stats.views}
+                  </span>
                 </div>
                 <div className="flex items-center space-x-1 md:space-x-2">
-                  <a
-                    href={extension.url?.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-1 md:space-x-2"
-                  >
-                    <Github className="w-5 h-5 md:w-6 md:h-6" />
-                    <span className="text-sm md:text-base">
-                      {locale?.repo || "Repo"}
-                    </span>
-                  </a>
+                  <Github className="w-5 h-5 md:w-6 md:h-6" />
+                  <span className="text-sm md:text-base">
+                    {locale?.repo || "Repo"}
+                  </span>
                 </div>
               </div>
             </div>
