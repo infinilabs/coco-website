@@ -176,9 +176,6 @@ export default function ExtensionDeveloperInfo({
                         width={40}
                         height={40}
                         className="rounded"
-                        style={{
-                          filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
-                        }}
                       />
                       <div className="flex-1 min-w-0">
                         <h4 className="text-black dark:text-white font-medium text-xs sm:text-sm group-hover:text-blue-400 transition-colors truncate">

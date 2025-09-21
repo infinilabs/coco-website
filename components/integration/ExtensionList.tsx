@@ -101,9 +101,6 @@ export default function ExtensionList({
                     width={56}
                     height={56}
                     className="object-cover rounded-xl"
-                    style={{
-                      filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
-                    }}
                   />
                   <Link
                     href={`coco://install_extension_from_store?id=${extension.id}`}

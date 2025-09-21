@@ -45,7 +45,7 @@ export default function NavTab({
 
   const getContainerStyles = () => {
     const baseStyles =
-      "flex items-center justify-center bg-[#EBF6FF] dark:bg-[#04071B] text-white rounded-[39px] min-w-fit";
+      "flex items-center justify-center bg-[#EBF6FF] dark:bg-[#04071B] text-white rounded-[39px]";
 
     const variants = {
       default: "h-[52px] px-0.5",
@@ -58,7 +58,7 @@ export default function NavTab({
 
   const getTabItemStyles = (isActive: boolean) => {
     const baseStyles =
-      "relative z-10 h-full flex items-center justify-center rounded-full font-semibold transition-colors whitespace-nowrap";
+      "relative z-10 h-full flex items-center rounded-full font-semibold transition-colors";
 
     const variants = {
       default: {
@@ -99,11 +99,9 @@ export default function NavTab({
 
   const getTextStyles = (isActive: boolean) => {
     const variants = {
-      default: "inline-block whitespace-nowrap",
-      compact: isActive
-        ? "inline-block whitespace-nowrap"
-        : "hidden md:inline-block whitespace-nowrap",
-      large: "inline-block whitespace-nowrap",
+      default: "inline-block",
+      compact: isActive ? "inline-block" : "hidden md:inline-block",
+      large: "inline-block",
     };
 
     return variants[variant];
