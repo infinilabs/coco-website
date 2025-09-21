@@ -143,7 +143,10 @@ export default function RoadmapPage({ dict, lang }: RoadmapPageProps) {
           {locale.completed.versionContent.map(
             (itemVersion: any, indexVersion: number) => {
               const versionKey = `${itemVersion.version}-${indexVersion}`;
-              const isOpen = openStates[versionKey] || false;
+              const isOpen =
+                openStates[versionKey] === undefined
+                  ? true
+                  : openStates[versionKey];
 
               return (
                 <Collapsible.Root
@@ -187,4 +190,3 @@ export default function RoadmapPage({ dict, lang }: RoadmapPageProps) {
     </div>
   );
 }
-
