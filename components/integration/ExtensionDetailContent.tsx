@@ -47,7 +47,10 @@ export default function ExtensionDetailContent({
   const fetchRelatedExtensions = useCallback(async () => {
     try {
       setLoading(true);
-      const apiUrl = `/api/extensions/_search?from=0&size=10`;
+      const apiUrl =
+        process.env.NODE_ENV === "development"
+          ? `/api/extensions/_search?from=0&size=10&sort=created:desc`
+          : `https://coco.infini.cloud/store/extension/_search??from=0&size=10&sort=created:desc`;
       const response = await fetch(apiUrl);
       const data: ApiResponse = await response.json();
 
@@ -154,7 +157,7 @@ export default function ExtensionDetailContent({
 
             <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-blue-400/20 dark:border-gray-700">
               <div className="text-sm sm:text-base font-normal text-[#9696B4] mb-2">
-                {locale?.commands || "Commands"}
+                {locale?.commands}
               </div>
               <div className="space-y-3 sm:space-y-4">
                 {extension.platforms && (
@@ -228,11 +231,12 @@ export default function ExtensionDetailContent({
                 {locale?.lastUpdate || "Last update"}
               </div>
               <p className="text-black dark:text-white text-sm sm:text-base">
-                {new Date(extension.updated).toLocaleTimeString("en-US", {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  hour12: true,
-                })}
+                {extension.updated
+                  ? new Date(extension.updated)
+                      .toISOString()
+                      .replace("T", " ")
+                      .substring(0, 19)
+                  : ""}
               </p>
             </div>
           </div>
@@ -241,7 +245,7 @@ export default function ExtensionDetailContent({
         <div className="mt-4 sm:mt-5 p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
           <div className="p-3 sm:p-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl">
             <div className="text-lg sm:text-xl font-medium text-gray-900 dark:text-white mb-4 sm:mb-6">
-              {locale?.youMayAlsoLike || "You may also like"}
+              {locale?.youMayAlsoLike}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {relatedExtensions.map((relatedExt, index) => (
@@ -259,6 +263,9 @@ export default function ExtensionDetailContent({
                       width={40}
                       height={40}
                       className="w-10 h-10 rounded"
+                      style={{
+                        filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                      }}
                     />
                   ) : (
                     <span className="text-white text-xs sm:text-sm font-bold">
