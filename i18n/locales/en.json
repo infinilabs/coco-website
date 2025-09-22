@@ -107,7 +107,7 @@
       },
       "quicklink": {
         "title": "Quicklink",
-        "subtitle": "App",
+        "subtitle": "Server",
         "description": "Launch quicklinks to streamline tasks in Coco AI App"
       }
     }
@@ -122,20 +122,32 @@
       "subTitle": "Features that are currently under active development.",
       "content": [
         {
-          "title": "Voice Input Support",
-          "subTitle": "Enables users to interact with the system through voice input, enhancing efficiency, especially in hands-free scenarios."
+          "title": "Extensions Store",
+          "subTitle": "Coco AI can quickly integrate various plugins through the extensions store to extend App's functionality."
         },
         {
-          "title": "Text-to-Speech in Chat Mode",
-          "subTitle": "In Coco AI’s chat mode, text is converted into speech, providing users with a convenient way to access information, especially for those with auditory preferences."
+          "title": "Window Management",
+          "subTitle": "Through window management plugins, Coco AI can flexibly adjust window sizes and conveniently switch between different workspaces or monitors, enhancing multi-tasking efficiency."
         },
         {
-          "title": "File Upload Support in Chat Mode",
-          "subTitle": "Users can upload files in Coco AI's chat mode,  helping users efficiently handle file-related tasks and issues."
+          "title": "Local File Search",
+          "subTitle": "Users can directly search and access files stored on their local computers within Coco AI. Already supports Linux/GNOME, Linux/KDE, macOS Spotlight, and Windows Search."
         },
         {
-          "title": "Web Search Component",
-          "subTitle": "Coco AI introduces a new embedding component type that provides a complete web version of the search mode, allowing users to seamlessly perform searches directly within a web interface."
+          "title": "Data Connectors",
+          "subTitle": "Coco AI can quickly integrate common data sources through data connectors, including network drives, local file systems, Confluence Wiki, GitHub, GitLab, Gitea, SQL Server, MySQL, PostgreSQL, etc."
+        },
+        {
+          "title": "Directory-style Data Source Browsing",
+          "subTitle": "Users can browse data sources in a directory structure with hierarchical display and permission management support."
+        },
+        {
+          "title": "View-type Plugins",
+          "subTitle": "Coco AI supports custom UI to extend plugin functionality. Users can customize the appearance and behavior of plugins according to their needs."
+        },
+        {
+          "title": "Web Search Component & Search Portal",
+          "subTitle": "Coco AI has added a fully-featured search custom component type, providing complete web-based search mode where users can directly use Coco AI for searching within web pages."
         }
       ]
     },
@@ -149,16 +161,40 @@
           "subTitle": "Supports precise filtering by data source, file type, time range, and more—making it easy to find exactly what you need."
         },
         {
+          "title": "Remote Search Adapter",
+          "subTitle": "Enables quick integration with existing search-capable databases or business applications without duplicating data to Coco AI."
+        },
+        {
+          "title": "Deep Research",
+          "subTitle": "Implements Deep Research capabilities for automated scheduling, planning, and execution of complex data exploration tasks, making data discovery simpler and more efficient."
+        },
+        {
+          "title": "RAG Workflow",
+          "subTitle": "Supports integration with external RAG workflow engines such as Dify, RAGFlow, n8n, and others."
+        },
+        {
           "title": "Multimodal Hybrid Search",
-          "subTitle": "Enables combined search across text, images,and more—enhancing discovery across different content formats."
+          "subTitle": "Enables combined search across text, images, and more—enhancing discovery across different content formats."
         },
         {
           "title": "Local File Preview",
           "subTitle": "Preview local file content directly within the platform—supports documents, spreadsheets, images, and more."
         },
         {
+          "title": "File Upload Support in Chat Mode",
+          "subTitle": "Users can upload files in Coco AI's chat mode, helping users efficiently handle file-related tasks and issues."
+        },
+        {
+          "title": "File Parsing Service",
+          "subTitle": "Provides configurable on-demand file parsing service that extracts key information and processes data, making it more suitable for subsequent search and AI analysis."
+        },
+        {
           "title": "Quicklink Plugin Support",
           "subTitle": "Integrates Quicklink plugins for instant actions from search results—such as opening files, sending emails, and more."
+        },
+        {
+          "title": "Support for More Connectors",
+          "subTitle": "Provides more data source connectors for a more out-of-the-box data integration experience (such as Box, Dropbox, Slack, Zendesk, etc.)."
         }
       ]
     },
@@ -190,6 +226,10 @@
             {
               "title": "Voice Input & TTS",
               "subTitle": "Search and chat now support voice input; text-to-speech powered by LLM."
+            },
+            {
+              "title": "Chat Mode Text-to-Speech Support",
+              "subTitle": "Coco AI's chat mode can convert text content to speech, helping users access information more easily, especially for those with auditory needs."
             },
             {
               "title": "Quick AI Assistant Access",
