@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function SubscriptionInput() {
   const [email, setEmail] = useState("");
@@ -59,7 +59,7 @@ export default function SubscriptionInput() {
           />
           <button
             type="submit"
-            className="absolute w-8 -right-2 top-1/2 translate  -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+            className="absolute w-8 right-[-14px] top-[18px] translate  -translate-x-1/2 -translate-y-1/2 cursor-pointer"
           >
             <Image
               src="/svg/home/arrow-right.svg"
@@ -73,4 +73,3 @@ export default function SubscriptionInput() {
     </div>
   );
 }
-
