@@ -37,8 +37,12 @@ export default function NavTab({
     if (value) setActive(value);
   }, [value]);
 
-  const handleTabClick = (tab: NavTabItem, idx: number) => {
-    !tab.external && setActive(tab.value);
+  const handleTabClick = (
+    tab: NavTabItem,
+    idx: number,
+    isExternal: boolean
+  ) => {
+    !tab.external && !isExternal && setActive(tab.value);
     onChange?.(tab, idx);
     tab.onClick?.();
   };
@@ -124,7 +128,8 @@ export default function NavTab({
                 : "transparent",
               boxShadow: isActive ? "0 2px 12px 0 #19F3FF55" : "none",
             },
-            onClick: () => handleTabClick(tab, idx),
+            onClick: () =>
+              handleTabClick(tab, idx, tab.href?.startsWith("http") || false),
           };
 
           const content = (
