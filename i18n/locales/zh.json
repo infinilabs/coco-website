@@ -122,32 +122,20 @@
       "subTitle": "当前正在积极开发中的功能模块",
       "content": [
         {
-          "title": "插件市场",
-          "subTitle": "Coco AI 通过插件市场可以快速接入各种插件，扩展功能。"
+          "title": "支持 Quicklink 插件",
+          "subTitle": "提供 Quicklink 插件，支持从搜索结果中快速跳转并执行相关操作（如打开文件、发送邮件等）。"
         },
         {
-          "title": "窗口管理",
-          "subTitle": "通过窗口管理插件，Coco AI 可灵活调整窗口大小，并在不同工作区或显示器间便捷切换，提升多任务处理效率。"
+          "title": "聊天模式支持上传文件",
+          "subTitle": "用户可以在Coco AI 的聊天模式中上传文件，帮助用户高效处理与文件相关的任务和问题。"
         },
         {
-          "title": "本地文件搜索",
-          "subTitle": "用户可以直接在 Coco AI 中搜索和访问存储在本地计算机上的文件。已支持 Linux/GNOME、Linux/KDE、macOS Spotlight、Windows Search。"
+          "title": "高级搜索过滤",
+          "subTitle": "支持按数据来源、文件类型、时间范围等多维度进行精准过滤，帮助用户快速定位所需信息。"
         },
         {
-          "title": "支持目录方式浏览数据源",
-          "subTitle": "用户可以以目录结构浏览数据源，支持层级展示与权限管理支持。"
-        },
-        {
-          "title": "数据连接器",
-          "subTitle": "Coco AI 通过数据连接器可快速集成常见数据源，包括网络驱动器、本地文件系统、Confluence Wiki、GitHub、GitLab、Gitea、SQL Server、MySQL、PostgreSQL 等。"
-        },
-        {
-          "title": "View 类型插件",
-          "subTitle": "Coco AI 支持自定义 UI 来扩展插件需要的功能，用户可以根据自己的需求定制插件的外观和行为。"
-        },
-        {
-          "title": "Web 搜索组件 & 搜索门户",
-          "subTitle": "Coco AI 新增了一个完整功能的搜索自定义组件类型，提供完整的网页版搜索模式，用户可以直接在网页中使用 Coco AI 进行搜索。"
+          "title": "文件解析服务",
+          "subTitle": "提供可配置的文件按需解析服务，提取关键信息，加工整理数据，让数据更易于后续的搜索和 AI 分析。"
         }
       ]
     },
@@ -156,10 +144,6 @@
       "title": "下一步计划",
       "subTitle": "已列入下一阶段开发计划的功能，优先级较高",
       "content": [
-        {
-          "title": "高级搜索过滤",
-          "subTitle": "支持按数据来源、文件类型、时间范围等多维度进行精准过滤，帮助用户快速定位所需信息。"
-        },
         {
           "title": "Remote Search Adapter",
           "subTitle": "支持快速对接已有搜索能力的数据库或者业务应用，无需重复同步一份额外的数据到 Coco AI。"
@@ -181,18 +165,6 @@
           "subTitle": "无需离开 Coco AI 即可预览本地文件内容，支持文档、表格、图片等多种格式。"
         },
         {
-          "title": "聊天模式支持上传文件",
-          "subTitle": "用户可以在Coco AI 的聊天模式中上传文件，帮助用户高效处理与文件相关的任务和问题。"
-        },
-        {
-          "title": "文件解析服务",
-          "subTitle": "提供可配置的文件按需解析服务，提取关键信息，加工整理数据，让数据更易于后续的搜索和 AI 分析。"
-        },
-        {
-          "title": "支持 Quicklink 插件",
-          "subTitle": "提供 Quicklink 插件，支持从搜索结果中快速跳转并执行相关操作（如打开文件、发送邮件等）。"
-        },
-        {
           "title": "支持更多连接器",
           "subTitle": "提供更多数据源连接器，支持更加开箱即用的数据集成体验（如 Box、Dropbox、Slack、Zendesk 等）。"
         }
@@ -203,6 +175,39 @@
       "title": "已完成",
       "subTitle": "已成功实现并向用户提供的功能特性。",
       "versionContent": [
+        {
+          "version": "V0.8.0 (2025-09-28)",
+          "content": [
+            {
+                "title": "插件市场",
+                "subTitle": "Coco AI 通过插件市场可以快速接入各种插件，扩展功能。"
+            },
+            {
+                "title": "macOS 窗口管理",
+                "subTitle": "通过窗口管理插件，Coco AI 可灵活调整窗口大小，并在不同工作区或显示器间便捷切换，提升多任务处理效率。"
+            },
+            {
+                "title": "本地文件搜索",
+                "subTitle": "用户可以直接在 Coco AI 中搜索和访问存储在本地计算机上的文件。已支持 Linux/GNOME、Linux/KDE、macOS Spotlight、Windows Search。"
+            },
+            {
+                "title": "View 类型插件",
+                "subTitle": "Coco AI 支持自定义 UI 来扩展插件需要的功能，用户可以根据自己的需求定制插件的外观和行为。"
+            },
+            {
+                "title": "数据连接器",
+                "subTitle": "Coco AI 通过数据连接器可快速集成常见数据源，包括网络驱动器、本地文件系统、Confluence Wiki、GitHub、GitLab、Gitea、SQL Server、MySQL、PostgreSQL 等。"
+            },
+            {
+                "title": "支持目录方式浏览数据源",
+                "subTitle": "用户可以以目录结构浏览数据源，支持层级展示与权限管理支持。"
+            },
+            {
+                "title": "Web 搜索组件 & 搜索门户",
+                "subTitle": "Coco AI 新增了一个完整功能的搜索自定义组件类型，提供完整的网页版搜索模式，用户可以直接在网页中使用 Coco AI 进行搜索。"
+            }
+          ]
+        },
         {
           "version": "V0.7.1 (2025-07-27)",
           "content": [
