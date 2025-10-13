@@ -114,96 +114,96 @@ export default function ExtensionDetailContent({
   }, [previewOpen, goToPrevious, goToNext]);
 
   return (
-    <>
-      <div className="w-full lg:w-[70%]">
-        <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-          <div className="px-3 sm:px-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl">
-            {/* Screenshots */}
-            {extension.screenshots && extension.screenshots.length > 0 && (
-              <div className="pt-4 sm:pt-6">
-                <div className="text-lg sm:text-xl font-medium text-black dark:text-white mb-4 sm:mb-6">
-                  {locale?.details || "Details"}
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                  {extension.screenshots
-                    .slice(0, 3)
-                    .map((screenshot, index) => (
-                      <div
-                        key={index}
-                        className="cursor-pointer hover:opacity-80 transition-opacity"
-                        onClick={() => openPreview(index)}
-                      >
-                        <Image
-                          src={screenshot.url}
-                          alt={screenshot.title || `Screenshot ${index + 1}`}
-                          width={272}
-                          height={170}
-                          className="w-full h-full object-cover rounded-lg"
-                        />
-                      </div>
-                    ))}
-                </div>
+    <div className="w-full lg:w-[70%] min-w-0 max-w-full overflow-x-hidden box-border">
+      <div className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333] overflow-hidden">
+        <div className="p-3 sm:p-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl">
+          {/* Screenshots */}
+          {extension.screenshots && extension.screenshots.length > 0 && (
+            <div className="pt-4 sm:pt-6">
+              <div className="text-lg sm:text-xl font-medium text-black dark:text-white mb-4 sm:mb-6">
+                {locale?.details || "Details"}
               </div>
-            )}
-
-            <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-blue-400/20 dark:border-gray-700">
-              <div className="text-sm sm:text-base font-normal text-[#9696B4] mb-2">
-                {locale?.description_title || "Description"}
-              </div>
-              <p className="text-black dark:text-gray-300 text-sm sm:text-base leading-relaxed">
-                {extension.description}
-              </p>
-            </div>
-
-            <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-blue-400/20 dark:border-gray-700">
-              <div className="text-sm sm:text-base font-normal text-[#9696B4] mb-2">
-                {locale?.commands}
-              </div>
-              <div className="space-y-3 sm:space-y-4">
-                {extension.platforms && (
-                  <div className="flex space-x-2 mb-3 sm:mb-4 overflow-x-auto">
-                    <NavTab
-                      tabs={
-                        extension.platforms?.map((platform) => ({
-                          label:
-                            platform === "macos"
-                              ? "macOS"
-                              : platform === "windows"
-                              ? "Windows"
-                              : "Linux",
-                          value: platform,
-                        })) || []
-                      }
-                      value={extension.platforms?.[0]}
-                      variant="compact"
-                      size="sm"
-                      onChange={(tab: any, index: number) => {
-                        console.log("Selected platform:", tab.value);
-                      }}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 w-full min-w-0">
+                {extension.screenshots.slice(0, 3).map((screenshot, index) => (
+                  <div
+                    key={index}
+                    className="cursor-pointer hover:opacity-80 transition-opacity min-w-0"
+                    onClick={() => openPreview(index)}
+                  >
+                    <Image
+                      src={screenshot.url}
+                      alt={screenshot.title || `Screenshot ${index + 1}`}
+                      width={272}
+                      height={170}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="w-full h-auto object-cover rounded-lg"
                     />
                   </div>
-                )}
+                ))}
+              </div>
+            </div>
+          )}
 
-                {/* Command items */}
-                <div className="space-y-3 sm:space-y-4">
-                  {extension.commands?.map((command, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
-                      <div className="text-sm sm:text-base">
-                        <div className="text-black dark:text-white font-normal">
-                          {command.name}
-                        </div>
-                        <p className="text-[#9696B4] mt-1 text-xs sm:text-sm">
-                          {command.description}
-                        </p>
-                      </div>
-                    </div>
-                  )) || (
-                    <p className="text-gray-500 py-4 sm:py-6 text-sm sm:text-base">
-                      {locale?.noCommands || "No commands available"}
-                    </p>
-                  )}
+          <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-blue-400/20 dark:border-gray-700">
+            <div className="text-sm sm:text-base font-normal text-[#9696B4] mb-2">
+              {locale?.description_title || "Description"}
+            </div>
+            <p className="text-black dark:text-gray-300 text-sm sm:text-base leading-relaxed break-words">
+              {extension.description}
+            </p>
+          </div>
+
+          <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-blue-400/20 dark:border-gray-700">
+            <div className="text-sm sm:text-base font-normal text-[#9696B4] mb-2">
+              {locale?.commands}
+            </div>
+            <div className="space-y-3 sm:space-y-4">
+              {extension.platforms && (
+                <div className="flex space-x-2 mb-3 sm:mb-4 overflow-x-auto px-1 sm:px-0 max-w-full w-full min-w-0">
+                  <NavTab
+                    tabs={
+                      extension.platforms?.map((platform) => ({
+                        label:
+                          platform === "macos"
+                            ? "macOS"
+                            : platform === "windows"
+                            ? "Windows"
+                            : "Linux",
+                        value: platform,
+                      })) || []
+                    }
+                    value={extension.platforms?.[0]}
+                    variant="compact"
+                    size="sm"
+                    onChange={(tab: any, index: number) => {
+                      console.log("Selected platform:", tab.value);
+                    }}
+                  />
                 </div>
+              )}
+
+              {/* Command items */}
+              <div className="space-y-3 sm:space-y-4">
+                {extension.commands?.map((command, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start space-x-3 min-w-0"
+                  >
+                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <div className="text-sm sm:text-base break-words min-w-0">
+                      <div className="text-black dark:text-white font-normal break-words">
+                        {command.name}
+                      </div>
+                      <p className="text-[#9696B4] mt-1 text-xs sm:text-sm break-words">
+                        {command.description}
+                      </p>
+                    </div>
+                  </div>
+                )) || (
+                  <p className="text-gray-500 py-4 sm:py-6 text-sm sm:text-base">
+                    {locale?.noCommands || "No commands available"}
+                  </p>
+                )}
               </div>
             </div>
 
@@ -216,7 +216,7 @@ export default function ExtensionDetailContent({
                   {extension.tags?.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 sm:px-3 py-1 bg-[#333] text-gray-300 rounded-sm text-xs sm:text-sm"
+                      className="px-2 sm:px-3 py-1 bg-[#333] text-gray-300 rounded-sm text-xs sm:text-sm break-words"
                     >
                       {tag}
                     </span>
@@ -241,69 +241,58 @@ export default function ExtensionDetailContent({
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-4 sm:mt-5 p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-          <div className="p-3 sm:p-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl">
-            <div className="text-lg sm:text-xl font-medium text-gray-900 dark:text-white mb-4 sm:mb-6">
-              {locale?.youMayAlsoLike}
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-              {relatedExtensions.map((relatedExt, index) => (
-                <div
-                  key={relatedExt.id || index}
-                  className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer"
-                  onClick={() => {
-                    window.location.href = `/${lang}/integration/extensions/detail?id=${relatedExt.id}`;
-                  }}
-                >
-                  {relatedExt.icon ? (
-                    <Image
-                      src={relatedExt.icon}
-                      alt={relatedExt.name}
-                      width={40}
-                      height={40}
-                      className="w-10 h-10 rounded"
-                      style={{
-                        filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
-                      }}
-                    />
-                  ) : (
-                    <span className="text-white text-xs sm:text-sm font-bold">
-                      {relatedExt.name.charAt(0).toUpperCase()}
-                    </span>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-black dark:text-white font-medium text-xs sm:text-sm">
-                      {relatedExt.name.length >
-                      (window.innerWidth < 640 ? 20 : 25)
-                        ? `${relatedExt.name.substring(
-                            0,
-                            window.innerWidth < 640 ? 20 : 25
-                          )}...`
-                        : relatedExt.name}
-                    </h4>
-                    <p className="text-[#9696B4] text-xs">
-                      {relatedExt.description.length >
-                      (window.innerWidth < 640 ? 25 : 35)
-                        ? `${relatedExt.description.substring(
-                            0,
-                            window.innerWidth < 640 ? 25 : 35
-                          )}...`
-                        : relatedExt.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-4 sm:mt-6 px-3">
-              <Link
-                href={`/${lang}/integration/extensions`}
-                className="text-blue-600 hover:text-blue-700 font-medium text-sm sm:text-base"
+      <div className="mt-4 sm:mt-5 p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333] overflow-hidden">
+        <div className="p-3 sm:p-6 bg-[#EBF6FF] dark:bg-[#0B1020] rounded-xl">
+          <div className="text-lg sm:text-xl font-medium text-gray-900 dark:text-white mb-4 sm:mb-6">
+            {locale?.youMayAlsoLike}
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full">
+            {relatedExtensions.map((relatedExt, index) => (
+              <div
+                key={relatedExt.id || index}
+                className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors cursor-pointer min-h-[60px] w-full min-w-0 overflow-hidden"
+                onClick={() => {
+                  window.location.href = `/${lang}/integration/extensions/detail?id=${relatedExt.id}`;
+                }}
               >
-                {locale?.more || "More →"}
-              </Link>
-            </div>
+                {relatedExt.icon ? (
+                  <Image
+                    src={relatedExt.icon}
+                    alt={relatedExt.name}
+                    width={40}
+                    height={40}
+                    sizes="(max-width: 640px) 10vw, (max-width: 1024px) 10vw, 40px"
+                    className="w-10 h-10 rounded"
+                    style={{
+                      filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                    }}
+                  />
+                ) : (
+                  <span className="text-white text-xs sm:text-sm font-bold">
+                    {relatedExt.name.charAt(0).toUpperCase()}
+                  </span>
+                )}
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-black dark:text-white font-medium text-xs sm:text-sm truncate">
+                    {relatedExt.name}
+                  </h4>
+                  <p className="text-[#9696B4] text-xs truncate">
+                    {relatedExt.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 sm:mt-6 px-3 w-full max-w-full box-border">
+            <Link
+              href={`/${lang}/integration/extensions`}
+              className="text-blue-600 hover:text-blue-700 font-medium text-sm sm:text-base"
+            >
+              {locale?.more || "More →"}
+            </Link>
           </div>
         </div>
       </div>
@@ -317,6 +306,6 @@ export default function ExtensionDetailContent({
         onNext={goToNext}
         onIndexChange={setCurrentImageIndex}
       />
-    </>
+    </div>
   );
 }

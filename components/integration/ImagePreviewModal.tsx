@@ -48,11 +48,11 @@ export default function ImagePreviewModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
-      <div className="relative w-full h-full flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 overflow-hidden">
+      <div className="relative w-full h-full box-border flex items-center justify-center p-3 sm:p-6 overflow-hidden overscroll-none">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-colors"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 p-3 sm:p-2 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-colors"
         >
           <X className="w-6 h-6" />
         </button>
@@ -60,13 +60,13 @@ export default function ImagePreviewModal({
         {screenshots.length > 1 && (
           <button
             onClick={onPrevious}
-            className="absolute left-4 z-10 p-2 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-colors"
+            className="absolute top-1/2 -translate-y-1/2 left-3 sm:left-4 z-10 p-3 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-colors"
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ChevronLeft className="w-7 h-7 sm:w-8 sm:h-8" />
           </button>
         )}
 
-        <div className="max-w-4xl max-h-full flex items-center justify-center">
+        <div className="w-full h-full max-w-full sm:max-w-4xl max-h-[80vh] sm:max-h-[85vh] flex items-center justify-center px-0 sm:px-4 py-0 sm:py-2 overflow-hidden min-w-0">
           <Image
             src={screenshots[currentIndex].url}
             alt={
@@ -75,6 +75,7 @@ export default function ImagePreviewModal({
             }
             width={800}
             height={600}
+            sizes="100vw"
             className="max-w-full max-h-full object-contain rounded-lg"
           />
         </div>
@@ -82,19 +83,19 @@ export default function ImagePreviewModal({
         {screenshots.length > 1 && (
           <button
             onClick={onNext}
-            className="absolute right-4 z-10 p-2 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-colors"
+            className="absolute top-1/2 -translate-y-1/2 right-3 sm:right-4 z-10 p-3 rounded-full bg-black bg-opacity-50 text-white hover:bg-opacity-70 transition-colors"
           >
-            <ChevronRight className="w-8 h-8" />
+            <ChevronRight className="w-7 h-7 sm:w-8 sm:h-8" />
           </button>
         )}
 
         {screenshots.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1.5 sm:space-x-2">
             {screenshots.map((_, index) => (
               <button
                 key={index}
                 onClick={() => onIndexChange(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
+                className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors ${
                   index === currentIndex
                     ? "bg-white"
                     : "bg-white bg-opacity-50 hover:bg-opacity-75"
