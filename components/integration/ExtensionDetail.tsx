@@ -153,7 +153,7 @@ export default function ExtensionDetail({
 
   return (
     <div className="min-h-screen pt-20">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 overflow-x-hidden min-w-0">
         {/* Header with back button */}
         <div className="hidden md:block mb-12 md:mb-20 text-[#666] dark:text-[#C8C8C8] min-h-[24px]">
           <button
@@ -297,7 +297,7 @@ export default function ExtensionDetail({
           </div>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed mb-8 md:mb-10 text-center md:text-left px-2 md:px-0 max-w-3xl mx-auto md:mx-0">
+        <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed mb-8 md:mb-10 text-center md:text-left px-2 md:px-0 max-w-3xl mx-auto md:mx-0 break-words">
           {extension.description}
         </p>
 
@@ -319,13 +319,12 @@ export default function ExtensionDetail({
           </Link>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:justify-between space-y-8 lg:space-y-0">
+        <div className="flex flex-col lg:flex-row lg:items-start items-stretch gap-4 w-full max-w-full overflow-x-hidden min-w-0 box-border">
           <ExtensionDetailContent
             extension={extension}
             locale={locale}
             lang={lang}
           />
-
           <ExtensionDeveloperInfo
             extension={extension}
             locale={locale}
