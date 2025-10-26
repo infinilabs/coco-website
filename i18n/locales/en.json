@@ -79,7 +79,6 @@
     "moreBy": "More by",
     "buildYourOwn": "Build your own Extension",
     "repo": "Repo",
-    "loading": "Loading...",
     "unknownError": "Unknown error",
     "store_title": "Integrated Resources Hub",
     "store_description": "From extensions to connectors — everything you need to build your ideal workflow in one place",
@@ -179,32 +178,32 @@
           "version": "V0.8.0 (2025-09-28)",
           "content": [
             {
-                "title": "Extensions Store",
-                "subTitle": "Coco AI can quickly integrate various plugins through the extensions store to extend App's functionality."
+              "title": "Extensions Store",
+              "subTitle": "Coco AI can quickly integrate various plugins through the extensions store to extend App's functionality."
             },
             {
-                "title": "Window Management for macOS",
-                "subTitle": "Through window management plugins, Coco AI can flexibly adjust window sizes and conveniently switch between different workspaces or monitors, enhancing multi-tasking efficiency."
+              "title": "Window Management for macOS",
+              "subTitle": "Through window management plugins, Coco AI can flexibly adjust window sizes and conveniently switch between different workspaces or monitors, enhancing multi-tasking efficiency."
             },
             {
-                "title": "Local File Search",
-                "subTitle": "Users can directly search and access files stored on their local computers within Coco AI. Already supports Linux/GNOME, Linux/KDE, macOS Spotlight, and Windows Search."
+              "title": "Local File Search",
+              "subTitle": "Users can directly search and access files stored on their local computers within Coco AI. Already supports Linux/GNOME, Linux/KDE, macOS Spotlight, and Windows Search."
             },
             {
-                "title": "View Extensions",
-                "subTitle": "Coco AI supports custom UI to extend functionality. Users can customize the appearance and behavior of extensions according to their needs."
+              "title": "View Extensions",
+              "subTitle": "Coco AI supports custom UI to extend functionality. Users can customize the appearance and behavior of extensions according to their needs."
             },
             {
-                "title": "Data Connectors",
-                "subTitle": "Coco AI can quickly integrate common data sources through data connectors, including network drives, local file systems, Confluence Wiki, GitHub, GitLab, Gitea, SQL Server, MySQL, PostgreSQL, etc."
+              "title": "Data Connectors",
+              "subTitle": "Coco AI can quickly integrate common data sources through data connectors, including network drives, local file systems, Confluence Wiki, GitHub, GitLab, Gitea, SQL Server, MySQL, PostgreSQL, etc."
             },
             {
-                "title": "Directory-style Data Source Browsing",
-                "subTitle": "Users can browse data sources in a directory structure with hierarchical display and permission management support."
+              "title": "Directory-style Data Source Browsing",
+              "subTitle": "Users can browse data sources in a directory structure with hierarchical display and permission management support."
             },
             {
-                "title": "Web Search Component & Search Portal",
-                "subTitle": "Coco AI has added a fully-featured search custom component type, providing complete web-based search mode where users can directly use Coco AI for searching within web pages."
+              "title": "Web Search Component & Search Portal",
+              "subTitle": "Coco AI has added a fully-featured search custom component type, providing complete web-based search mode where users can directly use Coco AI for searching within web pages."
             }
           ]
         },

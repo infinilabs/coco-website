@@ -1,46 +1,75 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 
-import FeatureAbility from "@/components/home/Ability";
-import Community from "@/components/home/Community";
-import DeployFeature from "@/components/home/Deploy";
-import EfficiencyFeatures from "@/components/home/Efficiency";
-import FAQFeature from "@/components/home/FAQ";
 import Hero from "@/components/home/Hero";
-import ServerFeature from "@/components/home/Server";
-import ToolsFeature from "@/components/home/Tools";
-import WorkFeature from "@/components/home/Work";
-import { defaultLocale, getDictionary } from "@/i18n/i18n";
+import SectionSkeleton from "@/components/ui/SectionSkeleton";
+import { defaultLocale, getDictionarySync } from "@/i18n/i18n";
+
+const FeatureAbility = dynamic(() => import("./Ability"), {
+  ssr: false,
+  loading: () => <SectionSkeleton />,
+});
+const EfficiencyFeatures = dynamic(() => import("./Efficiency"), {
+  ssr: false,
+  loading: () => <SectionSkeleton />,
+});
+const ServerFeature = dynamic(() => import("./Server"), {
+  ssr: false,
+  loading: () => <SectionSkeleton />,
+});
+const ToolsFeature = dynamic(() => import("./Tools"), {
+  ssr: false,
+  loading: () => <SectionSkeleton />,
+});
+const DeployFeature = dynamic(() => import("./Deploy"), {
+  ssr: false,
+  loading: () => <SectionSkeleton />,
+});
+const WorkFeature = dynamic(() => import("./Work"), {
+  ssr: false,
+  loading: () => <SectionSkeleton />,
+});
+const FAQFeature = dynamic(() => import("./FAQ"), {
+  ssr: false,
+  loading: () => <SectionSkeleton />,
+});
+const Community = dynamic(() => import("./Community"), {
+  ssr: false,
+  loading: () => <SectionSkeleton />,
+});
 
 export default function HomeIndex({ lang = defaultLocale }: { lang: string }) {
-  const [dict, setDict] = useState<any>();
-
-  const getLocale = useCallback(async () => {
-    const dict = await getDictionary(lang);
-    setDict(dict);
-  }, [lang]);
-
-  useEffect(() => {
-    getLocale();
-  }, [getLocale]);
+  const dict = getDictionarySync(lang);
 
   return (
     <>
-      {dict ? (
-        <>
-          <Hero locale={dict.Hero} langName={lang} />
-          <FeatureAbility langName={lang} />
-          <EfficiencyFeatures locale={dict.Efficiency} langName={lang} />
-          <ServerFeature locale={dict.Server} langName={lang} />
-          <ToolsFeature locale={dict.Tools} langName={lang} />
-          <DeployFeature locale={dict.Deploy} langName={lang} />
-          <WorkFeature locale={dict.Work} langName={lang} />
-          <FAQFeature locale={dict.FAQ} langName={lang} />
-          <Community locale={dict.Community} langName={lang} />
-        </>
-      ) : null}
+      <Hero locale={dict.Hero} langName={lang} />
+
+      <div className="content-vis">
+        <FeatureAbility langName={lang} />
+      </div>
+      <div className="content-vis">
+        <EfficiencyFeatures locale={dict.Efficiency} langName={lang} />
+      </div>
+      <div className="content-vis">
+        <ServerFeature locale={dict.Server} langName={lang} />
+      </div>
+      <div className="content-vis">
+        <ToolsFeature locale={dict.Tools} langName={lang} />
+      </div>
+      <div className="content-vis">
+        <DeployFeature locale={dict.Deploy} langName={lang} />
+      </div>
+      <div className="content-vis">
+        <WorkFeature locale={dict.Work} langName={lang} />
+      </div>
+      <div className="content-vis">
+        <FAQFeature locale={dict.FAQ} langName={lang} />
+      </div>
+      <div className="content-vis">
+        <Community locale={dict.Community} langName={lang} />
+      </div>
     </>
   );
 }
-

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
+import PageLoader from "@/components/ui/PageLoader";
 import type { ApiResponse, Extension } from "@/data/integration";
 
 interface ExtensionDeveloperInfoProps {
@@ -154,9 +155,7 @@ export default function ExtensionDeveloperInfo({
               </div>
 
               {loading ? (
-                <div className="text-center py-4">
-                  <div className="text-[#9696B4] text-sm">Loading...</div>
-                </div>
+                <PageLoader />
               ) : (
                 <div className="space-y-2 sm:space-y-3">
                   {developerExtensions.map((ext, index) => (

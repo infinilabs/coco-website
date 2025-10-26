@@ -2,7 +2,8 @@
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 interface NavTabItem {
   label: string;
@@ -31,20 +32,62 @@ export default function NavTab({
   lang = "en",
 }: NavTabProps) {
   const { theme } = useTheme();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [active, setActive] = useState(tabs && tabs[0]?.value);
   useEffect(() => {
     if (value) setActive(value);
   }, [value]);
 
-  const handleTabClick = (
-    tab: NavTabItem,
-    idx: number,
-    isExternal: boolean
-  ) => {
-    !tab.external && !isExternal && setActive(tab.value);
-    onChange?.(tab, idx);
+  const [progressActive, setProgressActive] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const timerRef = useRef<number | null>(null);
+
+  const startProgress = () => {
+    if (progressActive) return;
+    setProgressActive(true);
+    setProgress(0);
+    if (timerRef.current) window.clearInterval(timerRef.current);
+    timerRef.current = window.setInterval(() => {
+      setProgress((p) => {
+        const next = p + Math.random() * 10;
+        return next >= 85 ? 85 : next;
+      });
+    }, 120);
+  };
+
+  const doneProgress = () => {
+    if (timerRef.current) {
+      window.clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+    setProgress(100);
+    setTimeout(() => {
+      setProgressActive(false);
+      setProgress(0);
+    }, 300);
+  };
+
+  useEffect(() => {
+    if (progressActive) doneProgress();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
+  const handleTabClick = (tab: NavTabItem, idx: number) => {
+    if (tab.href && !tab.href.startsWith("http")) {
+      startProgress();
+      const dest = `/${lang}${tab.href}`;
+      router.push(dest);
+    }
+
+    if (!tab.external) {
+      setActive(tab.value);
+    }
+
     tab.onClick?.();
+
+    onChange?.(tab, idx);
   };
 
   const getContainerStyles = () => {
@@ -97,7 +140,6 @@ export default function NavTab({
       compact: "w-4 h-4 md:w-5 md:h-5",
       large: "w-6 h-6 md:w-7 md:h-7",
     };
-
     return variants[variant];
   };
 
@@ -109,17 +151,31 @@ export default function NavTab({
         : "hidden md:inline-block whitespace-nowrap",
       large: "inline-block whitespace-nowrap",
     };
-
     return variants[variant];
   };
 
   return (
     <div className="inline-block p-[2px] rounded-[41px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
+      {progressActive && (
+        <div
+          aria-hidden
+          className="fixed left-0 top-0 z-[1000] w-full"
+          style={{ pointerEvents: "none" }}
+        >
+          <div
+            className="h-[2px] bg-[#00CEFF] shadow-sm"
+            style={{
+              width: `${progress}%`,
+              transition: "width 120ms ease-out",
+            }}
+          />
+        </div>
+      )}
+
       <div className={getContainerStyles()}>
         {tabs?.map((tab, idx) => {
           const isActive = active === tab.value;
           const Icon = tab.icon;
-
           const commonProps = {
             className: getTabItemStyles(isActive),
             style: {
@@ -128,8 +184,7 @@ export default function NavTab({
                 : "transparent",
               boxShadow: isActive ? "0 2px 12px 0 #19F3FF55" : "none",
             },
-            onClick: () =>
-              handleTabClick(tab, idx, tab.href?.startsWith("http") || false),
+            onClick: () => handleTabClick(tab, idx),
           };
 
           const content = (
@@ -146,19 +201,32 @@ export default function NavTab({
             </>
           );
 
+          if (tab.href?.startsWith("http") || tab.external) {
+            return (
+              <Link
+                key={tab.value}
+                {...commonProps}
+                prefetch
+                href={tab.href as string}
+                target={tab.external ? "_blank" : "_self"}
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          const internalHref = tab.href ? `/${lang}${tab.href}` : undefined;
           return tab.href ? (
-            <Link
+            <button
               key={tab.value}
               {...commonProps}
-              href={
-                tab.href?.startsWith("http") ? tab.href : `/${lang}${tab.href}`
-              }
-              target={tab.external ? "_blank" : "_self"}
+              onMouseEnter={() => internalHref && router.prefetch(internalHref)}
+              type="button"
             >
               {content}
-            </Link>
+            </button>
           ) : (
-            <button key={tab.value} {...commonProps}>
+            <button key={tab.value} {...commonProps} type="button">
               {content}
             </button>
           );

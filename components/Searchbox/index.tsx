@@ -31,18 +31,33 @@ export default function Searchbox() {
 
   // Mount external widget
   useEffect(() => {
-    // Check if the container already has a Shadow DOM
     const container = document.getElementById("searchbox-container");
-    if (container && container.shadowRoot) {
+
+    if (
+      (window as any).__cocoSearchboxInit === true ||
+      (container && container.dataset.initialized === "true") ||
+      document.getElementById("coco-searchbox-script")
+    ) {
       console.log("Searchbox already mounted");
       return;
     }
 
+    (window as any).__cocoSearchboxInit = true;
+    if (container) container.dataset.initialized = "true";
+
     const script = document.createElement("script");
     script.type = "module";
+    script.id = "coco-searchbox-script";
     script.textContent = `
       import { searchbox } from "https://coco.infini.cloud/integration/d0taohm2a89828kdfebg/widget";
-      setTimeout(() => searchbox({container: "#searchbox-container", trigger: "searchbox-trigger"}), 0);
+      
+      Promise.resolve().then(() => {
+        try {
+          searchbox({ container: "#searchbox-container", trigger: "searchbox-trigger" });
+        } catch (e) {
+          console.error("Searchbox init error:", e);
+        }
+      });
     `;
     document.body.appendChild(script);
     scriptRef.current = script;
@@ -50,7 +65,9 @@ export default function Searchbox() {
     console.log("Searchbox mounted");
 
     return () => {
-      if (scriptRef.current) document.body.removeChild(scriptRef.current);
+      const exists = document.getElementById("coco-searchbox-script");
+      if (exists) exists.remove();
+      scriptRef.current = null;
     };
   }, []);
 
@@ -102,7 +119,6 @@ export default function Searchbox() {
     };
   }, [theme]);
 
-  // SVG 内容通过 useMemo 渲染，避免主题变化时重复执行逻辑
   const svgContent = useMemo(() => {
     const isDark = theme === "dark";
     const textFill = isDark ? "#49FFF3" : "#000";
@@ -217,4 +233,3 @@ export default function Searchbox() {
     </>
   );
 }
-

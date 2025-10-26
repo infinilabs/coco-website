@@ -1,6 +1,9 @@
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
+import enDict from "@/i18n/locales/en.json";
+import zhDict from "@/i18n/locales/zh.json";
+
 export const locales = ["", "en", "en-US", "zh", "zh-CN", "zh-TW", "zh-HK"];
 export const localeNames: any = {
   en: "English",
@@ -34,3 +37,12 @@ export const getDictionary = async (locale: string) => {
   return dictionaries[locale]();
 };
 
+export const getDictionarySync = (locale: string) => {
+  if (["zh-CN", "zh-TW", "zh-HK"].includes(locale)) {
+    locale = "zh";
+  }
+  if (!["en", "zh"].includes(locale)) {
+    locale = "en";
+  }
+  return locale === "zh" ? zhDict : enDict;
+};

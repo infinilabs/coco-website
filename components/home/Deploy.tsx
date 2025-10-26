@@ -31,7 +31,6 @@ export default function DeployFeature({
                 alt={item.title}
                 width={item.iconWidth}
                 height={item.iconHeight}
-                priority
                 className="mb-3"
               />
               <div className="mb-5 text-xl font-semibold text-black dark:text-white">
@@ -45,4 +44,3 @@ export default function DeployFeature({
     </section>
   );
 }
-

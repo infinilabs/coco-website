@@ -35,7 +35,6 @@ export default function FeatureAbility({ langName }: { langName: string }) {
                 alt={feature.title}
                 width={720}
                 height={500}
-                priority
                 className="rounded-xl"
                 style={{ background: "transparent" }}
               />

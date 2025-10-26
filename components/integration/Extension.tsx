@@ -153,10 +153,10 @@ export default function IntegrationIndex({
           height={56}
           className="mr-2"
         />
-        {locale?.title || "Loading..."}
+        {locale?.title}
       </div>
       <div className="mb-14 font-normal text-base text-black dark:text-white">
-        {locale?.description || "Loading..."}
+        {locale?.description}
       </div>
       <div>
         <a
@@ -165,7 +165,7 @@ export default function IntegrationIndex({
           rel="noopener noreferrer"
           className="text-[#00CEFF] font-medium"
         >
-          {locale?.build || "Loading..."}
+          {locale?.build}
         </a>
       </div>
 
@@ -181,7 +181,7 @@ export default function IntegrationIndex({
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onKeyDown={handleKeyDown}
-                  placeholder={locale?.search || "Loading..."}
+                  placeholder={locale?.search}
                   className="flex-1 bg-transparent border-none outline-none text-lg text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                 />
               </div>

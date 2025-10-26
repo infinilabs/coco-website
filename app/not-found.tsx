@@ -22,13 +22,7 @@ export default function NotFound() {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-transparent text-black dark:text-white">
-      <Image
-        src="/svg/404.svg"
-        alt="404 Not Found"
-        width={292}
-        height={292}
-        priority
-      />
+      <Image src="/svg/404.svg" alt="404 Not Found" width={292} height={292} />
 
       <div className="text-center mt-5 mb-10 text-[32px] text-[#999] font-normal">
         {dict?.NotFound?.title}
@@ -48,4 +42,3 @@ export default function NotFound() {
     </div>
   );
 }
-

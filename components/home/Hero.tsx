@@ -1,14 +1,44 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import Searchbox from "@/components/Searchbox";
+import PageLoader from "@/components/ui/PageLoader";
+
+const Searchbox = dynamic(() => import("@/components/Searchbox"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-12 w-full max-w-3xl rounded-full bg-[#EBF6FF] dark:bg-[#04071B] animate-pulse" />
+  ),
+});
 
 const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted || !videoRef.current) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoRef.current?.play().catch(() => {});
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(videoRef.current);
+    return () => io.disconnect();
+  }, [mounted]);
+
+  if (!mounted) return <PageLoader />;
 
   return (
     <>
@@ -47,13 +77,14 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
         </Link>
         <div className="max-w-7xl text-center mx-auto">
           <video
+            ref={videoRef}
             width="1280"
             height="720"
             controls
             autoPlay
             loop
             muted
-            preload="auto"
+            preload="none"
             playsInline
             poster="/images/home/app.png"
             className="rounded-2xl"
@@ -68,4 +99,3 @@ const Hero = ({ locale, langName }: { locale: any; langName: string }) => {
 };
 
 export default Hero;
-

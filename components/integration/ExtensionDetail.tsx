@@ -314,7 +314,7 @@ export default function ExtensionDetail({
                 boxShadow: "0 2px 12px 0 #19F3FF55",
               }}
             >
-              {locale?.install || "Loading..."}
+              {locale?.install}
             </div>
           </Link>
         </div>

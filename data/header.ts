@@ -1,27 +1,20 @@
-const isDev = process.env.NODE_ENV === "development";
+// const isDev = process.env.NODE_ENV === "development";
 
 const getBaseUrl = () => {
-  if (isDev) {
-    return "http://localhost:3000";
-  }
-  return "https://coco.rs";
+  // if (isDev) {
+  //   return "http://localhost:3000";
+  // }
+  // return "https://coco.rs";
+  return "";
 };
 
 const baseUrl = getBaseUrl();
 
 export const HEADER_EN = [
-  { label: "Homepage", value: "home", href: `${baseUrl}/en/` },
-  {
-    label: "Integration",
-    value: "integration",
-    href: `${baseUrl}/en/integration`,
-  },
-  {
-    label: "Roadmap",
-    value: "roadmap",
-    href: `${baseUrl}/en/roadmap`,
-  },
-  { label: "Download", value: "download", href: `${baseUrl}/en/download` },
+  { label: "Homepage", value: "home", href: "/" },
+  { label: "Integration", value: "integration", href: "/integration" },
+  { label: "Roadmap", value: "roadmap", href: "/roadmap" },
+  { label: "Download", value: "download", href: "/download" },
   {
     label: "Documents",
     value: "docs",
@@ -31,18 +24,10 @@ export const HEADER_EN = [
 ];
 
 export const HEADER_ZH = [
-  { label: "首页", value: "home", href: `${baseUrl}/zh/` },
-  {
-    label: "集成",
-    value: "integration",
-    href: `${baseUrl}/zh/integration`,
-  },
-  {
-    label: "路线图",
-    value: "roadmap",
-    href: `${baseUrl}/zh/roadmap`,
-  },
-  { label: "下载", value: "download", href: `${baseUrl}/zh/download` },
+  { label: "首页", value: "home", href: "/" },
+  { label: "集成", value: "integration", href: "/integration" },
+  { label: "路线图", value: "roadmap", href: "/roadmap" },
+  { label: "下载", value: "download", href: "/download" },
   {
     label: "文档",
     value: "docs",

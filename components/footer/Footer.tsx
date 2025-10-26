@@ -41,6 +41,7 @@ export default function Footer({ lang }: { lang: string }) {
                 alt="Github"
                 width={20}
                 height={20}
+                className="w-[20px] h-[20px]"
               />
             </a>
             <a
@@ -54,7 +55,7 @@ export default function Footer({ lang }: { lang: string }) {
                 alt="Twitter"
                 width={20}
                 height={20}
-                className="w-[20px] h-auto"
+                className="w-[20px] h-[20px]"
               />
             </a>
             <a
@@ -72,7 +73,7 @@ export default function Footer({ lang }: { lang: string }) {
                 alt="Discord"
                 width={20}
                 height={20}
-                className="w-[20px] h-auto"
+                className="w-[20px] h-[20px]"
               />
             </a>
           </div>

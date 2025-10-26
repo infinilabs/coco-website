@@ -1,93 +1,73 @@
 "use client";
 
 import { MoveRight } from "lucide-react";
-import { useTheme } from "next-themes";
-import Images from "next/image";
+import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
 
-import { getDictionary } from "@/i18n/i18n";
+import PageLoader from "@/components/ui/PageLoader";
+import { getDictionarySync } from "@/i18n/i18n";
 
 interface IntegrationIndexProps {
   lang: string;
 }
 
 export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
-  const { theme } = useTheme();
-  const [locale, setLocale] = useState<any>();
-  const [searchQuery, setSearchQuery] = useState("");
+  const locale = getDictionarySync(lang);
 
-  const getLocale = useCallback(async () => {
-    const dict = await getDictionary(lang);
-    setLocale(dict);
-  }, [lang]);
+  const integrationModules = [
+    {
+      id: "extensions",
+      title: locale.Integration.modules.extensions.title,
+      subtitle: locale.Integration.modules.extensions.subtitle,
+      description: locale.Integration.modules.extensions.description,
+      icon: "/svg/extension/extension.svg",
+      href: `/${lang}/integration/extensions`,
+      gradient: "from-purple-500 to-blue-500",
+      size: "large",
+    },
+    {
+      id: "connector",
+      title: locale.Integration.modules.connector.title,
+      subtitle: locale.Integration.modules.connector.subtitle,
+      description: locale.Integration.modules.connector.description,
+      icon: "/svg/extension/Connector.svg",
+      href: ``,
+      gradient: "from-green-500 to-teal-500",
+      size: "large",
+    },
+    {
+      id: "ai-assistant",
+      title: locale.Integration.modules.aiAssistant.title,
+      subtitle: locale.Integration.modules.aiAssistant.subtitle,
+      description: locale.Integration.modules.aiAssistant.description,
+      icon: "/svg/extension/Assistant.svg",
+      href: ``,
+      gradient: "from-blue-500 to-cyan-500",
+      size: "small",
+    },
+    {
+      id: "mcp-server",
+      title: locale.Integration.modules.mcpServer.title,
+      subtitle: locale.Integration.modules.mcpServer.subtitle,
+      description: locale.Integration.modules.mcpServer.description,
+      icon: "/svg/extension/mcp.svg",
+      href: ``,
+      gradient: "from-indigo-500 to-purple-500",
+      size: "small",
+    },
+    {
+      id: "quicklink",
+      title: locale.Integration.modules.quicklink.title,
+      subtitle: locale.Integration.modules.quicklink.subtitle,
+      description: locale.Integration.modules.quicklink.description,
+      icon: "/svg/extension/Quicklink.svg",
+      href: ``,
+      gradient: "from-purple-500 to-pink-500",
+      size: "small",
+    },
+  ];
 
-  useEffect(() => {
-    getLocale();
-  }, [getLocale]);
-
-  const integrationModules = locale
-    ? [
-        {
-          id: "extensions",
-          title: locale.Integration.modules.extensions.title,
-          subtitle: locale.Integration.modules.extensions.subtitle,
-          description: locale.Integration.modules.extensions.description,
-          icon: "/svg/extension/extension.svg",
-          href: `/${lang}/integration/extensions`,
-          gradient: "from-purple-500 to-blue-500",
-          size: "large",
-        },
-        {
-          id: "connector",
-          title: locale.Integration.modules.connector.title,
-          subtitle: locale.Integration.modules.connector.subtitle,
-          description: locale.Integration.modules.connector.description,
-          icon: "/svg/extension/Connector.svg",
-          href: ``,
-          gradient: "from-green-500 to-teal-500",
-          size: "large",
-        },
-        {
-          id: "ai-assistant",
-          title: locale.Integration.modules.aiAssistant.title,
-          subtitle: locale.Integration.modules.aiAssistant.subtitle,
-          description: locale.Integration.modules.aiAssistant.description,
-          icon: "/svg/extension/Assistant.svg",
-          href: ``,
-          gradient: "from-blue-500 to-cyan-500",
-          size: "small",
-        },
-        {
-          id: "mcp-server",
-          title: locale.Integration.modules.mcpServer.title,
-          subtitle: locale.Integration.modules.mcpServer.subtitle,
-          description: locale.Integration.modules.mcpServer.description,
-          icon: "/svg/extension/mcp.svg",
-          href: ``,
-          gradient: "from-indigo-500 to-purple-500",
-          size: "small",
-        },
-        {
-          id: "quicklink",
-          title: locale.Integration.modules.quicklink.title,
-          subtitle: locale.Integration.modules.quicklink.subtitle,
-          description: locale.Integration.modules.quicklink.description,
-          icon: "/svg/extension/Quicklink.svg",
-          href: ``,
-          gradient: "from-purple-500 to-pink-500",
-          size: "small",
-        },
-      ]
-    : [];
-
-  if (!locale) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        Loading...
-      </div>
-    );
-  }
+  if (!locale) return <PageLoader />;
 
   return (
     <div className="min-h-screen relative overflow-hidden transition-colors duration-300">
@@ -111,7 +91,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
             >
               <div className="relative z-10 h-full flex flex-col p-6 sm:p-8 md:p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
                 <div className="flex items-center justify-between mb-4 sm:mb-5">
-                  <Images
+                  <Image
                     src={integrationModules[0].icon}
                     alt={integrationModules[0].title}
                     width={48}
@@ -145,7 +125,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
             <div className="h-[280px] sm:h-[320px] md:h-[380px] group relative backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
               <div className="relative z-10 h-full flex flex-col p-6 sm:p-8 md:p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
                 <div className="flex items-center justify-between mb-4 sm:mb-5">
-                  <Images
+                  <Image
                     src={integrationModules[1].icon}
                     alt={integrationModules[1].title}
                     width={48}
@@ -181,7 +161,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
                 <div className="relative z-10 h-full flex flex-col p-6 sm:p-8 md:p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
                   <div className="flex items-center justify-between mb-4 sm:mb-5">
                     <div className="text-2xl">
-                      <Images
+                      <Image
                         src={module.icon}
                         alt={module.title}
                         width={48}

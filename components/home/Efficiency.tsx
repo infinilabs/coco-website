@@ -32,7 +32,7 @@ export default function EfficiencyFeatures({
                   alt={f.title}
                   width={36}
                   height={36}
-                  priority
+                  className="w-[36px] h-[36px]"
                 />
               </div>
               <div className="mb-5 font-medium text-[32px] leading-[45px] text-black dark:text-white">
@@ -48,4 +48,3 @@ export default function EfficiencyFeatures({
     </section>
   );
 }
-
