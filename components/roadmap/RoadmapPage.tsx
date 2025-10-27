@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
+import PageLoader from "@/components/ui/PageLoader";
 import { getDictionary } from "@/i18n/i18n";
 
 interface RoadmapPageProps {
@@ -28,11 +29,7 @@ export default function RoadmapPage({ dict, lang }: RoadmapPageProps) {
   }, [getLocale]);
 
   if (!locale) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        Loading...
-      </div>
-    );
+    return <PageLoader />;
   }
 
   return (

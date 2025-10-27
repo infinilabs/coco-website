@@ -122,12 +122,12 @@ export default function ExtensionList({
                           boxShadow: "0 2px 12px 0 #19F3FF55",
                         }}
                       >
-                        {locale?.install || "Loading..."}
+                        {locale?.install}
                       </div>
                     ) : (
                       <div className="h-8 p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
                         <div className="h-full leading-[28px] bg-[#EBF6FF] dark:bg-[#0B1020] rounded-[15px] shadow-lg flex justify-center text-base font-normal text-[#28A3FF] px-4">
-                          {locale?.install || "Loading..."}
+                          {locale?.install}
                         </div>
                       </div>
                     )}

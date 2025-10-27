@@ -37,7 +37,6 @@ export default function ToolsFeature({
                       alt={tool.name}
                       width={24}
                       height={24}
-                      priority
                     />
                     <div>
                       <div className="font-medium text-black dark:text-white">
@@ -57,4 +56,3 @@ export default function ToolsFeature({
     </section>
   );
 }
-
