@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import PageLoader from "@/components/ui/PageLoader";
+import { startRouteProgress } from "@/components/ui/routeProgress";
 import { getDictionarySync } from "@/i18n/i18n";
 
 interface IntegrationIndexProps {
@@ -31,7 +32,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
       subtitle: locale.Integration.modules.connector.subtitle,
       description: locale.Integration.modules.connector.description,
       icon: "/svg/extension/Connector.svg",
-      href: ``,
+      href: `/${lang}/integration/connector`,
       gradient: "from-green-500 to-teal-500",
       size: "large",
     },
@@ -70,22 +71,37 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
   if (!locale) return <PageLoader />;
 
   return (
-    <div className="min-h-screen relative overflow-hidden transition-colors duration-300">
-      <div className="h-[300px] sm:h-[380px] md:h-[445px] w-full max-w-[1000px] mt-8 sm:mt-12 md:mt-14 mx-auto px-4 sm:px-6 md:px-0 py-12 sm:py-16 md:py-20 bg-[url('/svg/extension/store-bg.svg')] bg-cover bg-center bg-no-repeat">
-        <div className="h-auto mb-3 sm:mb-4 text-center font-medium text-2xl sm:text-3xl md:text-5xl bg-gradient-to-r from-purple-600 to-blue-600 dark:from-[#843DFF] dark:to-[#00CEFF] bg-clip-text text-transparent">
-          {locale.Integration.title}
+    <div className="min-h-screen w-full max-w-7xl relative overflow-hidden transition-colors duration-300">
+      <div className="relative w-full mt-8 sm:mt-12 md:mt-14 mx-auto px-4 sm:px-6 md:px-0">
+        <div className="relative overflow-hidden">
+          <Image
+            src="/svg/extension/store-bg.svg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover md:object-contain"
+          />
+          <div className="relative z-10 py-12 sm:py-16 md:py-20">
+            <div className="h-auto mb-3 sm:mb-4 text-center font-medium text-2xl sm:text-3xl md:text-5xl bg-gradient-to-r from-purple-600 to-blue-600 dark:from-[#843DFF] dark:to-[#00CEFF] bg-clip-text text-transparent">
+              {locale.Integration.title}
+            </div>
+            <p className="text-sm sm:text-base text-center mb-12 sm:mb-16 md:mb-20 text-gray-600 dark:text-gray-400 px-4">
+              {locale.Integration.description}
+            </p>
+          </div>
         </div>
-        <p className="text-sm sm:text-base text-center mb-12 sm:mb-16 md:mb-20 text-gray-600 dark:text-gray-400 px-4">
-          {locale.Integration.description}
-        </p>
       </div>
 
       {/* Integration Modules Grid */}
-      <div className="mt-6 sm:mt-8 max-w-7xl mx-auto px-4 sm:p-6 lg:p-4">
+      <div className="mt-14 w-full mx-auto px-4 sm:p-6 lg:p-4">
         {/* Top Row - Large Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+        <div className="flex flex-col md:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6">
           {/* Extensions - Large Card */}
-          <Link href={integrationModules[0].href}>
+          <Link
+            href={integrationModules[0].href}
+            className="w-full md:w-1/2"
+            onClick={() => startRouteProgress()}
+          >
             <div
               className={`h-[280px] sm:h-[320px] md:h-[380px] group relative backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333] cursor-pointer`}
             >
@@ -121,7 +137,11 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
           </Link>
 
           {/* Connector - Large Card */}
-          <div>
+          <Link
+            href={integrationModules[1].href}
+            className="w-full md:w-1/2"
+            onClick={() => startRouteProgress()}
+          >
             <div className="h-[280px] sm:h-[320px] md:h-[380px] group relative backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
               <div className="relative z-10 h-full flex flex-col p-6 sm:p-8 md:p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
                 <div className="flex items-center justify-between mb-4 sm:mb-5">
@@ -146,17 +166,20 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
                 </p>
 
                 <div className="absolute bottom-4 sm:bottom-6 left-6 sm:left-10">
-                  <MoveRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#D4DFE7] dark:text-[#133348]" />
+                  <MoveRight className="w-5 h-5 sm:w-6 sm:h-6 dark:text-[#28A3FF]" />
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Bottom Row - Small Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        <div className="flex flex-wrap gap-4 sm:gap-6">
           {integrationModules.slice(2).map((module, index) => (
-            <div key={module.id}>
+            <div
+              key={module.id}
+              className="w-full md:w-auto md:flex-[0_0_calc((100%-3rem)/3)]"
+            >
               <div className="h-[280px] sm:h-[320px] md:h-[380px] group relative backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
                 <div className="relative z-10 h-full flex flex-col p-6 sm:p-8 md:p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
                   <div className="flex items-center justify-between mb-4 sm:mb-5">

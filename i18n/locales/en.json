@@ -58,8 +58,8 @@
     "description": "Quick answers to common Coco use cases and features"
   },
   "Integration": {
-    "title": "Extensions",
-    "description": "Enhance the functionality of Coco App",
+    "title": "Integrated Resources Hub",
+    "description": "From extensions to connectors — everything you need to build your ideal workflow in one place",
     "build": "Build your own Extension →",
     "search": "Search extensions...",
     "install": "Install",
@@ -67,6 +67,7 @@
     "extensionNotFoundDesc": "The requested extension could not be found.",
     "backToExtensions": "Back to Extensions",
     "extensions": "Extensions",
+    "integration": "Integration",
     "details": "Details",
     "description_title": "Description",
     "commands": "Commands",
@@ -109,6 +110,32 @@
         "subtitle": "Server",
         "description": "Launch quicklinks to streamline tasks in Coco AI App"
       }
+    },
+    "connectorStore": {
+      "title": "Connector Store",
+      "description": "Explore and install the connectors you need",
+      "search": "Search connectors, authors, tags",
+      "build": "Build a Connector →",
+      "loading": "Loading connectors...",
+      "empty": "No connectors found"
+    },
+    "tabs": {
+      "recently": "Recently Added",
+      "all": {
+        "extensions": "All Extensions",
+        "connector": "All Connectors",
+        "assistant": "All Assistants",
+        "mcp": "All MCP Servers",
+        "llm-provider": "All LLM Providers",
+        "datasource": "All Data Sources",
+        "rsa": "All RSAs"
+      }
+    },
+    "installDialog": {
+      "title": "Install {name}",
+      "copied": "Install link copied",
+      "next": "Next: Open Coco Server",
+      "desc": "Open the Coco Server extensions store page. The system will read the install link from your clipboard and show an installation confirmation dialog."
     }
   },
   "Roadmap": {

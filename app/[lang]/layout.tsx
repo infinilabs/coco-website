@@ -6,6 +6,8 @@ import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import RouteProgressWatcher from "@/components/ui/RouteProgressWatcher";
+import TopProgressBar from "@/components/ui/TopProgressBar";
 import { siteConfig } from "@/data/site";
 import { defaultLocale } from "@/i18n/i18n";
 import { cn } from "@/lib/utils";
@@ -50,6 +52,8 @@ export default async function RootLayout({
           disableTransitionOnChange
           storageKey="theme"
         >
+          <TopProgressBar />
+          <RouteProgressWatcher />
           <Header lang={currentLang} />
           <main className="flex flex-col items-center min-h-screen">
             {children}
@@ -69,4 +73,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
