@@ -46,8 +46,8 @@ export default function CommonDetail({ lang, extensionId }: CommonDetailProps) {
 
       const url =
         process.env.NODE_ENV === "development"
-          ? `/api/extensions/${extensionId}`
-          : `https://coco.infini.cloud/store/extension/${extensionId}`;
+          ? `/store/server/${extensionId}`
+          : `https://coco.infini.cloud/store/server/${extensionId}`;
 
       const response = await fetch(url);
 
