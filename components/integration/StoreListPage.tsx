@@ -98,10 +98,10 @@ export default function StoreListPage({
 
         const apiUrl =
           process.env.NODE_ENV === "development"
-            ? `/store/server/${type}/_search?query=${encodeURIComponent(
+            ? `/store/server/_search?filter=type:connector&query=${encodeURIComponent(
                 query
               )}&from=${from}&size=${pageSize}${sortParam}`
-            : `https://coco.infini.cloud/store/server/${type}/_search?query=${encodeURIComponent(
+            : `https://coco.infini.cloud/store/server/_search?filter=type:connector&query=${encodeURIComponent(
                 query
               )}&from=${from}&size=${pageSize}${sortParam}`;
 
