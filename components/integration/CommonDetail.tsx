@@ -253,8 +253,7 @@ export default function CommonDetail({ lang, extensionId }: CommonDetailProps) {
             onClick={() => {
               if (extension) {
                 try {
-                  const installUrl = `coco://install_extension_from_store?id=${extension.id}`;
-                  void navigator.clipboard?.writeText(installUrl);
+                  navigator.clipboard?.writeText(JSON.stringify({id: extension.id}));
                 } catch {}
                 setInstallOpen(true);
               }

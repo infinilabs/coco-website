@@ -249,8 +249,7 @@ export default function StoreListPage({
 
   const handleInstallClick = (ext: Extension) => {
     try {
-      const installUrl = `coco://install_extension_from_store?id=${ext.id}`;
-      void navigator.clipboard?.writeText(installUrl);
+      navigator.clipboard?.writeText(JSON.stringify({id: ext.id}));
     } catch {}
     setSelectedExtension(ext);
     setInstallOpen(true);

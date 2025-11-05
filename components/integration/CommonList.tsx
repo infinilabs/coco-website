@@ -226,7 +226,7 @@ export default function CommonList({
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center">
                     <FolderDown className="w-4 h-4 mr-1" />
-                    <span>{extension.stats.installs}</span>
+                    <span>{extension.stats?.installs}</span>
                   </div>
                 </div>
               </div>
