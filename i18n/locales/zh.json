@@ -106,10 +106,15 @@
         "subtitle": "服务端",
         "description": "导入 MCP 配置，优化 Coco Server 模型性能"
       },
-      "quicklink": {
-        "title": "快捷链接",
+      "llmProvider": {
+        "title": "大模型提供商",
         "subtitle": "服务端",
-        "description": "启动快捷链接，简化 Coco AI 应用中的任务"
+        "description": "轻松导入并配置预设模型，增强 AI 能力"
+      },
+      "datasource": {
+        "title": "数据源",
+        "subtitle": "服务端",
+        "description": "快速导入并集成数据源，实现统一内容搜索"
       }
     },
     "connectorStore": {

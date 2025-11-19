@@ -105,10 +105,15 @@
         "subtitle": "Server",
         "description": "Import MCP configurations to optimize Coco Server's model performance"
       },
-      "quicklink": {
-        "title": "Quicklink",
+      "llmProvider": {
+        "title": "LLM Provider",
         "subtitle": "Server",
-        "description": "Launch quicklinks to streamline tasks in Coco AI App"
+        "description": "Easily import and configure pre-set models to enhance AI capabilities"
+      },
+      "datasource": {
+        "title": "Data Source",
+        "subtitle": "Server",
+        "description": "Quickly import and integrate data sources for unified content search"
       }
     },
     "connectorStore": {

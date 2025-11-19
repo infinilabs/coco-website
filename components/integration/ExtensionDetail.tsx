@@ -46,10 +46,7 @@ export default function ExtensionDetail({
       setLoading(true);
       setError(null);
 
-      const url =
-        process.env.NODE_ENV === "development"
-          ? `/api/extensions/${extensionId}`
-          : `https://coco.infini.cloud/store/extension/${extensionId}`;
+      const url = `${process.env.NEXT_PUBLIC_BASE_URL}/store/extensions/${extensionId}`;
 
       const response = await fetch(url);
 

@@ -44,10 +44,7 @@ export default function CommonDetail({ lang, extensionId }: CommonDetailProps) {
       setLoading(true);
       setError(null);
 
-      const url =
-        process.env.NODE_ENV === "development"
-          ? `/store/server/${extensionId}`
-          : `https://coco.infini.cloud/store/server/${extensionId}`;
+      const url = `${process.env.NEXT_PUBLIC_BASE_URL}/store/server/${extensionId}`;
 
       const response = await fetch(url);
 
@@ -253,7 +250,9 @@ export default function CommonDetail({ lang, extensionId }: CommonDetailProps) {
             onClick={() => {
               if (extension) {
                 try {
-                  navigator.clipboard?.writeText(JSON.stringify({id: extension.id}));
+                  navigator.clipboard?.writeText(
+                    JSON.stringify({ id: extension.id })
+                  );
                 } catch {}
                 setInstallOpen(true);
               }

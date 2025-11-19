@@ -42,14 +42,11 @@ export default function IntegrationIndex({
         const sortParam =
           INTEGRATION[active].value === "recently" ? "&sort=created:desc" : "";
 
-        const apiUrl =
-          process.env.NODE_ENV === "development"
-            ? `/api/extensions/_search?query=${encodeURIComponent(
-                query
-              )}&from=${from}&size=${pageSize}${sortParam}`
-            : `https://coco.infini.cloud/store/extension/_search?query=${encodeURIComponent(
-                query
-              )}&from=${from}&size=${pageSize}${sortParam}`;
+        const apiUrl = `${
+          process.env.NEXT_PUBLIC_BASE_URL
+        }/store/extensions/_search?query=${encodeURIComponent(
+          query
+        )}&from=${from}&size=${pageSize}${sortParam}`;
 
         const response = await fetch(apiUrl);
         const data: ApiResponse = await response.json();

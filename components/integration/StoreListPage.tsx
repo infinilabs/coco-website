@@ -96,14 +96,11 @@ export default function StoreListPage({
           return;
         }
 
-        const apiUrl =
-          process.env.NODE_ENV === "development"
-            ? `/store/server/_search?filter=type:connector&query=${encodeURIComponent(
-                query
-              )}&from=${from}&size=${pageSize}${sortParam}`
-            : `https://coco.infini.cloud/store/server/_search?filter=type:connector&query=${encodeURIComponent(
-                query
-              )}&from=${from}&size=${pageSize}${sortParam}`;
+        const apiUrl = `${
+          process.env.NEXT_PUBLIC_BASE_URL
+        }/store/server/_search?filter=type:${type}&query=${encodeURIComponent(
+          query
+        )}&from=${from}&size=${pageSize}${sortParam}`;
 
         const response = await fetch(apiUrl);
         const data: ApiResponse = await response.json();
@@ -133,33 +130,9 @@ export default function StoreListPage({
           setTotalCount(0);
         }
       } catch (error) {
-        // 失败时开发环境回退 mock，保证页面正常
-        if (process.env.NODE_ENV === "development") {
-          const data = await loadMock();
-          const extensionList = data.hits.hits?.map((hit) => ({
-            ...hit._source,
-            icon: hit._source.icon?.replace(/`/g, "").trim(),
-            developer: {
-              ...hit._source.developer,
-              avatar: hit._source.developer.avatar?.replace(/`/g, "").trim(),
-              website: hit._source.developer.website?.replace(/`/g, "").trim(),
-            },
-            screenshots: hit._source.screenshots?.map((screenshot) => ({
-              ...screenshot,
-              url: screenshot.url?.replace(/`/g, "").trim(),
-            })),
-            url: {
-              code: hit._source.url.code?.replace(/`/g, "").trim(),
-              download: hit._source.url.download?.replace(/`/g, "").trim(),
-            },
-          }));
-          setExtensions(extensionList || []);
-          setTotalCount(data.hits.total.value);
-        } else {
-          console.error("Failed to fetch extensions:", error);
-          setExtensions([]);
-          setTotalCount(0);
-        }
+        console.error("Failed to fetch extensions:", error);
+        setExtensions([]);
+        setTotalCount(0);
       } finally {
         setLoading(false);
       }
@@ -249,7 +222,7 @@ export default function StoreListPage({
 
   const handleInstallClick = (ext: Extension) => {
     try {
-      navigator.clipboard?.writeText(JSON.stringify({id: ext.id}));
+      navigator.clipboard?.writeText(JSON.stringify({ id: ext.id }));
     } catch {}
     setSelectedExtension(ext);
     setInstallOpen(true);

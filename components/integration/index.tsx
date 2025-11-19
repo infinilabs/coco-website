@@ -42,7 +42,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
       subtitle: locale.Integration.modules.aiAssistant.subtitle,
       description: locale.Integration.modules.aiAssistant.description,
       icon: "/svg/extension/Assistant.svg",
-      href: ``,
+      href: `/${lang}/integration/assistant`,
       gradient: "from-blue-500 to-cyan-500",
       size: "small",
     },
@@ -52,17 +52,27 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
       subtitle: locale.Integration.modules.mcpServer.subtitle,
       description: locale.Integration.modules.mcpServer.description,
       icon: "/svg/extension/mcp.svg",
-      href: ``,
+      href: `/${lang}/integration/mcp`,
       gradient: "from-indigo-500 to-purple-500",
       size: "small",
     },
     {
-      id: "quicklink",
-      title: locale.Integration.modules.quicklink.title,
-      subtitle: locale.Integration.modules.quicklink.subtitle,
-      description: locale.Integration.modules.quicklink.description,
-      icon: "/svg/extension/Quicklink.svg",
-      href: ``,
+      id: "llm-provider",
+      title: locale.Integration.modules.llmProvider.title,
+      subtitle: locale.Integration.modules.llmProvider.subtitle,
+      description: locale.Integration.modules.llmProvider.description,
+      icon: "/svg/extension/LLM.svg",
+      href: `/${lang}/integration/llm`,
+      gradient: "from-purple-500 to-pink-500",
+      size: "small",
+    },
+    {
+      id: "datasource",
+      title: locale.Integration.modules.datasource.title,
+      subtitle: locale.Integration.modules.datasource.subtitle,
+      description: locale.Integration.modules.datasource.description,
+      icon: "/svg/extension/Datasource.svg",
+      href: `/${lang}/integration/datasource`,
       gradient: "from-purple-500 to-pink-500",
       size: "small",
     },
@@ -94,90 +104,12 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
 
       {/* Integration Modules Grid */}
       <div className="mt-14 w-full mx-auto px-4 sm:p-6 lg:p-4">
-        {/* Top Row - Large Cards */}
-        <div className="flex flex-col md:flex-row gap-4 sm:gap-6 mb-4 sm:mb-6">
-          {/* Extensions - Large Card */}
-          <Link
-            href={integrationModules[0].href}
-            className="w-full md:w-1/2"
-            onClick={() => startRouteProgress()}
-          >
-            <div
-              className={`h-[280px] sm:h-[320px] md:h-[380px] group relative backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333] cursor-pointer`}
-            >
-              <div className="relative z-10 h-full flex flex-col p-6 sm:p-8 md:p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
-                <div className="flex items-center justify-between mb-4 sm:mb-5">
-                  <Image
-                    src={integrationModules[0].icon}
-                    alt={integrationModules[0].title}
-                    width={48}
-                    height={48}
-                    className="sm:w-[56px] sm:h-[56px]"
-                  />
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white flex flex-col sm:flex-row sm:items-center gap-2">
-                  <span>{integrationModules[0].title}</span>
-                  <span className="px-2 sm:px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-semibold rounded-full w-fit">
-                    {integrationModules[0].subtitle}
-                  </span>
-                </h3>
-
-                <p className="text-xs sm:text-sm flex-grow text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {integrationModules[0].description}
-                </p>
-
-                <div className="absolute bottom-4 sm:bottom-6 left-6 sm:left-10">
-                  <div className="inline-flex items-center transition-colors text-blue-600 group-hover:text-blue-500 dark:text-blue-400 dark:group-hover:text-blue-300">
-                    <MoveRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#28A3FF]" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          {/* Connector - Large Card */}
-          <Link
-            href={integrationModules[1].href}
-            className="w-full md:w-1/2"
-            onClick={() => startRouteProgress()}
-          >
-            <div className="h-[280px] sm:h-[320px] md:h-[380px] group relative backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-              <div className="relative z-10 h-full flex flex-col p-6 sm:p-8 md:p-10 rounded-[15px] bg-[#EBF6FF] dark:bg-[#0B1020]">
-                <div className="flex items-center justify-between mb-4 sm:mb-5">
-                  <Image
-                    src={integrationModules[1].icon}
-                    alt={integrationModules[1].title}
-                    width={48}
-                    height={48}
-                    className="sm:w-[56px] sm:h-[56px]"
-                  />
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white flex flex-col sm:flex-row sm:items-center gap-2">
-                  <span>{integrationModules[1].title}</span>
-                  <span className="px-2 sm:px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs font-semibold rounded-full w-fit">
-                    {integrationModules[1].subtitle}
-                  </span>
-                </h3>
-
-                <p className="text-xs sm:text-sm flex-grow text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {integrationModules[1].description}
-                </p>
-
-                <div className="absolute bottom-4 sm:bottom-6 left-6 sm:left-10">
-                  <MoveRight className="w-5 h-5 sm:w-6 sm:h-6 dark:text-[#28A3FF]" />
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        {/* Bottom Row - Small Cards */}
         <div className="flex flex-wrap gap-4 sm:gap-6">
-          {integrationModules.slice(2).map((module, index) => (
-            <div
+          {integrationModules.map((module, index) => (
+            <Link
               key={module.id}
+              href={module.href}
+              onClick={() => startRouteProgress()}
               className="w-full md:w-auto md:flex-[0_0_calc((100%-3rem)/3)]"
             >
               <div className="h-[280px] sm:h-[320px] md:h-[380px] group relative backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
@@ -205,11 +137,11 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
                   </p>
 
                   <div className="absolute bottom-4 sm:bottom-6 left-6 sm:left-10">
-                    <MoveRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#D4DFE7] dark:text-[#133348]" />
+                    <MoveRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#28A3FF]" />
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

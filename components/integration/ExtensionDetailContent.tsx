@@ -47,10 +47,8 @@ export default function ExtensionDetailContent({
   const fetchRelatedExtensions = useCallback(async () => {
     try {
       setLoading(true);
-      const apiUrl =
-        process.env.NODE_ENV === "development"
-          ? `/api/extensions/_search?from=0&size=10&sort=created:desc`
-          : `https://coco.infini.cloud/store/extension/_search??from=0&size=10&sort=created:desc`;
+      const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/store/extensions/_search?from=0&size=10&sort=created:desc`;
+
       const response = await fetch(apiUrl);
       const data: ApiResponse = await response.json();
 

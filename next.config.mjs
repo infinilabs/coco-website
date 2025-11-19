@@ -1,6 +1,5 @@
 const isDev = process.env.NODE_ENV === "development";
-//const devUrl = "https://coco.infini.cloud";
-const devUrl = "http://dev.infini.cloud:27200";
+const devUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -23,8 +22,12 @@ const nextConfig = {
     async rewrites() {
       return [
         {
-          source: "/api/extensions/:path*",
+          source: "/store/extensions/:path*",
           destination: `${devUrl}/store/extension/:path*`,
+        },
+        {
+          source: "/store/server/:path*",
+          destination: `${devUrl}/store/server/:path*`,
         },
       ];
     },

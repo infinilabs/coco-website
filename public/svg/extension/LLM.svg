@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>LLM</title>
+    <g id="集成" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Store-home" transform="translate(-360, -1464)">
+            <g id="LLM" transform="translate(360, 1464)">
+                <rect id="矩形" fill="#E995FF" x="0" y="0" width="56" height="56" rx="16"></rect>
+                <g id="编组" transform="translate(14, 12)" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+                    <path d="M12.4444444,30.5814571 C13.4070256,31.1352755 14.5929744,31.1352755 15.5555556,30.5814571 L26.4444444,24.3808213 C27.4060392,23.8275711 27.9988611,22.8055472 28,21.6990463 L28,9.29777465 C27.9988611,8.19127368 27.4060392,7.16924985 26.4444444,6.61599966 L15.5555556,0.41536384 C14.5929744,-0.138454613 13.4070256,-0.138454613 12.4444444,0.41536384 L1.55555556,6.61599966 C0.593960765,7.16924985 0.00113889804,8.19127368 0,9.29777465 L0,21.6990463 C0.00113889804,22.8055472 0.593960765,23.8275711 1.55555556,24.3808213 L12.4444444,30.5814571 Z" id="路径"></path>
+                    <line x1="14" y1="31" x2="14" y2="15.4984105" id="路径"></line>
+                    <polyline id="路径" points="0.451111111 7.74761569 14 15.4984105 27.5488889 7.74761569"></polyline>
+                    <line x1="7" y1="3.51568175" x2="21" y2="11.4990004" id="路径"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
