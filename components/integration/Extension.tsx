@@ -44,7 +44,7 @@ export default function IntegrationIndex({
 
         const apiUrl = `${
           process.env.NEXT_PUBLIC_BASE_URL
-        }/store/extensions/_search?query=${encodeURIComponent(
+        }/store/extension/_search?query=${encodeURIComponent(
           query
         )}&from=${from}&size=${pageSize}${sortParam}`;
 

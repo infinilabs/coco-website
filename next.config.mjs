@@ -22,7 +22,7 @@ const nextConfig = {
     async rewrites() {
       return [
         {
-          source: "/store/extensions/:path*",
+          source: "/store/extension/:path*",
           destination: `${devUrl}/store/extension/:path*`,
         },
         {

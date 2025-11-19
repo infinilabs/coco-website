@@ -27,7 +27,7 @@ export default function ExtensionDeveloperInfo({
       try {
         setLoading(true);
 
-        const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/store/extensions/_search?query=${developerName}&from=0&size=10`;
+        const apiUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/store/extension/_search?query=${developerName}&from=0&size=10`;
 
         const response = await fetch(apiUrl);
         const data: ApiResponse = await response.json();

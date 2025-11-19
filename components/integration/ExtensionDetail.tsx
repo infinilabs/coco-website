@@ -46,7 +46,7 @@ export default function ExtensionDetail({
       setLoading(true);
       setError(null);
 
-      const url = `${process.env.NEXT_PUBLIC_BASE_URL}/store/extensions/${extensionId}`;
+      const url = `${process.env.NEXT_PUBLIC_BASE_URL}/store/extension/${extensionId}`;
 
       const response = await fetch(url);
 
