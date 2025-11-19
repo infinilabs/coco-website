@@ -206,9 +206,9 @@ export default function ExtensionDetail({
                 <div className="flex items-center space-x-1 md:space-x-2">
                   <FolderDown className="w-5 h-5 md:w-6 md:h-6" />
                   <span className="text-sm md:text-base">
-                    {extension.stats.installs >= 1000
-                      ? `${(extension.stats.installs / 1000).toFixed(1)}k`
-                      : extension.stats.installs}
+                    {extension?.stats?.installs >= 1000
+                      ? `${(extension?.stats?.installs / 1000).toFixed(1)}k`
+                      : extension?.stats?.installs || 1}
                   </span>
                 </div>
                 <div className="flex items-center space-x-1 md:space-x-2">
