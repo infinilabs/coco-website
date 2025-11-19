@@ -263,7 +263,7 @@ export default function ExtensionDetail({
                   <span className="text-sm md:text-base">
                     {extension?.stats?.installs >= 1000
                       ? `${(extension?.stats?.installs / 1000).toFixed(1)}k`
-                      : extension?.stats?.installs}
+                      : extension?.stats?.installs || 1}
                   </span>
                 </div>
                 <div className="flex items-center space-x-1 md:space-x-2">
