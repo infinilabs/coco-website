@@ -85,9 +85,9 @@ export const ServerHref =
 export const DockerCommand = `docker run -d 
   --name cocoserver 
   -p 9000:9000 
-  -v data:/app/easysearch/data 
-  -v config:/app/easysearch/config 
-  -v logs:/app/easysearch/logs 
+  -v coco_data_vol:/app/easysearch/data 
+  -v coco_config_vol:/app/easysearch/config 
+  -v coco_logs_vol:/app/easysearch/logs 
   infinilabs/coco:${serverVersion}`;
 
 export const macLinksServer = [
