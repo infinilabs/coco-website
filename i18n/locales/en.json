@@ -239,6 +239,32 @@
       "subTitle": "Features that have been successfully implemented and are now available to users.",
       "versionContent": [
         {
+          "version": "V0.9.0 (2025-11-20)",
+          "content": [
+            {
+            "title": "Compact Window Mode",
+            "subTitle": "Coco AI App now supports a compact window mode"
+            },
+            {
+            "title": "Window Transparency",
+            "subTitle": "The Coco AI App main window now supports adjustable transparency"
+            },
+            {
+            "title": "GitLab Code Review",
+            "subTitle": "Coco AI Server now supports code review for GitLab Merge Requests"
+            },
+            {
+            "title": "Built-in Coco Server Extensions Store",
+            "subTitle": "Coco AI Server adds an extensions store that lets you install connectors, datasources, assistants, and more with one click"
+            },
+            {
+            "title": "Coco Server Permission Management",
+            "subTitle": "Coco AI Server now provides permission validation and management for connectors, datasources, assistants, and related resources"
+            }
+          ]
+        },
+        {
+
           "version": "V0.8.0 (2025-09-28)",
           "content": [
             {
