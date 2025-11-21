@@ -10,6 +10,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import FontIcon from "@/components/integration/FontIcon";
+import { startRouteProgress } from "@/components/ui/routeProgress";
 import type { Extension } from "@/data/integration";
 
 interface CommonListProps {
@@ -95,25 +97,36 @@ export default function CommonList({
             className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333] cursor-pointer"
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
-            onClick={() =>
+            onClick={() => {
               router.push(
                 `/${lang}/integration/${type}/detail?id=${extension.id}`
-              )
-            }
+              );
+              startRouteProgress();
+            }}
           >
             <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-[15px] p-8 min-h-[380px] flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <Image
-                    src={extension.icon}
-                    alt={extension.name}
-                    width={56}
-                    height={56}
-                    className="object-cover rounded-xl"
-                    style={{
-                      filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
-                    }}
-                  />
+                  {extension.icon?.startsWith("font_") ? (
+                    <FontIcon
+                      name={extension.icon}
+                      className="size-14 object-cover rounded-xl"
+                      style={{
+                        filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                      }}
+                    />
+                  ) : (
+                    <Image
+                      src={extension.icon}
+                      alt={extension.name}
+                      width={56}
+                      height={56}
+                      className="object-cover rounded-xl"
+                      style={{
+                        filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                      }}
+                    />
+                  )}
                   <button
                     aria-label="install"
                     onClick={(e) => {

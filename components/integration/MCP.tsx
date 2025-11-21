@@ -5,7 +5,7 @@ import StoreListPage from "./StoreListPage";
 
 export default function MCPIndex({ lang = defaultLocale }: { lang: string }) {
   const dict = getDictionarySync(lang);
-  const t = dict?.Integration?.connectorStore;
+  const t = dict?.Integration?.mcpStore;
 
   return (
     <>

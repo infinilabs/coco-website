@@ -125,6 +125,38 @@
       "loading": "正在加载连接器…",
       "empty": "暂无符合条件的连接器"
     },
+    "assistantStore": {
+      "title": "AI 助手商店",
+      "description": "在这里探索并安装你需要的 AI 助手",
+      "search": "搜索助手、作者、标签",
+      "build": "我也要构建助手 →",
+      "loading": "正在加载助手...",
+      "empty": "暂无符合条件的助手"
+    },
+    "mcpStore": {
+      "title": "MCP 服务器商店",
+      "description": "在这里探索并安装你需要的 MCP 服务器",
+      "search": "搜索 MCP 服务器、作者、标签",
+      "build": "我也要构建 MCP 服务器 →",
+      "loading": "正在加载 MCP 服务器...",
+      "empty": "暂无符合条件的 MCP 服务器"
+    },
+    "llmProviderStore": {
+      "title": "大模型提供商商店",
+      "description": "在这里探索并安装你需要的 LLM 模型提供商",
+      "search": "搜索 LLM 模型提供商、作者、标签",
+      "build": "我也要构建 LLM 模型提供商 →",
+      "loading": "正在加载 LLM 模型提供商...",
+      "empty": "暂无符合条件的 LLM 模型提供商"
+    },
+    "datasourceStore": {
+      "title": "数据源商店",
+      "description": "在这里探索并安装你需要的数据源",
+      "search": "搜索数据源、作者、标签",
+      "build": "我也要构建数据源 →",
+      "loading": "正在加载数据源...",
+      "empty": "暂无符合条件的数据源"
+    },
     "tabs": {
       "recently": "最近添加",
       "all": {

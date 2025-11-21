@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,15 +9,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { getDictionarySync } from "@/i18n/i18n";
-
-type IntegrationType =
-  | "extensions"
-  | "connector"
-  | "assistant"
-  | "mcp"
-  | "llm-provider"
-  | "datasource"
-  | "rsa";
+import { IntegrationType } from "@/types/siteConfig";
+import Link from "next/link";
 
 interface IntegrationBreadcrumbProps {
   lang: string;

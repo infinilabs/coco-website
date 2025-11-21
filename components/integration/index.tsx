@@ -62,7 +62,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
       subtitle: locale.Integration.modules.llmProvider.subtitle,
       description: locale.Integration.modules.llmProvider.description,
       icon: "/svg/extension/LLM.svg",
-      href: `/${lang}/integration/llm`,
+      href: `/${lang}/integration/llm-provider`,
       gradient: "from-purple-500 to-pink-500",
       size: "small",
     },
@@ -92,7 +92,7 @@ export default function IntegrationIndex({ lang }: IntegrationIndexProps) {
             className="object-cover md:object-contain"
           />
           <div className="relative z-10 py-12 sm:py-16 md:py-20">
-            <div className="h-auto mb-3 sm:mb-4 text-center font-medium text-2xl sm:text-3xl md:text-5xl bg-gradient-to-r from-purple-600 to-blue-600 dark:from-[#843DFF] dark:to-[#00CEFF] bg-clip-text text-transparent">
+            <div className="h-auto mb-3 sm:mb-4 text-center font-medium text-2xl sm:text-3xl md:text-5xl leading-[1.3] sm:leading-[1.35] md:leading-[1.25] bg-gradient-to-r from-purple-600 to-blue-600 dark:from-[#843DFF] dark:to-[#00CEFF] bg-clip-text text-transparent">
               {locale.Integration.title}
             </div>
             <p className="text-sm sm:text-base text-center mb-12 sm:mb-16 md:mb-20 text-gray-600 dark:text-gray-400 px-4">

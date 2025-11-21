@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import CommonDetail from "@/components/integration/CommonDetail";
 import { getDictionary } from "@/i18n/i18n";
 
-interface ExtensionDetailClientProps {
+interface DatasourceDetailClientProps {
   lang: string;
 }
 
-export default function ExtensionDetailClient({
+export default function DatasourceDetailClient({
   lang,
-}: ExtensionDetailClientProps) {
+}: DatasourceDetailClientProps) {
   const searchParams = useSearchParams();
   const extensionId = searchParams.get("id");
   const [locale, setLocale] = useState<any>(null);
@@ -40,5 +40,7 @@ export default function ExtensionDetailClient({
     );
   }
 
-  return <CommonDetail lang={lang} extensionId={extensionId} />;
+  return (
+    <CommonDetail lang={lang} type="datasource" extensionId={extensionId} />
+  );
 }

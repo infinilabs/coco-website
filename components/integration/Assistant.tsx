@@ -9,7 +9,7 @@ export default function AssistantIndex({
   lang: string;
 }) {
   const dict = getDictionarySync(lang);
-  const t = dict?.Integration?.connectorStore;
+  const t = dict?.Integration?.assistantStore;
 
   return (
     <>

@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 
 // import BaiDuAnalytics from "@/components/BaiDuAnalytics";
 // import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -37,7 +38,12 @@ export default async function RootLayout({
 
   return (
     <html lang={currentLang} suppressHydrationWarning>
-      <head />
+      <head>
+        <Script
+          src="https://at.alicdn.com/t/c/font_4878526_cykw3et0ezd.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background antialiased",

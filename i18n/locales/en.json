@@ -124,6 +124,38 @@
       "loading": "Loading connectors...",
       "empty": "No connectors found"
     },
+    "assistantStore": {
+      "title": "AI Assistant Store",
+      "description": "Explore and install the AI assistants you need",
+      "search": "Search assistants, authors, tags",
+      "build": "Build an Assistant →",
+      "loading": "Loading assistants...",
+      "empty": "No assistants found"
+    },
+    "mcpStore": {
+      "title": "MCP Server Store",
+      "description": "Explore and install the MCP servers you need",
+      "search": "Search MCP servers, authors, tags",
+      "build": "Build an MCP Server →",
+      "loading": "Loading MCP servers...",
+      "empty": "No MCP servers found"
+    },
+    "llmProviderStore": {
+      "title": "LLM Provider Store",
+      "description": "Explore and install the LLM providers you need",
+      "search": "Search LLM providers, authors, tags",
+      "build": "Build an LLM Provider →",
+      "loading": "Loading LLM providers...",
+      "empty": "No LLM providers found"
+    },
+    "datasourceStore": {
+      "title": "Data Source Store",
+      "description": "Explore and install the data sources you need",
+      "search": "Search data sources, authors, tags",
+      "build": "Build a Data Source →",
+      "loading": "Loading data sources...",
+      "empty": "No data sources found"
+    },
     "tabs": {
       "recently": "Recently Added",
       "all": {

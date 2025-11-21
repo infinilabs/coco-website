@@ -12,9 +12,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
+import FontIcon from "@/components/integration/FontIcon";
 import PageLoader from "@/components/ui/PageLoader";
 import type { Extension } from "@/data/integration";
 import { getDictionary } from "@/i18n/i18n";
+import { IntegrationType } from "@/types/siteConfig";
 import ExtensionDetailContent from "./ExtensionDetailContent";
 import ExtensionDeveloperInfo from "./ExtensionDeveloperInfo";
 import IntegrationBreadcrumb from "./IntegrationBreadcrumb";
@@ -22,10 +24,15 @@ import IntegrationInstallDialog from "./IntegrationInstallDialog";
 
 interface CommonDetailProps {
   lang: string;
+  type: IntegrationType;
   extensionId: string;
 }
 
-export default function CommonDetail({ lang, extensionId }: CommonDetailProps) {
+export default function CommonDetail({
+  lang,
+  type,
+  extensionId,
+}: CommonDetailProps) {
   const { theme } = useTheme();
   const router = useRouter();
   const [locale, setLocale] = useState<any>();
@@ -103,7 +110,7 @@ export default function CommonDetail({ lang, extensionId }: CommonDetailProps) {
         {/* Header with breadcrumb */}
         <IntegrationBreadcrumb
           lang={lang}
-          type="extensions"
+          type={type}
           currentLabel={extension?.name}
           className="mb-12 md:mb-20 text-[#666] dark:text-[#C8C8C8] min-h-[24px]"
         />
@@ -111,16 +118,26 @@ export default function CommonDetail({ lang, extensionId }: CommonDetailProps) {
         {/* Extension header */}
         <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-6 mb-6 md:mb-7">
           <div className="flex-shrink-0 self-center md:self-start w-36 h-36">
-            <Image
-              src={extension.icon}
-              alt={extension.name}
-              width={144}
-              height={144}
-              className="w-full h-full object-contain"
-              style={{
-                filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
-              }}
-            />
+            {extension.icon?.startsWith("font_") ? (
+              <FontIcon
+                name={extension.icon}
+                className="size-36 h-full object-contain"
+                style={{
+                  filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                }}
+              />
+            ) : (
+              <Image
+                src={extension.icon}
+                alt={extension.name}
+                width={144}
+                height={144}
+                className="w-full h-full object-contain"
+                style={{
+                  filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                }}
+              />
+            )}
           </div>
 
           <div className="flex-1 text-center md:text-left">

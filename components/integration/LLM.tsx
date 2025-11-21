@@ -5,7 +5,7 @@ import StoreListPage from "./StoreListPage";
 
 export default function LLMIndex({ lang = defaultLocale }: { lang: string }) {
   const dict = getDictionarySync(lang);
-  const t = dict?.Integration?.connectorStore;
+  const t = dict?.Integration?.llmProviderStore;
 
   return (
     <>

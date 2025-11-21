@@ -6,13 +6,11 @@ import { useEffect, useState } from "react";
 import CommonDetail from "@/components/integration/CommonDetail";
 import { getDictionary } from "@/i18n/i18n";
 
-interface ExtensionDetailClientProps {
+interface LLMDetailClientProps {
   lang: string;
 }
 
-export default function ExtensionDetailClient({
-  lang,
-}: ExtensionDetailClientProps) {
+export default function LLMDetailClient({ lang }: LLMDetailClientProps) {
   const searchParams = useSearchParams();
   const extensionId = searchParams.get("id");
   const [locale, setLocale] = useState<any>(null);
@@ -40,5 +38,7 @@ export default function ExtensionDetailClient({
     );
   }
 
-  return <CommonDetail lang={lang} extensionId={extensionId} />;
+  return (
+    <CommonDetail lang={lang} type="llm-provider" extensionId={extensionId} />
+  );
 }

@@ -9,7 +9,7 @@ export default function DatasourceIndex({
   lang: string;
 }) {
   const dict = getDictionarySync(lang);
-  const t = dict?.Integration?.connectorStore;
+  const t = dict?.Integration?.datasourceStore;
 
   return (
     <>
