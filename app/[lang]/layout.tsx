@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 
 // import BaiDuAnalytics from "@/components/BaiDuAnalytics";
 // import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -6,6 +7,8 @@ import { TailwindIndicator } from "@/components/TailwindIndicator";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
+import RouteProgressWatcher from "@/components/ui/RouteProgressWatcher";
+import TopProgressBar from "@/components/ui/TopProgressBar";
 import { siteConfig } from "@/data/site";
 import { defaultLocale } from "@/i18n/i18n";
 import { cn } from "@/lib/utils";
@@ -35,7 +38,12 @@ export default async function RootLayout({
 
   return (
     <html lang={currentLang} suppressHydrationWarning>
-      <head />
+      <head>
+        <Script
+          src="https://at.alicdn.com/t/c/font_4878526_cykw3et0ezd.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background antialiased",
@@ -50,6 +58,8 @@ export default async function RootLayout({
           disableTransitionOnChange
           storageKey="theme"
         >
+          <TopProgressBar />
+          <RouteProgressWatcher />
           <Header lang={currentLang} />
           <main className="flex flex-col items-center min-h-screen">
             {children}
@@ -69,4 +79,3 @@ export default async function RootLayout({
     </html>
   );
 }
-

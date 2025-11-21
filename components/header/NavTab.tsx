@@ -1,9 +1,10 @@
 "use client";
 
+import { startRouteProgress } from "@/components/ui/routeProgress";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface NavTabItem {
   label: string;
@@ -33,50 +34,15 @@ export default function NavTab({
 }: NavTabProps) {
   const { theme } = useTheme();
   const router = useRouter();
-  const pathname = usePathname();
 
   const [active, setActive] = useState(tabs && tabs[0]?.value);
   useEffect(() => {
     if (value) setActive(value);
   }, [value]);
 
-  const [progressActive, setProgressActive] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const timerRef = useRef<number | null>(null);
-
-  const startProgress = () => {
-    if (progressActive) return;
-    setProgressActive(true);
-    setProgress(0);
-    if (timerRef.current) window.clearInterval(timerRef.current);
-    timerRef.current = window.setInterval(() => {
-      setProgress((p) => {
-        const next = p + Math.random() * 10;
-        return next >= 85 ? 85 : next;
-      });
-    }, 120);
-  };
-
-  const doneProgress = () => {
-    if (timerRef.current) {
-      window.clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-    setProgress(100);
-    setTimeout(() => {
-      setProgressActive(false);
-      setProgress(0);
-    }, 300);
-  };
-
-  useEffect(() => {
-    if (progressActive) doneProgress();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
-
   const handleTabClick = (tab: NavTabItem, idx: number) => {
     if (tab.href && !tab.href.startsWith("http")) {
-      startProgress();
+      startRouteProgress();
       const dest = `/${lang}${tab.href}`;
       router.push(dest);
     }
@@ -156,22 +122,6 @@ export default function NavTab({
 
   return (
     <div className="inline-block p-[2px] rounded-[41px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-      {progressActive && (
-        <div
-          aria-hidden
-          className="fixed left-0 top-0 z-[1000] w-full"
-          style={{ pointerEvents: "none" }}
-        >
-          <div
-            className="h-[2px] bg-[#00CEFF] shadow-sm"
-            style={{
-              width: `${progress}%`,
-              transition: "width 120ms ease-out",
-            }}
-          />
-        </div>
-      )}
-
       <div className={getContainerStyles()}>
         {tabs?.map((tab, idx) => {
           const isActive = active === tab.value;

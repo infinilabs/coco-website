@@ -56,3 +56,12 @@ export type SiteConfig = {
     creator: string
   },
 }
+
+export type IntegrationType =
+  | "extensions"
+  | "connector"
+  | "assistant"
+  | "mcp"
+  | "llm-provider"
+  | "datasource"
+  | "rsa";

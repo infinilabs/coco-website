@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import LoadingScreen from "@/components/LoadingScreen";
 import { defaultLocale } from "@/i18n/i18n";
-import DetailClient from "./DetailClient";
+import MCPDetailClient from "./DetailClient";
 
 interface ExtensionDetailPageProps {
   params: Promise<{
@@ -18,7 +18,7 @@ export default async function ExtensionDetailPage({
 
   return (
     <Suspense fallback={<LoadingScreen />}>
-      <DetailClient lang={currentLang} />
+      <MCPDetailClient lang={currentLang} />
     </Suspense>
   );
 }

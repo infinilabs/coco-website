@@ -9,32 +9,37 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
+import FontIcon from "@/components/integration/FontIcon";
 import PageLoader from "@/components/ui/PageLoader";
 import type { Extension } from "@/data/integration";
 import { getDictionary } from "@/i18n/i18n";
+import { IntegrationType } from "@/types/siteConfig";
 import ExtensionDetailContent from "./ExtensionDetailContent";
 import ExtensionDeveloperInfo from "./ExtensionDeveloperInfo";
 import IntegrationBreadcrumb from "./IntegrationBreadcrumb";
+import IntegrationInstallDialog from "./IntegrationInstallDialog";
 
-interface ExtensionDetailProps {
+interface CommonDetailProps {
   lang: string;
+  type: IntegrationType;
   extensionId: string;
 }
 
-export default function ExtensionDetail({
+export default function CommonDetail({
   lang,
+  type,
   extensionId,
-}: ExtensionDetailProps) {
+}: CommonDetailProps) {
   const { theme } = useTheme();
   const router = useRouter();
   const [locale, setLocale] = useState<any>();
   const [extension, setExtension] = useState<Extension | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [installOpen, setInstallOpen] = useState(false);
 
   const getLocale = useCallback(async () => {
     const dict = await getDictionary(lang);
@@ -46,7 +51,7 @@ export default function ExtensionDetail({
       setLoading(true);
       setError(null);
 
-      const url = `${process.env.NEXT_PUBLIC_BASE_URL}/store/extension/${extensionId}`;
+      const url = `${process.env.NEXT_PUBLIC_BASE_URL}/store/server/${extensionId}`;
 
       const response = await fetch(url);
 
@@ -105,24 +110,34 @@ export default function ExtensionDetail({
         {/* Header with breadcrumb */}
         <IntegrationBreadcrumb
           lang={lang}
-          type="extensions"
+          type={type}
           currentLabel={extension?.name}
-          className="hidden md:block mb-12 md:mb-20 text-[#666] dark:text-[#C8C8C8] min-h-[24px]"
+          className="mb-12 md:mb-20 text-[#666] dark:text-[#C8C8C8] min-h-[24px]"
         />
 
         {/* Extension header */}
         <div className="flex flex-col md:flex-row md:items-start space-y-4 md:space-y-0 md:space-x-6 mb-6 md:mb-7">
           <div className="flex-shrink-0 self-center md:self-start w-36 h-36">
-            <Image
-              src={extension.icon}
-              alt={extension.name}
-              width={144}
-              height={144}
-              className="w-full h-full object-contain"
-              style={{
-                filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
-              }}
-            />
+            {extension.icon?.startsWith("font_") ? (
+              <FontIcon
+                name={extension.icon}
+                className="size-36 h-full object-contain"
+                style={{
+                  filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                }}
+              />
+            ) : (
+              <Image
+                src={extension.icon}
+                alt={extension.name}
+                width={144}
+                height={144}
+                className="w-full h-full object-contain"
+                style={{
+                  filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                }}
+              />
+            )}
           </div>
 
           <div className="flex-1 text-center md:text-left">
@@ -206,9 +221,9 @@ export default function ExtensionDetail({
                 <div className="flex items-center space-x-1 md:space-x-2">
                   <FolderDown className="w-5 h-5 md:w-6 md:h-6" />
                   <span className="text-sm md:text-base">
-                    {extension?.stats?.installs >= 1000
-                      ? `${(extension?.stats?.installs / 1000).toFixed(1)}k`
-                      : extension?.stats?.installs || 1}
+                    {extension.stats.installs >= 1000
+                      ? `${(extension.stats.installs / 1000).toFixed(1)}k`
+                      : extension.stats.installs}
                   </span>
                 </div>
                 <div className="flex items-center space-x-1 md:space-x-2">
@@ -247,10 +262,18 @@ export default function ExtensionDetail({
         </p>
 
         <div className="flex justify-center md:justify-start mb-10 md:mb-14">
-          <Link
-            href={`coco://install_extension_from_store?id=${extension.id}`}
+          <button
             aria-label="install"
-            target="_blank"
+            onClick={() => {
+              if (extension) {
+                try {
+                  navigator.clipboard?.writeText(
+                    JSON.stringify({ id: extension.id })
+                  );
+                } catch {}
+                setInstallOpen(true);
+              }
+            }}
           >
             <div
               className={`h-10 md:h-12 w-28 md:w-32 text-center leading-[40px] md:leading-[48px] px-3 md:px-4 rounded-full font-medium text-sm md:text-base transition-colors text-[#04071b]`}
@@ -261,7 +284,7 @@ export default function ExtensionDetail({
             >
               {locale?.install}
             </div>
-          </Link>
+          </button>
         </div>
 
         <div className="flex flex-col lg:flex-row lg:items-start items-stretch gap-4 w-full max-w-full overflow-x-hidden min-w-0 box-border">
@@ -277,6 +300,15 @@ export default function ExtensionDetail({
           />
         </div>
       </div>
+      {extension && (
+        <IntegrationInstallDialog
+          open={installOpen}
+          onOpenChange={setInstallOpen}
+          lang={lang}
+          name={extension.name}
+          copied={true}
+        />
+      )}
     </div>
   );
 }
