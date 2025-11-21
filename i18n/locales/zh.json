@@ -176,6 +176,31 @@
       "subTitle": "已成功实现并向用户提供的功能特性。",
       "versionContent": [
         {
+          "version": "V0.9.0 (2025-11-20)",
+          "content": [
+            {
+                "title": "窗口紧凑模式",
+                "subTitle": "Coco AI app 现支持紧凑模式"
+            },
+            {
+                "title": "窗口透明度",
+                "subTitle": "Coco AI app 主窗口现支持调节透明度"
+            },
+            {
+                "title": "GitLab 代码审查",
+                "subTitle": "Coco AI Server 支持对 GitLab Merge Request 进行代码审查"
+            },
+            {
+                "title": "Coco Server 内置拓展商店",
+                "subTitle": "Coco AI Server 实现了拓展商店，可以一键安装连接器、数据源、小助手等"
+            },
+            {
+                "title": "Coco Server 权限管控",
+                "subTitle": "Coco AI Server 实现了连接器、数据源、小助手等资源的权限验证和管理"
+            }
+          ]
+        },
+        {
           "version": "V0.8.0 (2025-09-28)",
           "content": [
             {
