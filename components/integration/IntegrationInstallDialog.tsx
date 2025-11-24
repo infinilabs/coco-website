@@ -56,7 +56,7 @@ export default function IntegrationInstallDialog({
             copiedText={locale.copied ?? ""}
             nextTitle={locale.next ?? ""}
             description={locale.desc ?? ""}
-            screenshotSrc="/images/preview.png"
+            screenshotSrc="/images/integration/Install.gif"
             screenshotAlt="Coco Server"
           />
         </Dialog.Content>

@@ -67,7 +67,6 @@ export default function InstallSteps({
                   />
                 )}
 
-                {/* 连接线：完成步骤为绿色，其余为灰色 */}
                 {!isLast && (
                   <span
                     className={`mt-1 inline-block w-[2px] h-8 rounded ${
@@ -80,7 +79,6 @@ export default function InstallSteps({
                 )}
               </div>
 
-              {/* 文案区域 */}
               <div className="flex-1">
                 <div
                   className={
