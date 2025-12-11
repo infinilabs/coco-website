@@ -136,7 +136,7 @@ export default function CommonList({
                   >
                     {hoveredCard === index ? (
                       <div
-                        className={`h-8 leading-[32px] px-4 rounded-full font-medium text-base transition-colors text-[#04071b]`}
+                        className={`h-8 px-4 rounded-full font-medium text-base transition-colors text-[#04071b] flex items-center justify-center`}
                         style={{
                           background:
                             "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
@@ -147,7 +147,7 @@ export default function CommonList({
                       </div>
                     ) : (
                       <div className="h-8 p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333]">
-                        <div className="h-full leading-[28px] bg-[#EBF6FF] dark:bg-[#0B1020] rounded-[15px] shadow-lg flex justify-center text-base font-normal text-[#28A3FF] px-4">
+                        <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-[15px] shadow-lg flex items-center justify-center text-base font-normal text-[#28A3FF] px-4">
                           {locale?.install}
                         </div>
                       </div>

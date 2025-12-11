@@ -253,7 +253,7 @@ export default function ExtensionDetail({
             target="_blank"
           >
             <div
-              className={`h-10 md:h-12 w-28 md:w-32 text-center leading-[40px] md:leading-[48px] px-3 md:px-4 rounded-full font-medium text-sm md:text-base transition-colors text-[#04071b]`}
+              className={`h-10 md:h-12 w-28 md:w-32 px-3 md:px-4 rounded-full font-medium text-sm md:text-base transition-colors text-[#04071b] flex items-center justify-center`}
               style={{
                 background: "linear-gradient(90deg, #F5D9FF 0%, #00FFF6 100%)",
                 boxShadow: "0 2px 12px 0 #19F3FF55",
