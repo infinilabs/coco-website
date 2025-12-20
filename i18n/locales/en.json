@@ -239,6 +239,31 @@
       "subTitle": "Features that have been successfully implemented and are now available to users.",
       "versionContent": [
         {
+          "version": "V0.10.0 (2025-12-20)",
+          "content": [
+            {
+                "title": "Resizable Extension UI Window",
+                "subTitle": "Coco AI App now supports resizing extension UI windows."
+            },
+            {
+                "title": "Open Newly Installed Extensions Directly",
+                "subTitle": "Extensions installed in Coco AI App can now be opened directly—no need to go back to search."
+            },
+            {
+                "title": "Upgraded UI Experience",
+                "subTitle": "Coco AI App replaces legacy components with shadcn/ui to improve visuals and interactions."
+            },
+            {
+                "title": "Coco Server Adds a Milvus Connector",
+                "subTitle": "Coco AI Server adds a Milvus connector, enabling vector database storage and querying."
+            },
+            {
+                "title": "Coco Server Adds a Dropbox Connector",
+                "subTitle": "Coco AI Server adds a Dropbox connector, supporting file storage and querying."
+            }
+          ]
+        },
+        {
           "version": "V0.9.0 (2025-11-20)",
           "content": [
             {
