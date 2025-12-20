@@ -240,6 +240,31 @@
       "subTitle": "已成功实现并向用户提供的功能特性。",
       "versionContent": [
         {
+          "version": "V0.10.0 (2025-12-20)",
+          "content": [
+            {
+                "title": "扩展程序 UI 可调整窗口大小",
+                "subTitle": "Coco AI app 现支持扩展程序 UI 可调整窗口大小"
+            },
+            {
+                "title": "刚安装的扩展程序支持直接打开",
+                "subTitle": "Coco AI app 已安装的扩展程序支持直接打开，无需回退搜索才能打开"
+            },
+            {
+                "title": "升级 UI 展示效果",
+                "subTitle": "Coco AI app 用 shadcn/ui 组件替换旧组件，提升用户界面的美观度和交互性"
+            },
+            {
+                "title": "Coco Server 新增 milvus 连接器",
+                "subTitle": "Coco AI Server 新增 milvus 连接器，支持向量数据库的存储和查询"
+            },
+            {
+                "title": "Coco Server 新增 dropbox 连接器",
+                "subTitle": "Coco AI Server 新增 dropbox 连接器，支持文件的存储和查询"
+            }
+          ]
+        },
+        {
           "version": "V0.9.0 (2025-11-20)",
           "content": [
             {
