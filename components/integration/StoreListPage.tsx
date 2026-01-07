@@ -1,7 +1,6 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -9,29 +8,60 @@ import { useCallback, useEffect, useState } from "react";
 import NavTab from "@/components/header/NavTab";
 import { ALL_INTEGRATION, ApiResponse, Extension } from "@/data/integration";
 import { defaultLocale, getDictionary } from "@/i18n/i18n";
-import ExtensionList from "./ExtensionList";
+import CommonList from "./CommonList";
+import IntegrationInstallDialog from "./IntegrationInstallDialog";
 
-export default function IntegrationIndex({
+// mock
+import { MOCK_RESPONSE } from "./integration-demo";
+
+interface StoreListPageProps {
+  lang?: string;
+  type:
+    | "connector"
+    | "assistant"
+    | "mcp"
+    | "llm-provider"
+    | "datasource"
+    | "rsa";
+  texts?: {
+    title?: string;
+    description?: string;
+    search?: string;
+    build?: string;
+    loading?: string;
+    empty?: string;
+  };
+  iconUrl?: string;
+  buildUrl?: string;
+}
+
+export default function StoreListPage({
   lang = defaultLocale,
-}: {
-  lang: string;
-}) {
+  type,
+  texts,
+  iconUrl,
+  buildUrl,
+}: StoreListPageProps) {
   const [locale, setLocale] = useState<any>();
-  const { theme } = useTheme();
   const [extensions, setExtensions] = useState<Extension[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [active, setActive] = useState(0);
   const searchParams = useSearchParams();
 
-  // Pagination state
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const pageSize = 9;
 
   const INTEGRATION = ALL_INTEGRATION[`INTEGRATION_${lang.toUpperCase()}`];
 
-  // Fetch extensions with pagination and sorting support
+  const useMock = searchParams.get("mock") === "1";
+
+  const loadMock = async (): Promise<ApiResponse> => {
+    return MOCK_RESPONSE as unknown as ApiResponse;
+  };
+
   const fetchExtensions = useCallback(
     async (query: string = "", page: number = 1) => {
       try {
@@ -42,9 +72,33 @@ export default function IntegrationIndex({
         const sortParam =
           INTEGRATION[active].value === "recently" ? "&sort=created:desc" : "";
 
+        if (useMock) {
+          const data = await loadMock();
+          const extensionList = data.hits.hits?.map((hit) => ({
+            ...hit._source,
+            icon: hit._source.icon?.replace(/`/g, "").trim(),
+            developer: {
+              ...hit._source.developer,
+              avatar: hit._source.developer.avatar?.replace(/`/g, "").trim(),
+              website: hit._source.developer.website?.replace(/`/g, "").trim(),
+            },
+            screenshots: hit._source.screenshots?.map((screenshot) => ({
+              ...screenshot,
+              url: screenshot.url?.replace(/`/g, "").trim(),
+            })),
+            url: {
+              code: hit._source.url.code?.replace(/`/g, "").trim(),
+              download: hit._source.url.download?.replace(/`/g, "").trim(),
+            },
+          }));
+          setExtensions(extensionList || []);
+          setTotalCount(data.hits.total.value);
+          return;
+        }
+
         const apiUrl = `${
           process.env.NEXT_PUBLIC_BASE_URL
-        }/store/extension/_search?query=${encodeURIComponent(
+        }/store/server/_search?filter=type:${type}&query=${encodeURIComponent(
           query
         )}&from=${from}&size=${pageSize}${sortParam}`;
 
@@ -83,7 +137,7 @@ export default function IntegrationIndex({
         setLoading(false);
       }
     },
-    [active, INTEGRATION]
+    [active, INTEGRATION, type, useMock]
   );
 
   const getLocale = useCallback(async () => {
@@ -94,7 +148,6 @@ export default function IntegrationIndex({
   useEffect(() => {
     getLocale();
 
-    // Check for developer parameter in URL
     const developerParam = searchParams.get("developer");
     if (developerParam) {
       setSearchQuery(developerParam);
@@ -102,7 +155,28 @@ export default function IntegrationIndex({
     } else {
       fetchExtensions("", 1);
     }
-  }, [getLocale, fetchExtensions, searchParams]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [getLocale, fetchExtensions]);
+
+  const t = {
+    title: texts?.title ?? locale?.title,
+    description: texts?.description ?? locale?.description,
+    search: texts?.search ?? locale?.search,
+    build: texts?.build ?? locale?.build,
+    loading: texts?.loading ?? locale?.loading ?? "Loading extensions...",
+    empty: texts?.empty ?? locale?.empty ?? "No extensions found",
+  };
+
+  const tabs = [
+    {
+      label: locale?.tabs?.all?.[type],
+      value: "all",
+    },
+    {
+      label: locale?.tabs?.recently,
+      value: "recently",
+    },
+  ];
 
   const handleSearch = useCallback(
     (e: React.FormEvent) => {
@@ -140,31 +214,49 @@ export default function IntegrationIndex({
     []
   );
 
+  // 安装弹框状态
+  const [installOpen, setInstallOpen] = useState(false);
+  const [selectedExtension, setSelectedExtension] = useState<Extension | null>(
+    null
+  );
+
+  const handleInstallClick = (ext: Extension) => {
+    try {
+      navigator.clipboard?.writeText(JSON.stringify({ id: ext.id }));
+    } catch {}
+    setSelectedExtension(ext);
+    setInstallOpen(true);
+  };
+
   return (
     <section className="w-full flex flex-col items-center pt-28 md:pt-48 px-4 sm:px-6 lg:px-8">
       <div className="mb-4 font-medium text-3xl md:text-5xl bg-gradient-to-r from-[#843DFF] to-[#00CEFF] bg-clip-text text-transparent flex items-center">
-        <Image
-          src="/svg/extension/extension.svg"
-          alt="extension"
-          width={56}
-          height={56}
-          className="mr-2"
-        />
-        {locale?.title}
+        {iconUrl && (
+          <Image
+            src={iconUrl}
+            alt={type}
+            width={56}
+            height={56}
+            className="mr-2"
+          />
+        )}
+        {t.title}
       </div>
       <div className="mb-14 font-normal text-base text-black dark:text-white">
-        {locale?.description}
+        {t.description}
       </div>
-      <div>
-        <a
-          href="https://github.com/infinilabs/coco-extensions"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#00CEFF] font-medium"
-        >
-          {locale?.build}
-        </a>
-      </div>
+      {buildUrl && (
+        <div>
+          <a
+            href={buildUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#00CEFF] font-medium"
+          >
+            {t.build}
+          </a>
+        </div>
+      )}
 
       <div className="w-full max-w-2xl mt-12 mb-16">
         <form onSubmit={handleSearch} className="relative">
@@ -172,13 +264,12 @@ export default function IntegrationIndex({
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#5E85FF] via-[#EBC8FE] to-[#49FFF3] p-[2px]">
               <div className="w-full h-full rounded-full bg-white dark:bg-[#04071B] flex items-center px-6">
                 <Search className="flex-shrink-0 w-6 h-6 mr-4 text-[#828282]" />
-
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onKeyDown={handleKeyDown}
-                  placeholder={locale?.search}
+                  placeholder={t.search}
                   className="flex-1 bg-transparent border-none outline-none text-lg text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500"
                 />
               </div>
@@ -189,8 +280,8 @@ export default function IntegrationIndex({
 
       <div className="w-full max-w-7xl flex mt-40 justify-start">
         <NavTab
-          tabs={INTEGRATION}
-          value={INTEGRATION[active].value}
+          tabs={tabs}
+          value={tabs[active].value}
           onChange={(tab: any, index: number) => {
             setActive(index);
             setCurrentPage(1);
@@ -203,17 +294,18 @@ export default function IntegrationIndex({
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <div className="text-lg text-gray-500 dark:text-gray-400">
-              Loading extensions...
+              {t.loading}
             </div>
           </div>
         ) : extensions.length === 0 ? (
           <div className="flex justify-center items-center h-64">
             <div className="text-lg text-gray-500 dark:text-gray-400">
-              No extensions found
+              {t.empty}
             </div>
           </div>
         ) : (
-          <ExtensionList
+          <CommonList
+            type={type}
             extensions={extensions}
             currentPage={currentPage}
             totalCount={totalCount}
@@ -221,9 +313,21 @@ export default function IntegrationIndex({
             locale={locale}
             lang={lang}
             onPageChange={handlePageChange}
+            onInstallClick={handleInstallClick}
           />
         )}
       </div>
+
+      {/* 安装弹框 */}
+      {selectedExtension && (
+        <IntegrationInstallDialog
+          open={installOpen}
+          onOpenChange={setInstallOpen}
+          lang={lang}
+          name={selectedExtension.name}
+          copied={true}
+        />
+      )}
     </section>
   );
 }

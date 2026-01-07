@@ -58,8 +58,8 @@
     "description": "针对常见的 Coco 用例和功能的快速解答"
   },
   "Integration": {
-    "title": "扩展",
-    "description": "增强 Coco 应用的功能",
+    "title": "集成资源中心",
+    "description": "从扩展到连接器——构建理想工作流所需的一切，尽在一处",
     "build": "构建您自己的扩展 →",
     "search": "搜索扩展...",
     "install": "安装",
@@ -67,6 +67,7 @@
     "extensionNotFoundDesc": "请求的扩展无法找到。",
     "backToExtensions": "返回扩展列表",
     "extensions": "扩展",
+    "integration": "集成",
     "details": "详情",
     "description_title": "描述",
     "commands": "命令",
@@ -105,11 +106,74 @@
         "subtitle": "服务端",
         "description": "导入 MCP 配置，优化 Coco Server 模型性能"
       },
-      "quicklink": {
-        "title": "快捷链接",
+      "llmProvider": {
+        "title": "大模型提供商",
         "subtitle": "服务端",
-        "description": "启动快捷链接，简化 Coco AI 应用中的任务"
+        "description": "轻松导入并配置预设模型，增强 AI 能力"
+      },
+      "datasource": {
+        "title": "数据源",
+        "subtitle": "服务端",
+        "description": "快速导入并集成数据源，实现统一内容搜索"
       }
+    },
+    "connectorStore": {
+      "title": "连接器商店",
+      "description": "在这里探索并安装你需要的连接器",
+      "search": "搜索连接器、作者、标签",
+      "build": "我也要构建连接器 →",
+      "loading": "正在加载连接器…",
+      "empty": "暂无符合条件的连接器"
+    },
+    "assistantStore": {
+      "title": "AI 助手商店",
+      "description": "在这里探索并安装你需要的 AI 助手",
+      "search": "搜索助手、作者、标签",
+      "build": "我也要构建助手 →",
+      "loading": "正在加载助手...",
+      "empty": "暂无符合条件的助手"
+    },
+    "mcpStore": {
+      "title": "MCP 服务器商店",
+      "description": "在这里探索并安装你需要的 MCP 服务器",
+      "search": "搜索 MCP 服务器、作者、标签",
+      "build": "我也要构建 MCP 服务器 →",
+      "loading": "正在加载 MCP 服务器...",
+      "empty": "暂无符合条件的 MCP 服务器"
+    },
+    "llmProviderStore": {
+      "title": "大模型提供商商店",
+      "description": "在这里探索并安装你需要的 LLM 模型提供商",
+      "search": "搜索 LLM 模型提供商、作者、标签",
+      "build": "我也要构建 LLM 模型提供商 →",
+      "loading": "正在加载 LLM 模型提供商...",
+      "empty": "暂无符合条件的 LLM 模型提供商"
+    },
+    "datasourceStore": {
+      "title": "数据源商店",
+      "description": "在这里探索并安装你需要的数据源",
+      "search": "搜索数据源、作者、标签",
+      "build": "我也要构建数据源 →",
+      "loading": "正在加载数据源...",
+      "empty": "暂无符合条件的数据源"
+    },
+    "tabs": {
+      "recently": "最近添加",
+      "all": {
+        "extensions": "所有插件",
+        "connector": "所有连接器",
+        "assistant": "所有助手",
+        "mcp": "所有 MCP 服务器",
+        "llm-provider": "所有模型提供商",
+        "datasource": "所有数据源",
+        "rsa": "所有 RSA"
+      }
+    },
+    "installDialog": {
+      "title": "安装 {name}",
+      "copied": "安装链接已复制",
+      "next": "下一步：打开 Coco Server",
+      "desc": "打开 Coco Server 的扩展商店页面，系统会自动读取剪贴板中的安装链接，并弹出安装确认窗口。"
     }
   },
   "Roadmap": {
@@ -176,35 +240,85 @@
       "subTitle": "已成功实现并向用户提供的功能特性。",
       "versionContent": [
         {
+          "version": "V0.10.0 (2025-12-20)",
+          "content": [
+            {
+                "title": "扩展程序 UI 可调整窗口大小",
+                "subTitle": "Coco AI app 现支持扩展程序 UI 可调整窗口大小"
+            },
+            {
+                "title": "刚安装的扩展程序支持直接打开",
+                "subTitle": "Coco AI app 已安装的扩展程序支持直接打开，无需回退搜索才能打开"
+            },
+            {
+                "title": "升级 UI 展示效果",
+                "subTitle": "Coco AI app 用 shadcn/ui 组件替换旧组件，提升用户界面的美观度和交互性"
+            },
+            {
+                "title": "Coco Server 新增 milvus 连接器",
+                "subTitle": "Coco AI Server 新增 milvus 连接器，支持向量数据库的存储和查询"
+            },
+            {
+                "title": "Coco Server 新增 dropbox 连接器",
+                "subTitle": "Coco AI Server 新增 dropbox 连接器，支持文件的存储和查询"
+            }
+          ]
+        },
+        {
+          "version": "V0.9.0 (2025-11-20)",
+          "content": [
+            {
+                "title": "窗口紧凑模式",
+                "subTitle": "Coco AI app 现支持紧凑模式"
+            },
+            {
+                "title": "窗口透明度",
+                "subTitle": "Coco AI app 主窗口现支持调节透明度"
+            },
+            {
+                "title": "GitLab 代码审查",
+                "subTitle": "Coco AI Server 支持对 GitLab Merge Request 进行代码审查"
+            },
+            {
+                "title": "Coco Server 内置拓展商店",
+                "subTitle": "Coco AI Server 实现了拓展商店，可以一键安装连接器、数据源、小助手等"
+            },
+            {
+                "title": "Coco Server 权限管控",
+                "subTitle": "Coco AI Server 实现了连接器、数据源、小助手等资源的权限验证和管理"
+            }
+          ]
+        },
+        {
           "version": "V0.8.0 (2025-09-28)",
           "content": [
             {
-                "title": "插件市场",
-                "subTitle": "Coco AI 通过插件市场可以快速接入各种插件，扩展功能。"
+              "title": "插件市场",
+              "subTitle": "Coco AI 通过插件市场可以快速接入各种插件，扩展功能。"
             },
             {
-                "title": "macOS 窗口管理",
-                "subTitle": "通过窗口管理插件，Coco AI 可灵活调整窗口大小，并在不同工作区或显示器间便捷切换，提升多任务处理效率。"
+              "title": "macOS 窗口管理",
+              "subTitle": "通过窗口管理插件，Coco AI 可灵活调整窗口大小，并在不同工作区或显示器间便捷切换，提升多任务处理效率。"
             },
             {
-                "title": "本地文件搜索",
-                "subTitle": "用户可以直接在 Coco AI 中搜索和访问存储在本地计算机上的文件。已支持 Linux/GNOME、Linux/KDE、macOS Spotlight、Windows Search。"
+              "title": "本地文件搜索",
+              "subTitle": "用户可以直接在 Coco AI 中搜索和访问存储在本地计算机上的文件。已支持 Linux/GNOME、Linux/KDE、macOS Spotlight、Windows Search。"
             },
             {
-                "title": "View 类型插件",
-                "subTitle": "Coco AI 支持自定义 UI 来扩展插件需要的功能，用户可以根据自己的需求定制插件的外观和行为。"
+              "title": "View 类型插件",
+              "subTitle": "Coco AI 支持自定义 UI 来扩展插件需要的功能，用户可以根据自己的需求定制插件的外观和行为。"
             },
             {
-                "title": "数据连接器",
-                "subTitle": "Coco AI 通过数据连接器可快速集成常见数据源，包括网络驱动器、本地文件系统、Confluence Wiki、GitHub、GitLab、Gitea、SQL Server、MySQL、PostgreSQL 等。"
+              "title": "数据连接器",
+              "subTitle": "Coco AI 通过数据连接器可快速集成常见数据源，包括网络驱动器、本地文件系统、Confluence Wiki、GitHub、GitLab、Gitea、SQL Server、MySQL、PostgreSQL 等。"
             },
             {
-                "title": "支持目录方式浏览数据源",
-                "subTitle": "用户可以以目录结构浏览数据源，支持层级展示与权限管理支持。"
+              "title": "支持目录方式浏览数据源",
+              "subTitle": "用户可以以目录结构浏览数据源，支持层级展示与权限管理支持。"
             },
             {
-                "title": "Web 搜索组件 & 搜索门户",
-                "subTitle": "Coco AI 新增了一个完整功能的搜索自定义组件类型，提供完整的网页版搜索模式，用户可以直接在网页中使用 Coco AI 进行搜索。"
+              "title": "Web 搜索组件 & 搜索门户",
+              "subTitle": "Coco AI 新增了一个完整功能的搜索自定义组件类型，提供完整的网页版搜索模式，用户可以直接在网页中使用 Coco AI 进行搜索。"
             }
           ]
         },

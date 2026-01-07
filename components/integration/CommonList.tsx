@@ -7,13 +7,21 @@ import {
   MonitorCheck,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import FontIcon from "@/components/integration/FontIcon";
+import { startRouteProgress } from "@/components/ui/routeProgress";
 import type { Extension } from "@/data/integration";
 
-interface ExtensionListProps {
+interface CommonListProps {
+  type:
+    | "connector"
+    | "assistant"
+    | "mcp"
+    | "llm-provider"
+    | "datasource"
+    | "rsa";
   extensions: Extension[];
   currentPage: number;
   totalCount: number;
@@ -23,9 +31,11 @@ interface ExtensionListProps {
   };
   lang: string;
   onPageChange: (page: number) => void;
+  onInstallClick?: (ext: Extension) => void;
 }
 
-export default function ExtensionList({
+export default function CommonList({
+  type,
   extensions,
   currentPage,
   totalCount,
@@ -33,7 +43,8 @@ export default function ExtensionList({
   locale,
   lang,
   onPageChange,
-}: ExtensionListProps) {
+  onInstallClick,
+}: CommonListProps) {
   const router = useRouter();
 
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -86,31 +97,41 @@ export default function ExtensionList({
             className="p-[2px] rounded-[16px] bg-gradient-to-br from-[#5E85FF33] to-[#49FFF333] cursor-pointer"
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
-            onClick={() =>
+            onClick={() => {
               router.push(
-                `/${lang}/integration/extensions/detail?id=${extension.id}`
-              )
-            }
+                `/${lang}/integration/${type}/detail?id=${extension.id}`
+              );
+              startRouteProgress();
+            }}
           >
             <div className="h-full bg-[#EBF6FF] dark:bg-[#0B1020] rounded-[15px] p-8 min-h-[380px] flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <Image
-                    src={extension.icon}
-                    alt={extension.name}
-                    width={56}
-                    height={56}
-                    className="object-cover rounded-xl"
-                    style={{
-                      filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
-                    }}
-                  />
-                  <Link
-                    href={`coco://install_extension_from_store?id=${extension.id}`}
+                  {extension.icon?.startsWith("font_") ? (
+                    <FontIcon
+                      name={extension.icon}
+                      className="size-14 object-cover rounded-xl"
+                      style={{
+                        filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                      }}
+                    />
+                  ) : (
+                    <Image
+                      src={extension.icon}
+                      alt={extension.name}
+                      width={56}
+                      height={56}
+                      className="object-cover rounded-xl"
+                      style={{
+                        filter: "drop-shadow(rgb(255, 255, 255) 0px 0px 6px)",
+                      }}
+                    />
+                  )}
+                  <button
                     aria-label="install"
-                    target="_blank"
                     onClick={(e) => {
                       e.stopPropagation();
+                      onInstallClick?.(extension);
                     }}
                   >
                     {hoveredCard === index ? (
@@ -131,7 +152,7 @@ export default function ExtensionList({
                         </div>
                       </div>
                     )}
-                  </Link>
+                  </button>
                 </div>
                 <h3 className="text-black dark:text-white text-lg font-semibold mb-4">
                   {extension.name}
@@ -218,7 +239,7 @@ export default function ExtensionList({
                 <div className="flex items-center space-x-4">
                   <div className="flex items-center">
                     <FolderDown className="w-4 h-4 mr-1" />
-                    <span>{extension?.stats?.installs || 1}</span>
+                    <span>{extension.stats?.installs}</span>
                   </div>
                 </div>
               </div>
