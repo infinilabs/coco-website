@@ -132,3 +132,8 @@ dist
 
 # ignore docker saved images
 *.tar
+
+# ignore ai config files
+.gemini
+.coploit
+.claude

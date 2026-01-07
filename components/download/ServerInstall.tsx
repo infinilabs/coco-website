@@ -51,7 +51,7 @@ export default function ServerInstall({ locale }: { locale: any }) {
             </span>
           </div>
           <div className="flex items-center bg-[#CBE8FF] dark:bg-[#0A1727] rounded-lg px-4 py-3 mb-2">
-            <span className="text-black dark:text-cyan-200 font-mono text-sm flex-1">
+            <span className="text-black dark:text-cyan-200 font-mono text-sm flex-0 flex-grow whitespace-pre" style={{ lineHeight: '1.5' }}>
               {DockerCommand}
             </span>
             <button
