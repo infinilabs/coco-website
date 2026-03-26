@@ -1,8 +1,8 @@
 "use client";
 
+import { Sun, SunMoon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Sun, SunMoon } from "lucide-react";
 
 export function ThemedButton() {
   const [mounted, setMounted] = useState(false);
@@ -20,7 +20,11 @@ export function ThemedButton() {
   return (
     <div
       className="cursor-pointer"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={() => {
+        const nextTheme = theme === "light" ? "dark" : "light";
+        setTheme(nextTheme);
+        window.NoticeWidget?.setTheme(nextTheme);
+      }}
     >
       {theme === "light" ? (
         <SunMoon className="text-[#666] dark:text-[#999]" />

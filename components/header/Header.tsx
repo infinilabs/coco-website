@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { useEffect, useState } from "react";
 
 import HeaderLinks from "@/components/header/HeaderLinks";
@@ -11,6 +12,20 @@ import { siteConfig } from "@/data/site";
 import HeaderMenu from "./HeaderMenu";
 import MobileMenu from "./MobileMenu";
 import { ThemedButton } from "./ThemedButton";
+
+declare global {
+  interface Window {
+    NoticeWidget?: {
+      setLocale: (locale: "zh-CN" | "en-US") => void;
+      setTheme: (theme: "light" | "dark") => void;
+      init: (options: {
+        locales: Record<string, string>;
+        locale: string;
+        theme: string;
+      }) => void;
+    };
+  }
+}
 
 const Header = ({ lang }: { lang: string }) => {
   const { theme } = useTheme();
@@ -21,6 +36,20 @@ const Header = ({ lang }: { lang: string }) => {
 
   return (
     <header className="w-full py-4 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Script
+        src="https://infinilabs.com/notice-widget/notice-widget.umd.cjs"
+        strategy="afterInteractive"
+        onLoad={() => {
+          window.NoticeWidget?.init({
+            locales: {
+              "zh-CN": "https://infinilabs.com/notice-widget/locales/zh-CN.json",
+              "en-US": "https://infinilabs.com/notice-widget/locales/en-US.json",
+            },
+            locale: lang === "zh" ? "zh-CN" : "en-US",
+            theme: theme === "dark" ? "dark" : "light",
+          });
+        }}
+      />
       <nav className="relative z-50 flex justify-between items-center">
         {/* Left section */}
         <div className="flex items-center md:gap-x-12 flex-1">
