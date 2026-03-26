@@ -4,10 +4,10 @@ import { Globe } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
 } from "@/components/ui/select-lang";
 import { localeNames } from "@/i18n/i18n";
 import { saveLanguagePreference } from "@/lib/utils";
@@ -18,6 +18,9 @@ export const LangSwitcher = ({ lang }: { lang: string }) => {
   const searchParams = useSearchParams();
 
   const handleSwitchLanguage = (value: string) => {
+    const noticeLocale = value === "zh" ? "zh-CN" : "en-US";
+    window.NoticeWidget?.setLocale(noticeLocale);
+
     saveLanguagePreference(value);
 
     // Preserve query parameters when switching languages
