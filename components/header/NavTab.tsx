@@ -36,6 +36,12 @@ export default function NavTab({
   const router = useRouter();
 
   const [active, setActive] = useState(tabs && tabs[0]?.value);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   useEffect(() => {
     if (value) setActive(value);
   }, [value]);
@@ -142,7 +148,11 @@ export default function NavTab({
               {Icon ? (
                 <Icon
                   color={
-                    isActive ? "#04071b" : theme === "dark" ? "#fff" : "#04071b"
+                    isActive
+                      ? "#04071b"
+                      : mounted && theme === "dark"
+                        ? "#fff"
+                        : "#04071b"
                   }
                   className={getIconStyles()}
                 />
