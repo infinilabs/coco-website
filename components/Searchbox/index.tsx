@@ -49,7 +49,7 @@ export default function Searchbox() {
     script.type = "module";
     script.id = "coco-searchbox-script";
     script.textContent = `
-      import { searchbox } from "https://coco.infini.cloud/integration/d0taohm2a89828kdfebg/widget";
+      import { searchbox } from "https://coco.infini.cloud/integration/d95h6kuk7e3tu0abb9rg/widget";
       
       Promise.resolve().then(() => {
         try {
